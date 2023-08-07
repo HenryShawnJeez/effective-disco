@@ -1,0 +1,1 @@
+// const {User, Withdrawal, Deposit, Investment, Transaction} = require('../models/user.model')

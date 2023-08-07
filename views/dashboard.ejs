@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../Images/logo.ico" type="image/x-ico" />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../CSS/main.css" />
+    <link rel="stylesheet" href="../CSS/toast.css" />
+
+    <script
+      async
+      src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap Icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+    />
+    <!-- Custom JS Script -->
+    <script defer src="../JS/dashboard.js"></script>
+    <script defer src="../JS/dashboard1.js"></script>
+    <script defer src="../JS/referral.js"></script>
+    <!-- Jivo Chat -->
+    <!-- <script src="//code.jivosite.com/widget/SG1JKe26uR" async></script> -->
+  </head>
+
+  <body class="bg-darkGray relative main">
+    <%- include("partials/sidebar"); -%>
+    <section class="bg-white" id="Top Section">
+      <div
+        class="p-4 flex flex-row items-center justify-end space-x-2 relative"
+      >
+        <img class="h-8" src="../Images/user.png" alt="User-Icon" />
+        <h4 class="font-bold text-darkNavy"><%= user.name %></h4>
+        <img
+          id="toggleDropDownBtn"
+          class="cursor-pointer mt-1"
+          src="../Images/downArrow.png"
+          alt="Down Arrow"
+        />
+        <div
+          id="optionBox"
+          class="hidden absolute h-40 w-32 bg-white top-10 rounded-lg z-40 ease-in-out duration-500 p-4 shadow-xl border border-darkNavy border-opacity-10"
+        >
+          <a href="/user/invest"
+            ><p class="text-sm hover:text-gold duration-500">Invest</p></a
+          >
+          <a href="/user/profile" 
+            ><p class="text-sm mt-2 hover:text-gold duration-500">
+              Edit Profile
+            </p></a
+          >
+          <hr class="mt-1 bg-darkNavy">
+          <a href="/support"
+            ><p class="text-sm mt-2 hover:text-gold duration-500">Help</p></a
+          >
+          <form action="/user/logout" method="post">
+            <p class="text-sm mt-2 hover:text-gold duration-500">Log out</p>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section id="Account Statement">
+      <div
+        class="flex flex-col md:flex-row sm:items-center md:justify-between my-10 px-5 sm:px-10 md:space-x-10 w-full"
+      >
+        <div
+          class="flex flex-row items-center space-x-4 md:space-x-10 space-y-4 md:space-y-0 pb-4 overflow-y-hidden overflow-x-auto linkContainer"
+        >
+          <div
+            class="h-48 min-w-[15rem] bg-white mt-4 md:mt-0 rounded-xl p-4 border border-darkNavy border-opacity-10 shadow-md relative"
+          >
+            <img
+              class="absolute opacity-10"
+              src="../Images/scribble-deluxe.png"
+              alt="Deluxe Capital Scribble"
+            />
+            <div class="flex flex-row justify-between relative z-10">
+              <div
+                class="bg-darkNavy bg-opacity-30 flex items-center justify-center p-4 rounded-xl"
+              >
+                <img class="w-6" src="../Images/wallet.png" alt="wallet icon" />
+              </div>
+              <img
+                id="menuIconBalance"
+                class="w-6 h-6 cursor-pointer"
+                src="../Images/menuDots.png"
+                alt="menu-dots icon"
+              />
+              <div
+                id="balanceMenu"
+                class="hidden absolute w-28 h-10 bg-darkGray top-6 left-24 rounded-lg shadow-md p-2"
+              >
+                <a
+                  class="text-sm text-center text-darkNavy ml-2 hover:text-gold duration-500"
+                  href="/user/deposit"
+                  >Add Balance</a
+                >
+              </div>
+            </div>
+            <div class="flex flex-row justify-between relative z-10">
+              <p class="text-darkNavy mt-6">Balance</p>
+              <img
+                class="eyeIcon w-5 h-5 mt-6 cursor-pointer"
+                src="../Images/eye.png"
+                alt="eye icon"
+              />
+            </div>
+            <h1
+              class="number text-2xl sm:text-3xl font-bold mt-1 text-gold noasterisks"
+            >
+              £ <%=user.balance.toLocaleString() %>
+            </h1>
+            <h1 class="number1 hidden">
+              £ <%=user.balance.toLocaleString() %>
+            </h1>
+          </div>
+          <div
+            class="h-48 min-w-[15rem] bg-white rounded-xl p-4 border border-darkNavy border-opacity-10 shadow-md"
+          >
+            <div class="flex flex-row justify-between relative">
+              <div
+                class="bg-darkNavy bg-opacity-30 flex items-center justify-center p-4 rounded-xl"
+              >
+                <img
+                  class="w-6"
+                  src="../Images/pound.png"
+                  alt="earnings icon"
+                />
+              </div>
+              <img
+                id="poundsIconEarnings"
+                class="w-6 h-6 cursor-pointer"
+                src="../Images/menuDots.png"
+                alt="menu-dots icon"
+              />
+              <div
+                id="poundsMenu"
+                class="hidden absolute w-28 h-10 bg-darkGray top-6 left-24 rounded-lg shadow-md p-2"
+              >
+                <a
+                  class="text-sm text-center text-darkNavy ml-2 hover:text-gold duration-500"
+                  href="/user/invest"
+                  >Invest Now</a
+                >
+              </div>
+            </div>
+            <div class="flex flex-row justify-between">
+              <p class="text-darkNavy mt-6">Total Earnings</p>
+              <img
+                class="eyeIcon w-5 h-5 mt-6 cursor-pointer"
+                src="../Images/eye.png"
+                alt="eye icon"
+              />
+            </div>
+            <h1
+              class="number text-2xl sm:text-3xl font-bold mt-1 text-gold noasterisks"
+            >
+              £ <%= earnings.reduce( (total, current)=> total + current.amount,
+              0).toLocaleString()%>
+            </h1>
+            <h1 class="number1 hidden">
+              £ <%= earnings.reduce( (total, current)=> total + current.amount,
+              0).toLocaleString()%>
+            </h1>
+          </div>
+        </div>
+        <div
+          class="flex flex-row items-center space-x-4 md:space-x-10 space-y-4 md:space-y-0 pb-4 overflow-y-hidden overflow-x-auto linkContainer"
+        >
+          <div
+            class="h-48 min-w-[15rem] bg-white mt-4 md:mt-0 rounded-xl p-4 border border-darkNavy border-opacity-10 shadow-md relative"
+          >
+            <img
+              class="absolute opacity-10"
+              src="../Images/scribble-deluxe.png"
+              alt="Deluxe Capital Scribble"
+            />
+            <div class="flex flex-row justify-between relative z-10">
+              <div
+                class="bg-darkNavy bg-opacity-30 flex items-center justify-center p-4 rounded-xl"
+              >
+                <img class="w-6" src="../Images/bank.png" alt="deposit icon" />
+              </div>
+              <img
+                id="bankIconDeposit"
+                class="w-6 h-6 cursor-pointer"
+                src="../Images/menuDots.png"
+                alt="menu-dots icon"
+              />
+              <div
+                id="depositMenu"
+                class="hidden absolute w-28 h-10 bg-darkGray top-6 left-24 rounded-lg shadow-md p-2"
+              >
+                <a
+                  class="text-sm text-center text-darkNavy ml-2 hover:text-gold duration-500"
+                  href="/user/deposit"
+                  >Deposit Now</a
+                >
+              </div>
+            </div>
+            <div class="flex flex-row justify-between relative z-10">
+              <p class="text-darkNavy mt-6">Total Deposit</p>
+              <img
+                class="eyeIcon w-5 h-5 mt-6 cursor-pointer"
+                src="../Images/eye.png"
+                alt="eye icon"
+              />
+            </div>
+            <h1
+              class="number text-2xl sm:text-3xl font-bold mt-1 text-gold noasterisks"
+            >
+              £ <%= deposits.reduce( (total, current)=> total + current.amount,
+              0).toLocaleString()%>
+            </h1>
+            <h1 class="number1 hidden">
+              £ <%= deposits.reduce( (total, current)=> total + current.amount,
+              0).toLocaleString()%>
+            </h1>
+          </div>
+          <div
+            class="h-48 min-w-[15rem] bg-white rounded-xl p-4 border border-darkNavy border-opacity-10 shadow-md"
+          >
+            <div class="flex flex-row justify-between relative">
+              <div
+                class="bg-darkNavy bg-opacity-30 flex items-center justify-center p-4 rounded-xl"
+              >
+                <img
+                  class="w-6"
+                  src="../Images/moneyBills.png"
+                  alt="withdrawal icon"
+                />
+              </div>
+              <img
+                id="moneyIconWithdraw"
+                class="w-6 h-6 cursor-pointer"
+                src="../Images/menuDots.png"
+                alt="menu-dots icon"
+              />
+              <div
+                id="withdrawMenu"
+                class="hidden absolute w-28 h-10 bg-darkGray top-6 left-24 rounded-lg shadow-md p-2"
+              >
+                <a
+                  class="text-sm text-center text-darkNavy ml-4 hover:text-gold duration-500"
+                  href="/user/withdraw"
+                  >Withdraw</a
+                >
+              </div>
+            </div>
+            <div class="flex flex-row justify-between">
+              <p class="text-darkNavy mt-6">Total Withdraw</p>
+              <img
+                class="eyeIcon w-5 h-5 mt-6 cursor-pointer"
+                src="../Images/eye.png"
+                alt="eye icon"
+              />
+            </div>
+            <h1
+              class="number text-2xl sm:text-3xl font-bold mt-1 text-gold noasterisks"
+            >
+              £ <%= withdrawals.reduce( (total, current)=> total +
+              current.amount, 0).toLocaleString()%>
+            </h1>
+            <h1 class="number1 hidden">
+              £ <%= withdrawals.reduce( (total, current)=> total +
+              current.amount, 0).toLocaleString()%>
+            </h1>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="flex flex-col items-center md:flex-row">
+        <div
+          class="flex flex-row justify-between items-center p-4 bg-brightBlue rounded-xl w-full h-14 mt-10 border-b-4 border-gold md:w-1/2"
+        >
+          <p class="text-xs text-lightGray1 md:text-base">Account Summary</p>
+          <a
+            href="/user/transactions"
+            class="cursor-pointer duration-700 text-xs md:text-base rounded-lg px-4 h-10 bg-white text-darkBlue"
+          >
+            <button class="mt-3 md:mt-2">
+              <span class="mr-1"><ion-icon name="receipt"></ion-icon></span
+              >History
+            </button>
+          </a>
+        </div>
+        <div
+          class="w-full mt-5 mb-6 flex flex-col items-center justify-center md:w-1/2"
+        >
+          <p class="text-darkBlue text-xs md:text-base">Invite Your Friends</p>
+          <div class="h-10 w-auto mt-4 border-brightBlue border-2 rounded-md">
+            <a onclick="copy()">
+              <p
+                id="referral-link"
+                class="text-darkBlue text-center px-2 mt-1.5 text-xs md:text-base md:mt-1"
+              >
+                https://www.deluxecapital.com/user/create?ref=<%=user.userId %>
+              </p>
+            </a>
+            <p
+              class="text-xs mt-4 font-thin text-center text-gray-500 md:text-sm"
+            >
+              <span
+                ><ion-icon name="information-circle-outline"></ion-icon
+              ></span>
+              Tap the link to copy it to your CLIPBOARD
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 flex flex-col justify-center items-center w-full">
+        <p class="text-xs md:text-base text-darkBlue">Available Balance</p>
+        <h1 class="mt-2 text-brightBlue text-2xl md:text-4xl">
+          £ <%=user.balance %>
+        </h1>
+      </div>
+      <div class="mt-5 flex justify-evenly items-center w-full flex-row">
+        <div
+          class="bg-lightGray1 border border-brightBlue shadow-xl p-4 rounded-xl text-center"
+        >
+          <p class="text-xs md:text-base text-darkBlue">Total Deposit</p>
+          <h1 class="mt-1 mb-3 text-brightBlue text-xl md:text-2xl">
+            £ <%= deposits.reduce( (total, current)=> total + current.amount,
+            0)%>
+          </h1>
+          <a
+            href="/user/deposit"
+            class="cursor-pointer mt-1 duration-700 text-xs md:text-base rounded-lg bg-lightGreen px-4 py-2 text-lightGray1"
+          >
+            <button class="mt-3 md:mt-2">
+              <span class="mr-1"><ion-icon name="download"></ion-icon></span
+              >Deposit
+            </button>
+          </a>
+        </div>
+        <div
+          class="bg-lightGray1 shadow-xl p-4 border border-brightBlue rounded-xl text-center"
+        >
+          <p class="text-xs md:text-base text-darkBlue">Total Withdraw</p>
+          <h1 class="mt-1 mb-3 text-brightBlue text-xl md:text-2xl">
+            £ <%= withdrawals.reduce( (total, current)=> total + current.amount,
+            0)%>
+          </h1>
+          <a
+            href="/user/withdraw"
+            class="cursor-pointer duration-700 text-xs md:text-base rounded-lg bg-orange-400 px-4 py-2 text-lightGray1"
+          >
+            <button class="mt-3 md:mt-2">
+              <span class="mr-1"><ion-icon name="share"></ion-icon></span
+              >Withdraw
+            </button>
+          </a>
+        </div>
+      </div>
+      <div
+        class="w-full p-4 flex flex-row justify-between items-center bg-brightBlue mt-10 border-b-4 border-gold md:w-auto"
+      >
+        <p class="text-xs text-white md:text-base">Financial Record</p>
+        <a
+          href="/user/invest"
+          class="cursor-pointer duration-700 text-xs rounded-md bg-lightGreen px-4 h-10 text-lightGray1 md:text-base"
+        >
+          <button class="mt-3 md:mt-2">
+            <span class="mr-1"><ion-icon name="stats-chart"></ion-icon></span
+            >Invest
+          </button>
+        </a>
+      </div>
+      <div class="flex flex-col">
+        <div
+          class="space-y-4 mt-10 flex flex-row justify-evenly flex-wrap text-center"
+        >
+          <div class="mr-1">
+            <p class="text-xs mt-4 md:text-base text-darkBlue">
+              Account Balance
+            </p>
+            <h1 class="mt-1 text-brightBlue text-xl md:text-2xl">
+              £ <%= user.balance %>
+            </h1>
+          </div>
+          <div class="mr-1">
+            <p class="text-xs md:text-base text-darkBlue">Investment Count</p>
+            <h1 class="mt-1 text-brightBlue text-xl md:text-2xl">
+              <%= investments.length %>
+            </h1>
+          </div>
+          <div class="mr-1">
+            <p class="text-xs md:text-base text-darkBlue">Total Deposit</p>
+            <h1 class="mt-1 text-brightBlue text-xl md:text-2xl">
+              £ <%= deposits.reduce( (total, current)=> total + current.amount,
+              0)%>
+            </h1>
+          </div>
+          <div>
+            <p class="text-xs md:text-base text-darkBlue">Total Withdraw</p>
+            <h1 class="mt-1 text-brightBlue text-xl md:text-2xl">
+              £ <%= withdrawals.reduce( (total, current)=> total +
+              current.amount, 0)%>
+            </h1>
+          </div>
+        </div>
+        <div
+          class="space-y-4 mt-5 flex flex-row justify-evenly flex-wrap text-center md:mt-10"
+        >
+          <div class="">
+            <p class="text-xs mt-4 md:text-base text-darkBlue">Total Earning</p>
+            <h1 class="mt-1 text-brightBlue text-xl md:text-2xl">
+              £ <%= earnings.reduce( (total, current)=> total + current.amount,
+              0)%>
+            </h1>
+          </div>
+          <div>
+            <p class="text-xs md:text-base text-darkBlue">Last Deposit</p>
+            <h1 class="mt-1 text-brightBlue text-xl md:text-2xl">
+              £ <%= deposits.length> 0 ? deposits.at(-1).amount : 0 ;%>
+            </h1>
+          </div>
+          <div>
+            <p class="text-xs md:text-base text-darkBlue">Last Withdraw</p>
+            <h1 class="mt-1 text-brightBlue text-xl md:text-2xl">
+              £ <%= withdrawals.length> 0 ? withdrawals.at(-1).amount : 0; %>
+            </h1>
+          </div>
+          <div>
+            <p class="text-xs md:text-base text-darkBlue">Reg Date</p>
+            <h1 class="mt-1 text-brightBlue text-xl md:text-2xl">
+              <%= user.createdAt.toLocaleDateString() %>
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-center mt-20">
+        <a
+          href="/user/transactions"
+          class="cursor-pointer duration-700 text-xs rounded-md border-brightBlue border-2 px-4 h-10 text-darkBlue md:text-base"
+        >
+          <span class="mr-1"
+            ><ion-icon
+              class="text-2xl duration-700 text-darkBlue"
+              name="documents"
+            ></ion-icon></span
+          >Show All Transactions
+        </a>
+      </div> -->
+    </section>
+    <section id="Graph">
+      <div
+        class="flex flex-col md:flex-row my-10 px-5 sm:px-10 md:space-x-10 md:justify-between"
+      >
+        <div class="w-full md:w-[60%] flex flex-col space-y-4 mb-4 md:mb-0">
+          <div
+            class="bg-white p-4 border border-darkNavy border-opacity-10 shadow-md rounded-xl"
+          >
+            <canvas
+              id="myChart"
+              style="
+                width: 100%;
+                max-width: 600px;
+                height: 31rem;
+                font-size: 0.8rem;
+              "
+            ></canvas>
+          </div>
+          <div
+            class="bg-white p-4 border border-darkNavy border-opacity-10 shadow-md rounded-xl"
+          >
+            <div class="flex flex-row justify-between items-center">
+              <p class="text-xs sm:text-sm font-bold">Transaction History (Your Most Recent Withdrawal, Deposit, and Investment)</p>
+              <a href="/user/transactions"
+                ><p
+                  class="flex flex-row items-center text-xs sm:text-sm text-darkNavy hover:text-gold duration-500"
+                >
+                  See All
+                  <img
+                    class="w-3 h-3 ml-1"
+                    src="../Images/angleRight.png"
+                    alt="Right Angle"
+                  /></p
+              ></a>
+            </div>
+            <div
+              class="mt-2 space-y-2 border-darkNavy border border-opacity-30 p-4 rounded-xl"
+            >
+            <% if (lastDeposit) { %>
+              <div id="deposit" class="flex flex-row items-center justify-between border border-red-600 p-2 rounded-xl">
+                <div class="flex flex-row items-center">
+                  <div
+                    class="rounded-[50%] bg-red-600 bg-opacity-40 p-2 sm:p-4 flex items-center justify-center"
+                  >
+                    <img
+                      class="w-5 h-5 sm:w-6 sm:h-6"
+                      src="../Images/depositArrow.png"
+                      alt="Deposit Icon"
+                    />
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold sm:text-base ml-2">Deposit Via <%= lastDeposit.medium %></p>
+                    <div class="flex flex-row space-x-2 ml-2 items-center">
+                      <p class="text-xs font-bold sm:text-base">
+                        <%= lastDeposit.createdAt.toLocaleDateString() %>
+                      </p>
+                      <p class="text-xs text-green-600 font-bold capitalize"><%= lastDeposit.status %></p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h1 class="text-red-600 text-sm sm:text-xl font-bold">+£<%= lastDeposit.amount %></h1>
+                </div>
+              </div>
+              <% } %>
+              <% if (lastWithdrawal) { %>
+                <div id="withdrawal" class="flex flex-row items-center justify-between border border-green-600 p-2 rounded-xl">
+                  <div class="flex flex-row items-center">
+                    <div
+                      class="rounded-[50%] bg-green-600 bg-opacity-40 p-2 sm:p-4 flex items-center justify-center"
+                    >
+                      <img
+                        class="w-5 h-5 sm:w-6 sm:h-6"
+                        src="../Images/withdraw.png"
+                        alt="WIthdraw Icon"
+                      />
+                    </div>
+                    <div>
+                      <p class="text-xs font-bold sm:text-base ml-2 capitalize">Withdraw Via <%= lastWithdrawal.account.method %></p>
+                      <div class="flex flex-row space-x-2 ml-2 items-center">
+                        <p class="text-xs font-bold sm:text-base">
+                          <%= lastWithdrawal.createdAt.toLocaleDateString() %>
+                        </p>
+                        <p class="text-xs text-green-600 font-bold capitalize"><%= lastWithdrawal.status %></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <h1 class="text-green-600 text-sm sm:text-xl font-bold">-£<%= lastWithdrawal.account.amount %></h1>
+                  </div>
+                </div>
+                <% } %>
+                <% if (lastInvestment) { %>
+                  <div class="flex flex-row items-center justify-between border border-blue-600 p-2 rounded-xl">
+                    <div class="flex flex-row items-center">
+                      <div
+                        class="rounded-[50%] bg-blue-700 bg-opacity-40 p-2 sm:p-4 flex items-center justify-center"
+                      >
+                        <img
+                          class="w-5 h-5 sm:w-6 sm:h-6"
+                          src="../Images/invest.png"
+                          alt="Invest Icon"
+                        />
+                      </div>
+                      <div>
+                        <p class="text-xs font-bold sm:text-base ml-2 capitalize">Invested Plan <%= lastInvestment.plan %></p>
+                        <div class="flex flex-row space-x-2 ml-2 items-center">
+                          <p class="text-xs font-bold sm:text-base">
+                            <%= lastInvestment.createdAt.toLocaleDateString() %>
+                          </p>
+                          <% if (lastInvestment.isFulfilled === false) {%>
+                            <p class="text-xs text-green-600 font-bold"> Active</p>
+                            <% } else {%>
+                              <p class="text-xs text-green-600 font-bold"> Completed</p>
+                              <% } %>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <h1 class="text-blue-600 text-sm sm:text-xl font-bold">£<%= lastInvestment.amount %></h1>
+                    </div>
+                  </div>
+                  <% } %>
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full md:w-[40%] bg-white p-4 border border-darkNavy border-opacity-10 shadow-md rounded-xl h-[42rem]">
+         <div class="bg-darkNavy p-4 rounded-2xl h-[21rem] relative">
+          <img
+              class="absolute opacity-10"
+              src="../Images/scribble-deluxe.png"
+              alt="Deluxe Capital Scribble"
+            />
+          <div class="flex flex-row justify-between items-center">
+            <img class="w-9 sm:w-12" src="../Images/user.png" alt="User Icon">
+            <div class="flex flex-row items-center space-x-2">
+              <img class="w-9 sm:w-12" src="../Images/logo.png" alt="Deluxe capital logo">
+              <h4 class="text-base sm:text-lg font-bold text-gold mt-2">Deluxe Capital</h4>
+            </div>
+          </div>
+            <div class="mt-40 flex flex-row justify-between items-center">
+              <div>
+                <p class="text-darkGray text-[0.6rem]">Full Name</p>
+                <p class="text-base sm:text-lg text-gold font-bold"><%= user.name %></p>
+              </div>
+              <div>
+                <p class="text-darkGray text-[0.6rem]">Reg. Date</p>
+                <p class="text-base sm:text-lg text-gold font-bold"><%= user.createdAt.toLocaleDateString() %></p>
+              </div>
+            </div>
+            <div class="mt-2 flex flex-row justify-between items-center"> 
+                <div>
+                  <p class="text-darkGray text-[0.6rem]">Current Balance</p>
+                  <p class="text-base sm:text-lg text-gold font-bold text-center">£<%=user.balance.toLocaleString() %></p>
+                </div>
+                <div>
+                  <p class="text-darkGray text-[0.6rem]">Investment Count</p>
+                  <p class="text-base sm:text-lg text-gold font-bold text-center"><%= investments.length %></p>
+                </div>
+                <div>
+                  <p class="text-darkGray text-[0.6rem]">Total Earnings</p>
+                  <p class="text-base sm:text-lg text-gold font-bold text-center">£<%= earnings.reduce( (total, current)=> total + current.amount,
+                    0).toLocaleString() %></p>
+                </div>
+                <div>
+                  <p class="text-darkGray text-[0.6rem]">Total Withdraw</p>
+                  <p class="text-base sm:text-lg text-gold font-bold text-center">£<%= withdrawals.reduce( (total, current)=> total + current.amount,
+                    0).toLocaleString() %></p>
+                </div>
+            </div>
+         </div>
+        <div class="bg-darkerBlue p-4 mt-4 rounded-xl flex flex-row justify-between items-center">
+          <img class="h-[12rem] w-1/2" src="../Images/Refer.png" alt="Referral Image">
+          <p class="text-base md:text-lg w-1/2 text-lightGray font-bold">Earn Up to 10% on Referral Deposits</p>
+        </div>
+        <div class="p-1 mt-2 border-gold border-2 rounded-xl">
+          <a onclick="copy()">
+            <p
+              id="referral-link"
+              class="text-darkNavy text-xs text-center"
+            >
+              https://www.deluxecapital.com/user/create?ref=<%=user.userId %>
+            </p>
+          </a>
+        </div>
+          <p
+            class="text-xs mt-2 font-thin text-center text-gray-500"
+          >
+            <span
+              ><ion-icon name="information-circle-outline"></ion-icon
+            ></span>
+            Tap the link to copy it to your CLIPBOARD
+          </p> 
+        </div>
+      </div>
+    </section>
+    <%- include("partials/script"); -%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script>
+      //For the Chart
+      const xValues = [
+        "Deps",
+        "Wits",
+        "Invs",
+        "Ears",
+        "Refs",
+      ];
+      const yValues = [<%= deposits.length %>,
+          <%= withdrawals.length  %>
+          , <%= investments.length %>,<%= earnings.length %>,<%= user.referrals.length %>]
+      const barColors = ["red", "green", "blue", "orange", "indigo"];
+
+      new Chart("myChart", {
+        type: "bar",
+        data: {
+          labels: xValues,
+          datasets: [
+            {
+              backgroundColor: barColors,
+              data: yValues,
+            },
+          ],
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: "Your Activity Chart",
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

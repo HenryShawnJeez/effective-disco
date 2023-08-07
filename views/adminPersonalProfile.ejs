@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../Images/logo.ico" type="image/x-ico" />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+              <!-- Bootstrap Icon -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../../../CSS/main.css" />
+    <link rel="stylesheet" href="../../../CSS/toast.css" />
+
+    <script async src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script defer src="../../JS/dashboard.js"></script>
+</head>
+
+<body class="bg-darkGray main">
+    <%- include("partials/adminSidebar"); -%>
+        <section>
+            <div class="flex flex-col items-center justify-center">
+                <div class="mt-20">
+                    <h4 class="text-2xl text-brightBlue mt-10 text-center font-bold">User's Information</h4>
+                    <h4 class="text-sm mt-10 text-darkBlue md:text-base">Users Full Name: <span class="text-gold">
+                            <%= user.name %>
+                        </span>
+                    </h4>
+                    <h4 class="text-sm mt-4 text-darkBlue md:text-base">Users Email Address: <span class="text-gold">
+                            <%= user.email %>
+                        </span></h4>
+                    <h4 class="text-sm mt-4 text-darkBlue md:text-base">Users Username: <span class="text-gold">
+                            <%= user.username %>
+                        </span>
+                    </h4>
+                    <h4 class="text-sm mt-4 text-darkBlue md:text-base">Users Balance: <span class="text-gold">
+                        £ <%= user.balance %>
+                    </span>
+                </h4>
+                </div>
+            </div>
+        </section>
+        <%- include ("partials/script"); -%>
+</body>
+
+</html>

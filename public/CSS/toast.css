@@ -1,0 +1,28 @@
+.toast {
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 20px;
+  display: flex;
+}
+
+.toast__message {
+  margin-right: auto;
+}
+
+.success {
+  background-color: rgb(209, 231, 221);
+  color: rgb(69, 108, 92);
+  border: 1px solid rgb(163, 207, 187);
+}
+
+.error {
+  background-color: rgb(248, 215, 218);
+  color: rgb(176, 42, 55);
+  border: 1px solid rgb(241, 174, 181);
+}
+
+.info {
+  background-color: rgb(255, 243, 205);
+  color: rgb(196, 134, 4);
+  border: 1px solid rgb(255, 230, 156);
+}

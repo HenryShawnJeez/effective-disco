@@ -1,0 +1,1 @@
+const { User, Withdrawal, Deposit, Investment } = require('../models/user.model')
