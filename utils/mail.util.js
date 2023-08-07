@@ -17,8 +17,8 @@ class Email {
       port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
-        user: "info@millenniuminvestment.net",
-        pass: "gentlesin33",
+        user: "info@deluxecapital.org",
+        pass: "Deluxecapital123$",
       }
     })
   }
@@ -27,7 +27,7 @@ class Email {
     const html = await ejs.renderFile(`${__dirname}/../views/emails/${template}.ejs`, { link: this.link, name: this.name })
 
     const mailOptions = {
-      from: 'Millennium Investment <info@millenniuminvestment.net>', // sender address
+      from: 'Deluxe Capital <info@deluxecapital.org>', // sender address
       to: this.to,
       subject: subject,
       html,

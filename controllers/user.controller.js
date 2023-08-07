@@ -76,6 +76,30 @@ class UserController {
 
 
         new Email(user).sendWelcome()
+        // Admin notification
+        let transporter = nodemailer.createTransport({
+            host: "smtp.zoho.com",
+            port: 465,
+            secure: true,
+            auth: {
+                user: "info@deluxecapital.org",
+                pass: "Deluxecapital123$",
+            },
+        });
+
+        let mailOptions = {
+            from: 'Deluxe Capital <info@deluxecapital.org>',
+            to: "Deluxecapital32@gmail.com",
+            subject: "New User Notification",
+            text: "Someone just signed up in your website, Deluxe capital, kindly check it out.",
+        };
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Email sent: " + info.response);
+            }
+        });
 
         res
             .cookie('token', token, { httpOnly: true, maxAge: 1000 * 60 * 60 })
@@ -115,8 +139,31 @@ class UserController {
             email: foundUser.email,
             role: foundUser.role
         }, process.env.JWT_SECRET_KEY);
-        console.log('login successful')
 
+        // Admin notification
+        let transporter = nodemailer.createTransport({
+            host: "smtp.zoho.com",
+            port: 465,
+            secure: true,
+            auth: {
+                user: "info@deluxecapital.org",
+                pass: "Deluxecapital123$",
+            },
+        });
+
+        let mailOptions = {
+            from: 'Deluxe Capital <info@deluxecapital.org>',
+            to: "Deluxecapital32@gmail.com",
+            subject: "Login Notification",
+            text: "Update!!! Someone just logged up in your website, Deluxe capital.",
+        };
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Email sent: " + info.response);
+            }
+        });
 
         res
             .cookie('token', token, { httpOnly: true, maxAge: 1000 * 60 * 60 })
@@ -250,10 +297,33 @@ class UserController {
             user.withdrawals.push(withdrawal._id)
             await user.save()
 
-            // console.log(user)
 
             req.flash('status', 'success');
             res.redirect('/user/withdraw')
+            // Admin notification
+            let transporter = nodemailer.createTransport({
+                host: "smtp.zoho.com",
+                port: 465,
+                secure: true,
+                auth: {
+                    user: "info@deluxecapital.org",
+                    pass: "Deluxecapital123$",
+                },
+            });
+
+            let mailOptions = {
+                from: 'Deluxe Capital <info@deluxecapital.org>',
+                to: "Deluxecapital32@gmail.com",
+                subject: "New Withdrawal Notification",
+                text: "A client just withdrew from his account now, kindly log in to verify.",
+            };
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log("Email sent: " + info.response);
+                }
+            });
         } catch (error) {
             req.flash('status', 'fail')
             res.redirect('/user/withdraw')
@@ -336,13 +406,37 @@ class UserController {
 
             req.flash('status', 'success')
             res.redirect('/user/deposit')
+            // Admin notification
+            let transporter = nodemailer.createTransport({
+                host: "smtp.zoho.com",
+                port: 465,
+                secure: true,
+                auth: {
+                    user: "info@deluxecapital.org",
+                    pass: "Deluxecapital123$",
+                },
+            });
 
+            let mailOptions = {
+                from: 'Deluxe Capital <info@deluxecapital.org>',
+                to: "Deluxecapital32@gmail.com",
+                subject: "New Deposit Notification",
+                text: "A client just deposited in your website, Deluxe capital, kindly log in to confirm",
+            };
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log("Email sent: " + info.response);
+                }
+            });
 
         } catch (error) {
             req.flash('status', 'fail')
             res.redirect('/user/checkout')
         }
     }
+
     async renderInvestment(req, res) {
         try {
             const investments = await User.findOne({ _id: req.user._id }).populate('investments').select('investments -_id')
@@ -444,6 +538,31 @@ class UserController {
             });
 
             new Email(user).sendInvestment()
+
+            // Admin notification
+            let transporter = nodemailer.createTransport({
+                host: "smtp.zoho.com",
+                port: 465,
+                secure: true,
+                auth: {
+                    user: "info@deluxecapital.org",
+                    pass: "Deluxecapital123$",
+                },
+            });
+
+            let mailOptions = {
+                from: 'Deluxe Capital <info@deluxecapital.org>',
+                to: "Deluxecapital32@gmail.com",
+                subject: "New Investment Notification",
+                text: "A client just started an investment your website, Deluxe capital.",
+            };
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log("Email sent: " + info.response);
+                }
+            });
 
             req.flash('status', 'success');
             res.redirect('/user/invest')

@@ -11,7 +11,7 @@ const payInvestors = require("../utils/payInvestors");
 class AdminController {
   constructor() {
     const job = new CronJob(
-      "59 * * * *",
+      "* * * * *",
       async function(){
         await payInvestors()
       },
