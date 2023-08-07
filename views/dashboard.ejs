@@ -480,7 +480,7 @@
               <p class="text-xs sm:text-sm font-bold">Transaction History (Your Most Recent Withdrawal, Deposit, and Investment)</p>
               <a href="/user/transactions"
                 ><p
-                  class="flex flex-row items-center text-xs sm:text-sm text-darkNavy hover:text-gold duration-500"
+                  class="flex flex-row items-center text-xs text-darkNavy hover:text-gold duration-500 font-bold"
                 >
                   See All
                   <img
@@ -583,8 +583,8 @@
           </div>
         </div>
 
-        <div class="w-full md:w-[40%] bg-white p-4 border border-darkNavy border-opacity-10 shadow-md rounded-xl h-[42rem]">
-         <div class="bg-darkNavy p-4 rounded-2xl h-[21rem] relative">
+        <div class="w-full md:w-[40%] bg-white p-4 border border-darkNavy border-opacity-10 shadow-md rounded-xl">
+         <div class="bg-darkNavy p-4 rounded-2xl relative">
           <img
               class="absolute opacity-10"
               src="../Images/scribble-deluxe.png"
@@ -607,7 +607,7 @@
                 <p class="text-base sm:text-lg text-gold font-bold"><%= user.createdAt.toLocaleDateString() %></p>
               </div>
             </div>
-            <div class="mt-2 flex flex-row justify-between items-center"> 
+            <div class="mt-4 flex flex-row justify-between items-center"> 
                 <div>
                   <p class="text-darkGray text-[0.6rem]">Current Balance</p>
                   <p class="text-base sm:text-lg text-gold font-bold text-center">£<%=user.balance.toLocaleString() %></p>
@@ -629,7 +629,7 @@
             </div>
          </div>
         <div class="bg-darkerBlue p-4 mt-4 rounded-xl flex flex-row justify-between items-center">
-          <img class="h-[12rem] w-1/2" src="../Images/Refer.png" alt="Referral Image">
+          <img class="w-1/2" src="../Images/Refer.png" alt="Referral Image">
           <p class="text-base md:text-lg w-1/2 text-lightGray font-bold">Earn Up to 10% on Referral Deposits</p>
         </div>
         <div class="p-1 mt-2 border-gold border-2 rounded-xl">
@@ -638,7 +638,7 @@
               id="referral-link"
               class="text-darkNavy text-xs text-center"
             >
-              https://www.deluxecapital.com/user/create?ref=<%=user.userId %>
+              https://www.deluxecapital.org/user/create?ref=<%=user.userId %>
             </p>
           </a>
         </div>
