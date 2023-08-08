@@ -174,6 +174,14 @@ class AdminController {
       res.redirect("/user/admin/bonus");
     }
   }
+  async deleteUser(req, res) {
+    try {
+        await User.findByIdAndDelete(req.body.user)
+        res.redirect('/user/admin/user')
+    } catch (error) {
+        res.redirect('/user/admin/user')
+    }
+}
 }
 
 module.exports = new AdminController();

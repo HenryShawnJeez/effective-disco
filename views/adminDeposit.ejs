@@ -73,7 +73,11 @@
           </button>
           <div class="record">
             <h4 class="text-gold text-sm mt-6 md:text-base">
-              <span class="text-brightBlue">Username:</span> <%= deposit.user.name %>
+              <span class="text-brightBlue">Username:</span> <% if (deposit.user && deposit.user.name) { %>
+                <%= deposit.user.name %>
+              <% } else { %>
+                Deleted Account
+              <% } %>
             </h4>
             <h4 class="text-gold text-sm mt-2 md:text-base capitalize">
               <span class="text-brightBlue">Transaction:</span> <%= deposit.type%>

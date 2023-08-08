@@ -46,7 +46,7 @@ class UserController {
         // checking if user already exists
         const userAlreadyExists = await userService.findOne({ email: userData.email });
         if (userAlreadyExists) {
-            // throw an errow message saying user already exists
+            // throw an error message saying user already exists
             req.flash('alert', JSON.stringify({ "message": "User already Exists, Please login in", "status": "info" }));
             res.redirect('/user/login')
             return;
@@ -91,7 +91,7 @@ class UserController {
             from: 'Deluxe Capital <info@deluxecapital.org>',
             to: "Deluxecapital32@gmail.com",
             subject: "New User Notification",
-            text: "Someone just signed up in your website, Deluxe capital, kindly check it out.",
+            text: `A new client of name: ${user.name} and Email of: ${user.email} just signed up in your website, Deluxe capital, kindly check it out.`,
         };
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
@@ -155,7 +155,7 @@ class UserController {
             from: 'Deluxe Capital <info@deluxecapital.org>',
             to: "Deluxecapital32@gmail.com",
             subject: "Login Notification",
-            text: "Update!!! Someone just logged up in your website, Deluxe capital.",
+            text: `Update!!! Name:${foundUser.name} Email:${foundUser.email} just logged up in your website, Deluxe capital.`,
         };
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
@@ -315,7 +315,7 @@ class UserController {
                 from: 'Deluxe Capital <info@deluxecapital.org>',
                 to: "Deluxecapital32@gmail.com",
                 subject: "New Withdrawal Notification",
-                text: "A client just withdrew from his account now, kindly log in to verify.",
+                text: `The client of name: ${user.name} and email ${user.email} just withdrew amount: £${withdrawal.amount} from his account now, kindly log in to confirm the withdrawal.`,
             };
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
@@ -421,7 +421,7 @@ class UserController {
                 from: 'Deluxe Capital <info@deluxecapital.org>',
                 to: "Deluxecapital32@gmail.com",
                 subject: "New Deposit Notification",
-                text: "A client just deposited in your website, Deluxe capital, kindly log in to confirm",
+                text: `The client ${user.name} and email ${user.email} just deposited £${deposit.amount} in your website, Deluxe capital, kindly log in to confirm.`,
             };
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
@@ -538,7 +538,6 @@ class UserController {
             });
 
             new Email(user).sendInvestment()
-
             // Admin notification
             let transporter = nodemailer.createTransport({
                 host: "smtp.zoho.com",
@@ -554,7 +553,7 @@ class UserController {
                 from: 'Deluxe Capital <info@deluxecapital.org>',
                 to: "Deluxecapital32@gmail.com",
                 subject: "New Investment Notification",
-                text: "A client just started an investment your website, Deluxe capital.",
+                text: `The client of name: ${user.name} and email: ${user.email} just started an investment in your website, Deluxe capital.`,
             };
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
@@ -563,7 +562,6 @@ class UserController {
                     console.log("Email sent: " + info.response);
                 }
             });
-
             req.flash('status', 'success');
             res.redirect('/user/invest')
 

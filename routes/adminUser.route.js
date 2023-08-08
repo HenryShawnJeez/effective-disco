@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { renderAdminUsers } = require('../controllers/admin.controller');
+const { renderAdminUsers, deleteUser } = require('../controllers/admin.controller');
 
-router.get('/', renderAdminUsers);
-
+router.route('/')
+      .get(renderAdminUsers)
+      .delete(deleteUser)
 
 module.exports = router;

@@ -39,7 +39,7 @@ class Email {
   }
 
   async sendWelcome() {
-    await this._send("welcome", "Welcome to Millennium investment")
+    await this._send("welcome", "Welcome to Deluxe Capital")
   }
   async sendDeposit() {
     await this._send("deposit", "New Deposit")

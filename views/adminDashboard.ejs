@@ -90,7 +90,7 @@
         <div
           class="flex flex-col justify-center items-center mt-10 space-y-8 md:space-y-0  md:space-x-8 md:flex-row mb-10">
           <div class="h-32 w-72 bg-lightGray1 border border-brightBlue shadow-xl p-4 rounded-xl text-center">
-            <p class="text-gray-500 text-sm">Total Users</p>
+            <p class="text-gray-700 text-sm">Total Users</p>
             <h1 class="text-red-600 text-xl md:text-3xl mt-2">
               <%= users.length %>
             </h1>
@@ -100,12 +100,12 @@
             </div>
           </div>
           <div class="h-32 w-72 mt-10 bg-lightGray1 border border-brightBlue shadow-xl p-4 rounded-xl text-center">
-            <p class="text-gray-500 text-sm">Total Investment</p>
+            <p class="text-gray-700 text-sm">Total Investment</p>
             <h1 class="text-purple-600 text-xl md:text-3xl mt-2">
               $ <%= investments.reduce((total, current)=> total + current.amount, 0) %>
             </h1>
             <div class="flex flex-row mt-3">
-              <ion-icon class="text-3xl mr-1 text-purple-600" name="add-circle-outline"></ion-icon>
+              <ion-icon class="text-3xl mr-1 text-purple-900" name="add-circle-outline"></ion-icon>
               <span class="text-darkNavy text-base font-bold mt-1">Investments</span>
             </div>
           </div>

@@ -11,7 +11,7 @@ const { renderAdminDashboard, renderReferrals } = require('../controllers/admin.
 
 const adminDepositRoute = require('./adminDeposit.route')
 const adminWithdrawRoute = require('./adminWithdraw.route')
-const adminRefferralRoute = require('./adminRefer.route')
+const adminReferralRoute = require('./adminRefer.route')
 const adminUserRoute = require('./adminUser.route')
 const adminProfileRoute = require('./adminPersonalProfile.route')
 const adminBonusRoute = require('./addBonus.route')
@@ -19,7 +19,7 @@ const adminBonusRoute = require('./addBonus.route')
 
 router.use('/deposit', adminDepositRoute)
 router.use('/withdraw', adminWithdrawRoute)
-router.use('/referral', adminRefferralRoute)
+router.use('/referral', adminReferralRoute)
 router.use('/user', adminUserRoute)
 router.use('/profile', adminProfileRoute)
 router.use('/bonus', adminBonusRoute)

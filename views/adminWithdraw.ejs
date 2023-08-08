@@ -63,7 +63,7 @@
                       type="submit" value="reject" name="approve">
                   </form>
                   <% } else {%>
-                    <h4 class="text-<%= withdrawal.status===" successful" ? "green" : "red" %>-600 mt-1.5
+                    <h4 class="text-<%= withdrawal.status==="successful" ? "green" : "red" %>-600 mt-1.5
                       text-xs
                       md:text-sm">
                       <%= withdrawal.status==="successful" ? "Completed" : "Rejected" %>
@@ -77,7 +77,11 @@
           </button>
           <div class="record">
             <h4 class="text-gold text-sm mt-6 md:text-base">
-              <span class="text-brightBlue">Username:</span> <%= withdrawal.user.name %>
+              <span class="text-brightBlue">Username:</span>  <% if (withdrawal.user && withdrawal.user.name) { %>
+                <%= withdrawal.user.name %>
+              <% } else { %>
+                Deleted Account
+              <% } %>
             </h4>
             <h4 class="text-gold text-sm mt-2 md:text-base capitalize">
               <span class="text-brightBlue">Transaction:</span> <%= withdrawal.type %>
