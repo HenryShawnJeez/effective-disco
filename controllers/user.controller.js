@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const scheduler = require('node-schedule')
 const saltRounds = 10;
 const { cashFlipPercent, basicPercent, standardPercent, essentialPercent, proEssentialPercent, premiumPercent, referralEarningPercent, cashFlipDuration, basicDuration, standardDuration, essentialDuration, proEssentialDuration, premiumDuration, } = require('../config')
-
+const nodemailer = require("nodemailer");
 const userService = require('../services/user.service');
 const AdminService = require('../services/admin.service')
 const { generateUserId } = require('../utils/utils')
