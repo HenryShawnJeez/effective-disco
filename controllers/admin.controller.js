@@ -132,7 +132,7 @@ class AdminController {
   async renderAdminUsers(req, res) {
     const users = await User.find({}).populate("referredBy");
 
-    res.render("adminUser", { users });
+    res.render("adminUser", { users, status: req.flash('status').join("") });
   }
 
   async renderAdminUsersProfile(req, res) {
@@ -177,8 +177,10 @@ class AdminController {
   async deleteUser(req, res) {
     try {
         await User.findByIdAndDelete(req.body.user)
+        req.flash("status", "success");
         res.redirect('/user/admin/user')
     } catch (error) {
+        req.flash("status", "fail");
         res.redirect('/user/admin/user')
     }
 }
