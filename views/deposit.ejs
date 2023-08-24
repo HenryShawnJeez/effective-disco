@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -27,67 +27,73 @@
     <script src="//code.jivosite.com/widget/DzC9jELjbC" async></script>
   </head>
 
-  <body class="bg-darkGray main">
-    <%- include ("partials/sidebar"); -%> 
-    
-    <% if(status ==='success' ){ %>
+  <body class="main bg-darkGray">
+    <%- include ("partials/sidebar"); -%> <% if(status ==='success' ){ %>
+    <div class="flex w-full items-center justify-center">
       <div
-      id="overlay"
-      class="overlay fixed inset-0 bg-black bg-opacity-70 z-20"
-    ></div>
+        id="overlay"
+        class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+      ></div>
 
-    <div
-      id="successPopup"
-      class="fixed w-[20rem] top-[30%] left-[3%] sm:left-[15%] md:left-[40%] lg:left-[50%] bg-white p-6 rounded shadow-lg z-30"
-    >
-    <span
-    id="closePopupBtn"
-    onclick="closePopupBtnClick()"
-    class="absolute top-2 right-2 text-gray-500 cursor-pointer text-2xl"
-    >&times;</span
-  >
-  <img class="mx-auto" src="../Images/correct.svg" alt="Correct Icon">
-      <h2 class="text-green-500 text-2xl font-semibold mt-2 text-center">Success!</h2>
-      <p class="text-gray-800 capitalize text-sm mt-8 text-center">
-        Your Deposit was successfully processed and is currently under review.
-      </p>
+      <div
+        id="successPopup"
+        class="fixed top-[30%] left-[3%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg sm:left-[15%] md:left-[40%] lg:left-[50%]"
+      >
+        <span
+          id="closePopupBtn"
+          onclick="closePopupBtnClick()"
+          class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+          >&times;</span
+        >
+        <img class="mx-auto" src="../Images/correct.svg" alt="Correct Icon" />
+        <h2 class="mt-2 text-center text-2xl font-semibold text-green-500">
+          Success!
+        </h2>
+        <p class="mt-8 text-center text-sm capitalize text-gray-800">
+          Your Deposit was successfully processed and is currently under review.
+        </p>
+      </div>
     </div>
     <% } else if (status==='fail' ){%>
+    <div class="flex w-full items-center justify-center">
       <div
-      id="failureOverlay"
-      class="overlay fixed inset-0 bg-black bg-opacity-70 z-20"
-    ></div>
+        id="failureOverlay"
+        class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+      ></div>
 
-    <div
-      id="failurePopup"
-      class="fixed w-[20rem] top-[30%] left-[3%] sm:left-[15%] md:left-[40%] lg:left-[50%] bg-white p-6 rounded shadow-lg z-30"
-    >
-      <span
-        onclick="failureClosePopupBtnClick()"
-        class="absolute top-2 right-2 text-gray-500 cursor-pointer text-2xl"
-        >&times;</span
+      <div
+        id="failurePopup"
+        class="fixed top-[30%] left-[3%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg sm:left-[15%] md:left-[40%] lg:left-[50%]"
       >
-      <img class="mx-auto w-20" src="../Images/wrong.png" alt="Wrong Icon">
-      <h2 class="text-red-500 text-2xl font-semibold mt-2 text-center">Failure!</h2>
-      <p class="text-gray-800 capitalize text-sm mt-8 text-center">
-        Your deposit failed please try again later.
-      </p>
+        <span
+          onclick="failureClosePopupBtnClick()"
+          class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+          >&times;</span
+        >
+        <img class="mx-auto w-20" src="../Images/wrong.png" alt="Wrong Icon" />
+        <h2 class="mt-2 text-center text-2xl font-semibold text-red-500">
+          Failure!
+        </h2>
+        <p class="mt-8 text-center text-sm capitalize text-gray-800">
+          Your deposit failed please try again later.
+        </p>
+      </div>
     </div>
     <% }%>
     <form action="/user/deposit" method="post">
-      <div class="flex flex-col justify-center items-center">
-        <div class="flex flex-row justify-center space-x-4 items-center mt-32">
-          <div class="w-4 h-4 rounded-full bg-brightBlue"></div>
-          <div class="w-4 h-4 rounded-full bg-gray-600"></div>
+      <div class="flex flex-col items-center justify-center">
+        <div class="mt-32 flex flex-row items-center justify-center space-x-4">
+          <div class="h-4 w-4 rounded-full bg-brightBlue"></div>
+          <div class="h-4 w-4 rounded-full bg-gray-600"></div>
         </div>
-        <div class="text-center text-brightBlue mt-10">
+        <div class="mt-10 text-center text-brightBlue">
           <h1 class="text-2xl font-bold md:text-4xl">Make A Deposit</h1>
-          <h4 class="text-sm mt-10 text-darkBlue md:text-base">
+          <h4 class="mt-10 text-sm text-darkBlue md:text-base">
             Choose The Type Of Deposit
           </h4>
         </div>
         <div
-          class="custom-select mt-2 w-72 md:w-96 border-2 border-brightBlue rounded-xl"
+          class="custom-select mt-2 w-72 rounded-xl border-2 border-brightBlue md:w-96"
         >
           <select name="medium" class="rounded-xl">
             <option>Choose The Wallet</option>
@@ -103,11 +109,11 @@
           </select>
         </div>
         <div class="mt-10">
-          <h4 class="text-sm text-center text-darkBlue md:text-base">
+          <h4 class="text-center text-sm text-darkBlue md:text-base">
             Amount To Deposit
           </h4>
           <input
-            class="px-8 py-3 mt-2 placeholder:text-center placeholder:text-sm w-72 border-2 border-brightBlue rounded-xl md:w-96"
+            class="mt-2 w-72 rounded-xl border-2 border-brightBlue px-8 py-3 placeholder:text-center placeholder:text-sm md:w-96"
             type="number"
             name="amount"
             id="amount"
@@ -116,48 +122,48 @@
         </div>
         <button
           type="submit"
-          class="w-72 md:w-96 px-10 py-3 mt-10 duration-700 rounded-xl bg-brightBlue text-lightGray hover:text-darkBlue border-2 border-brightBlue hover:bg-lightGray1"
+          class="mt-10 w-72 rounded-xl border-2 border-brightBlue bg-brightBlue px-10 py-3 text-lightGray duration-700 hover:bg-lightGray1 hover:text-darkBlue md:w-96"
         >
           Deposit
         </button>
       </div>
     </form>
     <div
-      class="flex flex-col w-[90%] sm:w-[80%] mx-auto border border-darkNavy rounded-xl p-2 mt-10"
+      class="mx-auto mt-10 flex w-[90%] flex-col rounded-xl border border-darkNavy p-2 sm:w-[80%]"
     >
-      <p class="text-sm sm:text-base font-bold mb-2">Deposit History</p>
+      <p class="mb-2 text-sm font-bold sm:text-base">Deposit History</p>
 
       <% deposits.forEach(deposit => { %>
       <div
         id="deposit"
-        class="flex flex-row items-center justify-between border border-red-600 p-2 rounded-xl mt-2"
+        class="mt-2 flex flex-row items-center justify-between rounded-xl border border-red-600 p-2"
       >
         <div class="flex flex-row items-center">
           <div
-            class="rounded-[50%] bg-red-600 bg-opacity-40 p-2 sm:p-4 flex items-center justify-center"
+            class="flex items-center justify-center rounded-[50%] bg-red-600 bg-opacity-40 p-2 sm:p-4"
           >
             <img
-              class="w-5 h-5 sm:w-6 sm:h-6"
+              class="h-5 w-5 sm:h-6 sm:w-6"
               src="../Images/depositArrow.png"
               alt="Deposit Icon"
             />
           </div>
           <div>
-            <p class="text-xs font-bold sm:text-base ml-2">
+            <p class="ml-2 text-xs font-bold sm:text-base">
               Deposit Via <%= deposit.medium %>
             </p>
-            <div class="flex flex-row space-x-2 ml-2 items-center">
+            <div class="ml-2 flex flex-row items-center space-x-2">
               <p class="text-xs font-bold sm:text-base">
                 <%= deposit.createdAt.toLocaleDateString() %>
               </p>
-              <p class="text-xs sm:text-sm text-green-600 font-bold capitalize">
+              <p class="text-xs font-bold capitalize text-green-600 sm:text-sm">
                 <%= deposit.status %>
               </p>
             </div>
           </div>
         </div>
         <div>
-          <h1 class="text-red-600 text-sm sm:text-xl font-bold">
+          <h1 class="text-sm font-bold text-red-600 sm:text-xl">
             +£<%= deposit.amount.toLocaleString() %>
           </h1>
         </div>
@@ -175,7 +181,7 @@
         successPopup.classList.add("hidden");
         overlay.classList.add("hidden");
       };
-    
+
       const failurePopup = document.getElementById("failurePopup");
       const failureOverlay = document.getElementById("failureOverlay");
 

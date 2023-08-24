@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -28,62 +28,69 @@
     <script src="//code.jivosite.com/widget/DzC9jELjbC" async></script>
   </head>
 
-  <body class="bg-darkGray main">
+  <body class="main bg-darkGray">
     <%- include ("partials/sidebar"); -%>
     <section>
       <% if(status ==='success' ){ %>
-      <div
-        id="overlay"
-        class="overlay fixed inset-0 bg-black bg-opacity-70 z-20"
-      ></div>
+      <div class="flex w-full items-center justify-center">
+        <div
+          id="overlay"
+          class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+        ></div>
 
-      <div
-        id="successPopup"
-        class="fixed w-[20rem] top-[30%] left-[3%] sm:left-[15%] md:left-[40%] lg:left-[50%] bg-white p-6 rounded shadow-lg z-30"
-      >
-        <span
-          id="closePopupBtn"
-          onclick="closePopupBtnClick()"
-          class="absolute top-2 right-2 text-gray-500 cursor-pointer text-2xl"
-          >&times;</span
+        <div
+          id="successPopup"
+          class="fixed top-[30%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg"
         >
-        <img class="mx-auto" src="../Images/correct.svg" alt="Correct Icon" />
-        <h2 class="text-green-500 text-2xl font-semibold mt-2 text-center">
-          Success!
-        </h2>
-        <p class="text-gray-800 capitalize text-sm mt-8 text-center">
-          Your investment was successful.
-        </p>
+          <span
+            id="closePopupBtn"
+            onclick="closePopupBtnClick()"
+            class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+            >&times;</span
+          >
+          <img class="mx-auto" src="../Images/correct.svg" alt="Correct Icon" />
+          <h2 class="mt-2 text-center text-2xl font-semibold text-green-500">
+            Success!
+          </h2>
+          <p class="mt-8 text-center text-sm capitalize text-gray-800">
+            Your investment was successful.
+          </p>
+        </div>
       </div>
       <%} else if (status ==='fail' ){%>
-      <div
-        id="failureOverlay"
-        class="overlay fixed inset-0 bg-black bg-opacity-70 z-20"
-      ></div>
+      <div class="flex w-full items-center justify-center">
+        <div
+          id="failureOverlay"
+          class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+        ></div>
 
-      <div
-        id="failurePopup"
-        class="fixed w-[20rem] top-[30%] left-[3%] sm:left-[15%] md:left-[40%] lg:left-[50%] bg-white p-6 rounded shadow-lg z-30"
-      >
-        <span
-          onclick="failureClosePopupBtnClick()"
-          class="absolute top-2 right-2 text-gray-500 cursor-pointer text-2xl"
-          >&times;</span
+        <div
+          id="failurePopup"
+          class="fixed top-[30%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg"
         >
-        <img class="mx-auto w-20" src="../Images/wrong.png" alt="Wrong Icon" />
-        <h2 class="text-red-500 text-2xl font-semibold mt-2 text-center">
-          Failure!
-        </h2>
-        <p class="text-gray-800 capitalize text-sm mt-8 text-center">
-          Your investment failed please try again later.
-        </p>
+          <span
+            onclick="failureClosePopupBtnClick()"
+            class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+            >&times;</span
+          >
+          <img
+            class="mx-auto w-20"
+            src="../Images/wrong.png"
+            alt="Wrong Icon"
+          />
+          <h2 class="mt-2 text-center text-2xl font-semibold text-red-500">
+            Failure!
+          </h2>
+          <p class="mt-8 text-center text-sm capitalize text-gray-800">
+            Your investment failed please try again later.
+          </p>
+        </div>
       </div>
-
       <% }%>
-      <div class="flex flex-col justify-center items-center">
-        <div class="text-center text-brightBlue mt-32">
+      <div class="flex flex-col items-center justify-center">
+        <div class="mt-32 text-center text-brightBlue">
           <h1 class="text-2xl font-bold md:text-4xl">Make An Investment</h1>
-          <h4 class="text-sm mt-10 text-darkBlue md:text-base">
+          <h4 class="mt-10 text-sm text-darkBlue md:text-base">
             Select Your Plan.
           </h4>
         </div>
@@ -95,7 +102,7 @@
           class="flex flex-col items-center justify-center"
         >
           <div
-            class="custom-select rounded-xl mt-2 w-72 md:w-96 border-2 border-brightBlue"
+            class="custom-select mt-2 w-72 rounded-xl border-2 border-brightBlue md:w-96"
           >
             <select name="plan">
               <option value="">Select Your Plan</option>
@@ -108,11 +115,11 @@
             </select>
           </div>
           <div class="mt-10">
-            <h4 class="text-sm text-center text-darkBlue md:text-base">
+            <h4 class="text-center text-sm text-darkBlue md:text-base">
               Amount To Invest.
             </h4>
             <input
-              class="px-8 py-3 rounded-xl mt-2 placeholder:text-center placeholder:text-sm w-72 md:w-96 border-2 border-brightBlue"
+              class="mt-2 w-72 rounded-xl border-2 border-brightBlue px-8 py-3 placeholder:text-center placeholder:text-sm md:w-96"
               type="number"
               name="amount"
               id="amount"
@@ -121,7 +128,7 @@
           </div>
           <button
             type="submit"
-            class="w-72 md:w-96 px-10 py-3 rounded-xl mt-10 duration-700 border-2 border-brightBlue hover:bg-lightGray1 hover:text-darkBlue bg-brightBlue text-lightGray"
+            class="mt-10 w-72 rounded-xl border-2 border-brightBlue bg-brightBlue px-10 py-3 text-lightGray duration-700 hover:bg-lightGray1 hover:text-darkBlue md:w-96"
           >
             Invest
           </button>
@@ -132,22 +139,22 @@
     <section class="investments text-center">
       <p class="mt-10">Active Investments</p>
       <table
-        class="mx-auto mt-12 mb-1 border-collapse w-3/4 text-xs bg-white shadow-xl md:text-sm md:mx-auto"
+        class="mx-auto mt-12 mb-1 w-3/4 border-collapse bg-white text-xs shadow-xl md:mx-auto md:text-sm"
       >
         <thead class="">
-          <tr class="text-left h-16 border-b-2 border-cyan-500">
+          <tr class="h-16 border-b-2 border-cyan-500 text-left">
             <th
-              class="w-1/3 border border-slate-300 dark:border-slate-600 font-semibold text-center"
+              class="w-1/3 border border-slate-300 text-center font-semibold dark:border-slate-600"
             >
               Amount
             </th>
             <th
-              class="w-1/3 border border-slate-300 dark:border-slate-600 font-semibold text-center"
+              class="w-1/3 border border-slate-300 text-center font-semibold dark:border-slate-600"
             >
               Invested At
             </th>
             <th
-              class="w-1/3 border border-slate-300 dark:border-slate-600 font-semibold text-center"
+              class="w-1/3 border border-slate-300 text-center font-semibold dark:border-slate-600"
             >
               Expires At
             </th>

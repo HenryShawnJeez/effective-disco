@@ -1,119 +1,157 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../Images/logo.ico" type="image/x-ico" />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../../CSS/main.css" />
+    <link rel="stylesheet" href="../../CSS/toast.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
-  <!-- Favicon -->
-  <link
-  rel="shortcut icon"
-  href="../../Images/logo.ico"
-  type="image/x-ico"
-/>
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-  <!-- Bootstrap Icon -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="../../CSS/main.css" />
-  <link rel="stylesheet" href="../../CSS/toast.css" />
+    <script
+      async
+      src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"
+    ></script>
+    <!-- Custom JavaScript -->
+    <script defer src="../../JS/dashboard.js"></script>
+  </head>
 
-  <script async src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <!-- Custom JavaScript -->
-  <script defer src="../../JS/dashboard.js"></script>
-</head>
+  <body class="main bg-darkGray">
+    <%- include("partials/adminSidebar"); -%> 
+    <% if(status ==='success' ){ %>
+    <div class="flex w-full items-center justify-center">
+      <div
+        id="overlay"
+        class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+      ></div>
+      <div
+        id="successPopup"
+        class="fixed top-[30%] left-[3%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg sm:left-[15%] md:left-[40%] lg:left-[50%]"
+      >
+        <span
+          id="closePopupBtn"
+          onclick="closePopupBtnClick()"
+          class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+          >&times;</span
+        >
+        <img
+          class="mx-auto"
+          src="../../Images/correct.svg"
+          alt="Correct Icon"
+        />
+        <h2 class="mt-2 text-center text-2xl font-semibold text-green-500">
+          Success!
+        </h2>
+        <p class="mt-8 text-center text-sm capitalize text-gray-800">
+          The user was deleted successfully.
+        </p>
+      </div>
+    </div>
+    <% } else if (status ==='fail' ){%>
+    <div class="flex w-full items-center justify-center">
+      <div
+        id="failureOverlay"
+        class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+      ></div>
 
-<body class="bg-darkGray main">
-  <%- include("partials/adminSidebar"); -%>
-  <% if(status ==='success' ){ %>
-    <div
-    id="overlay"
-    class="overlay fixed inset-0 bg-black bg-opacity-70 z-20"
-  ></div>
-
-  <div
-    id="successPopup"
-    class="fixed w-[20rem] top-[30%] left-[3%] sm:left-[15%] md:left-[40%] lg:left-[50%] bg-white p-6 rounded shadow-lg z-30"
-  >
-  <span
-  id="closePopupBtn"
-  onclick="closePopupBtnClick()"
-  class="absolute top-2 right-2 text-gray-500 cursor-pointer text-2xl"
-  >&times;</span
->
-<img class="mx-auto" src="../../Images/correct.svg" alt="Correct Icon">
-    <h2 class="text-green-500 text-2xl font-semibold mt-2 text-center">Success!</h2>
-    <p class="text-gray-800 capitalize text-sm mt-8 text-center">
-      The user was deleted successfully.
-    </p>
-  </div>
-  <% } else if (status ==='fail' ){%>
-    <div
-    id="failureOverlay"
-    class="overlay fixed inset-0 bg-black bg-opacity-70 z-20"
-  ></div>
-
-  <div
-    id="failurePopup"
-    class="fixed w-[20rem] top-[30%] left-[3%] sm:left-[15%] md:left-[40%] lg:left-[50%] bg-white p-6 rounded shadow-lg z-30"
-  >
-    <span
-      onclick="failureClosePopupBtnClick()"
-      class="absolute top-2 right-2 text-gray-500 cursor-pointer text-2xl"
-      >&times;</span
-    >
-    <img class="mx-auto w-20" src="../../Images/wrong.png" alt="Wrong Icon">
-    <h2 class="text-red-500 text-2xl font-semibold mt-2 text-center">Failure!</h2>
-    <p class="text-gray-800 capitalize text-sm mt-8 text-center">
-      Unable to delete user now, try again later.
-    </p>
-  </div>
-  <% }%>
+      <div
+        id="failurePopup"
+        class="fixed top-[30%] left-[3%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg sm:left-[15%] md:left-[40%] lg:left-[50%]"
+      >
+        <span
+          onclick="failureClosePopupBtnClick()"
+          class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+          >&times;</span
+        >
+        <img
+          class="mx-auto w-20"
+          src="../../Images/wrong.png"
+          alt="Wrong Icon"
+        />
+        <h2 class="mt-2 text-center text-2xl font-semibold text-red-500">
+          Failure!
+        </h2>
+        <p class="mt-8 text-center text-sm capitalize text-gray-800">
+          Unable to delete user now, try again later.
+        </p>
+      </div>
+    </div>
+    <% }%>
     <section>
       <div class="flex flex-col items-center justify-center">
         <div class="mt-20 text-center">
-          <h1 class="text-2xl text-brightBlue font-bold md:text-4xl">Users</h1>
-          <h4 class="text-sm mt-2 text-darkBlue md:text-base">
-            Total Of <span class="text-gold"><%= users.length %></span>  Accounts.
+          <h1 class="text-2xl font-bold text-brightBlue md:text-4xl">Users</h1>
+          <h4 class="mt-2 text-sm text-darkBlue md:text-base">
+            Total Of
+            <span class="text-gold"><%= users.length %></span> Accounts.
           </h4>
         </div>
 
-        <table class="mx-auto mt-12 mb-1 border-collapse w-[90%] text-xs md:text-sm bg-lightGray1 rounded-md">
+        <table
+          class="mx-auto mt-12 mb-1 w-[90%] border-collapse rounded-md bg-lightGray1 text-xs md:text-sm"
+        >
           <thead class="">
-            <tr class=" text-center h-16 border-b-2 border-cyan-500">
-              <th class="w-1/4 border border-slate-300 dark:border-slate-600 text-sm sm:text-base font-semibold text-center">
-                Investors Name</th>
-                <th class="w-1/4 border border-slate-300 dark:border-slate-600 text-sm sm:text-base font-semibold text-center">
-                  Delete Users</th>
-              <th class="w-1/4 border border-slate-300 dark:border-slate-600 text-sm sm:text-base font-semibold text-center">
-                Registration Date</th>
+            <tr class="h-16 border-b-2 border-cyan-500 text-center">
+              <th
+                class="w-1/4 border border-slate-300 text-center text-sm font-semibold dark:border-slate-600 sm:text-base"
+              >
+                Investors Name
+              </th>
+              <th
+                class="w-1/4 border border-slate-300 text-center text-sm font-semibold dark:border-slate-600 sm:text-base"
+              >
+                Delete Users
+              </th>
+              <th
+                class="w-1/4 border border-slate-300 text-center text-sm font-semibold dark:border-slate-600 sm:text-base"
+              >
+                Registration Date
+              </th>
             </tr>
           </thead>
           <tbody>
-
             <% users.forEach(user=> {%>
-              <tr class="border-b-1 h-10">
-                <td class="border capitalize text-sm sm:text-base text-center hover:underline hover:text-gold">
-                  <a href="/user/admin/profile/<%= user._id %>">
-                    <%= user.name || user.username %>
-                  </a>
-                </td>
-                <td class="border capitalize text-center text-sm sm:text-base text-red-600 hover:underline">
-                  <form action="/user/admin/user?_method=delete" method="post">
-                    <input type="hidden" name="user" value="<%= user._id %>">
-                    <input class="capitalize hover:underline hover:cursor-pointer" type="submit" name="action" value="delete">
-                  </form>
-                </td>
-                <td class="border capitalize text-center">
-                  <%= user.createdAt.toLocaleDateString() %>
-                </td>
-              </tr>
-              <% }) %>
+            <tr class="border-b-1 h-10">
+              <td
+                class="border text-center text-sm capitalize hover:text-gold hover:underline sm:text-base"
+              >
+                <a href="/user/admin/profile/<%= user._id %>">
+                  <%= user.name || user.username %>
+                </a>
+              </td>
+              <td
+                class="border text-center text-sm capitalize text-red-600 hover:underline sm:text-base"
+              >
+                <form action="/user/admin/user?_method=delete" method="post">
+                  <input type="hidden" name="user" value="<%= user._id %>" />
+                  <input
+                    class="capitalize hover:cursor-pointer hover:underline"
+                    type="submit"
+                    name="action"
+                    value="delete"
+                  />
+                </form>
+              </td>
+              <td class="border text-center capitalize">
+                <%= user.createdAt.toLocaleDateString() %>
+              </td>
+            </tr>
+            <% }) %>
           </tbody>
         </table>
       </div>
@@ -128,7 +166,7 @@
         successPopup.classList.add("hidden");
         overlay.classList.add("hidden");
       };
-    
+
       const failurePopup = document.getElementById("failurePopup");
       const failureOverlay = document.getElementById("failureOverlay");
 
@@ -137,6 +175,5 @@
         failureOverlay.classList.add("hidden");
       };
     </script>
-</body>
-
+  </body>
 </html>
