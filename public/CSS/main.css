@@ -612,6 +612,10 @@ video {
   left: 6rem;
 }
 
+.left-\[3\%\] {
+  left: 3%;
+}
+
 .left-\[40\%\] {
   left: 40%;
 }
@@ -3255,6 +3259,10 @@ body::-webkit-scrollbar-thumb:hover {
 @media (min-width: 480px) {
   .sm\:left-\[30\%\] {
     left: 30%;
+  }
+
+  .sm\:left-\[15\%\] {
+    left: 15%;
   }
 
   .sm\:ml-4 {
