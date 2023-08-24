@@ -16,11 +16,13 @@
   "author": "Millennium Investment Company Developers",
   "license": "ISC",
   "devDependencies": {
+    "prettier": "^3.0.2",
+    "prettier-plugin-tailwindcss": "^0.5.3",
     "tailwindcss": "^3.2.4"
   },
   "dependencies": {
     "axios": "^1.3.4",
-    "bcrypt": "^5.1.0",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.6",
