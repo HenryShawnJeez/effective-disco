@@ -88,8 +88,5 @@ pwd.addEventListener("input", function () {
   pwdStrength.className += "strength-" + result.score + " ";  
 });
 //Checking if the passwords is correct or not
-const passwordInput = document.getElementById('myPassword');
 const confirmPasswordInput = document.getElementById('myPassword1');
-
-// passwordInput.addEventListener('input', checkPasswordMatch);
 confirmPasswordInput.addEventListener('input', checkPasswordMatch);
