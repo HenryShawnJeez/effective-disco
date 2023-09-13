@@ -12,7 +12,7 @@ class AdminController {
   constructor() {
     const job = new CronJob(
       "* * * * *",
-      async function(){
+      async function () {
         await payInvestors()
       },
       null,
@@ -26,32 +26,35 @@ class AdminController {
     const transactions = await transactionService.findAll({});
     const users = await userService.findAll({});
 
-    // console.log(transactions);
+    const deposits = transactions.filter((transaction) =>
+      transaction.type === "deposit" && transaction.status === "successful"
+    );
+    const lastDeposit = transactions.filter((transaction) =>
+      transaction.type === "deposit" && transaction.status === "successful"
+    ).sort((a, b) => b.createdAt - a.createdAt)
+      .shift();
+    const withdrawals = transactions.filter((transaction) =>
+      transaction.type === "withdrawal" && transaction.status === "successful"
+    );
+    const lastWithdrawal = transactions.filter((transaction) =>
+      transaction.type === "withdrawal" && transaction.status === "successful"
+    ).sort((a, b) => b.createdAt - a.createdAt)
+      .shift();
+    const investments = transactions.filter((transaction) =>
+      transaction.type === "investment" && transaction.status === "successful"
+    );
+    const lastInvestment = transactions.filter((transaction) =>
+      transaction.type === "investment" && transaction.status === "successful"
+    ).sort((a, b) => b.createdAt - a.createdAt)
+      .shift();
+    const earnings = transactions.filter((transaction) =>
+      transaction.type === "earning" && transaction.status === "successful"
+    );
+    const lastEarning = transactions.filter((transaction) =>
+      transaction.type === "earning" && transaction.status === "successful"
+    ).sort((a, b) => b.createdAt - a.createdAt)
+      .shift();
 
-    const deposits = transactions.filter((transaction) => {
-      return (
-        transaction.type === "deposit" && transaction.status === "successful"
-      );
-    });
-    const withdrawals = transactions.filter(
-      (transaction) =>
-        transaction.type === "withdrawal" && transaction.status === "successful"
-    );
-    const investments = transactions.filter(
-      (transaction) =>
-        transaction.type === "investment" && transaction.status === "successful"
-    );
-    const earnings = transactions.filter(
-      (transaction) =>
-        transaction.type === "earning" && transaction.status === "successful"
-    );
-
-    const pendings = transactions.filter(
-      (transaction) => transaction.status === "pending"
-    );
-    const successfuls = transactions.filter(
-      (transaction) => transaction.status === "successful"
-    );
 
     res.render("adminDashboard", {
       users,
@@ -59,8 +62,11 @@ class AdminController {
       withdrawals,
       investments,
       earnings,
-      pendings,
       transactions,
+      lastDeposit,
+      lastWithdrawal,
+      lastInvestment,
+      lastEarning,
     });
   }
 
@@ -139,7 +145,37 @@ class AdminController {
     const user = await userService.findOne({ _id: req.params.user });
     res.render("adminPersonalProfile", { user });
   }
-
+  async renderAdminSuspend(req, res) {
+    const users = await User.find({}).populate("referredBy");
+    res.render("adminSuspend", { users, status: req.flash("status").join("") });
+  }
+  async suspendUser(req, res) {
+    try {
+      await User.findByIdAndUpdate(req.body.user, { isSuspended: true })
+      req.flash("status", "success");
+      res.redirect('/user/admin/suspend')
+    } catch (error) {
+      req.flash("status", "fail");
+      res.redirect('/user/admin/suspend')
+    }
+  }
+  async renderAdminUnsuspend(req, res) {
+    const users = await User.find({}).populate("referredBy");
+    const suspendedUsers = users.filter((user) => 
+      user.isSuspended === true
+    )
+    res.render("adminUnsuspend", { suspendedUsers, status: req.flash("status").join("") });
+  }
+  async unsuspendUser(req, res) {
+    try {
+      await User.findByIdAndUpdate(req.body.user, { isSuspended: false })
+      req.flash("status", "success");
+      res.redirect('/user/admin/suspend')
+    } catch (error) {
+      req.flash("status", "fail");
+      res.redirect('/user/admin/suspend')
+    }
+  }
   async handleBonus(req, res) {
     try {
       const user = await userService.findOne({ email: req.body.email });
@@ -176,14 +212,14 @@ class AdminController {
   }
   async deleteUser(req, res) {
     try {
-        await User.findByIdAndDelete(req.body.user)
-        req.flash("status", "success");
-        res.redirect('/user/admin/user')
+      await User.findByIdAndDelete(req.body.user)
+      req.flash("status", "success");
+      res.redirect('/user/admin/user')
     } catch (error) {
-        req.flash("status", "fail");
-        res.redirect('/user/admin/user')
+      req.flash("status", "fail");
+      res.redirect('/user/admin/user')
     }
-}
+  }
 }
 
 module.exports = new AdminController();

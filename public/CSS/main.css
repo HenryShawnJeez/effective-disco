@@ -672,14 +672,6 @@ video {
   left: -0.5rem;
 }
 
-.left-auto {
-  left: auto;
-}
-
-.right-auto {
-  right: auto;
-}
-
 .top-5 {
   top: 1.25rem;
 }
@@ -1334,6 +1326,10 @@ video {
   justify-content: space-evenly;
 }
 
+.gap-5 {
+  gap: 1.25rem;
+}
+
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
@@ -1478,6 +1474,10 @@ video {
   border-radius: 2rem;
 }
 
+.rounded-3xl {
+  border-radius: 1.5rem;
+}
+
 .border-2 {
   border-width: 2px;
 }
@@ -1571,6 +1571,11 @@ video {
 .border-darkWhite {
   --tw-border-opacity: 1;
   border-color: rgb(242 244 251 / var(--tw-border-opacity));
+}
+
+.border-purple-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(147 51 234 / var(--tw-border-opacity));
 }
 
 .border-opacity-10 {
@@ -1693,6 +1698,11 @@ video {
 .bg-darkBlue {
   --tw-bg-opacity: 1;
   background-color: rgb(3 3 70 / var(--tw-bg-opacity));
+}
+
+.bg-purple-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(126 34 206 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-80 {
@@ -2111,6 +2121,16 @@ video {
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.text-purple-800 {
+  --tw-text-opacity: 1;
+  color: rgb(107 33 168 / var(--tw-text-opacity));
+}
+
+.text-orange-600 {
+  --tw-text-opacity: 1;
+  color: rgb(234 88 12 / var(--tw-text-opacity));
 }
 
 .opacity-10 {
@@ -2979,37 +2999,6 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Google Translate */
-
-#google_translate_element select{
-  background:#0085FE;
-  color:#FDFDFD;
-  border: none;
-  border-radius:3px;
-  padding:10px;
-}
-
-.goog-logo-link{
-  display:none!important;
-}
-
-.goog-te-gadget{
-  color:transparent!important;
-}
-
-.goog-te-banner-frame{
-  display:none !important;
-}
-
-#goog-gt-tt, .goog-te-balloon-frame{
-  display: none !important;
-}
-
-.goog-text-highlight {
-  background: none !important;
-  box-shadow: none !important;
-}
-
 /* For the history collapsible page */
 
 .another.collapsible{
@@ -3173,6 +3162,10 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-inherit:hover {
+  background-color: inherit;
+}
+
 .hover\:text-darkBlue:hover {
   --tw-text-opacity: 1;
   color: rgb(3 3 70 / var(--tw-text-opacity));
@@ -3327,6 +3320,10 @@ body::-webkit-scrollbar-thumb:hover {
 
   .sm\:w-auto {
     width: auto;
+  }
+
+  .sm\:w-4\/5 {
+    width: 80%;
   }
 
   .sm\:min-w-\[70\%\] {
@@ -3523,6 +3520,10 @@ body::-webkit-scrollbar-thumb:hover {
     width: 5rem;
   }
 
+  .md\:w-\[80\%\] {
+    width: 80%;
+  }
+
   .md\:min-w-\[30rem\] {
     min-width: 30rem;
   }
@@ -3541,6 +3542,10 @@ body::-webkit-scrollbar-thumb:hover {
 
   .md\:items-start {
     align-items: flex-start;
+  }
+
+  .md\:justify-start {
+    justify-content: flex-start;
   }
 
   .md\:justify-between {
@@ -3721,6 +3726,10 @@ body::-webkit-scrollbar-thumb:hover {
 
   .lg\:w-\[24rem\] {
     width: 24rem;
+  }
+
+  .lg\:w-\[60\%\] {
+    width: 60%;
   }
 
   .lg\:flex-row {

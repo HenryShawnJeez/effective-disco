@@ -688,31 +688,6 @@ body::-webkit-scrollbar-thumb:hover {
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
-/* Google Translate */
-#google_translate_element select{
-  background:#0085FE;
-  color:#FDFDFD;
-  border: none;
-  border-radius:3px;
-  padding:10px;
-  }
-.goog-logo-link{
-    display:none!important;
-   }
-.goog-te-gadget{
-  color:transparent!important;
-  } 
-.goog-te-banner-frame{
-  display:none !important;
-  }
-  
-#goog-gt-tt, .goog-te-balloon-frame{
-  display: none !important;
-}
-.goog-text-highlight {
-   background: none !important; 
-   box-shadow: none !important;
-  }
   /* For the history collapsible page */
   .another.collapsible{
     padding: 18px;

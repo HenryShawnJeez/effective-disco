@@ -155,7 +155,7 @@ class UserController {
             from: 'Deluxe Capital <info@deluxecapital.org>',
             to: "Deluxecapital32@gmail.com",
             subject: "Login Notification",
-            text: `Update!!! Name:${foundUser.name} Email:${foundUser.email} just logged up in your website, Deluxe capital.`,
+            text: `Update!!! Name:${foundUser.name} Email:${foundUser.email} just logged into your website, Deluxe capital.`,
         };
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
@@ -201,11 +201,9 @@ class UserController {
             .shift();
 
         const investments = userInformation.investments.filter(investment => investment.status === "successful")
-
         const earnings = userInformation.earnings.filter(earning => earning.status === "successful")
 
-
-        return res.render('dashboard', { user: userInformation, deposits, withdrawals, investments, earnings, lastDeposit, lastWithdrawal, lastInvestment });
+        return res.render(userInformation.isSuspended ? "suspend": 'dashboard', { user: userInformation, deposits, withdrawals, investments, earnings, lastDeposit, lastWithdrawal, lastInvestment });
     }
 
     async renderProfile(req, res) {

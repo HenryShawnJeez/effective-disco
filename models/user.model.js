@@ -206,6 +206,10 @@ const userSchema = new Schema({
         type: secretSchema,
         required: true,
     },
+    isSuspended: {
+        type: Boolean,
+        default: false
+    },
     account: {
         type: accountSchema,
         default: {},

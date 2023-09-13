@@ -46,7 +46,7 @@
           <div class="h-32 w-72 bg-lightGray1 border border-brightBlue shadow-xl p-4 rounded-xl text-center">
             <p class="text-darkBlue text-sm">Total Deposit</p>
             <h1 class="text-blue-500 text-xl md:text-3xl mt-2">
-              $ <%= deposits.reduce((total, current)=> total + current.amount, 0) %>
+              £ <%= deposits.reduce((total, current)=> total + current.amount, 0) %>
             </h1>
             <div class="flex flex-row mt-3 ">
               <ion-icon class="text-3xl mr-1 text-blue-500" name="arrow-down-circle-outline"></ion-icon>
@@ -56,7 +56,7 @@
           <div class="h-32 w-72 bg-lightGray1 border border-brightBlue shadow-xl p-4 rounded-xl text-center">
             <p class="text-darkBlue text-sm">Total Withdraw</p>
             <h1 class="text-green-700 text-xl md:text-3xl mt-2">
-              $ <%= withdrawals.reduce((total, current)=> total + current.amount, 0) %>
+              £ <%= withdrawals.reduce((total, current)=> total + current.amount, 0) %>
             </h1>
             <div class="flex flex-row mt-3">
               <ion-icon class="text-3xl mr-1 text-green-700" name="arrow-up-circle-outline"></ion-icon>
@@ -68,23 +68,131 @@
           <div class="text-center">
             <h1 class="text-brightBlue text-xl md:text-3xl">Transactions</h1>
             <h4 class="text-sm mt-1 text-darkBlue md:text-base">
-              A summary of all the transactions.
+              A summary of the transactions (Deposit, Withdrawal, Investment, Earnings).
             </h4>
           </div>
-          <div class="bg-brightBlue rounded-xl w-4/5 mt-4 h-16 flex flex-row items-center px-1 justify-between md:px-4">
-            <h4 class="text-lightGray1">Transaction</h4>
-            <h4 class="text-lightGray1">Amount</h4>
-            <div class="flex flex-row items-center justify-center">
-              <a href="" class="text-lightGray1 text-sm mr-2">Status</a>
+          <div
+              class="w-full mt-10 md:w-4/5 space-y-2 border-darkNavy border border-opacity-30 p-4 rounded-xl"
+            >
+            <% if (lastDeposit) { %>
+              <div id="deposit" class="flex flex-row items-center justify-between border border-red-600 p-2 rounded-xl">
+                <div class="flex flex-row items-center">
+                  <div
+                    class="rounded-[50%] bg-red-600 bg-opacity-40 p-2 sm:p-4 flex items-center justify-center"
+                  >
+                    <img
+                      class="w-5 h-5 sm:w-6 sm:h-6"
+                      src="../../Images/depositArrow.png"
+                      alt="Deposit Icon"
+                    />
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold sm:text-sm md:text-base ml-2"><%= lastDeposit.user.name %> Deposited Via <%= lastDeposit.medium %></p>
+                    <div class="flex flex-row space-x-2 ml-2 items-center">
+                      <p class="text-xs font-bold sm:text-base">
+                        <%= lastDeposit.createdAt.toLocaleDateString() %>
+                      </p>
+                      <p class="text-xs text-green-600 font-bold capitalize"><%= lastDeposit.status %></p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h1 class="text-red-600 text-sm sm:text-xl font-bold">+£<%= lastDeposit.amount %></h1>
+                </div>
+              </div>
+              <% } %>
+              <% if (lastWithdrawal) { %>
+                <div id="withdrawal" class="flex flex-row items-center justify-between border border-green-600 p-2 rounded-xl">
+                  <div class="flex flex-row items-center">
+                    <div
+                      class="rounded-[50%] bg-green-600 bg-opacity-40 p-2 sm:p-4 flex items-center justify-center"
+                    >
+                      <img
+                        class="w-5 h-5 sm:w-6 sm:h-6"
+                        src="../../Images/withdraw.png"
+                        alt="WIthdraw Icon"
+                      />
+                    </div>
+                    <div>
+                      <p class="text-xs font-bold sm:text-sm md:text-base ml-2 capitalize"><%= lastWithdrawal.user.name %> Withdrew Via <%= lastWithdrawal.account.method %></p>
+                      <div class="flex flex-row space-x-2 ml-2 items-center">
+                        <p class="text-xs font-bold sm:text-base">
+                          <%= lastWithdrawal.createdAt.toLocaleDateString() %>
+                        </p>
+                        <p class="text-xs text-green-600 font-bold capitalize"><%= lastWithdrawal.status %></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <h1 class="text-green-600 text-sm sm:text-xl font-bold">-£<%= lastWithdrawal.account.amount %></h1>
+                  </div>
+                </div>
+                <% } %>
+                <% if (lastInvestment) { %>
+                  <div class="flex flex-row items-center justify-between border border-blue-600 p-2 rounded-xl">
+                    <div class="flex flex-row items-center">
+                      <div
+                        class="rounded-[50%] bg-blue-700 bg-opacity-40 p-2 sm:p-4 flex items-center justify-center"
+                      >
+                        <img
+                          class="w-5 h-5 sm:w-6 sm:h-6"
+                          src="../../Images/invest.png"
+                          alt="Invest Icon"
+                        />
+                      </div>
+                      <div>
+                        <p class="text-xs font-bold sm:text-sm md:text-base ml-2 capitalize"><%= lastInvestment.user.name %> Invested In <%= lastInvestment.plan %> Plan</p>
+                        <div class="flex flex-row space-x-2 ml-2 items-center">
+                          <p class="text-xs font-bold sm:text-base">
+                            <%= lastInvestment.createdAt.toLocaleDateString() %>
+                          </p>
+                          <% if (lastInvestment.isFulfilled === false) {%>
+                            <p class="text-xs text-green-600 font-bold"> Active</p>
+                            <% } else {%>
+                              <p class="text-xs text-green-600 font-bold"> Completed</p>
+                              <% } %>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <h1 class="text-blue-600 text-sm sm:text-xl font-bold">£<%= lastInvestment.amount %></h1>
+                    </div>
+                  </div>
+                  <% } %>
+                  <% if (lastEarning) { %>
+                    <div class="flex flex-row items-center justify-between border border-purple-600 p-2 rounded-xl">
+                      <div class="flex flex-row items-center">
+                        <div
+                          class="rounded-[50%] bg-purple-700 bg-opacity-40 p-2 sm:p-4 flex items-center justify-center"
+                        >
+                          <img
+                            class="w-5 h-5 sm:w-6 sm:h-6"
+                            src="../../Images/earningArrow.png"
+                            alt="Invest Icon"
+                          />
+                        </div>
+                        <div>
+                          <p class="text-xs font-bold sm:text-sm md:text-base ml-2 capitalize"><%= lastEarning.user.name %> Earned From The Plan <%= lastEarning.plan %></p>
+                          <div class="flex flex-row space-x-2 ml-2 items-center">
+                            <p class="text-xs font-bold sm:text-base">
+                              <%= lastEarning.createdAt.toLocaleDateString() %>
+                            </p>
+                            <p class="text-xs text-green-600 font-bold capitalize"><%= lastEarning.status %></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h1 class="text-blue-600 text-sm sm:text-xl font-bold">£<%= lastEarning.amount %></h1>
+                      </div>
+                    </div>
+                    <% } %>
             </div>
-          </div>
-        </div>
       </div>
       <div class="flex flex-col items-center justify-center mt-16 w-full">
         <div class="text-center">
           <h1 class="text-brightBlue text-xl md:text-3xl">Users and Investment</h1>
           <h4 class="text-sm mt-1 text-darkBlue md:text-base">
-            A summary of all the Users and Investments.
+            A summary of the Users and Investments.
           </h4>
         </div>
         <div
