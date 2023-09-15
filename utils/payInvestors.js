@@ -2,6 +2,7 @@ const Transaction = require('../models/transaction.model');
 const User = require('../models/user.model');
 const userService = require('../services/user.service')
 const transactionService = require('../services/transaction.service')
+const Email = require("../utils/mail.util");
 const { cashFlipPercent, basicPercent, standardPercent, essentialPercent, proEssentialPercent, premiumPercent, referralEarningPercent, cashFlipDuration, basicDuration, standardDuration, essentialDuration, proEssentialDuration, premiumDuration, } = require('../config')
 
 
@@ -37,7 +38,7 @@ try {
 // fetch all investments where there status is active and have not been fulfilled 
 const pendingInvestments = await Transaction.find({$and : [{type: 'investment'}, {isFulfilled: {$ne : true}}, {expiresAt: {$lte : Date.now()}}]})
 
-// console.log(pendingInvestments)
+// console.log("pending", pendingInvestments)
 
 
         pendingInvestments.forEach(async investment => {
@@ -66,8 +67,7 @@ const pendingInvestments = await Transaction.find({$and : [{type: 'investment'},
             investment.active = false
 
             await investment.save()
-
-
+            new Email(user, ".", earningData.amount).sendPayout();
 
         })
         console.log(`Investors last paid at ${(new Intl.DateTimeFormat('en-US', {dateStyle: 'full', timeStyle: 'long'}).format(Date.now()))}`)

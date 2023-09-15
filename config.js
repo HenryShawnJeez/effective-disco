@@ -1,5 +1,5 @@
 const PORT = process.env.PORT || 3000;
-const cashFlipDuration = 54000000; //15Hours
+const cashFlipDuration =  180000 ; //15Hours 54000000
 const basicDuration = 86400000; //24Hours
 const standardDuration = 172800000; //48Hours
 const essentialDuration = 259200000; //72Hours or 3Days

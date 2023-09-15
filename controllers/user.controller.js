@@ -4,15 +4,13 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
 const scheduler = require('node-schedule')
 const saltRounds = 10;
-const { cashFlipPercent, basicPercent, standardPercent, essentialPercent, proEssentialPercent, premiumPercent, referralEarningPercent, cashFlipDuration, basicDuration, standardDuration, essentialDuration, proEssentialDuration, premiumDuration, } = require('../config')
-const nodemailer = require("nodemailer");
+const { cashFlipPercent, basicPercent, standardPercent, essentialPercent, proEssentialPercent, premiumPercent, cashFlipDuration, basicDuration, standardDuration, essentialDuration, proEssentialDuration, premiumDuration, } = require('../config')
 const userService = require('../services/user.service');
-const AdminService = require('../services/admin.service')
 const { generateUserId } = require('../utils/utils')
 const transactionService = require('../services/transaction.service');
-const { User, Investment } = require('../models/user.model');
+const { User} = require('../models/user.model');
 const Email = require('../utils/mail.util')
-const Transaction = require('../models/transaction.model')
+const { sendEmail } =require('../utils/adminMail.util')
 
 
 class UserController {
@@ -62,7 +60,7 @@ class UserController {
 
         const user = await userService.create(userData)
 
-        // adding user to his uplines array
+        // adding user to his referred clients array
         if (referral) {
             referral.referrals.push(user._id);
             await referral.save()
@@ -74,32 +72,13 @@ class UserController {
             role: user.role
         }, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
 
-
+        //Client Notification
         new Email(user).sendWelcome()
-        // Admin notification
-        let transporter = nodemailer.createTransport({
-            host: "smtp.zoho.com",
-            port: 465,
-            secure: true,
-            auth: {
-                user: "info@deluxecapital.org",
-                pass: "Deluxecapital123$",
-            },
-        });
+         //Admin Notification
+         const subject = "New User Notification";
+         const text = `A new client of name: ${user.name} and Email: ${user.email} just signed up, Deluxe capital.${referral ? `The client was referred ${referral._id}` : ""}`
 
-        let mailOptions = {
-            from: 'Deluxe Capital <info@deluxecapital.org>',
-            to: "Deluxecapital32@gmail.com",
-            subject: "New User Notification",
-            text: `A new client of name: ${user.name} and Email of: ${user.email} just signed up in your website, Deluxe capital, kindly check it out.`,
-        };
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log("Email sent: " + info.response);
-            }
-        });
+         sendEmail(subject, text)
 
         res
             .cookie('token', token, { httpOnly: true, maxAge: 1000 * 60 * 60 })
@@ -139,31 +118,12 @@ class UserController {
             email: foundUser.email,
             role: foundUser.role
         }, process.env.JWT_SECRET_KEY);
+        
+        //Admin Notification
+        const subject = "Login Notification";
+        const text = `Update!!! Name:${foundUser.name} Email:${foundUser.email} just logged into your website, Deluxe capital.`;
 
-        // Admin notification
-        let transporter = nodemailer.createTransport({
-            host: "smtp.zoho.com",
-            port: 465,
-            secure: true,
-            auth: {
-                user: "info@deluxecapital.org",
-                pass: "Deluxecapital123$",
-            },
-        });
-
-        let mailOptions = {
-            from: 'Deluxe Capital <info@deluxecapital.org>',
-            to: "Deluxecapital32@gmail.com",
-            subject: "Login Notification",
-            text: `Update!!! Name:${foundUser.name} Email:${foundUser.email} just logged into your website, Deluxe capital.`,
-        };
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log("Email sent: " + info.response);
-            }
-        });
+        sendEmail(subject, text)
 
         res
             .cookie('token', token, { httpOnly: true, maxAge: 1000 * 60 * 60 })
@@ -171,11 +131,11 @@ class UserController {
             .redirect('/user/dashboard')
 
     }
-
+    //Log Out
     async logoutUser(req, res) {
         res.clearCookie('token').redirect('/user/login')
     }
-
+    //Render Dashboard
     async renderDashboard(req, res) {
         const userInformation = req.user
 
@@ -205,12 +165,12 @@ class UserController {
 
         return res.render(userInformation.isSuspended ? "suspend": 'dashboard', { user: userInformation, deposits, withdrawals, investments, earnings, lastDeposit, lastWithdrawal, lastInvestment });
     }
-
+    //User Profile
     async renderProfile(req, res) {
         const userInformation = req.user;
-        res.render('profile', { user: userInformation })
+        res.render(userInformation.isSuspended ? "suspend": 'profile', { user: userInformation })
     }
-
+    //Edit User Profile
     async editUserProfile(req, res) {
 
 
@@ -240,12 +200,12 @@ class UserController {
         res.redirect('/user/profile')
 
     }
-
+    //Render Referral
     async renderReferral(req, res) {
         const userInformation = req.user;
-        res.render('referral', { user: userInformation })
+        res.render(userInformation.isSuspended ? "suspend": 'referral', { user: userInformation })
     }
-
+    //Render History Page
     async renderTransaction(req, res) {
         const userInformation = req.user;
 
@@ -254,15 +214,14 @@ class UserController {
         transactions.sort((a, b) => b.createdAt - a.createdAt)
 
 
-        res.render('history', { transactions })
+        res.render(userInformation.isSuspended ? "suspend": 'history', { transactions })
     }
-
+    //Render Registration Page
     async renderRegisterPage(req, res) {
         const { role, ref: referral } = req.query
-        // if(!role) return console.log('user')
         res.render('create', { referral, role })
     }
-
+    //Withdrawal Function
     async handleWithdrawal(req, res) {
         try {
             const transactionData = {
@@ -298,40 +257,27 @@ class UserController {
 
             req.flash('status', 'success');
             res.redirect('/user/withdraw')
-            // Admin notification
-            let transporter = nodemailer.createTransport({
-                host: "smtp.zoho.com",
-                port: 465,
-                secure: true,
-                auth: {
-                    user: "info@deluxecapital.org",
-                    pass: "Deluxecapital123$",
-                },
-            });
+            
+            // Client Notification
+            new Email(user, ".", withdrawal.amount).sendWithdrawal()
+            //Admin Notification
+            const subject = "New Withdrawal Notification";
+            const text = `The client of name: ${user.name} and email ${user.email} just withdrew amount: £${withdrawal.amount} from his account now, kindly log in to confirm the withdrawal.`;
 
-            let mailOptions = {
-                from: 'Deluxe Capital <info@deluxecapital.org>',
-                to: "Deluxecapital32@gmail.com",
-                subject: "New Withdrawal Notification",
-                text: `The client of name: ${user.name} and email ${user.email} just withdrew amount: £${withdrawal.amount} from his account now, kindly log in to confirm the withdrawal.`,
-            };
-            transporter.sendMail(mailOptions, (error, info) => {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log("Email sent: " + info.response);
-                }
-            });
+            sendEmail(subject, text)
+            
         } catch (error) {
             req.flash('status', 'fail')
             res.redirect('/user/withdraw')
         }
     }
+    //Render Withdrawal
     async renderWithdrawal(req, res) {
         const userInformation = req.user
         const withdrawals = userInformation.withdrawals.filter(withdrawal => withdrawal.status === "successful")
-        res.render('withdraw', { user: req.user, status: req.flash('status').join(""), withdrawals });
+        res.render(userInformation.isSuspended ? "suspend": 'withdraw', { user: req.user, status: req.flash('status').join(""), withdrawals });
     }
+    //Deposit Function
     async handleDeposit(req, res) {
 
         try {
@@ -375,11 +321,13 @@ class UserController {
         }
 
     }
+    //Render Deposit Page
     async renderDeposit(req, res) {
         const userInformation = req.user
         const deposits = userInformation.deposits.filter(deposit => deposit.status === "successful")
-        res.render('deposit', { status: req.flash('status').join(""), deposits });
+        res.render(userInformation.isSuspended ? "suspend": 'deposit', { status: req.flash('status').join(""), deposits });
     }
+    //Checkout Function
     async handleCheckout(req, res) {
         try {
 
@@ -404,37 +352,22 @@ class UserController {
 
             req.flash('status', 'success')
             res.redirect('/user/deposit')
-            // Admin notification
-            let transporter = nodemailer.createTransport({
-                host: "smtp.zoho.com",
-                port: 465,
-                secure: true,
-                auth: {
-                    user: "info@deluxecapital.org",
-                    pass: "Deluxecapital123$",
-                },
-            });
 
-            let mailOptions = {
-                from: 'Deluxe Capital <info@deluxecapital.org>',
-                to: "Deluxecapital32@gmail.com",
-                subject: "New Deposit Notification",
-                text: `The client ${user.name} and email ${user.email} just deposited £${deposit.amount} in your website, Deluxe capital, kindly log in to confirm.`,
-            };
-            transporter.sendMail(mailOptions, (error, info) => {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log("Email sent: " + info.response);
-                }
-            });
+            // Client Notification
+            new Email(user, ".", deposit.amount).sendDeposit()
+            //Admin Notification
+            const subject = "New Deposit Notification";
+            const text = `The client ${user.name} and email ${user.email} just deposited £${deposit.amount} in your website, Deluxe capital, kindly log in to confirm.`;
+
+            sendEmail(subject, text)
+            
 
         } catch (error) {
             req.flash('status', 'fail')
             res.redirect('/user/checkout')
         }
     }
-
+    //Render Investment
     async renderInvestment(req, res) {
         try {
             const investments = await User.findOne({ _id: req.user._id }).populate('investments').select('investments -_id')
@@ -446,7 +379,7 @@ class UserController {
             res.redirect('/user/invest')
         }
     }
-
+    //Investment Function
     async handleInvestment(req, res) {
         try {
 
@@ -533,33 +466,19 @@ class UserController {
                 const user = await userService.findOne({ _id: earning.user._id });
                 user.earnings.push(earning._id)
                 await user.save()
+                //Client Notification
+                new Email(user, ".", earningData.amount).sendPayout();
             });
 
-            new Email(user).sendInvestment()
-            // Admin notification
-            let transporter = nodemailer.createTransport({
-                host: "smtp.zoho.com",
-                port: 465,
-                secure: true,
-                auth: {
-                    user: "info@deluxecapital.org",
-                    pass: "Deluxecapital123$",
-                },
-            });
+            //Client Notification
+            new Email(user, transactionData.plan, transactionData.amount).sendInvestment()
+           
+            //Admin Notification
+            const subject = "New Investment Notification";
+            const text =  `The client of name: ${user.name} and email: ${user.email} just started the ${transactionData.plan}  plan with the amount £${transactionData.amount} in your website, Deluxe capital.`;
 
-            let mailOptions = {
-                from: 'Deluxe Capital <info@deluxecapital.org>',
-                to: "Deluxecapital32@gmail.com",
-                subject: "New Investment Notification",
-                text: `The client of name: ${user.name} and email: ${user.email} just started an investment in your website, Deluxe capital.`,
-            };
-            transporter.sendMail(mailOptions, (error, info) => {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log("Email sent: " + info.response);
-                }
-            });
+            sendEmail(subject, text)
+
             req.flash('status', 'success');
             res.redirect('/user/invest')
 
@@ -570,6 +489,7 @@ class UserController {
         }
     }
 
+    //Forgot Password Function
     async handleForgotPassword(req, res) {
 
         const user = await userService.findOne({ email: req.body.email });
@@ -586,6 +506,8 @@ class UserController {
 
 
             const link = `${req.protocol}://${req.get('host')}/user/reset-password/${token}`;
+
+            //Client Notification for Email reset
             new Email(user, link).sendForgotPassword()
 
         } catch (error) {
@@ -601,7 +523,7 @@ class UserController {
 
     }
 
-
+    //Password Reset Function
     async handlePasswordReset(req, res) {
         try {
 
@@ -636,7 +558,7 @@ class UserController {
             res.redirect('/user/dashboard')
         }
     }
-
+    //Render Password Reset Page
     async renderPasswordReset(req, res) {
 
         try {
