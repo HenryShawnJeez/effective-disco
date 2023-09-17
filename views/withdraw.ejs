@@ -31,7 +31,7 @@
 
   <body class="main bg-darkGray">
     <%- include ("partials/sidebar"); -%>
-    <section>
+    <section class="p-4 px-8">
       <% if(status==='success' ){ %>
       <div class="flex w-full items-center justify-center">
         <div
@@ -89,223 +89,161 @@
         </div>
       </div>
       <% }%>
-      <div class="flex flex-col items-center justify-center">
-        <div class="mt-32 text-center text-brightBlue">
-          <h1 class="text-2xl font-bold md:text-4xl">Make A Withdrawal</h1>
-          <h4 class="mt-4 text-sm text-darkNavy md:text-base">
-            Account Balance
-            <span class="ml-1 text-base font-bold text-gold md:text-xl">
-              £<%= user.balance.toLocaleString() %>
-            </span>
-          </h4>
-        </div>
-        <div class="mt-5">
-          <h4 class="text-center text-sm text-darkBlue">
-            Choose the withdrawal option that best suits your specific need at
-            the moment.
-          </h4>
+      <% if (status==='spam'){%>
+        <div class="flex w-full items-center justify-center">
           <div
-            class="options mt-5 flex flex-row items-center justify-center space-x-8"
+            id="failureOverlay"
+            class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+          ></div>
+  
+          <div
+            id="failurePopup"
+            class="fixed top-[30%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg"
           >
-            <button
-              id="bankOption"
-              class="flex items-center rounded-xl border-2 border-brightBlue bg-brightBlue px-5 py-3 text-lightGray1 duration-700 hover:bg-lightGray1 hover:text-darkBlue"
+            <span
+              onclick="failureClosePopupBtnClick()"
+              class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+              >&times;</span
             >
-              Bank
-              <ion-icon class="ml-2 text-3xl" name="cash-outline"></ion-icon>
-            </button>
-            <button
-              id="cryptoOption"
-              class="flex items-center rounded-xl border-2 border-brightBlue bg-brightBlue px-5 py-3 text-lightGray1 duration-700 hover:bg-lightGray1 hover:text-darkBlue"
-            >
-              Crypto
-              <ion-icon class="ml-2 text-3xl" name="logo-bitcoin"></ion-icon>
-            </button>
+            <img
+              class="mx-auto w-20"
+              src="../Images/wrong.png"
+              alt="Wrong Icon"
+            />
+            <h2 class="mt-2 text-center text-2xl font-semibold text-red-500">
+              Failure!
+            </h2>
+            <p class="mt-8 text-center text-sm capitalize text-gray-800">
+              The entered amount exceeds your Withdrawable amount.
+            </p>
           </div>
         </div>
-
-        <form onsubmit="displayLoader()" action="/user/withdraw" method="post">
-          <div id="cryptoForm" class="hidden">
-            <h4 class="mt-8 text-center text-sm text-darkBlue md:text-base">
-              Wallet Address
-            </h4>
-            <div
-              class="custom-select relative mt-10 w-72 rounded-xl border-2 border-brightBlue text-center md:w-96"
-            >
-              <select class="text-lg" name="wallet">
-                <option>Choose Your Wallet</option>
-                <option value="Bitcoin">Bitcoin</option>
-                <option value="Ethereum">Ethereum</option>
-                <option value="Bitcoin Cash">Bitcoin Cash</option>
-                <option value="Cardano">Cardano(ADA)</option>
-                <option value="Solana">Solana</option>
-                <option value="Litecoin">Litecoin</option>
-                <option value="Near">NEAR</option>
-                <option value="Waves">WAVES</option>
-              </select>
-            </div>
-            <div class="mt-4">
-              <input type="hidden" value="crypto" name="medium" />
-
-              <h4 class="mt-8 text-center text-sm text-darkBlue md:text-base">
-                Wallet Address
-              </h4>
-              <input
-                class="mt-2 w-72 rounded-xl border-2 border-brightBlue px-8 py-3 placeholder:text-center placeholder:text-sm md:w-96"
-                type="text"
-                name="address"
-                id="address"
-                placeholder="Input Your Wallet Address"
-                required
-              />
-              <h4 class="mt-4 text-center text-sm text-darkBlue md:text-base">
-                Amount To Withdraw
-              </h4>
-              <input
-                class="mt-2 w-72 rounded-xl border-2 border-brightBlue px-8 py-3 placeholder:text-center placeholder:text-sm md:w-96"
-                type="number"
-                name="amount"
-                id="amount"
-                placeholder="Minimum Of £100"
-                min="100"
-                required
-              />
-            </div>
-            <div class="flex justify-center">
-              <button
-                type="submit"
-                class="load mt-10 w-72 rounded-xl border-2 border-brightBlue bg-brightBlue px-10 py-3 text-lightGray1 duration-700 hover:bg-lightGray1 hover:text-darkBlue disabled:cursor-not-allowed disabled:opacity-50 md:w-96"
-              >
-                Withdraw
-              </button>
-            </div>
-          </div>
-        </form>
-        <form onsubmit="displayLoader()" action="/user/withdraw" method="post">
-          <div id="bankForm" class="hidden">
-            <h4 class="mt-10 text-center text-sm text-darkBlue md:text-base">
-              Enter The Amount You Want To Withdraw
-            </h4>
-            <input
-              class="mt-2 w-72 rounded-xl border-2 border-brightBlue px-8 py-3 placeholder:text-center placeholder:text-sm md:w-96"
-              type="number"
-              name="amount"
-              id="amount"
-              placeholder="Minimum Of £100"
-              min="100"
-              required
-            />
-            <h4 class="mt-4 text-center text-sm text-darkBlue md:text-base">
-              Enter Your Account Name
-            </h4>
-            <input
-              class="mt-2 w-72 rounded-xl border-2 border-brightBlue px-8 py-3 placeholder:text-center placeholder:text-sm md:w-96"
-              type="text"
-              name="accountName"
-              id="accountName"
-              placeholder="Enter Your Account Name"
-              required
-            />
-            <h4 class="mt-4 text-center text-sm text-darkBlue md:text-base">
-              Enter Your Account Number
-            </h4>
-            <input
-              class="mt-2 w-72 rounded-xl border-2 border-brightBlue px-8 py-3 placeholder:text-center placeholder:text-sm md:w-96"
-              type="number"
-              name="accountNumber"
-              id="accountNumber"
-              placeholder="Enter Your Account Number"
-              required
-            />
-            <h4 class="mt-4 text-center text-sm text-darkBlue md:text-base">
-              Enter Your Bank's Sort Code
-            </h4>
-            <input type="hidden" value="bank" name="medium" />
-            <input
-              class="mt-2 w-72 rounded-xl border-2 border-brightBlue px-8 py-3 placeholder:text-center placeholder:text-sm md:w-96"
-              type="text"
-              name="sortCode"
-              id="sortCode"
-              placeholder="Enter Your Bank's Sort Code"
-              required
-            />
-            <h4 class="mt-4 text-center text-sm text-darkBlue md:text-base">
-              Enter Your Bank Name
-            </h4>
-            <input
-              class="mt-2 w-72 rounded-xl border-2 border-brightBlue px-8 py-3 placeholder:text-center placeholder:text-sm md:w-96"
-              type="text"
-              name="bankName"
-              id="bankName"
-              placeholder="Enter Your Bank Name"
-              required
-            />
-            <div class="mb-10 flex justify-center">
-              <button
-                type="submit"
-                class="load mt-10 w-72 rounded-xl border-2 border-brightBlue bg-brightBlue px-10 py-3 text-lightGray1 duration-700 hover:bg-lightGray1 hover:text-darkBlue disabled:cursor-not-allowed disabled:opacity-50 md:w-96"
-              >
-                Withdraw
-              </button>
-            </div>
-          </div>
-        </form>
+        <% }%>
+      <div class="mt-20">
+        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold lg:text-4xl text-[#CC9E06]">Make A Withdrawal</h1>
+        <h4 class="text-sm text-darkNavy md:text-base">
+          Withdrawable Amount
+          <span class="ml-1 text-base font-bold text-gold md:text-xl">
+            $<%= user.balance.toLocaleString() %>
+          </span>
+        </h4>
       </div>
-      <div
-        class="mx-auto my-10 flex w-[90%] flex-col rounded-xl border border-darkNavy p-2 sm:w-[80%]"
-      >
-        <p class="mb-2 text-sm font-bold sm:text-base">Withdrawal History</p>
-
-        <% withdrawals.forEach(withdrawal => { %>
-        <div
-          id="withdrawal"
-          class="mt-2 flex flex-row items-center justify-between rounded-xl border border-green-600 p-2"
-        >
-          <div class="flex flex-row items-center">
+      <div class="flex flex-col-reverse md:flex-row justify-between mt-10">
+        <div class="w-full md:w-[49%] p-2 border bg-white border-[#9EA0A3] rounded-lg mt-4 md:mt-0">
+          <div
+            class="flex w-full flex-col px-2 h-[30rem] linkContainer overflow-y-auto"
+          >
+            <p class="mb-2 mt-8 text-sm font-bold sm:text-base">
+              Withdrawal History
+            </p>
+            <% if(withdrawals.length === 0) { %>
+              <div class="flex items-center justify-center m-auto">
+                <h1 class="text-sm sm:text-base gradient-border font-bold md:text-lg lg:text-xl">No Withdrawal Yet</h1>
+              </div>
+           <% } %>
+            <% withdrawals.forEach(withdrawal => { %>
             <div
-              class="flex items-center justify-center rounded-[50%] bg-green-600 bg-opacity-40 p-2 sm:p-4"
+              id="withdrawal"
+              class="mt-2 flex flex-row items-center justify-between rounded-xl border border-green-600 p-2"
             >
-              <img
-                class="h-5 w-5 sm:h-6 sm:w-6"
-                src="../Images/withdraw.png"
-                alt="Withdrawal Icon"
-              />
-            </div>
-            <div>
-              <% if(withdrawal.account.method == "crypto") { %>
-              <p class="ml-2 text-xs font-bold capitalize sm:text-base">
-                Withdraw Via <%= withdrawal.account.method %>
-              </p>
-              <p class="ml-2 text-xs font-bold capitalize sm:text-base">
-                Wallet: <%=withdrawal.account.wallet %>
-              </p>
-              <% } else if ((withdrawal.account).method == 'bank') {%>
-              <p class="ml-2 text-xs font-bold capitalize sm:text-base">
-                Withdraw Via <%= withdrawal.account.method %>
-              </p>
-              <p class="ml-2 text-xs font-bold capitalize sm:text-base">
-                Bank Name: <%=withdrawal.account.bankName %>
-              </p>
-              <% } %>
-              <div class="ml-2 flex flex-row items-center space-x-2">
-                <p class="text-xs font-bold sm:text-base">
-                  <%= withdrawal.createdAt.toLocaleDateString() %>
-                </p>
-                <p
-                  class="text-xs font-bold capitalize text-green-600 sm:text-sm"
+              <div class="flex flex-row items-center">
+                <div
+                  class="flex items-center justify-center rounded-[50%] bg-green-600 bg-opacity-20 p-2 sm:p-4"
                 >
-                  <%= withdrawal.status %>
-                </p>
+                  <img
+                    class=""
+                    src="../Images/withdraw.svg"
+                    alt="Withdrawal Icon"
+                  />
+                </div>
+                <div>
+                  <% if(withdrawal.account.method === "crypto") { %>
+                  <p class="ml-2 text-xs capitalize sm:text-base">
+                    Withdraw Via <%=withdrawal.account.wallet %>
+                  </p>
+                  <% } %>
+                  <div class="ml-2 flex flex-row items-center space-x-2">
+                    <p class="text-xs sm:text-base text-gray-400">
+                      <%= new Date(withdrawal.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>
+                    </p>
+                    <% if (withdrawal.status === "failed") { %>
+                      <p class="text-xs capitalize text-red-600 sm:text-sm">
+                      <%= withdrawal.status %>
+                    </p>
+                    <% } else { %>
+                      <p class="text-xs capitalize text-green-600 sm:text-sm">
+                        <%= withdrawal.status %>
+                      </p>
+                   <% } %>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h1 class="text-sm font-bold text-red-600 sm:text-xl">
+                  -$<%= withdrawal.amount.toLocaleString() %>
+                </h1>
               </div>
             </div>
+            <% }) %>
           </div>
-          <div>
-            <h1 class="text-sm font-bold text-red-600 sm:text-xl">
-              -£<%= withdrawal.amount.toLocaleString() %>
-            </h1>
+          <div class="flex justify-end my-4">
+            <a href="/user/transactions" class="hover:translate-x-2 duration-500 flex items-center"><span class="text-[0.65rem] sm:text-xs md:text-sm text-[#6564DB]">View All Transactions</span><img src="../../Images/arrow-right.svg" alt="arrow"></a>
           </div>
         </div>
-        <% }) %>
+        <div class="w-full md:w-[49%] p-2 border bg-white border-[#9EA0A3] rounded-lg">
+          <form action="/user/withdraw" method="post">
+            <div id="cryptoForm">
+              <h4 class="mt-8 text-sm text-darkBlue md:text-base">
+                Wallet
+              </h4>
+              <div
+                class="custom-select mt-2 relative w-full rounded-lg border border-[#9EA0A3] text-xs sm:text-sm"
+              >
+                <select class="" name="wallet">
+                  <option>Choose Your Wallet</option>
+                  <option value="Bitcoin">Bitcoin</option>
+                  <option value="Ethereum">Ethereum</option>
+                  <option value="Usdt">USDT</option>
+                </select>
+              </div>
+              <div class="mt-4">
+                <input type="hidden" value="crypto" name="medium" />
+
+                <h4 class="mt-8 text-sm text-darkBlue md:text-base">
+                  Wallet Address
+                </h4>
+                <input
+                  class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 placeholder:text-sm focus:outline focus:outline-gold caret-darkBlue"
+                  type="text"
+                  name="address"
+                  id="address"
+                  placeholder="Input Your Wallet Address"
+                  required
+                />
+                <h4 class="mt-8 text-sm text-darkBlue md:text-base">
+                  Amount To Withdraw
+                </h4>
+                <input
+                  class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 placeholder:text-sm focus:outline focus:outline-gold caret-darkBlue "
+                  type="number"
+                  name="amount"
+                  id="amount"
+                  placeholder="Minimum Of $100"
+                  min="100"
+                  required
+                />
+              </div>
+              <div class="flex mt-10 mb-32 justify-end">
+                <button
+                  type="submit"
+                  class="rounded-lg px-5 sm:px-7 md:px-9 text-sm sm:text-base bg-brightBlue py-3 text-lightGray1 duration-500 hover:bg-lightGray1 hover:text-darkBlue disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Withdraw
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
     <%- include ("partials/script"); -%>

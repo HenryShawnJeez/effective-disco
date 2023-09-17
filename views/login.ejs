@@ -5,28 +5,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
-  <link rel="shortcut icon" href="../Images/logo.ico" type="image/x-ico" />
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-  <!-- Font-Awesome -->
-  <script src="https://kit.fontawesome.com/f5af09e245.js" crossorigin="anonymous"></script>
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="../CSS/main.css" />
-  <link rel="stylesheet" href="../CSS/toast.css">
-  <!-- Jivo Chat -->
-  <script src="//code.jivosite.com/widget/DzC9jELjbC" async></script>
+  <%- include("partials/SEO"); -%>
+  <!-- Stylesheet for the Login Toast -->
+<link rel="stylesheet" href="../CSS/toast.css">
 </head>
 
 <body class="bg-brightBlue relative flex items-center h-full">
   <section id="main-section">
     <div class="flex items-center justify-center w-screen h-screen">
-      <div class="w-96 pb-2 bg-lightGray text-center rounded-lg shadow-2xl ease-in-out duration-1000 hover:shadow-none">
-       <a href="/"><img class="w-20 mx-auto mt-4" src="../Images/logo.png" alt="Deluxe Capital Logo" /></a> 
-        <h1 class="text-4xl mt-4 text-darkBlue font-extrabold">Login</h1>
-        <p class="text-sm mt-2 text-brightBlue">Welcome Back</p>
+      <div class="w-96 pb-2 bg-white istGlass bg-opacity-20 border border-[#6564DB] text-center rounded-lg shadow-2xl ease-in-out duration-500 hover:shadow-none">
+      <div class="bg-white p-2 rounded-lg w-40 mx-auto mt-4">
+        <a href="/"><img class="w-40 mx-auto " src="../Images/logo.png" alt="Rehoniel Logo" /></a> 
+      </div>
+        
+        <h1 class="text-4xl mt-4 text-lightGray1 font-extrabold">Login</h1>
+        <p class="text-sm mt-2 text-gold">Welcome Back</p>
 
 
         <% if( alert?.message ){ %>
@@ -41,25 +34,25 @@
             <form action="/user/login" method="post" id="login">
               <p class="mt-10">
                 <input
-                  class="bg-white border-primaryBlue border-solid border-2 ml-1 py-2 px-6 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm placeholder:text-gray-400 focus:outline-brightBlue"
+                  class="bg-white caret-darkBlue focus:outline-darkBlue border-primaryBlue border-solid border-2 ml-1 py-2 px-6 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm placeholder:text-darkBlue"
                   type="email" id="email" name="email" placeholder="Enter Your Email Address" required />
               </p>
 
               <p class="mt-6 flex justify-center mr-2">
                 <input
-                  class="bg-white border-primaryBlue border-solid border-2 ml-1 py-2 px-6 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm placeholder:text-gray-400 focus:outline-brightBlue"
+                  class="bg-white caret-darkBlue focus:outline-darkBlue border-primaryBlue border-solid border-2 ml-1 py-2 px-6 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm placeholder:text-darkBlue "
                   type="password" id="myPassword" name="password" placeholder="Enter Your Password" required />
                 <i class="fas fa-eye -ml-6 mt-3.5" id="eye" onclick="myFunction()"></i>
               </p>
 
               <p class="mt-6">
                 <button type="submit"
-                  class="flex flex-row mx-auto justify-center items-center py-2 px-10 w-80 duration-500 text-darkBlue border-2 border-brightBlue rounded-lg hover:bg-brightBlue hover:text-lightGray">Login <ion-icon class="text-3xl ml-4" name="enter-outline"></ion-icon></button>
+                  class="flex flex-row mx-auto justify-center items-center py-3 w-80 duration-500 text-gold border-2 border-gold rounded-lg hover:bg-inherit hover:border-lightGray1 hover:text-lightGray">Login <ion-icon class="text-3xl ml-4" name="enter-outline"></ion-icon></button>
               </p>
 
-              <p class="mt-4 space-x-16">
-                <a class="text-sm hover: text-darkBlue hover:text-brightBlue" href="/user/forgot-password">Forgot Password</a>
-                <a class="text-sm hover: text-darkBlue hover:text-brightBlue" href="/user/create">Sign Up</a>
+              <p class="mt-4 space-x-16 ">
+                <a class="duration-500 text-sm hover: hover:text-darkBlue text-gold" href="/user/forgot-password">Forgot Password</a>
+                <a class="duration-500 text-sm hover: hover:text-darkBlue text-gold" href="/user/create">Sign Up</a>
               </p>
             </form>
 

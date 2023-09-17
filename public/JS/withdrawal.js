@@ -108,18 +108,3 @@ except the current select box:*/
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
-
-//For the Forms
-const bankForm = document.getElementById("bankForm")
-const cryptoForm = document.getElementById("cryptoForm")
-const bankOption = document.getElementById("bankOption")
-const cryptoOption = document.getElementById("cryptoOption")
-bankOption.addEventListener("click", function (e) {
-  bankForm.classList.toggle("hidden")
-  cryptoForm.classList.contains("hidden") ? cryptoForm.classList.add("") : cryptoForm.classList.add("hidden")
-})
-cryptoOption.addEventListener("click", function (e) {
-  cryptoForm.classList.toggle("hidden")
-  console.log(cryptoForm.classList)
-  bankForm.classList.contains("hidden") ? bankForm.classList.add("") : bankForm.classList.add("hidden")
-})

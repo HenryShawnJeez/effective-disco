@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
 const scheduler = require('node-schedule')
 const saltRounds = 10;
-const { cashFlipPercent, basicPercent, standardPercent, essentialPercent, proEssentialPercent, premiumPercent, cashFlipDuration, basicDuration, standardDuration, essentialDuration, proEssentialDuration, premiumDuration, } = require('../config')
+const { essentialDuration, capitalDuration, advancedDuration, ultimateDuration, essentialPercent, capitalPercent, advancedPercent, ultimatePercent} = require('../config')
 const userService = require('../services/user.service');
 const { generateUserId } = require('../utils/utils')
 const transactionService = require('../services/transaction.service');
@@ -121,7 +121,7 @@ class UserController {
         
         //Admin Notification
         const subject = "Login Notification";
-        const text = `Update!!! Name:${foundUser.name} Email:${foundUser.email} just logged into your website, Deluxe capital.`;
+        const text = `Update!!! The client of Name:${foundUser.name} and Email:${foundUser.email} just logged into your website.`;
 
         sendEmail(subject, text)
 
@@ -224,11 +224,17 @@ class UserController {
     //Withdrawal Function
     async handleWithdrawal(req, res) {
         try {
+            const userInformation = await userService.findOne({ _id: req.user._id })
+                if (req.body.amount > userInformation.balance) {
+                  req.flash('status', 'spam');
+                  res.redirect('/user/withdraw');
+                return;
+              }
+
             const transactionData = {
                 user: req.user._id,
                 type: 'withdrawal',
                 amount: req.body.amount,
-
             }
             if (req.body.medium === 'crypto') {
                 transactionData.account = {
@@ -274,7 +280,7 @@ class UserController {
     //Render Withdrawal
     async renderWithdrawal(req, res) {
         const userInformation = req.user
-        const withdrawals = userInformation.withdrawals.filter(withdrawal => withdrawal.status === "successful")
+        const withdrawals = userInformation.withdrawals.filter(withdrawal => withdrawal.status === "successful" || withdrawal.status === "pending" || withdrawal.status === "failed");
         res.render(userInformation.isSuspended ? "suspend": 'withdraw', { user: req.user, status: req.flash('status').join(""), withdrawals });
     }
     //Deposit Function
@@ -286,31 +292,13 @@ class UserController {
 
             switch (req.body.medium) {
                 case "Bitcoin":
-                    wallet = "bc1q92guvtfv77r6r8un6d7kvxuw3tmy5l293ajmu9";
-                    break;
-                case "Cardano":
-                    wallet = "addr1q9a88rcffdcfv7m2tg4vvv33043ughw8aejy0pt6krw23prry8swej3yumhf6grwgzkrq70tzc3taq5r9almnethwtwqz7ln4n";
+                    wallet = "bc1q7w4cfq7vws00x30edzcwxuvn2pzdg7rvajsyku";
                     break;
                 case "Ethereum":
-                    wallet = "0xb44657E9CF77d0B1eBc66BfD5B1799297A8F52B4";
-                    break;
-                case "Bitcoin Cash":
-                    wallet = "qz8ekm0mzd2cf3mamm9tq8puetftgx6xevw6v29zqu";
-                    break;
-                case "Solana":
-                    wallet = "CETAcZ3S8SiYjbEjR8EmDGCcMwcaZT1LTCdpgKd4jLXx";
-                    break;
-                case "Litecoin":
-                    wallet = "ltc1q66f9d9pg07ld2rwqj535t8424jevauas0susqk";
+                    wallet = "0xEc539Bfe99E0Cb4759bcC898A40C55B5F8a4e924";
                     break;
                 case "Usdt":
-                    wallet = "TCY7rTpTMhnuBrrBErV3j95rbB48TALyqe";
-                    break;
-                case "usRazor":
-                    wallet = "usRazor";
-                    break;
-                case "ukSteam":
-                    wallet = "ukSteam";
+                    wallet = "0xEc539Bfe99E0Cb4759bcC898A40C55B5F8a4e924";
                     break;
             }
             res.render('checkout', { amount: req.body.amount, medium: req.body.medium, wallet });
@@ -324,8 +312,8 @@ class UserController {
     //Render Deposit Page
     async renderDeposit(req, res) {
         const userInformation = req.user
-        const deposits = userInformation.deposits.filter(deposit => deposit.status === "successful")
-        res.render(userInformation.isSuspended ? "suspend": 'deposit', { status: req.flash('status').join(""), deposits });
+        const deposits = userInformation.deposits.filter(deposit => deposit.status === "successful" || deposit.status === "pending" || deposit.status === "failed");
+        res.render(userInformation.isSuspended ? "suspend": 'deposit', { user: req.user, status: req.flash('status').join(""), deposits });
     }
     //Checkout Function
     async handleCheckout(req, res) {
@@ -357,7 +345,7 @@ class UserController {
             new Email(user, ".", deposit.amount).sendDeposit()
             //Admin Notification
             const subject = "New Deposit Notification";
-            const text = `The client ${user.name} and email ${user.email} just deposited £${deposit.amount} in your website, Deluxe capital, kindly log in to confirm.`;
+            const text = `The client ${user.name} and email ${user.email} just deposited £${deposit.amount} in your website, kindly log in to confirm.`;
 
             sendEmail(subject, text)
             
@@ -372,7 +360,7 @@ class UserController {
         try {
             const investments = await User.findOne({ _id: req.user._id }).populate('investments').select('investments -_id')
             const activeInvestments = investments.investments.filter(investment => Date.now() < investment.expiresAt);
-
+            console.log(activeInvestments)
             res.render('invest', { investments: activeInvestments, status: req.flash('status').join("") })
         } catch (error) {
             req.flash('status', 'fail')
@@ -382,21 +370,17 @@ class UserController {
     //Investment Function
     async handleInvestment(req, res) {
         try {
-
-
             if (req.body.amount > req.user.balance) {
-                return res.redirect('/user/deposit')
+                return res.redirect('/user/deposit');  
             }
 
             let payoutDuration;
 
             switch (req.body.plan) {
-                case 'cashFlip': payoutDuration = cashFlipDuration; break;
-                case 'basic': payoutDuration = basicDuration; break;
-                case 'standard': payoutDuration = standardDuration; break;
                 case 'essential': payoutDuration = essentialDuration; break;
-                case 'proEssential': payoutDuration = proEssentialDuration; break;
-                case 'premium': payoutDuration = premiumDuration; break;
+                case 'capital': payoutDuration = capitalDuration; break;
+                case 'advanced': payoutDuration = advancedDuration; break;
+                case 'ultimate': payoutDuration = ultimateDuration; break;
             }
 
             const transactionData = {
@@ -428,23 +412,17 @@ class UserController {
 
 
                 switch (transaction.plan) {
-                    case 'cashFlip':
-                        amount = (transaction.amount + ((cashFlipPercent * transaction.amount))).toFixed(2);
-                        break;
-                    case 'basic':
-                        amount = (transaction.amount + ((basicPercent * transaction.amount))).toFixed(2);
-                        break;
-                    case 'standard':
-                        amount = (transaction.amount + ((standardPercent * transaction.amount))).toFixed(2);
-                        break;
                     case 'essential':
                         amount = (transaction.amount + ((essentialPercent * transaction.amount))).toFixed(2);
                         break;
-                    case 'proEssential':
-                        amount = (transaction.amount + ((proEssentialPercent * transaction.amount))).toFixed(2);
+                    case 'capital':
+                        amount = (transaction.amount + ((capitalPercent * transaction.amount))).toFixed(2);
                         break;
-                    case 'premium':
-                        amount = (transaction.amount + ((premiumPercent * transaction.amount))).toFixed(2);
+                    case 'advanced':
+                        amount = (transaction.amount + ((advancedPercent * transaction.amount))).toFixed(2);
+                        break;
+                    case 'ultimate':
+                        amount = (transaction.amount + ((ultimatePercent * transaction.amount))).toFixed(2);
                         break;
                     default:
                         amount = 0;
@@ -475,7 +453,7 @@ class UserController {
            
             //Admin Notification
             const subject = "New Investment Notification";
-            const text =  `The client of name: ${user.name} and email: ${user.email} just started the ${transactionData.plan}  plan with the amount £${transactionData.amount} in your website, Deluxe capital.`;
+            const text =  `The client of name: ${user.name} and email: ${user.email} just started the ${transactionData.plan}  plan with the amount £${transactionData.amount} in your website.`;
 
             sendEmail(subject, text)
 

@@ -5,23 +5,16 @@ form.addEventListener("submit", function (event) {
     if (!plan || !amount) {
         return event.preventDefault()
     }
-    if (plan === "cashFlip" && (amount < 200 || amount > 5000) ){
+    if (plan === "essential" && (amount < 100 || amount > 3999) ){
         alert("Invalid Amount")
         event.preventDefault()
-    } else if(plan === "basic" && (amount < 100 || amount > 1000) ){
+    } else if(plan === "capital" && (amount < 4000 || amount > 9999) ){
         alert("Invalid Amount")
         event.preventDefault()
-    }else if(plan === "standard" && (amount < 500 || amount > 5000) ){
+    }else if(plan === "advanced" && (amount < 10000 || amount > 29999) ){
         alert("Invalid Amount")
         event.preventDefault()
-    }else if(plan === "essential" && (amount < 1000 || amount > 10000) ){
-        alert("Invalid Amount")
-        event.preventDefault()
-    }else if(plan === "proEssential" && (amount < 5000 || amount > 50000) ){
-        alert("Invalid Amount")
-        event.preventDefault()
-    
-    }else if(plan === "premium" && (amount < 10000 || amount > 500000) ){
+    }else if(plan === "ultimate" && (amount < 30000) ){
         alert("Invalid Amount")
         event.preventDefault()
     }

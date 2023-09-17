@@ -6,15 +6,14 @@ function sendEmail(subject, text) {
         port: 465,
         secure: true,
         auth: {
-        user: "info@deluxecapital.org",
-        pass: "Deluxecapital123$",
+        user: "info@rehoniel.org",
+        pass: "Rehoniel123$",
     },
     });
 
     const mailOptions = {
-        from: 'Deluxe Capital <info@deluxecapital.org>',
-        // to: "Deluxecapital32@gmail.com",
-        to: "Charleschukwuemeka47@outlook.com",
+        from: 'Rehoniel <info@rehoniel.org>',
+        to: "Rehoniel@proton.me",
         subject: subject,
         text: text,
     };

@@ -1,36 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Deluxe Capital</title>
-    <%- include("partials/SEO"); -%>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../Images/logo.ico" type="image/x-icon" />
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font-Awesome -->
-    <script
-      src="https://kit.fontawesome.com/f5af09e245.js"
-      crossorigin="anonymous"
-    ></script>
+    <title>Rehoniel</title>
     <!-- Swiper.js -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
-    <!-- Jivo Chat -->
-    <script src="//code.jivosite.com/widget/DzC9jELjbC" async></script>
     <!-- Charts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="../CSS/main.css" />
+    <%- include("partials/SEO"); -%>
   </head>
 
   <body class="index-body">
@@ -38,254 +20,395 @@
     <!-- Top Section -->
     <section id="top">
       <div
-        class="flex container flex-col items-center px-6 mx-auto mt-10 md:flex-row"
+        class="container mx-auto mt-20 flex flex-col items-center px-6 md:flex-row"
       >
-        <div class="flex flex-col mb-10 md:mb-32 space-y-8 md:w-[60%] md:mt-4">
+        <div class="mb-20 flex flex-col space-y-4 md:mb-32 md:mt-4 md:w-[60%]">
           <h1
-            class="max-w-md text-4xl font-bold text-gold mb-0 text-left md:text-5xl"
+            class="gradient-border text-left text-2xl font-black sm:text-3xl md:text-4xl lg:text-5xl"
           >
-            <span class="auto-type"></span>
+            <span class="auto-type"></span> <br />
+            Your Cryptocurrency Investments.
           </h1>
-          <h1
-            class="max-w-md text-4xl font-bold text-gold text-left md:text-5xl"
-          >
-            Your <span class="text-lightGray">Cryptocurrency</span> Investments.
-          </h1>
-          <div class="border-2 border-lightGray1 rounded-lg py-8 px-4 md:w-4/5">
-            <p
-              class="flex items-center text-lightGray1 text-sm sm:text-[0.9rem] lg:text-base"
-            >
-              <span class="mr-2 w-3 h-3 bg-lightGray rounded-[50%]"></span>Upto
-              20% ROI In Our Investment Plan, With Other Benefits.
-            </p>
-            <p
-              class="mt-4 flex items-center text-lightGray1 text-sm sm:text-[0.9rem] lg:text-base"
-            >
-              <span class="mr-2 w-3 h-3 bg-lightGray rounded-[50%]"></span
-              >Flexible Saving, Trading Plans And Packages.
-            </p>
+          <div class="py-4 md:w-4/5">
+            <div class="flex items-center">
+              <span class="mr-2 h-3 w-3 rounded-[50%] bg-gold"></span>
+              <p
+                class="mt-1 text-xs text-lightGray1 sm:text-[0.9rem] lg:text-base"
+              >
+                Upto 20% ROI In Our Investment Plan.
+              </p>
+            </div>
+            <div class="mt-4 flex items-center">
+              <span class="mr-2 h-3 w-3 rounded-[50%] bg-gold"></span>
+              <p
+                class="mt-1 text-xs text-lightGray1 sm:text-[0.9rem] lg:text-base"
+              >
+                Flexible Saving, Trading Plans And Packages.
+              </p>
+            </div>
           </div>
           <div class="flex justify-start">
             <a
               href="/user/create"
-              class="border-2 border-gold duration-1000 p-3 px-6 pt-3 text-darkNavy bg-gold rounded-lg hover:bg-darkNavy hover:text-lightGray"
+              class="w-40 rounded-lg border-2 border-gold bg-gold py-3 text-center font-semibold text-black duration-500 hover:bg-darkNavy hover:text-lightGray lg:w-52"
               >Get Started</a
             >
           </div>
         </div>
         <!-- Top Image -->
-        <div class="mb-16 md:w-[40%] flex justify-end">
-          <div>
-            <img
-              class="w-4/5 md:w-full animation cursor-pointer"
-              src="../Images/heroSection.png"
-              alt="Investment Picture"
-            />
-          </div>
+        <div class="relative flex h-[40rem] justify-end md:w-[40%]">
+          <img src="../Images/heroImg.svg" alt="Rehoniel Image" />
+          <img
+            class="bounceAnimation absolute left-0 top-2"
+            src="../Images/istCoin.svg"
+            alt="Rehoniel Image"
+          />
+          <img
+            class="bounceAnimation1 absolute left-[10rem] top-6"
+            src="../Images/2ndCoin.svg"
+            alt="Rehoniel Image"
+          />
+          <img
+            class="bounceAnimation absolute left-[16rem] top-0 hidden sm:block"
+            src="../Images/3rdCoin.svg"
+            alt="Rehoniel Image"
+          />
+          <img
+            class="bounceAnimation1 absolute left-[24rem] top-4 hidden sm:block md:hidden lg:block"
+            src="../Images/4thCoin.svg"
+            alt="Rehoniel Image"
+          />
+          <img
+            class="moveAnimation absolute left-[10rem] top-0"
+            src="../Images/cloud.svg"
+            alt="Rehoniel Image"
+          />
+          <img
+            class="moveAnimation1 absolute left-[24rem] top-[12rem] hidden sm:block md:hidden lg:block"
+            src="../Images/cloud1.svg"
+            alt="Rehoniel Image"
+          />
+          <img
+            class="bounceAnimation1 absolute left-[10rem] top-[14rem] w-20 sm:left-[16rem]"
+            src="../Images/ethereum.svg"
+            alt="Rehoniel Image"
+          />
         </div>
       </div>
     </section>
     <section id="second">
-      <div class="p-10 bg-darkWhite md:p-20">
-        <div class="hide">
-          <h1 class="text-black text-3xl md:text-4xl font-bold text-center">
-            One platform for all your crypto investment needs.
-          </h1>
-          <p class="font-bold text-center text-darkNavy mt-2">
-            Unlocking the Advantages of Trading with Deluxe Capital.
-          </p>
-        </div>
+      <div
+        class="istGlass mx-auto mb-10 h-32 w-[90%] rounded-md bg-white bg-opacity-10 py-4 text-center text-lightGray1 sm:w-4/5 lg:w-3/5"
+      >
+        <h1 class="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl">
+          One Platform For All Your Cryptocurrency Investment Needs
+        </h1>
+        <p class="mt-4 text-xs sm:text-sm md:text-base">
+          Unlocking the advantages of trading with Rehoniel.
+        </p>
+      </div>
+      <div class="px-6 sm:px-10 md:px-20">
         <div
-          class="flex flex-col lg:flex-row lg:justify-between items-center lg:ml-20 mt-16 md:mt-40"
+          class="mt-16 flex flex-col items-center pb-20 md:mt-32 lg:ml-20 lg:flex-row lg:justify-between"
         >
-          <div class="lg:w-1/2">
+          <div class="h-[24rem] w-full lg:w-1/2">
             <div
-              class="flex flex-col items-center justify-center h-[40vh] sm:h-[60vh] lg:h-[70vh] w-[70vw] md:w-[50vw] lg:w-[35vw] rounded-[50%] border-2 border-dashed border-darkNavy relative"
+              class="second flex h-[50%] justify-end space-x-4 overflow-hidden"
             >
               <div
-                class="circle left-[40%] -top-[9%] absolute text-lightGray1 bg-darkNavy duration-1000 cursor-pointer rounded-[50%] h-[3rem] w-[3rem] sm:h-[5rem] sm:w-[5rem] lg:h-[7rem] lg:w-[7rem] flex items-center justify-center"
+                class="animated-div istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
               >
-                <i
-                  class="fas fa-layer-group text-2xl md:text-4xl lg:text-5xl"
-                ></i>
+                <div class="p-3">
+                  <i
+                    class="gradient fas fa-layer-group text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+                  ></i>
+                  <p
+                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
+                  >
+                    Wide Investment Range
+                  </p>
+                  <p
+                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
+                  >
+                    Emphasizing the wide range of investment options available
+                    on the platform, investors can explore and diversify their
+                    portfolio across various cryptocurrencies.
+                  </p>
+                </div>
               </div>
               <div
-                class="circle absolute top-[8%] left-[78%] text-lightGray1 bg-darkNavy duration-1000 cursor-pointer rounded-[50%] h-[3rem] w-[3rem] sm:h-[5rem] sm:w-[5rem] lg:h-[7rem] lg:w-[7rem] flex items-center justify-center"
+                class="animated-div istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
               >
-                <i class="fas fa-eye text-2xl md:text-4xl lg:text-5xl"></i>
+                <div class="p-3">
+                  <i
+                    class="gradient fas fa-eye text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+                  ></i>
+                  <p
+                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
+                  >
+                    Transparent Investment
+                  </p>
+                  <p
+                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
+                  >
+                    Transparency is a core principle of our platform. With clear
+                    and open reporting on investment performance and real-time
+                    data.
+                  </p>
+                </div>
               </div>
               <div
-                class="circle absolute top-[40%] left-[92%] text-lightGray1 bg-darkNavy duration-1000 cursor-pointer rounded-[50%] h-[3rem] w-[3rem] sm:h-[5rem] sm:w-[5rem] lg:h-[7rem] lg:w-[7rem] flex items-center justify-center"
+                class="animated-div istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
               >
-                <i class="fas fa-cogs text-2xl md:text-4xl lg:text-5xl"></i>
+                <div class="p-3">
+                  <i
+                    class="gradient fas fa-cogs text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+                  ></i>
+                  <p
+                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
+                  >
+                    Innovative Tools
+                  </p>
+                  <p
+                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
+                  >
+                    Through advanced analytics, predictive models, and
+                    cutting-edge trading algorithms, investors can stay ahead of
+                    the curve and make smarter investment choices.
+                  </p>
+                </div>
               </div>
               <div
-                class="circle absolute top-[75%] left-[78%] text-lightGray1 bg-darkNavy duration-1000 cursor-pointer rounded-[50%] h-[3rem] w-[3rem] sm:h-[5rem] sm:w-[5rem] lg:h-[7rem] lg:w-[7rem] flex items-center justify-center"
+                class="animated-div istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
               >
-                <i
-                  class="fas fa-hands-helping text-2xl md:text-4xl lg:text-5xl"
-                ></i>
+                <div class="p-3">
+                  <i
+                    class="gradient fas fa-hands-helping text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+                  ></i>
+                  <p
+                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
+                  >
+                    Dedicated Support
+                  </p>
+                  <p
+                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
+                  >
+                    We offer personalized assistance to guide investors
+                    throughout their investment journey, ensuring they receive
+                    the necessary help and support at every step.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="flex h-[50%] space-x-4 overflow-hidden">
+              <div
+                class="animated-div reverse istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
+              >
+                <div class="p-3">
+                  <i
+                    class="gradient fas fa-exchange-alt text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+                  ></i>
+                  <p
+                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
+                  >
+                    High Liquidity
+                  </p>
+                  <p
+                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
+                  >
+                    High liquidity is a hallmark of our platform. Investors can
+                    enjoy quick and efficient transactions, enabling them to
+                    enter and exit positions with ease and flexibility.
+                  </p>
+                </div>
               </div>
               <div
-                class="circle left-[40%] absolute top-[90%] text-lightGray1 bg-darkNavy duration-1000 cursor-pointer rounded-[50%] h-[3rem] w-[3rem] sm:h-[5rem] sm:w-[5rem] lg:h-[7rem] lg:w-[7rem] flex items-center justify-center"
+                class="animated-div reverse istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
               >
-                <i
-                  class="fas fa-exchange-alt text-2xl md:text-4xl lg:text-5xl"
-                ></i>
+                <div class="p-3">
+                  <i
+                    class="gradient fas fa-dollar-sign text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+                  ></i>
+                  <p
+                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
+                  >
+                    Competitive Fees
+                  </p>
+                  <p
+                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
+                  >
+                    With transparent fee structures and low/no transaction
+                    costs, investors can optimize their returns and keep more of
+                    their earnings.
+                  </p>
+                </div>
               </div>
               <div
-                class="circle absolute top-[75%] left-[5%] text-lightGray1 bg-darkNavy duration-1000 cursor-pointer rounded-[50%] h-[3rem] w-[3rem] sm:h-[5rem] sm:w-[5rem] lg:h-[7rem] lg:w-[7rem] flex items-center justify-center"
+                class="animated-div reverse istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
               >
-                <i
-                  class="fas fa-dollar-sign text-2xl md:text-4xl lg:text-5xl"
-                ></i>
+                <div class="p-3">
+                  <i
+                    class="gradient fas fa-desktop text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+                  ></i>
+                  <p
+                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
+                  >
+                    User-friendly Interface
+                  </p>
+                  <p
+                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
+                  >
+                    Navigating the platform and executing trades is a seamless
+                    experience. Our user-friendly interface is designed to make
+                    the investment process easy and straightforward.
+                  </p>
+                </div>
               </div>
               <div
-                class="circle absolute top-[40%] -left-[9%] text-lightGray1 bg-darkNavy duration-1000 cursor-pointer rounded-[50%] h-[3rem] w-[3rem] sm:h-[5rem] sm:w-[5rem] lg:h-[7rem] lg:w-[7rem] flex items-center justify-center"
+                class="animated-div reverse istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
               >
-                <i class="fas fa-desktop text-2xl md:text-4xl lg:text-5xl"></i>
-              </div>
-              <div
-                class="circle absolute top-[8%] left-[2%] text-lightGray1 bg-darkNavy duration-1000 cursor-pointer rounded-[50%] h-[3rem] w-[3rem] sm:h-[5rem] sm:w-[5rem] lg:h-[7rem] lg:w-[7rem] flex items-center justify-center"
-              >
-                <i
-                  class="fas fa-shield-alt text-2xl md:text-4xl lg:text-5xl"
-                ></i>
-              </div>
-
-              <div class="w-[75%] text-center">
-                <h1 id="midHeading" class="text-gold text-base md:text-lg">
-                  Diversity
-                </h1>
-                <p
-                  id="midSubheading"
-                  class="text-xl sm:text-2xl lg:text-3xl font-bold mt-2"
-                >
-                  Wide Investment Range
-                </p>
-                <p id="midParagraph" class="hidden md:block lg:text-base mt-4">
-                  Emphasizing the wide range of investment options available on
-                  the platform, investors can explore and diversify their
-                  portfolio across various cryptocurrencies, ensuring greater
-                  flexibility and potential for higher returns.
-                </p>
+                <div class="p-3">
+                  <i
+                    class="gradient fas fa-shield-alt text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+                  ></i>
+                  <p
+                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
+                  >
+                    Security Measure
+                  </p>
+                  <p
+                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
+                  >
+                    With robust and multi-layered security measures, we ensure
+                    that our users' assets are protected from potential threats
+                    and unauthorized access, allowing them to invest with peace
+                    of mind.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="lg:w-1/2 mt-10 lg:mt-0">
-            <h1 class="font-bold text-3xl md:text-4xl text-darkNavy">
-              Discover the Benefits of Investing Through
-              <span class="text-gold">Deluxe Capital.</span>
+          <div class="mt-10 text-lightGray1 lg:mt-0 lg:w-[40%]">
+            <h1 class="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl">
+              Explore the Advantages of Investing With
+              <span class="text-gold">Rehoniel.</span>
             </h1>
-            <h4 class="mt-2 font-bold">
-              Experience Unparalleled Growth and Diversification: Maximize Your
-              Investment Potential with Deluxe Capital.
-            </h4>
-            <p class="mt-10">
-              The platform offers a wide range of investment options with a
-              focus on transparency, innovative tools, and a dedicated support
-              team, providing high liquidity and competitive fees. Its
-              user-friendly interface ensures security through robust measures
-              to protect users' assets and enable seamless and confident
-              investing.
+            <p class="mt-10 text-xs sm:text-sm lg:text-base">
+              The platform offers diverse investments with transparency,
+              innovative tools, and a supportive team for liquidity and
+              competitive fees. A secure, user-friendly interface ensures
+              confident investing.
             </p>
             <button
-              class="mt-10 border-2 border-gold hover:border-darkNavy duration-1000 p-3 px-6 pt-3 text-darkNavy bg-gold rounded-lg hover:bg-lightGray1 hover:text-darkNavy"
+              class="mt-10 w-40 rounded-lg border-2 border-gold bg-gold py-3 text-black duration-500 hover:bg-inherit hover:text-gold"
             >
-              Create Account
+              Get Started
             </button>
           </div>
         </div>
       </div>
     </section>
-    <section id="whoAreWe">
+    <section id="whoAreWe" class="bg-lightGray1">
       <div
-        class="flex container flex-col items-center mt-10 px-6 md:flex-row md:justify-between md:mx-auto"
+        class="container flex flex-col items-center py-[8rem] px-6 md:mx-auto md:flex-row md:justify-between"
       >
-        <div class="mt-10 md:w-[50%] hide mb-20">
+        <div class="hide md:w-[49%]">
           <h3
-            class="text-2xl border-l-4 border-gold text-lightGray rounded px-2"
+            class="gradient-border w-[10rem] border-b-2 border-gold py-2 text-base font-bold sm:text-lg md:text-xl lg:text-2xl"
           >
             WHO WE ARE
           </h3>
-          <h1 class="text-4xl text-gold mt-6 font-bold mb-4">
-            What is <br />
-            <span class="text-lightGray font-bold">Deluxe Capital</span>
-          </h1>
-          <p class="font-light text-lightGray mb-10 md:mb-20">
-            Deluxe Capital stands as an innovative cryptocurrency investment
-            company, catering to our investors' diverse needs by offering a
-            comprehensive selection of investment choices. Acknowledging the
-            dynamic cryptocurrency landscape, we persistently research and
-            explore new opportunities to stay ahead and ensure our investors
-            receive the best prospects.
-          </p>
-          <a
-            href="/aboutUS"
-            class="p-3 px-6 pt-3 duration-1000 text-darkNavy bg-gold rounded-lg hover:bg-darkNavy hover:text-lightGray border-2 border-gold"
-            >Read More</a
+          <h1
+            class="my-8 text-lg font-bold text-darkBlue sm:text-xl md:text-2xl lg:text-3xl"
           >
+            What is
+            <span class="text-gold">Rehoniel?</span>
+          </h1>
+          <p
+            class="text-xs text-darkBlue sm:text-sm md:mb-20 md:text-base"
+          >
+            Rehoniel stands as an innovative cryptocurrency investment company,
+            catering to our investors' diverse needs by offering a comprehensive
+            selection of investment choices. Acknowledging the dynamic
+            cryptocurrency landscape, we persistently research and explore new
+            opportunities to stay ahead and ensure our investors receive the
+            best prospects.
+          </p>
+          <div class="my-10">
+            <a
+              href="/aboutUS"
+              class="rounded-lg border-2 border-gold bg-inherit py-3 px-8 text-gold duration-500 hover:bg-gold hover:text-black"
+              >Read More</a
+            >
+          </div>
         </div>
-        <div class="md:w-[50%] hide mt-10 mb-20 p-4 bg-lightGray1 rounded-lg">
+        <div class="hide backgroundGradient mt-10 rounded-lg p-2 md:mt-0 md:w-[49%]">
           <img class="w-full" src="../Images/DC.jpg" alt="Why choose us?" />
         </div>
       </div>
     </section>
-    <section id="map">
-      <div
-        class="flex hide flex-col items-center justify-center mt-10 bg-darkWhite p-6 md:px-0"
-      >
-        <h1 class="mt-10 text-3xl md:text-4xl font-bold">
-          <span class="text-gold">Deluxe Capital</span> is trusted by 3million+
-          users in 140+ countries.
+    <section id="map" class="bg-lightGray1">
+      <div class="container mx-auto">
+        <div class="hide flex flex-col-reverse md:space-y-0 md:flex-row md:justify-between items-center p-6 md:px-0">
+          <div class="md:w-[49%] mt-10 md:mt-0">
+            <img
+              src="../Images/Map.png"
+              alt="Deluxecapital customer distribution chart"
+            />
+          </div>
+          <div class="md:w-[49%]">
+            <h1 class="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl text-darkBlue">
+          <span class="text-gold">Rehoniel</span> is trusted by 3million+ users
+          in 140+ countries.
         </h1>
-        <p class="mt-2 font-semibold text-darkNavy mb-10">
+        <p class="mt-4 text-darkBlue text-sm md:text-base">
           Our Company has a significant global presence, with over three million
           investors in various regions of the world.
         </p>
-        <div>
-          <img src="../Images/Map.png" alt="Deluxecapital customer distribution chart">
-        </div>
-        <div class="mt-10 hide">
+        <div class="hide my-10">
           <a
             href="/user/create"
-            class="p-3 px-6 pt-3 text-white duration-1000 bg-darkNavy rounded-lg hover:bg-gold hover:text-darkNavy"
+            class="rounded-lg border-gold border-2 px-8 py-3 text-black duration-500 bg-gold hover:text-gold hover:bg-inherit"
             >Get Started</a
           >
         </div>
+          </div>
       </div>
+      </div>
+      
     </section>
-    <section id="howToGetStarted">
-      <div class="text-center p-4 hide pt-10">
-        <h1 class="text-3xl md:text-4xl text-gold mt-10 font-bold">
-          Key strategies for achieving profitability
+    <section id="howToGetStarted" class="container mx-auto">
+      <div class="hide p-4 pt-10">
+        <h1
+          class="mt-10 text-lg font-bold text-lightGray1 sm:text-xl md:text-2xl lg:text-3xl"
+        >
+          Key strategies for <br />
+          achieving profitability
         </h1>
-        <h1 class="text-lightGray">
-          Discover the four-step process that enables our investors to maintain
-          profitability with our organization.
+        <h1 class="mt-3 text-xs text-lightGray1 sm:text-sm lg:text-base">
+          Discover the four-step process that enables our investors to <br />
+          maintain profitability with our organization.
         </h1>
       </div>
       <div
-        class="flex flex-col items-center justify-center flex-wrap mt-10 p-4 mb-20 space-y-8 md:flex-row"
+        class="mt-10 mb-20 flex flex-col flex-wrap items-center space-y-8 p-4 md:flex-row md:justify-between"
       >
         <div
           id="card1"
-          class="card hide w-60 h-80 rounded-xl relative p-4 ease-out duration-1000 overflow-visible bg-darkNavy hover:bg-darkNavy md:ml-0 md:mt-8"
+          class="card istGlass hide relative h-60 w-60 overflow-visible rounded-lg border border-[#6564DB] bg-white bg-opacity-10 p-4 duration-500 ease-out md:ml-0 md:mt-8"
         >
-          <div class="text-center">
-            <div class="me-holder w-20 h-20 rounded-full mx-auto">
-              <i class="me fas fa-user-check fa-2x text-darkNavy"></i>
-            </div>
-            <p class="text-body mt-5 text-lg text-lightGray">
-              Create An Account
-            </p>
-            <p class="text-left mt-5 text-gold">
+          <div class="">
+            <i class="me fas fa-user-check fa-2x gradient"></i>
+            <p class="text-body mt-5 text-lg text-gold">Create An Account</p>
+            <p
+              class="mt-5 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
+            >
               Creating an account grants you investor status and privileges.
             </p>
           </div>
           <a href="/user/create"
             ><button
-              class="card-button -translate-x-2/4 translate-y-[125%] w-3/5 rounded-lg border-0 bg-paleGreen font-semibold p-0.5 absolute left-1/2 bottom-0 opacity-0 ease-out duration-500"
+              class="card-button absolute left-1/2 bottom-0 w-3/5 -translate-x-2/4 translate-y-[125%] rounded-lg border-0 bg-paleGreen p-0.5 font-semibold opacity-0 duration-500 ease-out"
             >
               Create
             </button></a
@@ -293,21 +416,21 @@
         </div>
         <div
           id="card2"
-          class="md:ml-8 card hide w-60 h-80 rounded-xl relative p-4 ease-out duration-1000 overflow-visible hover:bg-darkWhitebg-white"
+          class="card istGlass hide relative h-60 w-60 overflow-visible rounded-lg border border-[#6564DB] bg-white bg-opacity-10 p-4 duration-500 ease-out md:ml-8"
         >
-          <div class="text-center">
-            <div class="me-holder w-20 h-20 rounded-full mx-auto">
-              <i class="me fas fa-hand-holding-usd fa-2x text-darkNavy"></i>
-            </div>
-            <p class="text-body mt-5 text-lg text-lightGray">Invest</p>
-            <p class="text-left mt-5 text-gold">
+          <div class="">
+            <i class="me fas fa-hand-holding-usd fa-2x gradient"></i>
+            <p class="text-body mt-5 text-lg text-gold">Invest</p>
+            <p
+              class="mt-5 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
+            >
               Investing results in a financial gain, which is withdrawable at
               any given time.
             </p>
           </div>
           <a href="/user/create"
             ><button
-              class="card-button -translate-x-2/4 translate-y-[125%] w-3/5 rounded-lg border-0 bg-paleGreen font-semibold p-0.5 absolute left-1/2 bottom-0 opacity-0 ease-out duration-500"
+              class="card-button absolute left-1/2 bottom-0 w-3/5 -translate-x-2/4 translate-y-[125%] rounded-lg border-0 bg-paleGreen p-0.5 font-semibold opacity-0 duration-500 ease-out"
             >
               Invest
             </button></a
@@ -315,21 +438,21 @@
         </div>
         <div
           id="card3"
-          class="md:ml-8 card hide w-60 h-80 rounded-xl relative p-4 ease-out duration-1000 overflow-visible hover:bg-darkWhitebg-white"
+          class="card istGlass hide relative h-60 w-60 overflow-visible rounded-lg border border-[#6564DB] bg-white bg-opacity-10 p-4 duration-500 ease-out md:ml-8"
         >
-          <div class="text-center">
-            <div class="me-holder w-20 h-20 rounded-full mx-auto">
-              <i class="me fas fa-wallet fa-2x text-darkNavy"></i>
-            </div>
-            <p class="text-body mt-5 text-lg text-lightGray">Withdraw</p>
-            <p class="text-left mt-5 text-gold">
-              You have the option to conveniently transfer funds from your
-              account to your preferred method of disbursement at any time.
+          <div class="">
+            <i class="me fas fa-wallet fa-2x gradient"></i>
+            <p class="text-body mt-5 text-lg text-gold">Withdraw</p>
+            <p
+              class="mt-5 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
+            >
+              Transfer funds from your account to your preferred method of
+              disbursement at any time.
             </p>
           </div>
           <a href="/user/create"
             ><button
-              class="card-button -translate-x-2/4 translate-y-[125%] w-3/5 rounded-lg border-0 bg-paleGreen font-semibold p-0.5 absolute left-1/2 bottom-0 opacity-0 ease-out duration-500"
+              class="card-button absolute left-1/2 bottom-0 w-3/5 -translate-x-2/4 translate-y-[125%] rounded-lg border-0 bg-paleGreen p-0.5 font-semibold opacity-0 duration-500 ease-out"
             >
               Withdraw
             </button></a
@@ -337,21 +460,21 @@
         </div>
         <div
           id="card4"
-          class="card hide w-60 h-80 rounded-xl relative p-4 ease-out duration-1000 overflow-visible hover:bg-darkWhitebg-white"
+          class="card istGlass hide relative h-60 w-60 overflow-visible rounded-lg border border-[#6564DB] bg-white bg-opacity-10 p-4 duration-500 ease-out"
         >
-          <div class="text-center">
-            <div class="me-holder w-20 h-20 rounded-full mx-auto">
-              <i class="me fas fa-donate fa-2x text-darkNavy"></i>
-            </div>
-            <p class="text-body mt-5 text-lg text-lightGray">Re-Invest</p>
-            <p class="text-left mt-5 text-gold">
+          <div class="">
+            <i class="me fas fa-donate fa-2x gradient"></i>
+            <p class="text-body mt-5 text-lg text-gold">Re-Invest</p>
+            <p
+              class="mt-5 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
+            >
               Keep reinvesting to sustain growth and generate additional
               revenue.
             </p>
           </div>
           <a href="/user/create"
             ><button
-              class="card-button -translate-x-2/4 translate-y-[125%] w-3/5 rounded-lg border-0 bg-paleGreen font-semibold p-0.5 absolute left-1/2 bottom-0 opacity-0 ease-out duration-500"
+              class="card-button absolute left-1/2 bottom-0 w-3/5 -translate-x-2/4 translate-y-[125%] rounded-lg border-0 bg-paleGreen p-0.5 font-semibold opacity-0 duration-500 ease-out"
             >
               Reinvest
             </button></a
@@ -359,331 +482,59 @@
         </div>
       </div>
     </section>
-    <!-- <section id="investment">
-      <div class="flex flex-col p-6 justify-center items-center text-center">
-        <div class="hide">
-          <h3 class="text-2xl mb-4 text-gold">Investment Packages.</h3>
-          <h1 class="text-3xl mb-4 font-bold text-lightGray">
-            Choose the plan that optimally supports your cryptocurrency
-            investment objectives
-          </h1>
-          <p class="px-10 text-lightGray">
-            We understand the complexity and volatility of the cryptocurrency
-            market, that's why we have designed various plans to cater for your
-            specific investment needs. Please review and choose the one that
-            most effectively aligns with your investment objectives.
-          </p>
-        </div>
-        <div
-          class="flex flex-col items-center justify-center flex-wrap mx-auto mt-14 space-y-8 md:space-x-8 md:flex-row"
-        >
-          <div
-            id="card1"
-            class="w-72 h-[32rem] hide bg-darkWhite relative text-center mt-8 p-4 border-darkWhite border-2 rounded-lg ease-in-out duration-700 md:ml-8 hover:shadow-2xl hover:bg-white"
-          >
-            <div>
-              <div class="mt-10">
-                <h1 class="text-2xl font-bold text-darkNavy">Cash Flip</h1>
-                <h4 class="">Package</h4>
-                <h1 class="text-4xl font-bold mt-4 text-gold">Percentage</h1>
-                <h4 class="mb-4 font-light">After 15 Hours</h4>
-                <h4 class="text-gold font-bold my-3">
-                  <span class="text-black">MIN </span>£200
-                  <span class="text-black">MAX</span> £5,000
-                </h4>
-                <p class="text-left ml-10 my-2.5 font-bold">
-                  <i class="fas fa-check-circle"></i> Investment Account
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2.5 font-bold">
-                  <i class="fas fa-check-circle"></i> Crypto information
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2.5 font-bold">
-                  <i class="fas fa-check-circle"></i> Exclusive Events
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2.5 font-bold">
-                  <i class="fas fa-check-circle"></i> Staking Rewards
-                </p>
-                <hr />
-              </div>
-              <div class="mt-7">
-                <a
-                  href="#"
-                  class="p-3 px-6 pt-3 text-white duration-1000 bg-darkNavy rounded-lg hover:bg-gold hover:text-darkNavy"
-                  >Invest</a
-                >
-              </div>
-            </div>
-          </div>
-          <div
-            id="card2"
-            class="w-72 h-[32rem] hide bg-darkWhite relative text-center p-4 border-darkWhite border-2 rounded-lg ease-in-out duration-700 hover:shadow-2xl hover:bg-white"
-          >
-            <div>
-              <div class="mt-10">
-                <h1 class="text-2xl font-bold text-darkNavy">Basic</h1>
-                <h4 class="">Package</h4>
-                <h1 class="text-6xl font-bold mt-4 text-gold">20%</h1>
-                <h4 class="mb-4 font-light">After 24 Hours</h4>
-                <h4 class="text-gold font-bold my-2">
-                  <span class="text-black">MIN </span>£100
-                  <span class="text-black">MAX</span> £1,000
-                </h4>
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Investment Account
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Crypto information
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Exclusive Events
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Staking Rewards
-                </p>
-                <hr />
-              </div>
-              <div class="mt-7">
-                <a
-                  href="#"
-                  class="p-3 px-6 pt-3 text-white duration-1000 bg-darkNavy rounded-lg hover:bg-gold hover:text-darkNavy"
-                  >Invest</a
-                >
-              </div>
-            </div>
-          </div>
-          <div
-            id="card3"
-            class="w-72 h-[32rem] hide bg-darkWhite relative text-center p-4 border-darkWhite border-2 rounded-lg ease-in-out duration-700 hover:shadow-2xl hover:bg-white"
-          >
-            <div>
-              <div class="mt-10">
-                <h1 class="text-2xl font-bold text-darkNavy">Standard</h1>
-                <h4 class="">Package</h4>
-                <h1 class="text-6xl font-bold mt-4 text-gold">30%</h1>
-                <h4 class="mb-4 font-light">After 48 Hours</h4>
-                <h4 class="text-gold font-bold my-2">
-                  <span class="text-black">MIN </span>£500
-                  <span class="text-black">MAX</span> £5,000
-                </h4>
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Investment Account
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Crypto information
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Exclusive Events
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Staking Rewards
-                </p>
-                <hr />
-              </div>
-              <div class="mt-7">
-                <a
-                  href="#"
-                  class="p-3 px-6 pt-3 text-white duration-1000 bg-darkNavy rounded-lg hover:bg-gold hover:text-darkNavy"
-                  >Invest</a
-                >
-              </div>
-            </div>
-          </div>
-          <div
-            id="card4"
-            class="w-72 h-[32rem] hide bg-darkWhite relative text-center p-4 border-darkWhite border-2 rounded-lg ease-in-out duration-700 hover:shadow-2xl hover:bg-white"
-          >
-            <div>
-              <div class="mt-10">
-                <h1 class="text-2xl font-bold text-darkNavy">Essential</h1>
-                <h4 class="">Package</h4>
-                <h1 class="text-6xl font-bold mt-4 text-gold">60%</h1>
-                <h4 class="mb-4 font-light">After 72 Hours</h4>
-                <h4 class="text-gold font-bold my-2">
-                  <span class="text-black">MIN </span>£1,000
-                  <span class="text-black">MAX</span> £10,000
-                </h4>
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Investment Account
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Crypto information
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Exclusive Events
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Staking Rewards
-                </p>
-                <hr />
-              </div>
-              <div class="mt-7">
-                <a
-                  href="#"
-                  class="p-3 px-6 pt-3 text-white duration-1000 bg-darkNavy rounded-lg hover:bg-gold hover:text-darkNavy"
-                  >Invest</a
-                >
-              </div>
-            </div>
-          </div>
-          <div
-            id="card5"
-            class="w-72 h-[32rem] hide bg-darkWhite relative text-center p-4 border-darkWhite border-2 rounded-lg ease-in-out duration-700 hover:shadow-2xl hover:bg-white"
-          >
-            <div>
-              <div class="mt-10">
-                <h1 class="text-2xl font-bold text-darkNavy">Pro Essential</h1>
-                <h4 class="">Package</h4>
-                <h1 class="text-6xl font-bold mt-4 text-gold">80%</h1>
-                <h4 class="mb-4 font-light">After 120 Hours</h4>
-                <h4 class="text-gold font-bold my-2">
-                  <span class="text-black">MIN </span>£5,000
-                  <span class="text-black">MAX</span> £50,000
-                </h4>
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Investment Account
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Crypto information
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Exclusive Events
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Staking Rewards
-                </p>
-                <hr />
-              </div>
-              <div class="mt-7">
-                <a
-                  href="#"
-                  class="p-3 px-6 pt-3 text-white duration-1000 bg-darkNavy rounded-lg hover:bg-gold hover:text-darkNavy"
-                  >Invest</a
-                >
-              </div>
-            </div>
-          </div>
-          <div
-            id="card6"
-            class="w-72 h-[32rem] hide bg-darkWhite relative text-center p-4 border-darkWhite border-2 rounded-lg ease-in-out duration-700 hover:shadow-2xl hover:bg-white"
-          >
-            <div>
-              <span
-                class="premiumTag absolute overflow-hidden h-40 w-40 -top-2.5 -left-2.5 flex flex-col items-center justify-center"
-              ></span>
-              <div class="mt-10">
-                <h1 class="text-2xl font-bold text-darkNavy">Premium</h1>
-                <h4 class="">Package</h4>
-                <h1 class="text-6xl font-bold mt-4 text-gold">100%</h1>
-                <h4 class="mb-4 font-light">After 170 Hours</h4>
-                <h4 class="text-gold font-bold my-2">
-                  <span class="text-black">MIN</span> £10,000
-                  <span class="text-black">MAX </span>£500,000
-                </h4>
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Investment Account
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Crypto information
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Exclusive Events
-                </p>
-                <hr />
-                <p class="text-left ml-10 my-2 font-bold">
-                  <i class="fas fa-check-circle"></i> Staking Rewards
-                </p>
-                <hr />
-              </div>
-              <div class="mt-7">
-                <a
-                  href="#"
-                  class="p-3 px-6 pt-3 text-white duration-1000 bg-darkNavy rounded-lg hover:bg-gold hover:text-darkNavy"
-                  >Invest</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
     <section id="currency">
-      <div class="bg-white py-6 px-4 lg:px-20">
-        <h1 class="text-3xl md:text-4xl font-bold text-center mt-10">
+      <div class="container mx-auto py-6 px-6">
+        <h1 class="hide mt-10 text-lg sm:text-xl md:text-2xl font-bold text-lightGray1 lg:text-3xl">
           Accepted Deposit Methods.
         </h1>
-        <p class="mt-2 capitalize text-darkNavy text-center font-bold">
+        <p class="hide text-xs sm:text-sm md:text-base mt-2 capitalize text-lightGray1">
           Explore Secure and Convenient Options for Deposits.
         </p>
         <div
-          class="flex flex-col items-center justify-center md:space-x-6 md:flex-row mt-10"
+          class="flex flex-col items-center justify-center md:flex-row md:justify-between"
         >
-          <div class="md:w-1/3 hide mt-4">
+          <div class="hide md:w-1/2">
             <p
-              class="text-sm sm:text-base md:text-sm lg:text-base mt-2 text-darkNavy"
+              class="text-xs text-lightGray1 mt-8 md:mt-0 sm:text-sm md:text-base"
             >
-              Deluxe Capital proudly accepts both Bitcoin (BTC), Ethereum (ETH),
-              <span class="text-gold">UK Steam Card and US Razor Gold</span> as
+              Rehoniel proudly accepts both Bitcoin (BTC), Ethereum (ETH), as
               acceptable forms of deposit methods. <br />
               <br />
               <span class="text-lg font-bold text-gold">"</span>Our commitment
               to providing a seamless investment experience extends to embracing
               cutting-edge payment methods, ensuring convenience and security
               for our valued clients. Explore a world of financial opportunities
-              with Deluxe Capital, where your preferred currency is at the heart
-              of our investment offerings.<span
-                class="text-lg font-bold text-gold"
+              with Rehoniel, where your preferred currency is at the heart of
+              our investment offerings.<span class="text-lg font-bold text-gold"
                 >"</span
               >
             </p>
             <div
-              class="w-[20rem] sm:w-[24rem] md:w-[20rem] lg:w-[24rem] h-24 bg-darkNavy rounded-[2rem] mt-16 flex flex-row p-4 space-x-4"
+              class="istGlass mt-16 h-24 w-[20rem] rounded-br-xl rounded-bl-xl rounded-tl-md border border-[#6564DB] bg-white bg-opacity-10 p-4 sm:w-[24rem] md:w-[20rem] lg:w-[24rem]"
             >
-              <img src="../Images/deposit.png" alt="Head Of Service Image" />
-              <div class="md:mt-2">
-                <p class="text-gold font-bold">Alexander Williams</p>
-                <p class="text-xs lg:text-sm text-lightGray1">
+              <div>
+                <p class="font-bold text-gold">Alexander Williams</p>
+                <p class="text-xs text-lightGray1 lg:text-sm">
                   Head of Payment Services Department
                 </p>
-                <p class="text-[0.6rem] text-right text-gold">7th July 2020</p>
+                <p class="text-right text-[0.6rem] text-gold">7th July 2020</p>
               </div>
             </div>
           </div>
-          <div class="py-6 md:w-1/3 hide flex flex-col items-center">
+          <div class="hide flex flex-col items-end py-6 md:w-1/2">
             <div class="">
               <img
-                class="w-[17rem] animation"
+                class="animation w-[17rem]"
                 src="../Images/btc.png"
                 alt="Ethereum Coin"
               />
             </div>
             <div class="">
               <img
-                class="w-[17rem] animation"
+                class="animation w-[17rem]"
                 src="../Images/ethereumImg2.png"
                 alt="Ethereum Coin"
               />
-            </div>
-          </div>
-          <div class="p-6 md:w-1/3 hide">
-            <div class="sm:w-1/2 md:w-full mx-auto">
-              <img src="../Images/CARD.png" />
             </div>
           </div>
         </div>
@@ -691,14 +542,14 @@
     </section>
     <section id="testimonial">
       <div
-        class="mt-10 bg-darkWhite flex flex-col justify-center items-center relative h-full overflow-hidden p-6 hide"
+        class="hide relative mt-10 flex h-full flex-col items-center justify-center overflow-hidden p-6"
       >
-        <div class="mt-10 text-center">
-          <h3 class="my-4 text-gold text-2xl">Testimonials</h3>
-          <h1 class="text-3xl md:text-4xl font-bold text-darkNavy my-4">
-            Some Of Our Investors' Reviews.
+        <div class="mt-10 container text-lightGray1">
+          <h3 class="my-4 gradient-border w-[10rem] border-b-2 border-gold py-2 text-base font-bold sm:text-lg md:text-xl lg:text-2xl">Testimonials</h3>
+          <h1 class="my-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">
+            Some Of Our Investors' <br> Reviews.
           </h1>
-          <p class="text-darkNavy font-bold">
+          <p class="text-xs sm:text-sm lg:text-base w-96">
             Some of our investors have provided valuable feedback on their
             experiences with our company. Please take the time to review their
             testimonials.
@@ -707,103 +558,101 @@
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
             <div
-              class="swiper-slide bg-white rounded-lg ease-in-out duration-1000 hover:shadow-2xl"
+              class="swiper-slide rounded-lg bg-white duration-500 ease-in-out hover:shadow-2xl"
             >
               <div class="flex flex-col items-center p-6">
                 <img
-                  class="w-24 -mt-14"
+                  class="-mt-14 w-24"
                   src="../Images/testimonial 1.png"
                   alt="This is the image of the first Testimony"
                 />
-                <h5 class="font-bold text-lg text-gold">Kingston Rowland</h5>
-                <p class="text-darkNavy text-sm font-light">
+                <h5 class="text-lg font-bold text-gold">Kingston Rowland</h5>
+                <p class="text-sm font-light text-darkNavy">
                   Financial Analyst
                 </p>
-                <p class="text-sm font-semibold p-6 mt-0">
+                <p class="mt-0 p-6 text-sm font-semibold">
                   The fact that I have the option of making my fortune and also
-                  access to cryptocurrency market professionals makes Deluxe
-                  Investment stand out. Anyone who wants to build their wealth
+                  access the cryptocurrency market professionals makes Rehoniel stand out. Anyone who wants to build their wealth
                   should be here.
                 </p>
               </div>
             </div>
             <div
-              class="swiper-slide bg-white rounded-lg ease-in-out duration-1000 hover:shadow-2xl"
+              class="swiper-slide rounded-lg bg-white duration-500 ease-in-out hover:shadow-2xl"
             >
               <div class="flex flex-col items-center p-6">
                 <img
-                  class="w-24 -mt-14"
+                  class="-mt-14 w-24"
                   src="../Images/testimonial 2.png"
                   alt="This is the image of the first Testimony"
                 />
-                <h5 class="font-bold text-lg text-gold">Pauleen Tammie</h5>
-                <p class="text-darkNavy text-sm font-light">
+                <h5 class="text-lg font-bold text-gold">Pauleen Tammie</h5>
+                <p class="text-sm font-light text-darkNavy">
                   Human Resources Manager
                 </p>
-                <p class="text-sm font-semibold p-6 mt-0">
-                  Deluxe Capital overall appears to be a well-run cryptocurrency
+                <p class="mt-0 p-6 text-sm font-semibold">
+                  Rehoniel overall appears to be a well-run cryptocurrency
                   company and offers the latest technologies, making investing
                   very easy.
                 </p>
               </div>
             </div>
             <div
-              class="swiper-slide bg-white rounded-lg ease-in-out duration-1000 hover:shadow-2xl"
+              class="swiper-slide rounded-lg bg-white duration-500 ease-in-out hover:shadow-2xl"
             >
               <div class="flex flex-col items-center p-6">
                 <img
-                  class="w-24 -mt-14"
+                  class="-mt-14 w-24"
                   src="../Images/testimonial 3.png"
                   alt="This is the image of the first Testimony"
                 />
-                <h5 class="font-bold text-lg text-gold">Puneet Prasad</h5>
-                <p class="text-darkNavy text-sm font-light">
+                <h5 class="text-lg font-bold text-gold">Puneet Prasad</h5>
+                <p class="text-sm font-light text-darkNavy">
                   Business Development Manager
                 </p>
-                <p class="text-sm font-semibold p-6 mt-0">
-                  The professionalism and transparency of Deluxe Capital company
-                  are worth acknowledging. It is companies like this we want to
+                <p class="mt-0 p-6 text-sm font-semibold">
+                  The professionalism and transparency of Rehoniel company are
+                  worth acknowledging. It is companies like this we should
                   always trust on our road to financial freedom.
                 </p>
               </div>
             </div>
             <div
-              class="swiper-slide bg-white rounded-lg ease-in-out duration-1000 hover:shadow-2xl"
+              class="swiper-slide rounded-lg bg-white duration-500 ease-in-out hover:shadow-2xl"
             >
               <div class="flex flex-col items-center p-6">
                 <img
-                  class="w-24 -mt-14"
-                  src="../Images/testimonial 4.png"
+                  class="-mt-14 w-24"
+                  src="../Images/deposit.png"
                   alt="This is the image of the first Testimony"
                 />
-                <h5 class="font-bold text-lg text-gold">Ade Kehinde</h5>
-                <p class="text-darkNavy text-sm font-light">
+                <h5 class="text-lg font-bold text-gold">Phil Humphery</h5>
+                <p class="text-sm font-light text-darkNavy">
                   Operations Manager
                 </p>
-                <p class="text-sm font-semibold p-6 mt-0">
-                  This is my first ever experience with Deluxe Capital, and I
-                  didn't know that investing could be this interesting and
-                  exciting. Their customer care is fast and aiding.
+                <p class="mt-0 p-6 text-sm font-semibold">
+                  This is my first ever experience with Rehoniel, and I didn't
+                  know that investing could be this interesting and exciting.
+                  Their customer care is fast and aiding.
                 </p>
               </div>
             </div>
             <div
-              class="swiper-slide bg-white rounded-lg ease-in-out duration-1000 hover:shadow-2xl"
+              class="swiper-slide rounded-lg bg-white duration-500 ease-in-out hover:shadow-2xl"
             >
               <div class="flex flex-col items-center p-6">
                 <img
-                  class="w-24 -mt-14"
+                  class="-mt-14 w-24"
                   src="../Images/testimonial 5.png"
                   alt="This is the image of the first Testimony"
                 />
-                <h5 class="font-bold text-lg text-gold">Laura Alphonsine</h5>
-                <p class="text-darkNavy text-sm font-light">
+                <h5 class="text-lg font-bold text-gold">Laura Alphonsine</h5>
+                <p class="text-sm font-light text-darkNavy">
                   Marketing Manager
                 </p>
-                <p class="text-sm font-semibold p-6 mt-0">
-                  Deluxe Capital is a great investment platform. It's easy to
-                  use, and I enjoy their technology, strategies and quick
-                  payments.
+                <p class="mt-0 p-6 text-sm font-semibold">
+                  Rehoniel is a great investment platform. It's easy to use, and
+                  I enjoy their technology, strategies and quick payments.
                 </p>
               </div>
             </div>
@@ -813,7 +662,7 @@
       </div>
     </section>
     <section id="price-section">
-      <div class="mt-10 bg-white px-6 hide">
+      <div class="hide mt-10 bg-[url('../Images/bg1.png')] p-6">
         <div
           class="cryptohopper-web-widget"
           data-id="1"
@@ -828,72 +677,72 @@
     </section>
     <section id="where to buy cryptocurrency">
       <div
-        class="hide relative text-center py-10 mt-10 bg-darkNavy flex flex-col flex-wrap justify-evenly items-center md:flex-row md:space-x-0 space-y-10"
+        class="hide relative mt-10 flex flex-col flex-wrap items-center justify-evenly space-y-10 py-10 text-center md:flex-row md:space-x-0"
       >
         <img
-          class="absolute top-0 right-0 opacity-10 w-80"
+          class="absolute top-0 right-0 w-80 opacity-10"
           src="../Images/scribble-deluxe.png"
-          alt="Deluxe Capital Scribble"
+          alt="Rehoniel Scribble"
         />
         <div>
           <img
             class="w-[30rem]"
             src="../Images/phone.png"
-            alt="Deluxe Capital Staff Image"
+            alt="Rehoniel Staff Image"
           />
         </div>
         <div>
-          <h1 class="text-gold font-bold mt-10 text-3xl md:text-5xl">
+          <h1 class="mt-10 text-3xl font-bold text-gold md:text-5xl">
             Where to Buy Cryptocurrency?
           </h1>
-          <p class="text-lightGray mt-4 mb-20 text-sm md:text-base">
+          <p class="mt-4 mb-20 text-sm text-lightGray md:text-base">
             Discover Trusted Platforms for Safe and Secure Transactions.
           </p>
           <div
-            class="flex flex-col md:flex-row justify-evenly space-y-6 md:space-y-0"
+            class="flex flex-col justify-evenly space-y-6 md:flex-row md:space-y-0"
           >
             <div class="text-center">
-              <h2 class="text-lightGray font-bold">Buy From Binance</h2>
+              <h2 class="font-bold text-lightGray">Buy From Binance</h2>
               <a href="https://www.binance.com" target="_blank">
-                <button class="buy-button mt-4">Binance.com</button></a
+                <button class="buy-button mt-4 text-gold border-2 border-gold">Binance.com</button></a
               >
             </div>
             <div class="text-center">
-              <h2 class="text-lightGray font-bold">Buy From Coinbase</h2>
+              <h2 class="font-bold text-lightGray">Buy From Coinbase</h2>
               <a href="https://www.coinbase.com" target="_blank"
-                ><button class="buy-button mt-4">Coinbase.com</button>
+                ><button class="buy-button mt-4 text-gold border-2 border-gold">Coinbase.com</button>
               </a>
             </div>
             <div class="text-center">
-              <h2 class="text-lightGray font-bold">Buy From Crypto</h2>
+              <h2 class="font-bold text-lightGray">Buy From Crypto</h2>
               <a href="https://www.crypto.com" target="_blank">
-                <button class="buy-button mt-4">Crypto.com</button></a
+                <button class="buy-button mt-4 text-gold border-2 border-gold">Crypto.com</button></a
               >
             </div>
             <div class="text-center">
-              <h2 class="text-lightGray font-bold">Buy From Trust Wallet</h2>
+              <h2 class="font-bold text-lightGray">Buy From Trust Wallet</h2>
               <a href="https://www.trustwallet.com" target="_blank">
-                <button class="buy-button mt-4">Trustwallet.com</button></a
+                <button class="buy-button mt-4 text-gold border-2 border-gold">Trustwallet.com</button></a
               >
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section id="cta" class="bg-white">
+    <section id="cta" class="bg-[#6564DB] bg-opacity-10">
       <div
-        class="flex flex-col hide mt-10 items-center shadow-2xl justify-around px-6 py-24 mx-auto space-y-12 md:py-12 md:flex-row md:space-y-0"
+        class="hide mx-auto mt-10  flex flex-col items-center justify-around space-y-12 px-6 py-24 md:flex-row md:space-y-0 md:py-12"
       >
         <!-- Heading -->
         <h2
-          class="text-3xl font-bold leading-tight text-gold text-center md:text-4xl md:max-w-xl md:text-left"
+          class="text-center gradient-border font-bold leading-tight md:max-w-xl md:text-left text-lg sm:text-xl md:text-2xl lg:text-3xl"
         >
-          Crafted by Investors, Tailored for Investors.
+        Exclusively Tailored for  Seasoned Investors.
         </h2>
         <div>
           <a
             href="/user/create"
-            class="duration-1000 p-3 px-6 pt-3 text-darkNavy bg-gold rounded-lg hover:bg-darkNavy hover:text-lightGray"
+            class="rounded-lg bg-gold p-3 px-6 pt-3 text-darkNavy duration-500 hover:bg-darkNavy hover:text-lightGray"
             >Get Started</a
           >
         </div>
@@ -909,26 +758,5 @@
     <script src="https://www.cryptohopper.com/widgets/js/script"></script>
     <!-- Custom JS -->
     <script src="../JS/index.js"></script>
-    <!-- For the bar chart -->
-    <!-- <script>
-      var options = {
-        chart: {
-          type: 'bar',
-          height: '100%', // Chart height will adapt to the container's height
-        },
-        colors: ['#3366cc', '#dc3912', '#ff9900', '#109618', '#990099', '#0099c6'],
-        series: [{
-          name: 'Value',
-          data: [10, 15, 25, 30, 12, 18]
-        }],
-        xaxis: {
-          categories: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6']
-        }
-      };
-    
-      var chart = new ApexCharts(document.querySelector("#chart"), options);
-      chart.render();
-    </script> -->
-    
   </body>
 </html>

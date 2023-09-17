@@ -40,13 +40,17 @@
     <%- include("partials/sidebar"); -%>
     <section class="bg-white" id="Top Section">
       <div
-        class="p-4 flex flex-row items-center justify-end space-x-2 relative"
+        class="p-4 flex flex-row items-start justify-end space-x-2 relative"
       >
         <img class="h-8" src="../Images/user.png" alt="User-Icon" />
-        <h4 class="font-bold text-darkNavy"><%= user.name %></h4>
+        <div>
+          <h4 class="font-bold text-darkNavy"><%= user.name %></h4>
+        <p class="gradient-border font-semibold text-xs lg:text-sm"><%= user.email %></p>
+        </div>
+        
         <img
           id="toggleDropDownBtn"
-          class="cursor-pointer mt-1"
+          class="cursor-pointer mt-1 hover:translate-y-2 duration-500"
           src="../Images/downArrow.png"
           alt="Down Arrow"
         />
@@ -89,7 +93,7 @@
             />
             <div class="flex flex-row justify-between relative z-10">
               <div
-                class="bg-darkNavy bg-opacity-30 flex items-center justify-center p-4 rounded-xl"
+                class="bg-darkNavy istGlass bg-opacity-30 flex items-center justify-center p-4 rounded-xl"
               >
                 <img class="w-6" src="../Images/wallet.png" alt="wallet icon" />
               </div>
@@ -121,10 +125,10 @@
             <h1
               class="number text-2xl sm:text-3xl font-bold mt-1 text-gold noasterisks"
             >
-              £ <%=user.balance.toLocaleString() %>
+              $ <%=user.balance.toLocaleString() %>
             </h1>
             <h1 class="number1 hidden">
-              £ <%=user.balance.toLocaleString() %>
+              $ <%=user.balance.toLocaleString() %>
             </h1>
           </div>
           <div
@@ -132,7 +136,7 @@
           >
             <div class="flex flex-row justify-between relative">
               <div
-                class="bg-darkNavy bg-opacity-30 flex items-center justify-center p-4 rounded-xl"
+                class="bg-darkNavy istGlass bg-opacity-30 flex items-center justify-center p-4 rounded-xl"
               >
                 <img
                   class="w-6"
@@ -168,11 +172,11 @@
             <h1
               class="number text-2xl sm:text-3xl font-bold mt-1 text-gold noasterisks"
             >
-              £ <%= earnings.reduce( (total, current)=> total + current.amount,
+              $ <%= earnings.reduce( (total, current)=> total + current.amount,
               0).toLocaleString()%>
             </h1>
             <h1 class="number1 hidden">
-              £ <%= earnings.reduce( (total, current)=> total + current.amount,
+              $ <%= earnings.reduce( (total, current)=> total + current.amount,
               0).toLocaleString()%>
             </h1>
           </div>
@@ -190,7 +194,7 @@
             />
             <div class="flex flex-row justify-between relative z-10">
               <div
-                class="bg-darkNavy bg-opacity-30 flex items-center justify-center p-4 rounded-xl"
+                class="bg-darkNavy istGlass bg-opacity-30 flex items-center justify-center p-4 rounded-xl"
               >
                 <img class="w-6" src="../Images/bank.png" alt="deposit icon" />
               </div>
@@ -222,11 +226,11 @@
             <h1
               class="number text-2xl sm:text-3xl font-bold mt-1 text-gold noasterisks"
             >
-              £ <%= deposits.reduce( (total, current)=> total + current.amount,
+              $ <%= deposits.reduce( (total, current)=> total + current.amount,
               0).toLocaleString()%>
             </h1>
             <h1 class="number1 hidden">
-              £ <%= deposits.reduce( (total, current)=> total + current.amount,
+              $ <%= deposits.reduce( (total, current)=> total + current.amount,
               0).toLocaleString()%>
             </h1>
           </div>
@@ -235,7 +239,7 @@
           >
             <div class="flex flex-row justify-between relative">
               <div
-                class="bg-darkNavy bg-opacity-30 flex items-center justify-center p-4 rounded-xl"
+                class="bg-darkNavy istGlass bg-opacity-30 flex items-center justify-center p-4 rounded-xl"
               >
                 <img
                   class="w-6"
@@ -271,11 +275,11 @@
             <h1
               class="number text-2xl sm:text-3xl font-bold mt-1 text-gold noasterisks"
             >
-              £ <%= withdrawals.reduce( (total, current)=> total +
+              $ <%= withdrawals.reduce( (total, current)=> total +
               current.amount, 0).toLocaleString()%>
             </h1>
             <h1 class="number1 hidden">
-              £ <%= withdrawals.reduce( (total, current)=> total +
+              $ <%= withdrawals.reduce( (total, current)=> total +
               current.amount, 0).toLocaleString()%>
             </h1>
           </div>
@@ -324,11 +328,11 @@
               <div id="deposit" class="flex flex-row items-center justify-between border border-red-600 p-2 rounded-xl">
                 <div class="flex flex-row items-center">
                   <div
-                    class="rounded-[50%] bg-red-600 bg-opacity-40 p-2 sm:p-4 flex items-center justify-center"
+                    class="rounded-[50%] bg-red-600 bg-opacity-20 p-2 sm:p-4 flex items-center justify-center"
                   >
                     <img
                       class="w-5 h-5 sm:w-6 sm:h-6"
-                      src="../Images/depositArrow.png"
+                      src="../Images/deposit.svg"
                       alt="Deposit Icon"
                     />
                   </div>
@@ -343,7 +347,7 @@
                   </div>
                 </div>
                 <div>
-                  <h1 class="text-red-600 text-sm sm:text-xl font-bold">+£<%= lastDeposit.amount %></h1>
+                  <h1 class="text-red-600 text-sm sm:text-xl font-bold">+$<%= lastDeposit.amount %></h1>
                 </div>
               </div>
               <% } %>
@@ -351,11 +355,11 @@
                 <div id="withdrawal" class="flex flex-row items-center justify-between border border-green-600 p-2 rounded-xl">
                   <div class="flex flex-row items-center">
                     <div
-                      class="rounded-[50%] bg-green-600 bg-opacity-40 p-2 sm:p-4 flex items-center justify-center"
+                      class="rounded-[50%] bg-green-600 bg-opacity-20 p-2 sm:p-4 flex items-center justify-center"
                     >
                       <img
-                        class="w-5 h-5 sm:w-6 sm:h-6"
-                        src="../Images/withdraw.png"
+                        class=""
+                        src="../Images/withdraw.svg"
                         alt="WIthdraw Icon"
                       />
                     </div>
@@ -370,7 +374,7 @@
                     </div>
                   </div>
                   <div>
-                    <h1 class="text-green-600 text-sm sm:text-xl font-bold">-£<%= lastWithdrawal.account.amount %></h1>
+                    <h1 class="text-green-600 text-sm sm:text-xl font-bold">-$<%= lastWithdrawal.account.amount %></h1>
                   </div>
                 </div>
                 <% } %>
@@ -378,7 +382,7 @@
                   <div class="flex flex-row items-center justify-between border border-blue-600 p-2 rounded-xl">
                     <div class="flex flex-row items-center">
                       <div
-                        class="rounded-[50%] bg-blue-700 bg-opacity-40 p-2 sm:p-4 flex items-center justify-center"
+                        class="rounded-[50%] bg-blue-700 bg-opacity-20 p-2 sm:p-4 flex items-center justify-center"
                       >
                         <img
                           class="w-5 h-5 sm:w-6 sm:h-6"
@@ -401,7 +405,7 @@
                       </div>
                     </div>
                     <div>
-                      <h1 class="text-blue-600 text-sm sm:text-xl font-bold">£<%= lastInvestment.amount %></h1>
+                      <h1 class="text-blue-600 text-sm sm:text-xl font-bold">$<%= lastInvestment.amount %></h1>
                     </div>
                   </div>
                   <% } %>
@@ -418,9 +422,8 @@
             />
           <div class="flex flex-row justify-between items-center">
             <img class="w-9 sm:w-12" src="../Images/user.png" alt="User Icon">
-            <div class="flex flex-row items-center space-x-2">
-              <img class="w-9 sm:w-12" src="../Images/logo.png" alt="Deluxe capital logo">
-              <h4 class="text-base sm:text-lg font-bold text-gold mt-2">Deluxe Capital</h4>
+            <div class="flex flex-row items-center p-1 rounded-md bg-lightGray1">
+              <img class="w-20 sm:w-32" src="../Images/logo.png" alt="Deluxe capital logo">
             </div>
           </div>
             <div class="mt-40 flex flex-row justify-between items-center">
@@ -436,7 +439,7 @@
             <div class="mt-4 flex flex-row justify-between items-center"> 
                 <div>
                   <p class="text-darkGray text-[0.6rem]">Current Balance</p>
-                  <p class="text-base sm:text-lg text-gold font-bold text-center">£<%=user.balance.toLocaleString() %></p>
+                  <p class="text-base sm:text-lg text-gold font-bold text-center">$<%=user.balance.toLocaleString() %></p>
                 </div>
                 <div>
                   <p class="text-darkGray text-[0.6rem]">Investment Count</p>
@@ -444,12 +447,12 @@
                 </div>
                 <div>
                   <p class="text-darkGray text-[0.6rem]">Total Earnings</p>
-                  <p class="text-base sm:text-lg text-gold font-bold text-center">£<%= earnings.reduce( (total, current)=> total + current.amount,
+                  <p class="text-base sm:text-lg text-gold font-bold text-center">$<%= earnings.reduce( (total, current)=> total + current.amount,
                     0).toLocaleString() %></p>
                 </div>
                 <div>
                   <p class="text-darkGray text-[0.6rem]">Total Withdraw</p>
-                  <p class="text-base sm:text-lg text-gold font-bold text-center">£<%= withdrawals.reduce( (total, current)=> total + current.amount,
+                  <p class="text-base sm:text-lg text-gold font-bold text-center">$<%= withdrawals.reduce( (total, current)=> total + current.amount,
                     0).toLocaleString() %></p>
                 </div>
             </div>
@@ -464,7 +467,7 @@
               id="referral-link"
               class="text-darkNavy text-xs text-center cursor-pointer"
             >
-              https://www.deluxecapital.org/user/create?ref=<%=user.userId %>
+              https://www.rehoniel.org/user/create?ref=<%=user.userId %>
             </p>
           </a>
         </div>

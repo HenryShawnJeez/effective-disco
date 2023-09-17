@@ -30,7 +30,7 @@
 
   <body class="main bg-darkGray">
     <%- include ("partials/sidebar"); -%>
-    <section>
+    <section class="px-8 py-4">
       <% if(status ==='success' ){ %>
       <div class="flex w-full items-center justify-center">
         <div
@@ -87,95 +87,170 @@
         </div>
       </div>
       <% }%>
-      <div class="flex flex-col items-center justify-center">
-        <div class="mt-32 text-center text-brightBlue">
-          <h1 class="text-2xl font-bold md:text-4xl">Make An Investment</h1>
-          <h4 class="mt-10 text-sm text-darkBlue md:text-base">
-            Select Your Plan.
-          </h4>
+      <div class="mt-20 flex flex-col">
+        <div>
+          <h1
+            class="text-xl font-bold text-[#CC9E06] sm:text-2xl md:text-3xl lg:text-4xl"
+          >
+            Make An Investment
+          </h1>
+          <h4 class="text-sm text-darkBlue md:text-base">Select Your Plan.</h4>
         </div>
-
-        <form
-          id="form"
-          action="/user/invest"
-          method="post"
-          class="flex flex-col items-center justify-center"
-        >
+        <div class="mt-10 flex flex-col-reverse justify-between md:flex-row">
           <div
-            class="custom-select mt-2 w-72 rounded-xl border-2 border-brightBlue md:w-96"
+            class="mt-4 w-full rounded-lg border border-[#9EA0A3] bg-white p-2 md:mt-0 md:w-[49%]"
           >
-            <select name="plan">
-              <option value="">Select Your Plan</option>
-              <option value="cashFlip">Cash Flip Plan</option>
-              <option value="basic">Basic Plan</option>
-              <option value="standard">Standard Plan</option>
-              <option value="essential">Essential Plan</option>
-              <option value="proEssential">Pro Essential Plan</option>
-              <option value="premium">Premium Plan</option>
-            </select>
+            <div
+              class="linkContainer flex h-[30rem] w-full flex-col overflow-y-auto px-2"
+            >
+              <p class="mb-2 mt-8 text-sm font-bold sm:text-base">
+                All Investments
+              </p>
+              <% if(investments.length === 0) { %>
+              <div class="m-auto flex items-center justify-center">
+                <h1
+                  class="gradient-border text-sm font-bold sm:text-base md:text-lg lg:text-xl"
+                >
+                  No Running Investment Yet
+                </h1>
+              </div>
+              <% } %> <% investments.forEach(investment=> {%>
+              <div
+                class="flex justify-between rounded-lg border border-[#9EA0A3] bg-black p-4"
+              >
+                <div>
+                  <p class="text-xs text-[#9EA0A3] sm:text-sm">
+                    Invested Amount
+                  </p>
+                  <p class="gradient-border text-base font-bold sm:text-lg">
+                    $<%= investment.amount %>
+                  </p>
+                  <p class="mt-4 text-xs text-[#9EA0A3] sm:text-sm">
+                    Investment Plan
+                  </p>
+                  <p
+                    class="gradient-border text-base font-bold capitalize sm:text-lg"
+                  >
+                    <%= investment.plan %>
+                  </p>
+                  <p class="mt-4 text-xs text-[#9EA0A3] sm:text-sm">
+                    Start Date
+                  </p>
+                  <p class="gradient-border text-base font-bold sm:text-lg">
+                    <%= new
+                    Date(investment.createdAt).toLocaleDateString('en-US', {
+                    year: 'numeric', month: 'short', day: 'numeric' }) %>
+                  </p>
+                </div>
+                <div>
+                  <p class="text-xs text-[#9EA0A3] sm:text-sm">Return Amount</p>
+                  <% if (investment.plan === "essential") { %>
+                  <p class="gradient-border text-base font-bold sm:text-lg">
+                    <span class="mr-1 text-[0.6rem] text-green-400 sm:text-xs"
+                      >+$<%= investment.amount * 0.15 %>
+                    </span>
+                    $<%= investment.amount + (investment.amount * 0.15) %>
+                  </p>
+                  <% } else if (investment.plan === "capital") { %>
+                  <p class="gradient-border text-base font-bold sm:text-lg">
+                    <span class="mr-1 text-[0.6rem] text-green-400 sm:text-xs"
+                      >+$<%= investment.amount * 0.5 %>
+                    </span>
+                    $<%= investment.amount + (investment.amount * 0.5) %>
+                  </p>
+                  <% } else if (investment.plan === "advanced") { %>
+                  <p class="gradient-border text-base font-bold sm:text-lg">
+                    <span class="mr-1 text-[0.6rem] text-green-400 sm:text-xs"
+                      >+$<%= investment.amount * 1.4 %>
+                    </span>
+                    $<%= investment.amount + (investment.amount * 1.4) %>
+                  </p>
+                  <% } else if (investment.plan === "ultimate") {%>
+                  <p class="gradient-border text-base font-bold sm:text-lg">
+                    <span class="mr-1 text-[0.6rem] text-green-400 sm:text-xs"
+                      >+$<%= investment.amount * 5.6 %>
+                    </span>
+                    $<%= investment.amount + (investment.amount * 5.6) %>
+                  </p>
+                  <% } %>
+                  <p class="mt-4 text-xs text-[#9EA0A3] sm:text-sm">
+                    Investment Status
+                  </p>
+                  <% if(investment.isFulfilled === false) { %>
+                  <p class="gradient-border text-base font-bold sm:text-lg">
+                    Running
+                  </p>
+                  <%} else {%>
+                  <p class="gradient-border text-base font-bold sm:text-lg">
+                    Completed
+                  </p>
+                  <% } %>
+                  <p class="mt-4 text-xs text-[#9EA0A3] sm:text-sm">Due Date</p>
+                  <p class="gradient-border text-base font-bold sm:text-lg">
+                    <%= new
+                    Date(investment.expiresAt).toLocaleDateString('en-US', {
+                    year: 'numeric', month: 'short', day: 'numeric' }) %>
+                  </p>
+                </div>
+              </div>
+              <% }) %>
+            </div>
+            <div class="my-4 flex justify-end">
+              <a
+                href="/user/transactions"
+                class="flex items-center duration-500 hover:translate-x-2"
+                ><span
+                  class="text-[0.65rem] text-[#6564DB] sm:text-xs md:text-sm"
+                  >View All Transactions</span
+                ><img src="../../Images/arrow-right.svg" alt="arrow"
+              /></a>
+            </div>
           </div>
-          <div class="mt-10">
-            <h4 class="text-center text-sm text-darkBlue md:text-base">
-              Amount To Invest.
-            </h4>
-            <input
-              class="mt-2 w-72 rounded-xl border-2 border-brightBlue px-8 py-3 placeholder:text-center placeholder:text-sm md:w-96"
-              type="number"
-              name="amount"
-              id="amount"
-              placeholder="Enter The Amount Here"
-            />
-          </div>
-          <button
-            type="submit"
-            class="mt-10 w-72 rounded-xl border-2 border-brightBlue bg-brightBlue px-10 py-3 text-lightGray duration-700 hover:bg-lightGray1 hover:text-darkBlue md:w-96"
+          <div
+            class="mt-4 w-full rounded-lg border border-[#9EA0A3] bg-white p-2 md:mt-0 md:w-[49%]"
           >
-            Invest
-          </button>
-        </form>
+            <form id="form" action="/user/invest" method="post">
+              <h4 class="mt-8 text-sm text-darkBlue md:text-base">
+                Choose Your Plan
+              </h4>
+              <div
+                class="custom-select relative mt-2 w-full rounded-lg border border-[#9EA0A3] text-xs sm:text-sm"
+              >
+                <select name="plan">
+                  <option value="">Select Your Plan</option>
+                  <option value="essential">Investor Essentials Plan</option>
+                  <option value="capital">Growth Capital Plan</option>
+                  <option value="advanced">Advanced Mining Strategy</option>
+                  <option value="ultimate">Ultimate Mining Opportunity</option>
+                </select>
+              </div>
+              <div class="mt-4">
+                <h4 class="mt-8 text-sm text-darkBlue md:text-base">
+                  Amount To Invest.
+                </h4>
+                <input
+                  class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 caret-darkBlue placeholder:text-sm focus:outline focus:outline-gold"
+                  type="number"
+                  name="amount"
+                  id="amount"
+                  placeholder="Enter The Amount Here"
+                  required
+                />
+              </div>
+              <div class="mt-10 mb-32 flex justify-end">
+                <button
+                  type="submit"
+                  class="rounded-lg bg-brightBlue px-5 py-3 text-sm text-lightGray1 duration-500 hover:bg-lightGray1 hover:text-darkBlue disabled:cursor-not-allowed disabled:opacity-50 sm:px-7 sm:text-base md:px-9"
+                >
+                  Invest
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
-    <% if(investments.length> 0){ %>
-    <section class="investments text-center">
-      <p class="mt-10">Active Investments</p>
-      <table
-        class="mx-auto mt-12 mb-1 w-3/4 border-collapse bg-white text-xs shadow-xl md:mx-auto md:text-sm"
-      >
-        <thead class="">
-          <tr class="h-16 border-b-2 border-cyan-500 text-left">
-            <th
-              class="w-1/3 border border-slate-300 text-center font-semibold dark:border-slate-600"
-            >
-              Amount
-            </th>
-            <th
-              class="w-1/3 border border-slate-300 text-center font-semibold dark:border-slate-600"
-            >
-              Invested At
-            </th>
-            <th
-              class="w-1/3 border border-slate-300 text-center font-semibold dark:border-slate-600"
-            >
-              Expires At
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <% investments.forEach(investment=> {%>
-          <tr class="border-b-1 h-10">
-            <td class="border text-center">£<%= investment.amount %></td>
-            <td class="border text-center capitalize">
-              <%= investment.createdAt.toLocaleDateString() %>
-            </td>
-            <td class="border text-center capitalize">
-              <%= investment.expiresAt.toLocaleDateString() %>
-            </td>
-          </tr>
-          <% }) %>
-        </tbody>
-      </table>
-    </section>
-    <% } %> <%- include ("partials/script"); -%>
+    <%- include ("partials/script"); -%>
     <script src="../JS/deposit.js"></script>
     <!-- For the popups -->
     <script>

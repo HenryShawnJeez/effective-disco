@@ -6,19 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Create Account</title>
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="../Images/logo.ico" type="image/x-ico" />
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-  <!-- Font-Awesome -->
-  <script src="https://kit.fontawesome.com/f5af09e245.js" crossorigin="anonymous"></script>
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="../CSS/main.css" />
-  <!-- Jivo Chat -->
-  <script src="//code.jivosite.com/widget/DzC9jELjbC" async></script>
+  <%- include("partials/SEO"); -%>
   <!-- Password Strength -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js" defer></script>
 </head>
@@ -26,63 +14,64 @@
 <body class="bg-brightBlue">
   <div id="notification" class="hidden space-x-4 capitalize bg-red-600 text-white h-[3rem] w-[24rem] sm:w-[28rem] p-5 rounded-lg justify-between items-center mt-10 sm:ml-4">
    <p class="text-xs sm:text-sm">The Entered Passwords do not match</p> 
-   <button onclick="correctPassword()" class="text-white text-xs px-2 py-1 border-2 border-white rounded-lg">Rewrite</button>
+   <button onclick="correctPassword()" class="text-white text-xs px-2 py-1 border-2 border-white rounded-md">Rewrite</button>
     <i onclick="hide()" class="cursor-pointer fas fa-times fa-lg" style="color: #ffffff;"></i>
   </div>
   <section id="main-section" class="flex items-center justify-center">
-      <div class="my-14 p-6 flex flex-col bg-lightGray rounded-lg items-center justify-center w-96">
-       <a href="/"><img class="w-20" src="../Images/logo.png" alt="Deluxe Capital Logo" /></a> 
-        <h1 class="text-4xl mt-4 text-darkBlue font-extrabold">Sign-Up</h1>
-        <p class="text-sm mt-2 text-brightBlue mb-4 w-56">Sign Up To Become An Investor</p>
+      <div class="my-14 p-6 flex flex-col bg-white istGlass bg-opacity-20 border border-[#6564DB] rounded-lg items-center justify-center w-96">
+        <div class="bg-white p-2 rounded-lg"> <a href="/"><img class="w-40" src="../Images/logo.png" alt="Rehoniel Logo" /></a> </div>
+        
+        <h1 class="text-4xl mt-4 text-lightGray1 font-extrabold">Sign-Up</h1>
+        <p class="text-sm mt-2 text-gold mb-4 w-56">Sign Up To Become An Investor</p>
         <form action="/user/create" method="post">
           <p>
             <input
-              class="border-primaryBlue border-solid border-2 ml-1 px-6 py-2 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm placeholder:text-gray-400 focus:outline-brightBlue"
+              class="border-primaryBlue caret-darkBlue  border-solid border-2 ml-1 px-6 py-2 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm  focus:outline-darkBlue placeholder:text-darkBlue"
               type="text" id="name" name="name" placeholder="Enter Your Full Name" required/>
           </p>
           <p class="mt-2">
             <input
-              class="border-primaryBlue border-solid border-2 ml-1 px-6 py-2 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm placeholder:text-gray-400 focus:outline-brightBlue"
+              class="border-primaryBlue border-solid border-2 ml-1 px-6 py-2 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm focus:outline-darkBlue placeholder:text-darkBlue"
               type="email" id="email" name="email" placeholder="Enter Your Email Address" required/>
           </p>
           <p class="mt-2">
             <input
-              class="border-primaryBlue border-solid border-2 ml-1 px-6 py-2 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm placeholder:text-gray-400 focus:outline-brightBlue"
+              class="border-primaryBlue border-solid border-2 ml-1 px-6 py-2 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm focus:outline-darkBlue placeholder:text-darkBlue"
               type="text" id="username" name="username" placeholder="Enter Your Username" required/>
           </p>
           <p class="mt-2 flex justify-center mr-2">
             <input
-              class="border-primaryBlue border-solid border-2 ml-1 px-6 py-2 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm placeholder:text-gray-400 focus:outline-brightBlue"
+              class="border-primaryBlue border-solid border-2 ml-1 px-6 py-2 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm focus:outline-darkBlue placeholder:text-darkBlue"
               type="password" id="myPassword" name="password" placeholder="Enter Your Password" required/>
             <i class="fas fa-eye -ml-6 mt-3.5" id="eye" onclick="myFunction()"></i>
           </p>
           <div class="mt-2 w-80 rounded-lg ml-1 " id="password-strength"><span></span></div> 
-          <p class="mt-1 text-xs text-center">Your Password Strength</p>
+          <p class="mt-1 text-xs text-center text-gold">Your Password Strength</p>
           <p class="mt-2 flex justify-center mr-2">
             <input
-              class="border-primaryBlue border-solid border-2 ml-1 px-6 py-2 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm placeholder:text-gray-400 focus:outline-brightBlue"
+              class="border-primaryBlue border-solid border-2 ml-1 px-6 py-2 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm focus:outline-darkBlue placeholder:text-darkBlue"
               type="password" id="myPassword1" name="confirmPassword" placeholder="Confirm Your Password" required/>
             <i class="fas fa-eye -ml-6 mt-3.5" id="eye1" onclick="myFunction1()"></i>
           </p>
           <p class="mt-2">
             <input
-              class="border-primaryBlue border-solid border-2 ml-1 px-6 py-2 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm placeholder:text-gray-400 focus:outline-brightBlue"
+              class="border-primaryBlue border-solid border-2 ml-1 px-6 py-2 w-80 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm focus:outline-darkBlue placeholder:text-darkBlue"
               type="text" name="referredBy" placeholder="Referral Code (Optional)" value="<%= referral %>" />
           </p>
           <input type="hidden" name="role" value="<%= role %>">
           <p class="mt-5 ml-1.5 text-center">
             <input type="submit"
             id="submit"
-              class="py-2 w-80 duration-500 text-darkBlue border-2 border-brightBlue rounded-lg hover:bg-brightBlue hover:text-lightGray "
+              class="py-2 w-80 duration-500 text-gold border-2 border-gold rounded-lg hover:bg-inherit hover:border-lightGray1 hover:text-lightGray "
               value="Sign Up" />
           </p>
         </form>
-        <p class="mt-4 w-72 text-left text-gray-500 text-sm">
-          By Signing Up, You Agree To Our<a class="text-darkBlue hover:text-brightBlue" href="/policies"> Terms Of Service,
+        <p class="mt-4 w-72 text-left text-lightGray1 text-sm">
+          By Signing Up, You Agree To Our<a class="text-gold hover:text-lightGray1" href="/policies"> Terms Of Service,
             Privacy And Anti-Spam</a>
           Policies.
         </p>
-        <p class="text-sm mt-4">Already Have An Account?<a class="hover:text-gold text-darkNavy duration-1000 font-bold" href="/user/login"> Login</a></p>
+        <p class="text-sm mt-4 text-lightGray1">Already Have An Account?<a class="hover:text-lightGray1 text-gold duration-500 font-bold" href="/user/login"> Login</a></p>
       </div>
   </section>
   <canvas class="background absolute top-0 left-0 right-0 bottom-0 -z-10"></canvas>

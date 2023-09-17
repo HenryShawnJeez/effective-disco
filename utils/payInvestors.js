@@ -3,29 +3,23 @@ const User = require('../models/user.model');
 const userService = require('../services/user.service')
 const transactionService = require('../services/transaction.service')
 const Email = require("../utils/mail.util");
-const { cashFlipPercent, basicPercent, standardPercent, essentialPercent, proEssentialPercent, premiumPercent, referralEarningPercent, cashFlipDuration, basicDuration, standardDuration, essentialDuration, proEssentialDuration, premiumDuration, } = require('../config')
+const { essentialPercent, capitalPercent, advancedPercent, ultimatePercent, referralEarningPercent } = require('../config')
 
 
 const _getPayoutAmount = (plan, amount) =>{
 
     switch (plan) {
-        case 'cashFlip':
-           return (amount + ((cashFlipPercent * amount))).toFixed(2);
-            break;
-        case 'basic':
-           return (amount + ((basicPercent * amount))).toFixed(2);
-            break;
-        case 'standard':
-           return (amount + ((standardPercent * amount))).toFixed(2);
-            break;
         case 'essential':
            return (amount + ((essentialPercent * amount))).toFixed(2);
             break;
-        case 'proEssential':
-           return (amount + ((proEssentialPercent * amount))).toFixed(2);
+        case 'capital':
+           return (amount + ((capitalPercent * amount))).toFixed(2);
             break;
-        case 'premium':
-           return (amount + ((premiumPercent * amount))).toFixed(2);
+        case 'advanced':
+           return (amount + ((advancedPercent * amount))).toFixed(2);
+            break;
+        case 'ultimate':
+           return (amount + ((ultimatePercent * amount))).toFixed(2);
             break;
         default:
            return 0;

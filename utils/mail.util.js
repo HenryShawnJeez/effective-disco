@@ -18,8 +18,8 @@ class Email {
       port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
-        user: "info@deluxecapital.org",
-        pass: "Deluxecapital123$",
+        user: "info@rehoniel.org",
+        pass: "Rehoniel123$",
       }
     })
   }
@@ -28,7 +28,7 @@ class Email {
     const html = await ejs.renderFile(`${__dirname}/../views/emails/${template}.ejs`, { link: this.link, name: this.name, amount: this.amount })
 
     const mailOptions = {
-      from: 'Deluxe Capital <info@deluxecapital.org>', // sender address
+      from: 'Rehoniel <info@rehoniel.org>', // sender address
       to: this.to,
       subject: subject,
       html,
@@ -40,7 +40,7 @@ class Email {
   }
 
   async sendWelcome() {
-    await this._send("welcome", "Welcome to Deluxe Capital")
+    await this._send("welcome", "Welcome to Rehoniel")
   }
   async sendDeposit() {
     await this._send("deposit", "New Deposit")
