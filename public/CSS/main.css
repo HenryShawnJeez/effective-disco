@@ -2216,6 +2216,7 @@ body {
 
 .index-body {
   background-image: url("../images/bg.svg");
+  background-color: #0f2331;
   background-repeat: no-repeat;
   background-size: cover;
 }
