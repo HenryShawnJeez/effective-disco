@@ -24,11 +24,65 @@
     <link rel="stylesheet" href="../CSS/main.css" />
     <!-- Custom JavaScript -->
     <script defer src="../JS/dashboard.js"></script>
-      <!-- Jivo Chat -->
-      <script src="//code.jivosite.com/widget/DzC9jELjbC" async></script>
   </head>
   <body class="bg-darkGray main">
     <%- include ("partials/sidebar"); -%>
+    <% if(status==='success' ){ %>
+      <div class="flex w-full items-center justify-center">
+        <div
+          id="overlay"
+          class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+        ></div>
+
+        <div
+          id="successPopup"
+          class="fixed top-[30%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg"
+        >
+          <span
+            id="closePopupBtn"
+            onclick="closePopupBtnClick()"
+            class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+            >&times;</span
+          >
+          <img class="mx-auto" src="../Images/correct.svg" alt="Correct Icon" />
+          <h2 class="mt-2 text-center text-2xl font-semibold text-green-500">
+            Success!
+          </h2>
+          <p class="mt-8 text-center text-sm capitalize text-gray-800">
+            Your Support Request Has Been Submitted Successfully.
+          </p>
+        </div>
+      </div>
+      <% } else if (status==='fail' ){%>
+      <div class="flex w-full items-center justify-center">
+        <div
+          id="failureOverlay"
+          class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+        ></div>
+
+        <div
+          id="failurePopup"
+          class="fixed top-[30%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg"
+        >
+          <span
+            onclick="failureClosePopupBtnClick()"
+            class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+            >&times;</span
+          >
+          <img
+            class="mx-auto w-20"
+            src="../Images/wrong.png"
+            alt="Wrong Icon"
+          />
+          <h2 class="mt-2 text-center text-2xl font-semibold text-red-500">
+            Failure!
+          </h2>
+          <p class="mt-8 text-center text-sm capitalize text-gray-800">
+           Sorry, Your support request failed. Please try again later.
+          </p>
+        </div>
+      </div>
+      <% }%>
     <section>
       <div class="px-8 py-4">
         <div class="mt-20">
@@ -36,11 +90,11 @@
             Contact Us
           </h1>
         </div>
-        <div class="bg-white border border-[#9EA0A3] mt-10 p-4 w-[80%] sm:w-[70%] md:w-[60%] rounded-lg">
+        <div class="bg-white border border-[#9EA0A3] mt-10 p-4 w-[90%] sm:w-[80%] md:w-[70%] rounded-lg">
           <h4 class="text-xs text-darkBlue md:text-base font-bold">
             Contact Us For Any Issues Regarding Your Account.
           </h4>
-          <form class="" action="mailto:support@rehoniel.org" method="post" enctype="text/plain">
+          <form class="" action="/support" method="post">
             <p  class="mt-8">Email Address</p>
             <input
               class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 placeholder:text-sm focus:outline focus:outline-gold caret-darkBlue"
@@ -58,13 +112,13 @@
             required
               name="message"
               id="message"
-              placeholder="What would you like to say?"
+              placeholder="Enter Your Message"
               class="h-32 mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 placeholder:text-sm focus:outline focus:outline-gold caret-darkBlue"
             ></textarea >
             <div class="mt-14 flex justify-end">
               <input
               type="submit"
-                class="rounded-lg px-5 sm:px-7 md:px-9 text-sm sm:text-base bg-brightBlue py-3 text-lightGray1 duration-500 hover:bg-lightGray1 hover:text-darkBlue disabled:cursor-not-allowed disabled:opacity-50"
+                class="cursor-pointer rounded-lg px-10 sm:px-7 md:px-9 text-sm sm:text-base bg-brightBlue py-3 text-lightGray1 duration-500 hover:bg-lightGray1 hover:text-darkBlue disabled:cursor-not-allowed disabled:opacity-50"
               value =Send />
             </div>
               
@@ -72,6 +126,24 @@
         </div>
       </div>
     </section>
+    <!-- For the popups -->
+    <script>
+      const successPopup = document.getElementById("successPopup");
+      const overlay = document.getElementById("overlay");
+
+      const closePopupBtnClick = () => {
+        successPopup.classList.add("hidden");
+        overlay.classList.add("hidden");
+      };
+
+      const failurePopup = document.getElementById("failurePopup");
+      const failureOverlay = document.getElementById("failureOverlay");
+
+      const failureClosePopupBtnClick = () => {
+        failurePopup.classList.add("hidden");
+        failureOverlay.classList.add("hidden");
+      };
+    </script>
     <%- include ("partials/script"); -%>
   </body>
 </html>

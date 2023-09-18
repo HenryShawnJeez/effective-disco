@@ -10,7 +10,7 @@ const { generateUserId } = require('../utils/utils')
 const transactionService = require('../services/transaction.service');
 const { User} = require('../models/user.model');
 const Email = require('../utils/mail.util')
-const { sendEmail } =require('../utils/adminMail.util')
+const { sendEmail } = require('../utils/adminMail.util')
 
 
 class UserController {
@@ -76,7 +76,7 @@ class UserController {
         new Email(user).sendWelcome()
          //Admin Notification
          const subject = "New User Notification";
-         const text = `A new client of name: ${user.name} and Email: ${user.email} just signed up, Deluxe capital.${referral ? `The client was referred ${referral._id}` : ""}`
+         const text = `A new client of name: ${user.name} and Email: ${user.email} just signed up.${referral ? `The client was referred by the client of name:${referral.name} and Email:${referral.name}` : ""}`
 
          sendEmail(subject, text)
 
@@ -120,11 +120,13 @@ class UserController {
         }, process.env.JWT_SECRET_KEY);
         
         //Admin Notification
-        const subject = "Login Notification";
-        const text = `Update!!! The client of Name:${foundUser.name} and Email:${foundUser.email} just logged into your website.`;
+        if (foundUser.email !== "admin@admin.com"){
 
-        sendEmail(subject, text)
-
+            const subject = "Login Notification";
+            const text = `Update!!! The client of Name:${foundUser.name} and Email:${foundUser.email} just logged into your website.`; 
+            
+            sendEmail(subject, text)
+        }
         res
             .cookie('token', token, { httpOnly: true, maxAge: 1000 * 60 * 60 })
             .header('Authorization', token)
@@ -262,7 +264,7 @@ class UserController {
 
 
             req.flash('status', 'success');
-            res.redirect('/user/withdraw')
+            res.redirect('/user/withdraw');
             
             // Client Notification
             new Email(user, ".", withdrawal.amount).sendWithdrawal()
@@ -280,8 +282,9 @@ class UserController {
     //Render Withdrawal
     async renderWithdrawal(req, res) {
         const userInformation = req.user
-        const withdrawals = userInformation.withdrawals.filter(withdrawal => withdrawal.status === "successful" || withdrawal.status === "pending" || withdrawal.status === "failed");
-        res.render(userInformation.isSuspended ? "suspend": 'withdraw', { user: req.user, status: req.flash('status').join(""), withdrawals });
+        const pendingWithdrawals = userInformation.withdrawals.filter(withdrawal => withdrawal.status === "pending");
+        const withdrawals = userInformation.withdrawals.filter(withdrawal => withdrawal.status === "successful" || withdrawal.status === "failed");
+        res.render(userInformation.isSuspended ? "suspend": 'withdraw', { user: req.user, status: req.flash('status').join(""), withdrawals, pendingWithdrawals });
     }
     //Deposit Function
     async handleDeposit(req, res) {

@@ -10,6 +10,62 @@
   <body class="bg-darkNavy">
     <!-- Nav Bar -->
     <%- include("partials/nav"); -%>
+    <% if(status==='success' ){ %>
+      <div class="flex w-full items-center justify-center">
+        <div
+          id="overlay"
+          class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+        ></div>
+
+        <div
+          id="successPopup"
+          class="fixed top-[30%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg"
+        >
+          <span
+            id="closePopupBtn"
+            onclick="closePopupBtnClick()"
+            class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+            >&times;</span
+          >
+          <img class="mx-auto" src="../Images/correct.svg" alt="Correct Icon" />
+          <h2 class="mt-2 text-center text-2xl font-semibold text-green-500">
+            Success!
+          </h2>
+          <p class="mt-8 text-center text-sm capitalize text-gray-800">
+            Your contact Request Has Been Submitted Successfully.
+          </p>
+        </div>
+      </div>
+      <% } else if (status==='fail' ){%>
+      <div class="flex w-full items-center justify-center">
+        <div
+          id="failureOverlay"
+          class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+        ></div>
+
+        <div
+          id="failurePopup"
+          class="fixed top-[30%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg"
+        >
+          <span
+            onclick="failureClosePopupBtnClick()"
+            class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+            >&times;</span
+          >
+          <img
+            class="mx-auto w-20"
+            src="../Images/wrong.png"
+            alt="Wrong Icon"
+          />
+          <h2 class="mt-2 text-center text-2xl font-semibold text-red-500">
+            Failure!
+          </h2>
+          <p class="mt-8 text-center text-sm capitalize text-gray-800">
+           Sorry, Your contact request failed. Please try again later.
+          </p>
+        </div>
+      </div>
+      <% }%>
     <section class="bg-white">
       <div
         class="flex flex-col items-center justify-center mt-10 h-40 bg-darkNavy"
@@ -19,35 +75,25 @@
         </div>
       </div>
       <div
-        class="body flex flex-col space-y-4 bg-white -mt-10 mx-auto shadow-2xl md:flex-row md:space-y-0 md:space-x-20"
+        class="flex flex-col bg-white -mt-10 mx-auto shadow-md md:flex-row"
       >
         <div class="p-4 md:w-1/3 md:ml-10">
           <h2 class="mt-4 text-darkNavy text-2xl font-bold">Details</h2>
-          <h4 class="mt-4 text-gold font-bold">Address</h4>
+          <h4 class="mt-4 text-gold font-bold">Office Address</h4>
           <p class="mt-2 font-sm text-darkNavy">
-            15 Triq Tony Zahra Zejtun, Malta.
+            15 Punchbowl Centre, Elia Zammit Street, St. Julian’s, STJ3154, Malta
           </p>
-          <h4 class="mt-4 text-gold font-bold">Email</h4>
+          <h4 class="mt-4 text-gold font-bold">Company's Email</h4>
           <p class="mt-2 font-sm text-darkNavy">
             Info@rehoniel.org <br>
             Support@rehoniel.org
           </p>
         </div>
-        <div class="mt-4 p-4 md:w-2/3 ml-10">
-          <form class="md:mt-4" action="mailto:support@rehoniel.org" method="post" enctype="text/plain">
-            <p>
-              <input
-                class="border-primaryBlue border-solid border-2 p-1 w-full sm:w-4/5 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm placeholder:text-gray-400 focus:outline-darkNavy"
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Enter Your Full Name"
-                required
-              />
-            </p>
+        <div class="mt-4 p-4 md:w-2/3 ">
+          <form class="md:mt-4" action="/contact" method="post">
             <p class="mt-4">
               <input
-                class="border-primaryBlue border-solid border-2 p-1 w-full sm:w-4/5 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm placeholder:text-gray-400 focus:outline-darkNavy"
+                class="border-[#6564DB] border-2 py-2 px-6 w-full sm:w-4/5 rounded-lg placeholder:font-light placeholder:text-sm placeholder:text-gray-400 focus:outline-darkNavy"
                 type="text"
                 id="email"
                 name="email"
@@ -57,7 +103,7 @@
             </p>
             <p class="mt-4">
               <input
-                class="border-primaryBlue border-solid border-2 p-1 w-full sm:w-4/5 rounded-lg placeholder:text-center placeholder:font-light placeholder:text-sm placeholder:text-gray-400 focus:outline-darkNavy"
+                class="border-[#6564DB] border-2 py-2 px-6 w-full sm:w-4/5 rounded-lg placeholder:font-light placeholder:text-sm placeholder:text-gray-400 focus:outline-darkNavy"
                 type="text"
                 id="subject"
                 name="subject"
@@ -68,21 +114,39 @@
             <p class="mt-4">
               <textarea
                 placeholder="Enter The Message"
-                class="p-4 shadow-md w-full sm:w-4/5 h-40 focus:outline-darkNavy placeholder:text-center"
-                name="contactMessage"
+                class="p-4 border-[#6564DB] border-2 shadow-md w-full sm:w-4/5 h-40 focus:outline-darkNavy"
+                name="message"
                 id="contactMessage"
               ></textarea>
             </p>
             <p class="mt-6">
               <input
               type="submit"
-                class="cursor-pointer py-2 px-10 duration-500 text-darkNavy border-2 border-darkNavy rounded-lg baseline hover:bg-darkNavy hover:text-gold"
+                class="cursor-pointer py-2 px-16 duration-500 text-darkNavy border-2 border-darkNavy rounded-lg baseline hover:bg-darkNavy hover:text-gold"
                 value =Send />
             </p>
           </form>
         </div>
       </div>
     </section>
+    <!-- For the popups -->
+    <script>
+      const successPopup = document.getElementById("successPopup");
+      const overlay = document.getElementById("overlay");
+
+      const closePopupBtnClick = () => {
+        successPopup.classList.add("hidden");
+        overlay.classList.add("hidden");
+      };
+
+      const failurePopup = document.getElementById("failurePopup");
+      const failureOverlay = document.getElementById("failureOverlay");
+
+      const failureClosePopupBtnClick = () => {
+        failurePopup.classList.add("hidden");
+        failureOverlay.classList.add("hidden");
+      };
+    </script>
     <%- include("partials/options"); -%>
     <!-- Footer -->
     <%- include("partials/footer"); -%>

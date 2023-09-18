@@ -12,6 +12,7 @@ const servicesRoute = require("./service.route");
 const indexRoute = require("./index.route");
 const helpRoute = require("./help.route");
 const policiesRoute = require("./policies.route");
+const careerRoute = require("./career.route");
 
 
 // configuring routes
@@ -25,6 +26,7 @@ router.use("/faq", faqRoute);
 router.use("/services", servicesRoute);
 router.use('/support', helpRoute);
 router.use("/policies", policiesRoute);
+router.use("/careers", careerRoute);
 
 
 

@@ -134,9 +134,50 @@
             class="flex w-full flex-col px-2 h-[30rem] linkContainer overflow-y-auto"
           >
             <p class="mb-2 mt-8 text-sm font-bold sm:text-base">
-              Withdrawal History
+              Pending Withdrawals
             </p>
-            <% if(withdrawals.length === 0) { %>
+            <% pendingWithdrawals.forEach(withdrawal => { %>
+              <div
+                id="withdrawal"
+                class="mt-2 flex flex-row items-center justify-between rounded-xl border border-green-600 p-2"
+              >
+                <div class="flex flex-row items-center">
+                  <div
+                    class="flex items-center justify-center rounded-[50%] bg-green-600 bg-opacity-20 p-2 sm:p-4"
+                  >
+                    <img
+                      class=""
+                      src="../Images/withdraw.svg"
+                      alt="Withdrawal Icon"
+                    />
+                  </div>
+                  <div>
+                    <% if(withdrawal.account.method === "crypto") { %>
+                    <p class="ml-2 text-xs capitalize sm:text-base">
+                      Withdraw Via <%=withdrawal.account.wallet %>
+                    </p>
+                    <% } %>
+                    <div class="ml-2 flex flex-row items-center space-x-2">
+                      <p class="text-xs sm:text-base text-gray-400">
+                        <%= new Date(withdrawal.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>
+                      </p>
+                        <p class="text-xs capitalize text-purple-600 sm:text-sm">
+                          <%= withdrawal.status %>
+                        </p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h1 class="text-sm font-bold text-red-600 sm:text-xl">
+                    -$<%= withdrawal.amount.toLocaleString() %>
+                  </h1>
+                </div>
+              </div>
+            <% }) %>
+            <p class="mb-2 mt-8 text-sm font-bold sm:text-base">
+              Processed Withdrawals
+            </p>
+            <% if(withdrawals.length && pendingWithdrawals === 0) { %>
               <div class="flex items-center justify-center m-auto">
                 <h1 class="text-sm sm:text-base gradient-border font-bold md:text-lg lg:text-xl">No Withdrawal Yet</h1>
               </div>

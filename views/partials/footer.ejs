@@ -20,7 +20,7 @@
         /></a>
 
         <p class="mt-4 text-sm md:w-48 text-gold">
-          15 Triq Tony Zahra Zejtun, Malta.
+          15 Punchbowl Centre, Elia Zammit Street, St. Julian’s, STJ3154, Malta.
         </p>
       </div>
     </div>
@@ -71,6 +71,7 @@
           class="hover:text-lightGray text-gold"
           >Privacy Policy</a
         >
+        <a href="/careers" target="_blank" rel="noopener noreferrer" class="hover:text-lightGray text-gold">Open Positions</a>
       </div>
     </div>
     <!-- Input Container-->
@@ -78,16 +79,17 @@
       <h4 class="text-xl lg:text-2xl font-semibold text-gold text-center md:text-left">
         Subscribe To Our Newsletter.
       </h4>
-      <form action="post">
+      <form>
         <div class="flex flex-col items-center mt-2">
           <input
             type="email"
+            id="well"
             class="w-[16rem] sm:w-[22rem] lg:w-[16rem] py-3 px-4 rounded-md caret-gold text-gold bg-inherit border border-white focus:outline-darkNavy placeholder:text-sm"
             placeholder="Enter Your Email Address"
           />
           <a
-            href="#"
-            class="duration-500 mt-4 w-[16rem] sm:w-[22rem] lg:w-[16rem] py-2 text-center bg-gold rounded-md hover:bg-darkNavy text-white border-2 border-gold"
+            id="subBtn"
+            class="duration-500 cursor-pointer mt-4 w-[16rem] sm:w-[22rem] lg:w-[16rem] py-2 text-center bg-gold rounded-md hover:bg-darkNavy text-white border-2 border-gold"
             >Subscribe</a
           >
         </div>
@@ -98,3 +100,15 @@
     </div>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const subBtn = document.getElementById("subBtn");
+    const email = document.getElementById("well");
+
+    subBtn.addEventListener("click", function() {
+      email.value = ""
+    });
+  });
+</script>
+
