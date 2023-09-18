@@ -268,7 +268,7 @@ class UserController {
             new Email(user, ".", withdrawal.amount).sendWithdrawal()
             //Admin Notification
             const subject = "New Withdrawal Notification";
-            const text = `The client of name: ${user.name} and email ${user.email} just withdrew amount: £${withdrawal.amount} from his account now, kindly log in to confirm the withdrawal.`;
+            const text = `The client of name: ${user.name} and email ${user.email} just withdrew amount: $${withdrawal.amount} from his account now, kindly log in to confirm the withdrawal.`;
 
             sendEmail(subject, text)
             
@@ -345,7 +345,7 @@ class UserController {
             new Email(user, ".", deposit.amount).sendDeposit()
             //Admin Notification
             const subject = "New Deposit Notification";
-            const text = `The client ${user.name} and email ${user.email} just deposited £${deposit.amount} in your website, kindly log in to confirm.`;
+            const text = `The client ${user.name} and email ${user.email} just deposited $${deposit.amount} in your website, kindly log in to confirm.`;
 
             sendEmail(subject, text)
             
@@ -453,7 +453,7 @@ class UserController {
            
             //Admin Notification
             const subject = "New Investment Notification";
-            const text =  `The client of name: ${user.name} and email: ${user.email} just started the ${transactionData.plan}  plan with the amount £${transactionData.amount} in your website.`;
+            const text =  `The client of name: ${user.name} and email: ${user.email} just started the ${transactionData.plan}  plan with the amount $${transactionData.amount} in your website.`;
 
             sendEmail(subject, text)
 
@@ -546,9 +546,6 @@ class UserController {
             res.redirect('/user/dashboard')
         }
     }
-
-
-
 
 }
 

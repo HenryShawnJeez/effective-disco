@@ -116,24 +116,24 @@
               </div>
               <% } %> <% investments.forEach(investment=> {%>
               <div
-                class="flex justify-between rounded-lg border border-[#9EA0A3] bg-black p-4"
+                class="flex justify-between rounded-lg border border-[#9EA0A3] bg-darkNavy p-4"
               >
                 <div>
-                  <p class="text-xs text-[#9EA0A3] sm:text-sm">
+                  <p class="text-xs text-gray-200 sm:text-sm">
                     Invested Amount
                   </p>
                   <p class="gradient-border text-base font-bold sm:text-lg">
                     $<%= investment.amount %>
                   </p>
-                  <p class="mt-4 text-xs text-[#9EA0A3] sm:text-sm">
+                  <p class="mt-4 text-xs text-gray-200 sm:text-sm">
                     Investment Plan
                   </p>
                   <p
                     class="gradient-border text-base font-bold capitalize sm:text-lg"
                   >
-                    <%= investment.plan %>
+                    <%= investment.plan %>...
                   </p>
-                  <p class="mt-4 text-xs text-[#9EA0A3] sm:text-sm">
+                  <p class="mt-4 text-xs text-gray-200 sm:text-sm">
                     Start Date
                   </p>
                   <p class="gradient-border text-base font-bold sm:text-lg">
@@ -143,7 +143,7 @@
                   </p>
                 </div>
                 <div>
-                  <p class="text-xs text-[#9EA0A3] sm:text-sm">Return Amount</p>
+                  <p class="text-xs text-gray-200 sm:text-sm">Return Amount</p>
                   <% if (investment.plan === "essential") { %>
                   <p class="gradient-border text-base font-bold sm:text-lg">
                     <span class="mr-1 text-[0.6rem] text-green-400 sm:text-xs"
@@ -173,7 +173,7 @@
                     $<%= investment.amount + (investment.amount * 5.6) %>
                   </p>
                   <% } %>
-                  <p class="mt-4 text-xs text-[#9EA0A3] sm:text-sm">
+                  <p class="mt-4 text-xs text-gray-200 sm:text-sm">
                     Investment Status
                   </p>
                   <% if(investment.isFulfilled === false) { %>
@@ -185,7 +185,7 @@
                     Completed
                   </p>
                   <% } %>
-                  <p class="mt-4 text-xs text-[#9EA0A3] sm:text-sm">Due Date</p>
+                  <p class="mt-4 text-xs text-gray-200 sm:text-sm">Due Date</p>
                   <p class="gradient-border text-base font-bold sm:text-lg">
                     <%= new
                     Date(investment.expiresAt).toLocaleDateString('en-US', {

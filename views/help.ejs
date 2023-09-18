@@ -30,39 +30,44 @@
   <body class="bg-darkGray main">
     <%- include ("partials/sidebar"); -%>
     <section>
-      <div class="flex flex-col space-y-8 items-center justify-center">
-        <div class="mt-32 text-center">
-          <h1 class="text-2xl mt-2 text-brightBlue font-bold md:text-4xl">
+      <div class="px-8 py-4">
+        <div class="mt-20">
+          <h1 class="text-xl sm:text-2xl md:text-3xl font-bold lg:text-4xl text-[#CC9E06]">
             Contact Us
           </h1>
-          <h4 class="text-xs mt-4 text-darkBlue md:text-base">
+        </div>
+        <div class="bg-white border border-[#9EA0A3] mt-10 p-4 w-[80%] sm:w-[70%] md:w-[60%] rounded-lg">
+          <h4 class="text-xs text-darkBlue md:text-base font-bold">
             Contact Us For Any Issues Regarding Your Account.
           </h4>
-        </div>
-        <div>
-          <form class="flex flex-col items-center justify-center" action="mailto:admin@deluxecapital.org" method="post" enctype="text/plain">
+          <form class="" action="mailto:support@rehoniel.org" method="post" enctype="text/plain">
+            <p  class="mt-8">Email Address</p>
             <input
-              class="px-8 py-3 mt-2 placeholder:text-center placeholder:text-sm w-72 md:w-96 border-2 border-brightBlue rounded-xl"
+              class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 placeholder:text-sm focus:outline focus:outline-gold caret-darkBlue"
               type="email"
               name="email"
               id="email"
               placeholder="Enter Your Email Address"
               required
             />
-            <input class="px-8 py-3 mt-2 placeholder:text-center
-            placeholder:text-sm w-72 md:w-96 border-2 border-brightBlue rounded-xl" type="text"
+            <p class="mt-8">Subject</p>
+            <input class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 placeholder:text-sm focus:outline focus:outline-gold caret-darkBlue" type="text"
             name="subject" id="subject" placeholder="Enter Your Subject" required/>
+            <p class="mt-8">Message</p>
             <textarea
             required
               name="message"
               id="message"
-              placeholder="Enter Your Message Here"
-              class="px-8 py-3 mt-2 placeholder:text-center placeholder:text-sm h-60 w-72 md:w-96 border-2 border-brightBlue rounded-xl"
-            ></textarea>
+              placeholder="What would you like to say?"
+              class="h-32 mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 placeholder:text-sm focus:outline focus:outline-gold caret-darkBlue"
+            ></textarea >
+            <div class="mt-14 flex justify-end">
               <input
               type="submit"
-                class="w-72 md:w-96 px-10 py-3 mt-10 duration-700 border-2 border-brightBlue rounded-xl bg-brightBlue text-lightGray hover:bg-lightGray hover:text-darkBlue"
+                class="rounded-lg px-5 sm:px-7 md:px-9 text-sm sm:text-base bg-brightBlue py-3 text-lightGray1 duration-500 hover:bg-lightGray1 hover:text-darkBlue disabled:cursor-not-allowed disabled:opacity-50"
               value =Send />
+            </div>
+              
           </form>
         </div>
       </div>

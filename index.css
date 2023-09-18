@@ -6,7 +6,8 @@ body {
   font-family: "Merriweather Sans", sans-serif;
 }
 .index-body {
-  background-image: url("../images/bg.png");
+  background-image: url("../images/bg.svg");
+  background-color: #0f2331;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -274,13 +275,14 @@ body::-webkit-scrollbar-thumb:hover {
 
 .active,
 .collapsible:hover {
-  background-color: #d4af37;
+  background-color: rgba(212, 175, 55, 0.4);
   transition-duration: 500ms;
+  color: #FDFDFD;
 }
 
 .collapsible:after {
   content: "\002B";
-  color: white;
+  color: black;
   font-weight: bold;
   float: right;
   margin-left: 5px;
@@ -291,7 +293,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .content {
-  border: 2px solid #d4af37;
+  border: 1px solid #d4af37;
   padding: 0 18px;
   max-height: 0;
   overflow: hidden;
@@ -301,26 +303,17 @@ body::-webkit-scrollbar-thumb:hover {
   width: 90%;
 }
 .faq-cta {
-  background-image: url(../Images/CryptoOnPhone.jpg);
+  background-image: url(../Images/faq.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
-/* About Us */
-.top {
-  width: 90%;
-  text-align: center;
-}
-.video {
-  width: 60%;
-}
+
 /* Services */
 .service .fas {
   color: #d4af37;
 }
-.servicesIcon .icon {
-  color: #0f2331;
-}
+
 /* Contact */
 .body {
   width: 80vw;
@@ -622,11 +615,13 @@ body::-webkit-scrollbar-thumb:hover {
 }
 /* For the history collapsible page */
 .another.collapsible {
-  padding: 18px;
-  border: 2px solid #0f2331;
+  border: 1px solid #9EA0A3;
   border-radius: 0;
   background-color: #fdfdfd;
+  border-radius: 5px;
   color: #030346;
+  padding: 10px 4px;
+  width: 95%;
 }
 .another.collapsible:after {
   content: "";
@@ -635,7 +630,7 @@ body::-webkit-scrollbar-thumb:hover {
   padding-top: 18px;
 }
 .record {
-  padding: 0 18px;
+  padding: 0 10px;
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.2s ease-out;
@@ -643,7 +638,6 @@ body::-webkit-scrollbar-thumb:hover {
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   width: 90%;
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
 /* Dashboard Overflow tracks */
 .linkContainer::-webkit-scrollbar {
