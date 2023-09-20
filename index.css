@@ -44,7 +44,9 @@ background-clip: text;
     transform: rotate(360deg);
   }
 }
-
+.referGradient{
+  background: linear-gradient(180deg, #6564DB 0%, #55DDE0 100%);
+}
 /* The Nav Bar For Small Screen */
 .hamburger {
   cursor: pointer;
