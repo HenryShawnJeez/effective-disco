@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="../CSS/main.css" />
     <!-- Custom JavaScript -->
     <script defer src="../JS/dashboard.js"></script>
-
   </head>
 
   <body class="main bg-darkGray">
@@ -93,7 +92,7 @@
         <div class="flex flex-col-reverse md:flex-row justify-between mt-10">
           <div class="w-full md:w-[49%] p-2 border bg-white border-[#9EA0A3] rounded-lg mt-4 md:mt-0">
             <div
-            class="flex w-full flex-col px-2 h-[30rem] linkContainer overflow-y-auto"
+            class="flex w-full flex-col px-2 max-h-[30rem] linkContainer overflow-y-auto"
           >
             <p class="mb-2 mt-8 text-sm font-bold sm:text-base">Deposit History</p>
             <% if(deposits.length === 0) { %>

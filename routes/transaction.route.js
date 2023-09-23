@@ -3,7 +3,6 @@ const router = express.Router();
 
 //Importing routes
 const notFoundRoute = require("./notfound.route");
-const historyRoute = require("./history.route")
 const {renderTransaction} = require('../controllers/user.controller');
 const fetchUserData = require('../middlewares/fetchUserData.middleware')
 

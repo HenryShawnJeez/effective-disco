@@ -1,33 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-  <!-- Bootstrap Icon -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="../CSS/main.css" />
-  <!-- Custom JavaScript -->
-  <script defer src="../JS/dashboard.js"></script>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>History</title>
-    <!-- Favicon -->
-    <link
-    rel="shortcut icon"
-    href="../Images/logo.ico"
-    type="image/x-ico"
-  />
+    <title>Dashboard</title>
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,149 +21,196 @@
     <link rel="stylesheet" href="../CSS/main.css" />
     <!-- Custom JavaScript -->
     <script defer src="../JS/dashboard.js"></script>
-
-  <style>
-    .successful {
-      color: green;
-    }
-
-    .failed {
-      color: red;
-    }
-
-    .pending {
-      color: #e2a50c;
-    }
-  </style>
-</head>
-
-<body class="bg-darkGray box-border main">
-  <%- include ("partials/sidebar"); -%>
+  </head>
+  <body class="main box-border bg-darkGray">
+    <%- include ("partials/sidebar"); -%>
     <section class="py-4 px-8">
-        <div class="mt-20 flex flex-col sm:flex-row gap-10 sm:items-center sm:justify-between">
-          <div>
-            <h1 class="text-xl sm:text-2xl md:text-3xl font-bold lg:text-4xl text-[#CC9E06]">
+      <div
+        class="mt-20 flex flex-col gap-10 sm:flex-row sm:items-center sm:justify-between"
+      >
+        <div>
+          <h1
+            class="text-xl font-bold text-[#CC9E06] sm:text-2xl md:text-3xl lg:text-4xl"
+          >
             Transactions
           </h1>
-          <h4 class="text-sm text-darkBlue">
-            All Your Transactions
-          </h4>
-          </div>
-          <div class="flex flex-row items-center">
-            <a href="/user/deposit"
-              class="cursor-pointer mr-2 text-xs md:text-base rounded-lg bg-lightGreen px-4 py-2 text-darkBlue">
-              <button>
-               Deposit
-              </button>
-            </a>
-            <a href="/user/withdraw"
-              class="cursor-pointer text-xs md:text-base rounded-lg bg-orange-400 px-4 py-2 text-darkBlue">
-              <button class="">
-                Withdraw
-              </button>
-            </a>
-          </div>
+          <h4 class="text-sm text-darkBlue">All Your Transactions</h4>
         </div>
-        <div class="border bg-white border-[#9EA0A3] rounded-lg py-8 mt-10 h-[40rem] overflow-y-auto linkContainer">
-          <% transactions.forEach(transaction => {%>
-      <div class="flex flex-col items-center justify-center">
-        <button class="another collapsible">
-          <div class="flex flex-row items-center justify-between">
-              <div class="flex gap-1 items-center">
-                <div class="rounded-[50%] p-2 bg-gray-200">
-                  <% if (transaction.type === "deposit") { %>
-                <img src="../Images/deposit.svg" alt="Deposit Icon">
-                <% } else if(transaction.type === "withdrawal") {%>
-                  <img src="../Images/withdraw.svg" alt="Withdrawal Icon">
-                <%} else if(transaction.type === "investment") {%>
-                  <img src="../Images/invest.svg" alt="Investment Icon">
-                <% } else {%>
-                  <img src="../Images/earning.svg" alt="Earnings Icon">
-                <%}%>
-              </div>
-              <div>
-                <h4 class="text-sm md:text-base capitalize"><%= transaction.type %></h4>
-                <p class="text-xs md:text-sm "><%= new Date(transaction.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>
-                </p>
-              </div>
-              </div>
-              <div class="flex gap-2 items-center">
-                <% if (transaction.type === "deposit") { %>
-                  <p class="text-sm capitalize font-bold sm:text-base text-green-600">+$<%= transaction.amount %></p>
-                  <% } else if(transaction.type === "withdrawal") {%>
-                    <p class="text-base capitalize font-bold sm:text-base text-red-600">-$<%= transaction.amount %></p>
-                  <%} else if(transaction.type === "investment") {%>
-                    <p class="text-base capitalize font-bold sm:text-base gradient-border">+$<%= transaction.amount %></p>
-                  <% } else {%>
-                    <p class="text-base capitalize font-bold sm:text-base text-darkBlue">+$<%= transaction.amount %></p>
-                  <%}%>
-                <% if (transaction.status === "pending") { %>
-                  <div class="p-2 bg-gray-100 rounded-2xl">
-                    <h4 class="text-gray-400 text-xs md:text-sm capitalize"><%= transaction.status %></h4>
-                  </div>
-                <% } else if (transaction.status === "failed") { %>
-                  <div class="bg-red-200 p-2 rounded-2xl">
-                     <h4 class="text-red-600 text-xs md:text-sm capitalize"><%= transaction.status %></h4>
-                  </div>  
-                <% } else { %>
-                  <div class="bg-green-200 p-2 rounded-2xl">
-                    <h4 class="text-lightGreen text-xs md:text-sm capitalize"><%= transaction.status %></h4>
-                  </div>
-                  
-                <% } %>
-              </div>    
-          </div>
-          </button>
-        <div class="record shadow-md border border-[#9EA0A3]">
-          <h4 class="text-black text-sm md:text-base capitalize mt-5 flex justify-between">
-            <span class="text-gray-500">Transaction: </span> <%= transaction.type %>
-          </h4>
-         <% if (transaction.type === "deposit") { %>
-          <h4 class="text-black text-sm md:text-base capitalize mt-2 flex justify-between">
-            <span class="text-gray-500">Transaction Medium: </span> <%= transaction.medium %>
-          </h4>
-          <h4 class="text-black text-sm md:text-base capitalize mt-2 flex justify-between">
-            <span class="text-gray-500">Transaction ID: </span> <%= transaction.transactionID.slice(0, 14) %>...
-          </h4>
-        <% } %>
-          <h4 class="text-black text-sm mt-2 md:text-base flex justify-between"><span class="text-gray-500">Amount: </span>$<%= transaction.amount %></h4>
-         <% if (transaction.type === "withdrawal"){ %>   
-                <h4 class="text-black text-sm mt-2 md:text-base flex justify-between">
-                  <span class="text-gray-500">Wallet:</span> <%= transaction.account.wallet %>
-                </h4>
-                <h4 class="text-black text-sm mt-2 md:text-base flex justify-between">
-                  <span class="text-gray-500">Wallet Address:</span> <%= transaction.account.address.slice(0, 14) %>...
-                </h4>
-         <% } %>
-          <h4 class="text-black text-sm mt-2 md:text-base flex justify-between">
-            <span class="text-gray-500">Date: </span><%= new Date(transaction.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>
-          </h4>
-          <% if (transaction.type === "investment"){ %>   
-            <h4 class="text-black text-sm mt-2 md:text-base flex justify-between capitalize">
-              <span class="text-gray-500">Plan:</span> <%= transaction.plan %>
-            </h4>
-            <h4 class="text-black text-sm mt-2 md:text-base flex justify-between capitalize">
-              <span class="text-gray-500">Due Date:</span> <%= new
-              Date(transaction.expiresAt).toLocaleDateString('en-US', {
-              year: 'numeric', month: 'short', day: 'numeric' }) %>
-            </h4>
-     <% } %>
-          <% if (transaction.status === "pending") { %>
-            <h4 class="text-gray-400 text-sm mt-2 md:text-base capitalize mb-5"><%= transaction.status %></h4>
-          <% } else if (transaction.status === "failed") { %>
-            <h4 class="text-red-600 text-sm mt-2 md:text-base capitalize mb-5"><%= transaction.status %></h4>
-          <% } else { %>
-            <h4 class="text-lightGreen text-sm mt-2 md:text-base capitalize mb-5"><%= transaction.status %></h4>
-          <% } %>
-          
+        <div class="flex flex-row items-center">
+          <a
+            href="/user/deposit"
+            class="mr-2 cursor-pointer rounded-lg bg-lightGreen px-4 py-2 text-xs text-darkBlue md:text-base"
+          >
+            <button>Deposit</button>
+          </a>
+          <a
+            href="/user/withdraw"
+            class="cursor-pointer rounded-lg bg-orange-400 px-4 py-2 text-xs text-darkBlue md:text-base"
+          >
+            <button class="">Withdraw</button>
+          </a>
         </div>
       </div>
-      <% }) %>
+      <div
+        class="linkContainer mt-10 max-h-[40rem] overflow-y-auto rounded-lg border border-[#9EA0A3] bg-white py-8"
+      >
+        <% transactions.forEach(transaction => {%>
+        <div class="flex flex-col items-center justify-center">
+          <button class="another collapsible">
+            <div class="flex flex-row items-center justify-between">
+              <div class="flex items-center gap-1">
+                <div class="rounded-[50%] bg-gray-200 p-2">
+                  <% if (transaction.type === "deposit") { %>
+                  <img src="../Images/deposit.svg" alt="Deposit Icon" />
+                  <% } else if(transaction.type === "withdrawal") {%>
+                  <img src="../Images/withdraw.svg" alt="Withdrawal Icon" />
+                  <%} else if(transaction.type === "investment") {%>
+                  <img src="../Images/invest.svg" alt="Investment Icon" />
+                  <% } else {%>
+                  <img src="../Images/earning.svg" alt="Earnings Icon" />
+                  <%}%>
+                </div>
+                <div>
+                  <h4 class="text-sm capitalize md:text-base">
+                    <%= transaction.type %>
+                  </h4>
+                  <p class="text-xs md:text-sm">
+                    <%= new
+                    Date(transaction.createdAt).toLocaleDateString('en-US', {
+                    year: 'numeric', month: 'short', day: 'numeric' }) %>
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <% if (transaction.type === "deposit") { %>
+                <p
+                  class="text-sm font-bold capitalize text-green-600 sm:text-base"
+                >
+                  +$<%= transaction.amount %>
+                </p>
+                <% } else if(transaction.type === "withdrawal") {%>
+                <p
+                  class="text-base font-bold capitalize text-red-600 sm:text-base"
+                >
+                  -$<%= transaction.amount %>
+                </p>
+                <%} else if(transaction.type === "investment") {%>
+                <p
+                  class="gradient-border text-base font-bold capitalize sm:text-base"
+                >
+                  +$<%= transaction.amount %>
+                </p>
+                <% } else {%>
+                <p
+                  class="text-base font-bold capitalize text-darkBlue sm:text-base"
+                >
+                  +$<%= transaction.amount %>
+                </p>
+                <%}%> <% if (transaction.status === "pending") { %>
+                <div class="rounded-2xl bg-gray-100 p-2">
+                  <h4 class="text-xs capitalize text-gray-400 md:text-sm">
+                    <%= transaction.status %>
+                  </h4>
+                </div>
+                <% } else if (transaction.status === "failed") { %>
+                <div class="rounded-2xl bg-red-200 p-2">
+                  <h4 class="text-xs capitalize text-red-600 md:text-sm">
+                    <%= transaction.status %>
+                  </h4>
+                </div>
+                <% } else { %>
+                <div class="rounded-2xl bg-green-200 p-2">
+                  <h4 class="text-xs capitalize text-lightGreen md:text-sm">
+                    <%= transaction.status %>
+                  </h4>
+                </div>
+
+                <% } %>
+              </div>
+            </div>
+          </button>
+          <div class="record border border-[#9EA0A3] shadow-md">
+            <h4
+              class="mt-5 flex justify-between text-sm capitalize text-black md:text-base"
+            >
+              <span class="text-gray-500">Transaction: </span> <%=
+              transaction.type %>
+            </h4>
+            <% if (transaction.type === "deposit") { %>
+            <h4
+              class="mt-2 flex justify-between text-sm capitalize text-black md:text-base"
+            >
+              <span class="text-gray-500">Transaction Medium: </span> <%=
+              transaction.medium %>
+            </h4>
+            <h4
+              class="mt-2 flex justify-between text-sm capitalize text-black md:text-base"
+            >
+              <span class="text-gray-500">Transaction ID: </span> <%=
+              transaction.transactionID.slice(0, 14) %>...
+            </h4>
+            <% } %>
+            <h4
+              class="mt-2 flex justify-between text-sm text-black md:text-base"
+            >
+              <span class="text-gray-500">Amount: </span>$<%= transaction.amount
+              %>
+            </h4>
+            <% if (transaction.type === "withdrawal"){ %>
+            <h4
+              class="mt-2 flex justify-between text-sm text-black md:text-base"
+            >
+              <span class="text-gray-500">Wallet:</span> <%=
+              transaction.account.wallet %>
+            </h4>
+            <h4
+              class="mt-2 flex justify-between text-sm text-black md:text-base"
+            >
+              <span class="text-gray-500">Wallet Address:</span> <%=
+              transaction.account.address.slice(0, 14) %>...
+            </h4>
+            <% } %>
+            <h4
+              class="mt-2 flex justify-between text-sm text-black md:text-base"
+            >
+              <span class="text-gray-500">Date: </span><%= new
+              Date(transaction.createdAt).toLocaleDateString('en-US', { year:
+              'numeric', month: 'short', day: 'numeric' }) %>
+            </h4>
+            <% if (transaction.type === "investment"){ %>
+            <h4
+              class="mt-2 flex justify-between text-sm capitalize text-black md:text-base"
+            >
+              <span class="text-gray-500">Plan:</span> <%= transaction.plan %>
+            </h4>
+            <h4
+              class="mt-2 flex justify-between text-sm capitalize text-black md:text-base"
+            >
+              <span class="text-gray-500">Due Date:</span> <%= new
+              Date(transaction.expiresAt).toLocaleDateString('en-US', { year:
+              'numeric', month: 'short', day: 'numeric' }) %>
+            </h4>
+            <% } %> <% if (transaction.status === "pending") { %>
+            <h4 class="mt-2 mb-5 text-sm capitalize text-gray-400 md:text-base">
+              <%= transaction.status %>
+            </h4>
+            <% } else if (transaction.status === "failed") { %>
+            <h4 class="mt-2 mb-5 text-sm capitalize text-red-600 md:text-base">
+              <%= transaction.status %>
+            </h4>
+            <% } else { %>
+            <h4
+              class="mt-2 mb-5 text-sm capitalize text-lightGreen md:text-base"
+            >
+              <%= transaction.status %>
+            </h4>
+            <% } %>
+          </div>
         </div>
-      
+        <% }) %>
+      </div>
     </section>
     <%- include ("partials/script"); -%>
-      <script src="../JS/collapsible.js"></script>
-</body>
-
+    <script src="../JS/collapsible.js"></script>
+  </body>
 </html>
