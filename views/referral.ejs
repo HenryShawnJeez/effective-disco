@@ -68,8 +68,8 @@
                     <p class="text-[0.65rem] sm:text-xs md:text-sm"><%= referral.email%></p>
                   </div>
                 </div>
-                <p class="text-[0.65rem] sm:text-xs md:text-sm"><%= new Date(referral.createdAt.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
-                <div class="hidden sm:block p-2 bg-gray-200 rounded-lg text-[0.65rem] sm:text-xs md:text-sm">
+                <p class="text-[0.65rem] sm:text-xs md:text-sm"><%= new Date(referral.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>.</p>
+                <div class="hidden sm:block p-2 bg-gray-200 text-red-600 rounded-lg text-[0.65rem] sm:text-xs md:text-sm">
                   Active
                 </div>
               </div>

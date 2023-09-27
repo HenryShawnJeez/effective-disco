@@ -966,10 +966,6 @@ video {
   height: 0.75rem;
 }
 
-.h-\[30rem\] {
-  height: 30rem;
-}
-
 .h-80 {
   height: 20rem;
 }
@@ -1014,12 +1010,12 @@ video {
   height: 1rem;
 }
 
-.max-h-\[40rem\] {
-  max-height: 40rem;
-}
-
 .max-h-\[30rem\] {
   max-height: 30rem;
+}
+
+.max-h-\[40rem\] {
+  max-height: 40rem;
 }
 
 .min-h-\[100vh\] {

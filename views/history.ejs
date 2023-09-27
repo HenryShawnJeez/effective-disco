@@ -143,12 +143,10 @@
               <span class="text-gray-500">Transaction Medium: </span> <%=
               transaction.medium %>
             </h4>
-            <h4
-              class="mt-2 flex justify-between text-sm capitalize text-black md:text-base"
-            >
-              <span class="text-gray-500">Transaction ID: </span> <%=
-              transaction.transactionID.slice(0, 14) %>...
-            </h4>
+            <h4 class="mt-2 flex justify-between text-sm capitalize text-black md:text-base">
+              <span class="text-gray-500">Transaction ID: </span>
+              <%= transaction?.transactionID?.slice(0, 14) %>...
+            </h4>            
             <% } %>
             <h4
               class="mt-2 flex justify-between text-sm text-black md:text-base"
