@@ -104,7 +104,7 @@
                 <p
                   class="text-base font-bold capitalize text-darkBlue sm:text-base"
                 >
-                  +$<%= transaction.amount.toLocaleString().toFixed(1) %>
+                  +$<%= transaction.amount.toFixed(1) %>
                 </p>
                 <%}%> <% if (transaction.status === "pending") { %>
                 <div class="rounded-2xl bg-gray-100 p-2">
@@ -149,7 +149,7 @@
             </h4>            
             <% } %>
             <h4 class="mt-2 flex justify-between text-sm text-black md:text-base">
-              <span class="text-gray-500">Amount: </span>$<%= transaction.amount.toLocaleString().toFixed(1) %>
+              <span class="text-gray-500">Amount: </span>$<%= transaction.amount.toFixed(2) %>
             </h4>            
             <% if (transaction.type === "withdrawal"){ %>
             <h4
