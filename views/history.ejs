@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>History</title>
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -148,12 +148,9 @@
               <%= transaction?.transactionID?.slice(0, 14) %>...
             </h4>            
             <% } %>
-            <h4
-              class="mt-2 flex justify-between text-sm text-black md:text-base"
-            >
-              <span class="text-gray-500">Amount: </span>$<%= transaction.amount
-              %>
-            </h4>
+            <h4 class="mt-2 flex justify-between text-sm text-black md:text-base">
+              <span class="text-gray-500">Amount: </span>$<%= transaction.amount.toFixed(1).toLocaleString() %>
+            </h4>            
             <% if (transaction.type === "withdrawal"){ %>
             <h4
               class="mt-2 flex justify-between text-sm text-black md:text-base"
@@ -179,7 +176,7 @@
             <h4
               class="mt-2 flex justify-between text-sm capitalize text-black md:text-base"
             >
-              <span class="text-gray-500">Plan:</span> <%= transaction.plan %>
+              <span class="text-gray-500">Plan:</span> <%= transaction.plan %>...
             </h4>
             <h4
               class="mt-2 flex justify-between text-sm capitalize text-black md:text-base"
