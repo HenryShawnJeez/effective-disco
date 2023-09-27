@@ -86,19 +86,19 @@
                 <p
                   class="text-sm font-bold capitalize text-green-600 sm:text-base"
                 >
-                  +$<%= transaction.amount.toLocaleString().toFixed(1) %>
+                  +$<%= transaction.amount.toLocaleString() %>
                 </p>
                 <% } else if(transaction.type === "withdrawal") {%>
                 <p
                   class="text-base font-bold capitalize text-red-600 sm:text-base"
                 >
-                  -$<%= transaction.amount.toLocaleString().toFixed(1) %>
+                  -$<%= transaction.amount.toLocaleString() %>
                 </p>
                 <%} else if(transaction.type === "investment") {%>
                 <p
                   class="gradient-border text-base font-bold capitalize sm:text-base"
                 >
-                  +$<%= transaction.amount.toLocaleString().toFixed(1) %>
+                  +$<%= transaction.amount.toLocaleString() %>
                 </p>
                 <% } else {%>
                 <p
@@ -149,7 +149,7 @@
             </h4>            
             <% } %>
             <h4 class="mt-2 flex justify-between text-sm text-black md:text-base">
-              <span class="text-gray-500">Amount: </span>$<%= transaction.amount.toLocaleString().toFixed(1).toLocaleString().toFixed(1) %>
+              <span class="text-gray-500">Amount: </span>$<%= transaction.amount.toLocaleString().toFixed(1) %>
             </h4>            
             <% if (transaction.type === "withdrawal"){ %>
             <h4
