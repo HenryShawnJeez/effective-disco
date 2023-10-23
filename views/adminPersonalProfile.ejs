@@ -70,7 +70,7 @@
                 <p class="mt-4 text-xs md:text-sm">
                   User Balance:
                   <span class="text-base font-bold text-[#CC9E06]"
-                    >$<%= user.balance %></span
+                    >$<%= user.balance.toLocaleString() %></span
                   >
                 </p>
               </div>
@@ -124,7 +124,7 @@
                   No Referrals Yet
                 </p>
                 <% } %> <% referrals.forEach(referral => { %>
-                <p class="text-xs md:text-sm">
+                <p class="text-xs md:text-sm mt-4">
                   The client of name and email
                   <span class="font-bold text-[#CC9E06]"
                     ><%= referral.name %> and <%= referral.email %> </span
@@ -147,7 +147,7 @@
                 <p class="mt-4 text-xs md:text-sm">
                   Deposited
                   <span class="font-bold text-[#CC9E06]"
-                    ><%= deposit.amount %></span
+                    ><%= deposit.amount.toLocaleString() %></span
                   >
                   using
                   <span class="font-bold text-[#CC9E06]"
@@ -177,7 +177,7 @@
                   <p class="mt-4 text-xs md:text-sm">
                     Withdrew
                     <span class="font-bold text-[#CC9E06]"
-                      ><%= Withdrawal.amount %></span
+                      ><%= Withdrawal.amount.toLocaleString() %></span
                     >
                     using
                     <span class="font-bold text-[#CC9E06]"
@@ -207,7 +207,7 @@
                   <p class="mt-4 text-xs md:text-sm">
                     Invested
                     <span class="font-bold text-[#CC9E06]"
-                      >$<%= investment.amount %></span
+                      >$<%= investment.amount.toLocaleString() %></span
                     >
                     on the
                     <span class="font-bold text-[#CC9E06]"
@@ -240,7 +240,7 @@
                   <p class="mt-4 text-xs md:text-sm">
                     Earned
                     <span class="font-bold text-[#CC9E06]"
-                      >$<%= earning.amount %></span
+                      >$<%= earning.amount.toLocaleString() %></span
                     >
                     <% if(earning.type === "earning") {%>
                       from the <span class="font-bold text-[#CC9E06]"
