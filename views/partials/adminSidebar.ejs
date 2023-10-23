@@ -1,5 +1,5 @@
 <section class="relative z-50">
-  <span class="absolute text-white text-4xl top-5 left-4 cursor-pointer" onclick="Openbar()">
+  <span class="absolute text-white text-4xl top-5 left-4 cursor-pointer md:hidden" onclick="Openbar()">
       <i class="bi text-gold bi-filter-left px-2 bg-darkBlue rounded-md"></i>
     </span>
     <div class="sidebar fixed top-0 bottom-0 lg:left-0 left-[-300px] duration-1000
@@ -8,16 +8,16 @@
         <div class="p-2.5 mt-1 flex items-center rounded-md">
           <i class="bi text-gold bi-controller px-2 py-1 bg-brightBlue rounded-md"></i>
           <a href="/user/admin"><h1 class="text-[15px]  ml-3 text-xl text-gray-200 font-bold text-left">Administration</h1></a>
-          <i class="bi text-gold bi-x ml-20 cursor-pointer lg:hidden" onclick="Openbar()"></i>
+          <i class="bi text-gold bi-x ml-20 cursor-pointer text-4xl lg:hidden" onclick="Openbar()"></i>
         </div>
         <hr class="my-2 text-gray-600">
   
         <div class="mt-10">
-          <a href="/user/admin"><div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-brightBlue">
+          <a href="/user/admin"><div class="p-2.5 mt-2 flex items-center rounded-md px-4 cursor-pointer  hover:bg-[#1f3442] duration-500">
             <i class="bi text-gold bi-house-door-fill"></i>
            <span class="text-[15px] ml-4 text-gray-200">Dashboard</span>
           </div></a>
-          <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-brightBlue">
+          <div class="p-2.5 mt-2 flex items-center rounded-md px-4 cursor-pointer  hover:bg-[#1f3442] duration-500">
               <i class="bi text-gold bi-cash-coin"></i>
               <div class="flex justify-between w-full items-center" onclick="dropDown()">
                 <span class="text-[15px] ml-4 text-gray-200">Transactions</span>
@@ -25,28 +25,29 @@
               </div>
             </div>
             <div class="leading-7 text-left text-sm font-thin mt-2 w-4/5 mx-auto" id="submenu">
-             <a href="/user/admin/deposit"> <h1 class="cursor-pointer p-2 hover:bg-gray-700 rounded-md mt-1">Deposit</h1></a>
-             <a href="/user/admin/withdraw"> <h1 class="cursor-pointer p-2 hover:bg-gray-700 rounded-md mt-1">Withdrawal</h1></a>
-             <a href="/user/admin/bonus"> <h1 class="cursor-pointer p-2 hover:bg-gray-700 rounded-md mt-1">Add Bonus</h1></a>
+             <a href="/user/admin/deposit"> <h1 class="cursor-pointer p-2 hover:bg-[#1f3442] duration-500 rounded-md mt-1">Deposit</h1></a>
+             <a href="/user/admin/withdraw"> <h1 class="cursor-pointer p-2 hover:bg-[#1f3442] duration-500 rounded-md mt-1">Withdrawal</h1></a>
+             <a href="/user/admin/bonus"> <h1 class="cursor-pointer p-2 hover:bg-[#1f3442] duration-500 rounded-md mt-1">Add Bonus</h1></a>
             </div>
-            <a href="/user/admin/user"><div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-brightBlue">
+            <a href="/user/admin/user"><div class="p-2.5 mt-2 flex items-center rounded-md px-4 cursor-pointer  hover:bg-[#1f3442] duration-500">
               <i class="bi text-gold bi-person-check-fill"></i>
            <span class="text-[15px] ml-4 text-gray-200">My Investors</span>
           </div></a>
-          <a href="/user/admin/suspend"><div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-brightBlue">
+          <a href="/user/admin/suspend"><div class="p-2.5 mt-2 flex items-center rounded-md px-4 cursor-pointer  hover:bg-[#1f3442] duration-500">
             <i class="bi text-gold i bi-x-octagon"></i>
          <span class="text-[15px] ml-4 text-gray-200">Suspend Investors</span>
         </div></a>
-        <a href="/user/admin/unsuspend"><div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-brightBlue">
+        <hr class="my-6 text-gray-600">
+        <a href="/user/admin/unsuspend"><div class="p-2.5 mt-2 flex items-center rounded-md px-4 cursor-pointer  hover:bg-[#1f3442] duration-500">
           <i class="bi text-gold bi bi-bootstrap-reboot"></i>
        <span class="text-[15px] ml-4 text-gray-200">Unsuspend Investors</span>
       </div></a>
-          <a href="/user/admin/referral"><div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-brightBlue">
+          <a href="/user/admin/referral"><div class="p-2.5 mt-2 flex items-center rounded-md px-4 cursor-pointer  hover:bg-[#1f3442] duration-500">
               <i class="bi text-gold bi-people-fill"></i>
            <span class="text-[15px] ml-4 text-gray-200">My Referral</span>
           </div></a>
           <form action="/user/logout" method="post">
-          <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-brightBlue">
+          <div class="p-2.5 mt-3 flex items-center rounded-md px-4 cursor-pointer  hover:bg-[#1f3442] duration-500">
             <button type="submit">
             <i class="bi text-gold bi-box-arrow-in-right"></i>
             <span class="text-[15px] ml-4 text-gray-200">Logout</span></button>

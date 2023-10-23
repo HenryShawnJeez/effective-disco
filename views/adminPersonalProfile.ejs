@@ -34,42 +34,239 @@
   <body class="main bg-darkGray">
     <%- include("partials/adminSidebar"); -%>
     <section>
-      <div class="flex flex-col items-center justify-center">
+      <div class="">
         <div class="mt-20">
-          <h4 class="mt-10 text-center text-2xl font-bold text-brightBlue">
-            User's Information
+          <h4 class="text-center text-xl font-bold text-brightBlue md:text-2xl">
+            <%= user.name %> Details
           </h4>
-          <h4 class="mt-10 text-sm text-darkBlue md:text-base">
-            Users Full Name: <span class="text-gold"> <%= user.name %> </span>
-          </h4>
-          <h4 class="mt-4 text-sm text-darkBlue md:text-base">
-            Users Email Address:
-            <span class="text-gold"> <%= user.email %> </span>
-          </h4>
-          <h4 class="mt-4 text-sm text-darkBlue md:text-base">
-            Users Username:
-            <span class="text-gold"> <%= user.username %> </span>
-          </h4>
-          <h4 class="mt-4 text-sm text-darkBlue md:text-base">
-            User's Balance:
-            <span class="text-gold"> $ <%= user.balance %> </span>
-          </h4>
-          <h4 class="mt-4 text-sm text-darkBlue md:text-base">
-            User's Country:
-            <span class="text-gold"> <%= user.country %> </span>
-          </h4>
-          <h4 class="mt-4 text-sm text-darkBlue md:text-base">
-            User's Gender:
-            <span class="text-gold"> <%= user.gender %> </span>
-          </h4>
-          <h4 class="mt-4 text-sm text-darkBlue md:text-base">
-            User's City:
-            <span class="text-gold"> <%= user.city %> </span>
-          </h4>
-          <h4 class="mt-4 text-sm text-darkBlue md:text-base">
-            User's Postal Code:
-            <span class="text-gold"> <%= user.poastalCode %> </span>
-          </h4>
+          <div
+            class="mx-auto mt-10 h-screen w-[90%] overflow-y-auto rounded-lg border border-[#9EA0A3] bg-white px-4 py-8"
+          >
+            <h1 class="font-bold text-[#CC9E06]">Profile Details</h1>
+            <p class="text-xs font-bold text-slate-800">
+              All records are listed from the latest(newest) to the oldest.
+            </p>
+            <div class="flex flex-wrap gap-5 rounded-lg p-4">
+              <div
+                class="h-80 w-[16rem] overflow-y-auto rounded-lg border border-[#9EA0A3] p-4"
+              >
+                <h1 class="mb-4 font-bold">Basic Profile</h1>
+                <p class="text-xs md:text-sm">
+                  Full Name:
+                  <span class="font-bold text-[#CC9E06]"><%= user.name %></span>
+                </p>
+                <p class="mt-4 text-xs md:text-sm">
+                  Email Address:
+                  <span class="font-bold text-[#CC9E06]"
+                    ><%= user.email %></span
+                  >
+                </p>
+                <p class="mt-4 text-xs md:text-sm">
+                  Username:
+                  <span class="font-bold text-[#CC9E06]"
+                    ><%= user.username %></span
+                  >
+                </p>
+                <p class="mt-4 text-xs md:text-sm">
+                  User Balance:
+                  <span class="text-base font-bold text-[#CC9E06]"
+                    >$<%= user.balance %></span
+                  >
+                </p>
+              </div>
+              <div
+                class="h-80 w-[16rem] overflow-y-auto rounded-lg border border-[#9EA0A3] p-4"
+              >
+                <h1 class="mb-4 font-bold">Other Information</h1>
+                <p class="text-xs md:text-sm">
+                  Country:
+                  <span class="font-bold text-[#CC9E06]"
+                    ><%= user.country %></span
+                  >
+                </p>
+                <p class="mt-4 text-xs md:text-sm">
+                  Gender:
+                  <span class="font-bold text-[#CC9E06]"
+                    ><%= user.gender %></span
+                  >
+                </p>
+                <p class="mt-4 text-xs md:text-sm">
+                  City:
+                  <span class="font-bold text-[#CC9E06]"><%= user.city %></span>
+                </p>
+                <p class="mt-4 text-xs md:text-sm">
+                  Postal Code:
+                  <span class="font-bold text-[#CC9E06]"
+                    ><%= user.postalcode %></span
+                  >
+                </p>
+                <p class="mt-4 text-xs capitalize md:text-sm">
+                  Suspended:
+                  <span class="font-bold text-[#CC9E06]"
+                    ><%= user.isSuspended %></span
+                  >
+                </p>
+                <p class="mt-4 text-xs capitalize md:text-sm">
+                  Created On
+                  <span class="font-bold text-[#CC9E06]"
+                    ><%= new Date(user.createdAt).toLocaleDateString('en-US',
+                    { year: 'numeric', month: 'short', day: 'numeric' })
+                    %>.</span
+                  >
+                </p>
+              </div>
+              <div
+                class="h-80 w-[16rem] overflow-y-auto rounded-lg border border-[#9EA0A3] p-4"
+              >
+                <h1 class="mb-4 font-bold">Referral Record</h1>
+                <% if (referrals.length === 0) { %>
+                <p class="mt-4 text-xs font-bold text-[#CC9E06] md:text-sm">
+                  No Referrals Yet
+                </p>
+                <% } %> <% referrals.forEach(referral => { %>
+                <p class="text-xs md:text-sm">
+                  The client of name and email
+                  <span class="font-bold text-[#CC9E06]"
+                    ><%= referral.name %> and <%= referral.email %> </span
+                  >Was Referred.
+                </p>
+                <% }) %>
+              </div>
+            </div>
+            <h1 class="mt-10 font-bold text-[#CC9E06]">Financial Details</h1>
+            <div class="flex flex-wrap gap-5 rounded-lg p-4">
+              <div
+                class="h-80 w-[16rem] overflow-y-auto rounded-lg border border-[#9EA0A3] p-4"
+              >
+                <h1 class="mb-4 font-bold">Deposit Records</h1>
+                <% if (deposits.length === 0) { %>
+                <p class="mt-4 text-xs font-bold text-[#CC9E06] md:text-sm">
+                  No Deposits Yet
+                </p>
+                <% } %> <% deposits.forEach(deposit => { %>
+                <p class="mt-4 text-xs md:text-sm">
+                  Deposited
+                  <span class="font-bold text-[#CC9E06]"
+                    ><%= deposit.amount %></span
+                  >
+                  using
+                  <span class="font-bold text-[#CC9E06]"
+                    ><%= deposit.medium %></span
+                  >, status
+                  <span class="font-bold text-[#CC9E06]"
+                    ><%= deposit.status %></span
+                  >
+                  on
+                  <span class="font-bold text-[#CC9E06]">
+                    <%= new Date(deposit.createdAt).toLocaleDateString('en-US',
+                    { year: 'numeric', month: 'short', day: 'numeric' })
+                    %></span
+                  >.
+                </p>
+                <% }) %>
+              </div>
+              <div
+                class="h-80 w-[16rem] overflow-y-auto rounded-lg border border-[#9EA0A3] p-4"
+              >
+                <h1 class="mb-4 font-bold">Withdrawal Record</h1>
+                <% if (withdrawals.length === 0) { %>
+                  <p class="mt-4 text-xs font-bold text-[#CC9E06] md:text-sm">
+                    No Withdrawal Yet
+                  </p>
+                  <% } %> <% withdrawals.forEach(Withdrawal => { %>
+                  <p class="mt-4 text-xs md:text-sm">
+                    Withdrew
+                    <span class="font-bold text-[#CC9E06]"
+                      ><%= Withdrawal.amount %></span
+                    >
+                    using
+                    <span class="font-bold text-[#CC9E06]"
+                      ><%= Withdrawal.account.wallet %></span
+                    >, status
+                    <span class="font-bold text-[#CC9E06]"
+                      ><%= Withdrawal.status %></span
+                    >
+                    on
+                    <span class="font-bold text-[#CC9E06]">
+                      <%= new Date(Withdrawal.createdAt).toLocaleDateString('en-US',
+                      { year: 'numeric', month: 'short', day: 'numeric' })
+                      %></span
+                    >.
+                  </p>
+                  <% }) %>
+              </div>
+              <div
+                class="h-80 w-[16rem] overflow-y-auto rounded-lg border border-[#9EA0A3] p-4"
+              >
+                <h1 class="mb-4 font-bold">Investment Record</h1>
+                <% if (investments.length === 0) { %>
+                  <p class="mt-4 text-xs font-bold text-[#CC9E06] md:text-sm">
+                    No Investment Yet
+                  </p>
+                  <% } %> <% investments.forEach(investment => { %>
+                  <p class="mt-4 text-xs md:text-sm">
+                    Invested
+                    <span class="font-bold text-[#CC9E06]"
+                      >$<%= investment.amount %></span
+                    >
+                    on the
+                    <span class="font-bold text-[#CC9E06]"
+                      ><%= investment.plan %> plan</span
+                    >, status 
+                    <span class="font-bold text-[#CC9E06]"
+                      ><%= investment.status %></span
+                    >
+                    on
+                    <span class="font-bold text-[#CC9E06]">
+                      <%= new Date(investment.createdAt).toLocaleDateString('en-US',
+                      { year: 'numeric', month: 'short', day: 'numeric' })
+                      %></span
+                    >.
+                    Paid Out <span class="font-bold text-[#CC9E06]"
+                    >is <%= investment.isFulfilled %></span
+                  >.
+                  </p>
+                  <% }) %>
+              </div>
+              <div
+                class="h-80 w-[16rem] overflow-y-auto rounded-lg border border-[#9EA0A3] p-4"
+              >
+                <h1 class="mb-4 font-bold">Earning Record</h1>
+                <% if (earnings.length === 0) { %>
+                  <p class="mt-4 text-xs font-bold text-[#CC9E06] md:text-sm">
+                    No Earnings Yet
+                  </p>
+                  <% } %> <% earnings.forEach(earning => { %>
+                  <p class="mt-4 text-xs md:text-sm">
+                    Earned
+                    <span class="font-bold text-[#CC9E06]"
+                      >$<%= earning.amount %></span
+                    >
+                    <% if(earning.type === "earning") {%>
+                      from the <span class="font-bold text-[#CC9E06]"
+                      ><%= earning.plan %> plan</span
+                    >
+                    <%}%>
+                    <% if(earning.type !== "earning") {%>
+                      from the <span class="font-bold text-[#CC9E06]"
+                      ><%= earning.type %></span
+                    >
+                    <%}%>
+                    , status 
+                    <span class="font-bold text-[#CC9E06]"
+                      ><%= earning.status %></span
+                    >
+                    on
+                    <span class="font-bold text-[#CC9E06]">
+                      <%= new Date(earning.createdAt).toLocaleDateString('en-US',
+                      { year: 'numeric', month: 'short', day: 'numeric' })
+                      %></span
+                    >.
+                  </p>
+                  <% }) %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

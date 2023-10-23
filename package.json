@@ -1,5 +1,5 @@
 {
-  "name": "millennium-investment",
+  "name": "rehoniel-investment",
   "version": "1.0.0",
   "description": "This is an investment website",
   "main": "app.js",
@@ -13,7 +13,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "author": "Millennium Investment Company Developers",
+  "author": "Rehoniel Investment Company Developers",
   "license": "ISC",
   "devDependencies": {
     "prettier": "^3.0.2",

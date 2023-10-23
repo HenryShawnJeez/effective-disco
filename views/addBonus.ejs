@@ -25,14 +25,64 @@
 <body class="bg-darkGray main">
   <%- include("partials/adminSidebar"); -%>
     <section>
-      <% if(status==='success' ){ %>
-        <div class="mx-auto px-3 mt-20 py-5 m-3 bg-green-300 text-green-700 w-3/4 rounded-sm text-center capitalize md:mt-0">
-          transaction submitted Successfully
+      <% if(status ==='success' ){ %>
+        <div class="flex w-full items-center justify-center">
+          <div
+            id="overlay"
+            class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+          ></div>
+          <div
+            id="successPopup"
+            class="fixed top-[30%] left-[3%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg sm:left-[15%] md:left-[40%] lg:left-[50%]"
+          >
+            <span
+              id="closePopupBtn"
+              onclick="closePopupBtnClick()"
+              class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+              >&times;</span
+            >
+            <img
+              class="mx-auto"
+              src="../../Images/correct.svg"
+              alt="Correct Icon"
+            />
+            <h2 class="mt-2 text-center text-2xl font-semibold text-green-500">
+              Success!
+            </h2>
+            <p class="mt-8 text-center text-sm capitalize text-gray-800">
+              transaction submitted Successfully.
+            </p>
+          </div>
         </div>
-        <% } else if (status==='fail' ){%>
-          <div class="mx-auto px-3 mt-20 py-5 m-3 bg-red-300 text-red-700 w-3/4 rounded-sm text-center capitalize md:mt-0">
-            transaction failed !. Do ensure you entered the correct details
-            if this persists please contact the developer
+        <% } else if (status ==='fail' ){%>
+          <div class="flex w-full items-center justify-center">
+            <div
+              id="failureOverlay"
+              class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+            ></div>
+      
+            <div
+              id="failurePopup"
+              class="fixed top-[30%] left-[3%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg sm:left-[15%] md:left-[40%] lg:left-[50%]"
+            >
+              <span
+                onclick="failureClosePopupBtnClick()"
+                class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+                >&times;</span
+              >
+              <img
+                class="mx-auto w-20"
+                src="../../Images/wrong.png"
+                alt="Wrong Icon"
+              />
+              <h2 class="mt-2 text-center text-2xl font-semibold text-red-500">
+                Failure!
+              </h2>
+              <p class="mt-8 text-center text-sm capitalize text-gray-800">
+                transaction failed !. Do ensure you entered the correct details
+                if this persists please contact the developer.
+              </p>
+            </div>
           </div>
           <% }%>
 
@@ -79,6 +129,24 @@
             </form>
     </section>
     <%- include ("partials/script"); -%>
+    <!-- For the popups -->
+    <script>
+      const successPopup = document.getElementById("successPopup");
+      const overlay = document.getElementById("overlay");
+
+      const closePopupBtnClick = () => {
+        successPopup.classList.add("hidden");
+        overlay.classList.add("hidden");
+      };
+
+      const failurePopup = document.getElementById("failurePopup");
+      const failureOverlay = document.getElementById("failureOverlay");
+
+      const failureClosePopupBtnClick = () => {
+        failurePopup.classList.add("hidden");
+        failureOverlay.classList.add("hidden");
+      };
+    </script>
       <script src="../../JS/collapsible.js"></script>
       <script src="../../JS/deposit.js"></script>
 </body>

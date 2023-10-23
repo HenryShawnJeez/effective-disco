@@ -21,7 +21,8 @@ router.use('/user', adminUserRoute)
 router.use('/profile', adminProfileRoute)
 router.use('/bonus', adminBonusRoute)
 router.use('/suspend', adminSuspendRoute)
-router.use('/unsuspend', adminUnsuspendRoute);
+router.use('/unsuspend', adminUnsuspendRoute)
+
 
 router.get('/', renderAdminDashboard)
 

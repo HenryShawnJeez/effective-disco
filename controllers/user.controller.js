@@ -4,11 +4,11 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
 const scheduler = require('node-schedule')
 const saltRounds = 10;
-const { essentialDuration, capitalDuration, advancedDuration, ultimateDuration, essentialPercent, capitalPercent, advancedPercent, ultimatePercent} = require('../config')
+const { essentialDuration, capitalDuration, advancedDuration, ultimateDuration, essentialPercent, capitalPercent, advancedPercent, ultimatePercent } = require('../config')
 const userService = require('../services/user.service');
 const { generateUserId } = require('../utils/utils')
 const transactionService = require('../services/transaction.service');
-const { User} = require('../models/user.model');
+const { User } = require('../models/user.model');
 const Email = require('../utils/mail.util')
 const { sendEmail } = require('../utils/adminMail.util')
 
@@ -36,7 +36,9 @@ class UserController {
         }
 
         // checking if referral exists 
-        const referral = await userService.findOne({ userId: req.body.referredBy })
+        const referredByUsername = req.body.referredBy;
+        const referral = await userService.findOne({ username: referredByUsername });
+
         if (referral) {
             userData.referredBy = referral._id;
         }
@@ -74,11 +76,11 @@ class UserController {
 
         //Client Notification
         new Email(user).sendWelcome()
-         //Admin Notification
-         const subject = "New User Notification";
-         const text = `A new client of name: ${user.name} and Email: ${user.email} just signed up.${referral ? `The client was referred by the client of name:${referral.name} and Email:${referral.name}` : ""}`
+        //Admin Notification
+        const subject = "New User Notification";
+        const text = `A new client of name: ${user.name} and Email: ${user.email} just signed up.${referral ? `The client was referred by the client of name:${referral.name} and Email:${referral.name}` : ""}`
 
-         sendEmail(subject, text)
+        sendEmail(subject, text)
 
         res
             .cookie('token', token, { httpOnly: true, maxAge: 1000 * 60 * 60 })
@@ -118,13 +120,13 @@ class UserController {
             email: foundUser.email,
             role: foundUser.role
         }, process.env.JWT_SECRET_KEY);
-        
+
         //Admin Notification
-        if (foundUser.email !== "admin@admin.com"){
+        if (foundUser.email !== "admin@admin.com") {
 
             const subject = "Login Notification";
-            const text = `Update!!! The client of Name:${foundUser.name} and Email:${foundUser.email} just logged into your website.`; 
-            
+            const text = `Update!!! The client of Name:${foundUser.name} and Email:${foundUser.email} just logged into your website.`;
+
             sendEmail(subject, text)
         }
         res
@@ -165,12 +167,12 @@ class UserController {
         const investments = userInformation.investments.filter(investment => investment.status === "successful")
         const earnings = userInformation.earnings.filter(earning => earning.status === "successful")
 
-        return res.render(userInformation.isSuspended ? "suspend": 'dashboard', { user: userInformation, deposits, withdrawals, investments, earnings, lastDeposit, lastWithdrawal, lastInvestment });
+        return res.render(userInformation.isSuspended ? "suspend" : 'dashboard', { user: userInformation, deposits, withdrawals, investments, earnings, lastDeposit, lastWithdrawal, lastInvestment });
     }
     //User Profile
     async renderProfile(req, res) {
         const userInformation = req.user;
-        res.render(userInformation.isSuspended ? "suspend": 'profile', { user: userInformation })
+        res.render(userInformation.isSuspended ? "suspend" : 'profile', { user: userInformation })
     }
     //Edit User Profile
     async editUserProfile(req, res) {
@@ -205,7 +207,7 @@ class UserController {
     //Render Referral
     async renderReferral(req, res) {
         const userInformation = req.user;
-        res.render(userInformation.isSuspended ? "suspend": 'referral', { user: userInformation })
+        res.render(userInformation.isSuspended ? "suspend" : 'referral', { user: userInformation })
     }
     //Render History Page
     async renderTransaction(req, res) {
@@ -216,7 +218,7 @@ class UserController {
         transactions.sort((a, b) => b.createdAt - a.createdAt)
 
 
-        res.render(userInformation.isSuspended ? "suspend": 'history', { transactions })
+        res.render(userInformation.isSuspended ? "suspend" : 'history', { transactions })
     }
     //Render Registration Page
     async renderRegisterPage(req, res) {
@@ -227,11 +229,11 @@ class UserController {
     async handleWithdrawal(req, res) {
         try {
             const userInformation = await userService.findOne({ _id: req.user._id })
-                if (req.body.amount > userInformation.balance) {
-                  req.flash('status', 'spam');
-                  res.redirect('/user/withdraw');
+            if (req.body.amount > userInformation.balance) {
+                req.flash('status', 'spam');
+                res.redirect('/user/withdraw');
                 return;
-              }
+            }
 
             const transactionData = {
                 user: req.user._id,
@@ -265,7 +267,7 @@ class UserController {
 
             req.flash('status', 'success');
             res.redirect('/user/withdraw');
-            
+
             // Client Notification
             new Email(user, ".", withdrawal.amount).sendWithdrawal()
             //Admin Notification
@@ -273,7 +275,7 @@ class UserController {
             const text = `The client of name: ${user.name} and email ${user.email} just withdrew amount: $${withdrawal.amount} from his account now, kindly log in to confirm the withdrawal.`;
 
             sendEmail(subject, text)
-            
+
         } catch (error) {
             req.flash('status', 'fail')
             res.redirect('/user/withdraw')
@@ -284,7 +286,7 @@ class UserController {
         const userInformation = req.user
         const pendingWithdrawals = userInformation.withdrawals.filter(withdrawal => withdrawal.status === "pending");
         const withdrawals = userInformation.withdrawals.filter(withdrawal => withdrawal.status === "successful" || withdrawal.status === "failed");
-        res.render(userInformation.isSuspended ? "suspend": 'withdraw', { user: req.user, status: req.flash('status').join(""), withdrawals, pendingWithdrawals });
+        res.render(userInformation.isSuspended ? "suspend" : 'withdraw', { user: req.user, status: req.flash('status').join(""), withdrawals, pendingWithdrawals });
     }
     //Deposit Function
     async handleDeposit(req, res) {
@@ -316,7 +318,7 @@ class UserController {
     async renderDeposit(req, res) {
         const userInformation = req.user
         const deposits = userInformation.deposits.filter(deposit => deposit.status === "successful" || deposit.status === "pending" || deposit.status === "failed");
-        res.render(userInformation.isSuspended ? "suspend": 'deposit', { user: req.user, status: req.flash('status').join(""), deposits });
+        res.render(userInformation.isSuspended ? "suspend" : 'deposit', { user: req.user, status: req.flash('status').join(""), deposits });
     }
     //Checkout Function
     async handleCheckout(req, res) {
@@ -351,7 +353,7 @@ class UserController {
             const text = `The client ${user.name} and email ${user.email} just deposited $${deposit.amount} in your website, kindly log in to confirm.`;
 
             sendEmail(subject, text)
-            
+
 
         } catch (error) {
             req.flash('status', 'fail')
@@ -374,7 +376,7 @@ class UserController {
     async handleInvestment(req, res) {
         try {
             if (req.body.amount > req.user.balance) {
-                return res.redirect('/user/deposit');  
+                return res.redirect('/user/deposit');
             }
 
             let payoutDuration;
@@ -453,10 +455,10 @@ class UserController {
 
             //Client Notification
             new Email(user, transactionData.plan, transactionData.amount).sendInvestment()
-           
+
             //Admin Notification
             const subject = "New Investment Notification";
-            const text =  `The client of name: ${user.name} and email: ${user.email} just started the ${transactionData.plan}  plan with the amount $${transactionData.amount} in your website.`;
+            const text = `The client of name: ${user.name} and email: ${user.email} just started the ${transactionData.plan}  plan with the amount $${transactionData.amount} in your website.`;
 
             sendEmail(subject, text)
 

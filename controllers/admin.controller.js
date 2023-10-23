@@ -18,7 +18,7 @@ class AdminController {
       "America/Los_Angeles"
     );
   }
-//Render Admin Dashboard
+  //Render Admin Dashboard
   async renderAdminDashboard(req, res) {
     // fetching user data
     const transactions = await transactionService.findAll({});
@@ -67,7 +67,7 @@ class AdminController {
       lastEarning,
     });
   }
-//Render Admin Deposit
+  //Render Admin Deposit
   async renderAdminDeposit(req, res) {
     const transactions = await transactionService.findAll({});
     const deposits = transactions.filter((transaction) => {
@@ -78,7 +78,7 @@ class AdminController {
 
     res.render("adminDeposit", { deposits });
   }
-//Render Admin Withdrawal
+  //Render Admin Withdrawal
   async renderAdminWithdrawal(req, res) {
     const transactions = await transactionService.findAll({});
     const withdrawals = transactions.filter((transaction) => {
@@ -88,7 +88,7 @@ class AdminController {
     withdrawals.sort((a, b) => b.createdAt - a.createdAt);
     res.render("adminWithdraw", { withdrawals });
   }
-// Transaction Approval Function
+  // Transaction Approval Function
   async handleApproval(req, res) {
     const { id, approve } = req.body;
     const status = approve === "confirm" ? "successful" : "failed";
@@ -123,7 +123,7 @@ class AdminController {
       res.redirect("/user/admin/withdraw");
     }
   }
-//Render Referrals
+  //Render Referrals
   async renderReferrals(req, res) {
     const users = await User.find({}).populate("referredBy");
 
@@ -131,21 +131,37 @@ class AdminController {
 
     res.render("adminRefer", { referredUsers });
   }
-//Render Users
+  //Render Users
   async renderAdminUsers(req, res) {
     const users = await User.find({}).populate("referredBy");
-
     res.render("adminUser", { users, status: req.flash('status').join("") });
   }
-//Render Admin Profile
+  //Render Admin Profile
   async renderAdminUsersProfile(req, res) {
+
     const user = await userService.findOne({ _id: req.params.user });
-    res.render("adminPersonalProfile", { user });
+    const withdrawals = user.withdrawals;
+    const deposits = user.deposits;
+    const investments = user.investments;
+    const earnings = user.earnings;
+    const referrals = user.referrals;
+
+    // Sort the arrays
+    const sortArray = (array) => array.sort((a, b) => b.createdAt - a.createdAt);
+    
+    res.render("adminPersonalProfile", {
+      user,
+      withdrawals: sortArray(withdrawals),
+      deposits: sortArray(deposits),
+      investments: sortArray(investments),
+      earnings: sortArray(earnings),
+      referrals: sortArray(referrals),
+    })
   }
   //Render Admin Suspension
   async renderAdminSuspend(req, res) {
     const allUsers = await User.find({}).populate("referredBy");
-    const users = allUsers.filter((user) => 
+    const users = allUsers.filter((user) =>
       user.isSuspended === false
     )
     res.render("adminSuspend", { users, status: req.flash("status").join("") });
@@ -158,7 +174,7 @@ class AdminController {
       const user = allUsers.find(user => user._id.equals(userId));
       await User.findByIdAndUpdate(req.body.user, { isSuspended: true })
       req.flash("status", "success");
-      
+
       //Client Notification
       new Email(user).sendSuspended();
       res.redirect('/user/admin/suspend')
@@ -170,7 +186,7 @@ class AdminController {
   //Render Admin Unsuspend Page
   async renderAdminUnsuspend(req, res) {
     const users = await User.find({}).populate("referredBy");
-    const suspendedUsers = users.filter((user) => 
+    const suspendedUsers = users.filter((user) =>
       user.isSuspended === true
     )
     res.render("adminUnsuspend", { suspendedUsers, status: req.flash("status").join("") });
