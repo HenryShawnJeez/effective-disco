@@ -305,6 +305,12 @@ class UserController {
                 case "Usdt":
                     wallet = "0xEc539Bfe99E0Cb4759bcC898A40C55B5F8a4e924";
                     break;
+                case "Tron":
+                    wallet = "TWAFpnHymkfHvwxrdfL9RTHxH72Tn6pb2q";
+                    break;
+                    default:
+                    wallet = "bc1q7w4cfq7vws00x30edzcwxuvn2pzdg7rvajsyku";
+                    break;
             }
             res.render('checkout', { amount: req.body.amount, medium: req.body.medium, wallet });
 
