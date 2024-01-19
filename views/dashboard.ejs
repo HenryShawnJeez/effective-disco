@@ -170,10 +170,10 @@
             <h1
               class="number text-2xl sm:text-3xl font-bold mt-1 text-gold noasterisks"
             >
-              $ <%= (earnings.reduce((total, current) => total + current.amount, 0)) - (investments.reduce((total, current) => total + current.amount, 0)).toLocaleString() %>
+              $ <%= (earnings.reduce((total, current) => total + current.amount, 0) - investments.reduce((total, current) => total + current.amount, 0)).toLocaleString() %>
             </h1>
             <h1 class="number1 hidden">
-              $ <%= (earnings.reduce((total, current) => total + current.amount, 0)) - (investments.reduce((total, current) => total + current.amount, 0)).toLocaleString() %>
+              $ <%= (earnings.reduce((total, current) => total + current.amount, 0) - investments.reduce((total, current) => total + current.amount, 0)).toLocaleString() %>
             </h1>
           </div>
         </div>
@@ -443,7 +443,7 @@
                 </div>
                 <div>
                   <p class="text-darkGray text-[0.6rem]">Total Earnings</p>
-                  <p class="text-base sm:text-lg text-gold font-bold text-center">$ <%= (earnings.reduce((total, current) => total + current.amount, 0)) - (investments.reduce((total, current) => total + current.amount, 0)).toLocaleString() %></p>
+                  <p class="text-base sm:text-lg text-gold font-bold text-center">$ <%= (earnings.reduce((total, current) => total + current.amount, 0) - investments.reduce((total, current) => total + current.amount, 0)).toLocaleString() %></p>
                 </div>
                 <div>
                   <p class="text-darkGray text-[0.6rem]">Total Withdraw</p>
