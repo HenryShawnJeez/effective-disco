@@ -371,7 +371,7 @@ class UserController {
         try {
             const investments = await User.findOne({ _id: req.user._id }).populate('investments').select('investments -_id')
             const activeInvestments = investments.investments.filter(investment => Date.now() < investment.expiresAt);
-            console.log(activeInvestments)
+            // console.log(activeInvestments)
             res.render('invest', { investments: activeInvestments, status: req.flash('status').join("") })
         } catch (error) {
             req.flash('status', 'fail')
