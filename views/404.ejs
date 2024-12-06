@@ -9,14 +9,14 @@
     <%- include("partials/SEO"); -%>
 </head>
 
-<body>
+<body class="bg-darkNavy text-xs md:text-sm xl:text-base">
     <%- include("partials/nav"); -%>
-        <section class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-            <h1 class="text-9xl font-black">Opps!</h1>
-            <h3 class="font-bold mt-5">404 - page not found</h3>
-            <p class="text-sm mt-10">The link you followed might have been removed or had it's name changed or is
+        <section class="top-1/2 left-1/2 absolute bg-darkWhite p-10 rounded-xl text-center -translate-x-1/2 -translate-y-1/2 size-fit">
+            <h1 class="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl">Opps!</h1>
+            <h3 class="mt-5 font-bold">404 - page not found</h3>
+            <p class="mx-auto mt-10 max-w-[50ch]">The link you followed might have been removed or had it's name changed or is
                 temporarily unavailable</p>
-            <a href="/" class="inline-block mt-8 px-3 py-4 bg-brightBlue text-white capitalize rounded-full">go to
+            <a href="/" class="inline-block bg-brightBlue mt-8 px-3 py-4 rounded-full w-52 text-white capitalize">go to
                 homepage</a>
         </section>
 </body>

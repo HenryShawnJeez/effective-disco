@@ -1,299 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Services</title>
-    <%- include("partials/SEO"); -%>
-  </head>
-  <body class="bg-[url('../Images/bg.svg')] servicesIcon">
-    <!-- Nav Bar -->
-    <%- include("partials/nav"); -%>
-    <section>
-      <div class="flex flex-col">
-        <div class="mt-10 p-6">
-          <h1
-            class="service text-xl sm:text-2xl md:text-3xl font-bold text-gold lg:text-4xl text-center"
-          >
-            Services <i class="fas fa-hands-helping"></i>
-          </h1>
-          <p class="text-lightGray text-sm mt-2 text-center">
-            At Rehoniel, we are dedicated to providing our
-            investors with a comprehensive and seamless investment experience.
-            To this end, we offer a range of services, including:
-          </p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services</title>
+  <%- include("partials/SEO"); -%>
+</head>
+
+<body class="bg-darkNavy text-xs md:text-sm xl:text-base">
+  <!-- Nav Bar -->
+  <%- include("partials/nav"); -%>
+  <%- include ("partials/_secondHero.ejs", { imageUrl: '/Images/bg.jpg', heading: 'Services', subtext: 'Home'}); -%>
+  <section>
+    <div class="bg-lightGray1 drop-shadow-md mx-auto -mt-10 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-10 rounded-[2rem] w-[95%] md:w-[90%] lg:w-[85%] xl:w-[80%]">
+      <div class="flex flex-col gap-y-3 text-center">
+        <p class="text-gold italic">Our Services</p>
+        <p class="font-bold text-darkNavy text-xl sm:text-2xl md:text-3xl xl:text-4xl">Always Ready To Serve</p>
+        <p class="mx-auto max-w-[60ch] text-black/70">We are dedicated to providing our investors with a comprehensive and seamless investment experience. To this end, we offer a range of services:</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 md:gap-5 lg:gap-7 xl:gap-10 mt-10">
+        <div id="card-1" class="border-gold hover:border-darkBlue py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] rounded-tr-none md:rounded-tr-none xl:rounded-tr-none w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orangeRed rounded-full size-3"></div>
+            <div class="bg-paleGreen rounded-full size-3"></div>
+            <div class="bg-gold rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="text-gold fa-2x fa-globe fas"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Wide Investment Range.</h3>
+            <p class="mt-2 text-[10px] text-black/70 text-center xl:text-sm md:text-xs">
+              Our investors can choose from our options the assets
+              that best align with their investment goals and risk tolerance.
+            </p>
+          </div>
         </div>
-        <div
-          class="flex flex-col flex-wrap items-center justify-center p-4 mt-10 space-y-4 mb-16 md:space-x-4 md:flex-row"
-        >
-          <div
-            id="card-1"
-            class="w-72 h-64 rounded-lg duration-500 shadow-md bg-opacity-10 border border-[#6564DB] istGlass text-lightGray1 bg-white md:mt-4 md:ml-4"
-          >
-            <div class="flex items-center p-2">
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-orangeRed"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-paleGreen"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-gold"
-                ></span>
-              </div>
-            </div>
-            <div class="p-4 flex justify-center flex-col items-center">
-              <i class="icon fas fa-globe fa-3x"></i>
-              <h3 class="text-xl font-bold mt-2">Wide Investment Range.</h3>
-              <p class="text-sm mt-2 text-center">
-                We allow our investors to choose from our options the assets
-                that best align with their investment goals and risk tolerance.
-              </p>
-            </div>
+        <div id="card-2" class="border-gold hover:border-darkBlue py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orangeRed rounded-full size-3"></div>
+            <div class="bg-paleGreen rounded-full size-3"></div>
+            <div class="bg-gold rounded-full size-3"></div>
           </div>
-          <div
-            id="card-2"
-            class="w-72 h-64 rounded-lg duration-500 shadow-md bg-opacity-10 border border-[#6564DB] istGlass text-lightGray1 bg-white"
-          >
-            <div class="flex items-center p-2">
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-orangeRed"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-paleGreen"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-gold"
-                ></span>
-              </div>
-            </div>
-            <div class="p-4 flex justify-center flex-col items-center">
-              <i class="icon fas fa-search-dollar fa-3x"></i>
-              <h3 class="text-xl font-bold mt-2">Transparent Investment.</h3>
-              <p class="text-sm mt-2 text-center">
-                We provide our investors with clear and accurate information
-                about the investments they are making, no hidden details, and no
-                back door.
-              </p>
-            </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="fa-search-dollar text-gold fa-2x fas"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Transparent Investment.</h3>
+            <p class="mt-2 text-[10px] text-black/70 text-center xl:text-sm md:text-xs">
+              We provide our investors with clear and accurate information
+              about the investments they are making, no hidden details, and no
+              back door.
+            </p>
           </div>
-          <div
-            id="card-3"
-            class="w-72 h-64 rounded-lg duration-500 shadow-md bg-opacity-10 border border-[#6564DB] istGlass text-lightGray1 bg-white"
-          >
-            <div class="flex items-center p-2">
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-orangeRed"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-paleGreen"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-gold"
-                ></span>
-              </div>
-            </div>
-            <div class="p-4 flex justify-center flex-col items-center">
-              <i class="icon fas fa-tools fa-3x"></i>
-              <h3 class="text-xl font-bold mt-2">Innovative Tools.</h3>
-              <p class="text-sm mt-2 text-center">
-                With our tools, Our investors are better informed. It gives them
-                an edge and makes them stand out in the competitive market.
-              </p>
-            </div>
+        </div>
+        <div id="card-3" class="border-gold hover:border-darkBlue py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orangeRed rounded-full size-3"></div>
+            <div class="bg-paleGreen rounded-full size-3"></div>
+            <div class="bg-gold rounded-full size-3"></div>
           </div>
-          <div
-            id="card-4"
-            class="w-72 h-64 rounded-lg duration-500 shadow-md bg-opacity-10 border border-[#6564DB] istGlass text-lightGray1 bg-white"
-          >
-            <div class="flex items-center p-2">
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-orangeRed"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-paleGreen"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-gold"
-                ></span>
-              </div>
-            </div>
-            <div class="p-4 flex justify-center flex-col items-center">
-              <i class="icon far fa-smile fa-3x"></i>
-              <h3 class="text-xl font-bold mt-2">Dedicated Support.</h3>
-              <p class="text-sm mt-2 text-center">
-                Our customer care ensures that our investors have a positive
-                experience using the website and investing in cryptocurrency.
-              </p>
-            </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="text-gold fa-2x fa-tools fas"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Innovative Tools.</h3>
+            <p class="mt-2 text-[10px] text-black/70 text-center xl:text-sm md:text-xs">
+              With our tools, Our investors are better informed. It gives them
+              an edge and makes them stand out in the competitive market.
+            </p>
+          </div>
+        </div>
+        <div id="card-4" class="border-gold hover:border-darkBlue py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] rounded-bl-none md:rounded-bl-none xl:rounded-bl-none w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orangeRed rounded-full size-3"></div>
+            <div class="bg-paleGreen rounded-full size-3"></div>
+            <div class="bg-gold rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="text-gold fa-2x fa-smile far"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Dedicated Support.</h3>
+            <p class="mt-2 text-[10px] text-black/70 text-center xl:text-sm md:text-xs">
+              Our customer care ensures that our investors have a positive
+              experience using the website and investing in cryptocurrency.
+            </p>
+          </div>
+        </div>
+        <div id="card-5" class="border-gold hover:border-darkBlue py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] rounded-tr-none md:rounded-tr-none xl:rounded-tr-none w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orangeRed rounded-full size-3"></div>
+            <div class="bg-paleGreen rounded-full size-3"></div>
+            <div class="bg-gold rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="text-gold fa-2x fa-wallet fas"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Secure Wallet Services.</h3>
+            <p class="mt-2 text-[10px] text-black/70 text-center xl:text-sm md:text-xs">
+              We provide secure wallet services to store investors'
+              cryptocurrencies and ensure that their assets are safe and secure.
+            </p>
+          </div>
+        </div>
+        <div id="card-6" class="border-gold hover:border-darkBlue py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orangeRed rounded-full size-3"></div>
+            <div class="bg-paleGreen rounded-full size-3"></div>
+            <div class="bg-gold rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="text-gold fa-2x fa-book-open fas"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Educational Resources.</h3>
+            <p class="mt-2 text-[10px] text-black/70 text-center xl:text-sm md:text-xs">
+              We provide educational resources, including tutorials, articles,
+              and webinars, to help clients better understand the cryptocurrency market and how to make informed investment decisions.
+            </p>
+          </div>
+        </div>
+        <div id="card-7" class="border-gold hover:border-darkBlue py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orangeRed rounded-full size-3"></div>
+            <div class="bg-paleGreen rounded-full size-3"></div>
+            <div class="bg-gold rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="text-gold fa-2x fa-chart-bar fas"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Market Analysis.</h3>
+            <p class="mt-2 text-[10px] text-black/70 text-center xl:text-sm md:text-xs">
+              In-depth market analysis and insights to help clients
+              stay informed and up-to-date on the latest trends and developments in the cryptocurrency market.
+            </p>
+          </div>
+        </div>
+        <div id="card-8" class="border-gold hover:border-darkBlue py-6 p-2 border rounded-[1.5rem] md:rounded-[2rem] xl:rounded-[2.5rem] rounded-bl-none md:rounded-bl-none xl:rounded-bl-none w-[16rem] sm:w-72 h-54">
+          <div class="flex gap-x-2">
+            <div class="bg-orangeRed rounded-full size-3"></div>
+            <div class="bg-paleGreen rounded-full size-3"></div>
+            <div class="bg-gold rounded-full size-3"></div>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <i class="text-gold fa-2x fa-people-arrows fas"></i>
+            <h3 class="mt-2 font-bold text-base md:text-lg xl:text-xl">Dedicated Support.</h3>
+            <p class="mt-2 text-[10px] text-black/70 text-center xl:text-sm md:text-xs">
+              We believe in the value of building a strong network of
+              satisfied clients. That's why we offer referral services,
+              allowing our clients to earn bonuses for referring new investors
+              to our platform.
+            </p>
           </div>
         </div>
       </div>
-    </section>
-    <section class="bg-white">
-      <div class="flex flex-col">
-        <div class="p-6 mt-10">
-          <h1
-            class="text-2xl font-bold text-primaryBlue text-left ml-10 md:text-4xl"
-          >
-            Other Services Includes:
-          </h1>
+    </div>
+  </section>
+  <section class="bg-lightGray1 mt-20">
+    <div class="flex flex-col gap-y-10 mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-10 w-[95%] md:w-[90%] lg:w-[85%] xl:w-[80%]">
+      <div class="flex flex-col gap-y-3 text-center">
+        <p class="text-gold italic">Our Process</p>
+        <p class="font-bold text-darkNavy text-xl sm:text-2xl md:text-3xl xl:text-4xl"><span class="text-gold">Earning</span> Process</p>
+        <p class="mx-auto max-w-[60ch] text-black/70">Unlocking Your Potential: A Comprehensive Guide to Earning Through Realmforte Cryptocurrency investment in Order to Maximize Your Profits.</p>
+      </div>
+      <div class="flex flex-wrap justify-center xl:justify-between gap-3 md:gap-5 lg:gap-7 xl:gap-10 mt-10">
+        <div class="relative size-[16rem] md:size-[18rem] xl:size-80 bg-darkWhite p-2 md:p-4 rounded-[50%]">
+          <div class="top-[5%] right-[10%] z-[2] absolute flex justify-center items-center bg-gold rounded-[50%] size-10 md:size-12 xl:size-14">
+            <p class="font-semibold text-base text-lightGray1 md:text-lg xl:text-xl">01</p>
+          </div>
+          <div class="flex flex-col justify-center items-center gap-y-3 border-darkBlue p-4 border rounded-[50%] w-full h-full text-center">
+            <p class="font-semibold text-base text-darkBlue md:text-lg xl:text-xl">Create an Account</p>
+            <p class="text-[10px] text-black/70 xl:text-sm md:text-xs">You need to be a member. It only takes a minute! Enter your details to get started. Exciting things await!</p>
+            <p class="flex items-center gap-x-0.5 text-gold hover:text-darkBlue duration-300">
+              <a href="/user/create" target="_blank" rel="noopener noreferrer" class="xl:text-sm md:text-xs">Get Started</a>
+              <ion-icon name="arrow-redo-circle" class="text-xl"></ion-icon>
+            </p>
+          </div>
         </div>
-        <div
-          class="flex flex-col flex-wrap items-center justify-center p-4 mt-10 space-y-4 mb-16 md:space-x-4 md:flex-row"
-        >
-          <div
-            id="card-5"
-            class="w-72 h-64 rounded-lg duration-500 shadow-md bg-opacity-10 istGlass bg-white md:mt-4 md:ml-4"
-          >
-            <div class="flex items-center p-2">
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-orangeRed"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-paleGreen"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-gold"
-                ></span>
-              </div>
-            </div>
-            <div class="p-4 flex justify-center flex-col items-center">
-              <i class="icon fas fa-wallet fa-2x"></i>
-              <h3 class="text-xl font-bold text-darkNavy mt-2">Secure Wallet Services.</h3>
-              <p class="text-sm mt-2 text-black text-center">
-                We provide secure wallet services to store investors'
-                cryptocurrencies and ensure that their assets are safe and
-                secure.
-              </p>
-            </div>
+        <div class="relative size-[16rem] md:size-[18rem] xl:size-80 bg-darkWhite mt-0 sm:mt-10 p-2 md:p-4 rounded-[50%]">
+          <div class="top-[5%] right-[10%] z-[2] absolute flex justify-center items-center bg-gold rounded-[50%] size-10 md:size-12 xl:size-14">
+            <p class="font-semibold text-base text-lightGray1 md:text-lg xl:text-xl">02</p>
           </div>
-          <div
-            id="card-6"
-            class="w-72 h-64 rounded-lg duration-500 shadow-md bg-opacity-10 istGlass bg-white"
-          >
-            <div class="flex items-center p-2">
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-orangeRed"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-paleGreen"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-gold"
-                ></span>
-              </div>
-            </div>
-            <div class="p-4 flex justify-center flex-col items-center">
-              <i class="icon fas fa-book-open fa-2x"></i>
-              <h3 class="text-xl font-bold text-darkNavy mt-2">Educational Resources.</h3>
-              <p class="text-sm mt-2 text-bold text-center">
-                We provide educational resources, including tutorials, articles,
-                and webinars, to help clients better understand the
-                cryptocurrency market and how to make informed investment
-                decisions.
-              </p>
-            </div>
+          <div class="flex flex-col justify-center items-center gap-y-3 border-darkBlue p-4 border rounded-[50%] w-full h-full text-center">
+            <p class="font-semibold text-base text-darkBlue md:text-lg xl:text-xl">Choose Plan</p>
+            <p class="text-[10px] text-black/70 xl:text-sm md:text-xs">Review our plans and select the one that’s right for you. If you have any questions, our support team is here!.</p>
+            <p class="flex items-center gap-x-0.5 text-gold hover:text-darkBlue duration-300">
+              <a href="/user/login" target="_blank" rel="noopener noreferrer" class="xl:text-sm md:text-xs">Choose plan</a>
+              <ion-icon name="arrow-redo-circle" class="text-xl"></ion-icon>
+            </p>
           </div>
-          <div
-            id="card-7"
-            class="w-72 h-64 rounded-lg duration-500 shadow-md bg-opacity-10 istGlass bg-white"
-          >
-            <div class="flex items-center p-2">
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-orangeRed"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-paleGreen"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-gold"
-                ></span>
-              </div>
-            </div>
-            <div class="p-4 flex justify-center flex-col items-center">
-              <i class="icon fas fa-chart-bar fa-2x"></i>
-              <h3 class="text-xl font-bold text-darkNavy mt-2">Market Analysis.</h3>
-              <p class="text-sm mt-2 text-black text-center">
-                We offer in-depth market analysis and insights to help clients
-                stay informed and up-to-date on the latest trends and
-                developments in the cryptocurrency market.
-              </p>
-            </div>
+        </div>
+        <div class="relative size-[16rem] md:size-[18rem] xl:size-80 bg-darkWhite p-2 md:p-4 rounded-[50%]">
+          <div class="top-[5%] right-[10%] z-[2] absolute flex justify-center items-center bg-gold rounded-[50%] size-10 md:size-12 xl:size-14">
+            <p class="font-semibold text-base text-lightGray1 md:text-lg xl:text-xl">03</p>
           </div>
-          <div
-            id="card-8"
-            class="w-72 h-64 rounded-lg duration-500 shadow-md bg-opacity-10 istGlass bg-white"
-          >
-            <div class="flex items-center p-2">
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-orangeRed"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-paleGreen"
-                ></span>
-              </div>
-              <div class="px-1">
-                <span
-                  class="rounded-full w-4 h-4 inline-block items-center p-px bg-gold"
-                ></span>
-              </div>
-            </div>
-            <div class="p-4 flex justify-center flex-col items-center">
-              <i class="icon fas fa-people-arrows fa-2x"></i>
-              <h3 class="text-xl font-bold text-darkNavy mt-2">Referral Services.</h3>
-              <p class="text-sm mt-2 text-black text-center">
-                We believe in the value of building a strong network of
-                satisfied clients. That's why we offer referral services,
-                allowing our clients to earn bonuses for referring new investors
-                to our platform.
-              </p>
-            </div>
+          <div class="flex flex-col justify-center items-center gap-y-3 border-darkBlue p-4 border rounded-[50%] w-full h-full text-center">
+            <p class="font-semibold text-base text-darkBlue md:text-lg xl:text-xl">Best Result</p>
+            <p class="text-[10px] text-black/70 xl:text-sm md:text-xs">Check your dashboard to see your total ROI and capital. We want you to know exactly what you’ve earned.</p>
+            <p class="flex items-center gap-x-0.5 text-gold hover:text-darkBlue duration-300">
+              <a href="/user/login" target="_blank" rel="noopener noreferrer" class="xl:text-sm md:text-xs">Invest now</a>
+              <ion-icon name="arrow-redo-circle" class="text-xl"></ion-icon>
+            </p>
           </div>
         </div>
       </div>
-    </section>
-    <%- include("partials/options"); -%>
-    <%- include("partials/footer"); -%>
-    <script src="../JS/aboutUS.js"></script>
-  </body>
+    </div>
+  </section>
+  <%- include("partials/options"); -%>
+  <%- include("partials/footer"); -%>
+  <script src="../JS/general.js"></script>
+</body>
+
 </html>

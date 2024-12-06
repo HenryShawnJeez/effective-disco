@@ -7,16 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Withdraw</title>
   <!-- Favicon -->
-  <link
-  rel="shortcut icon"
-  href="../../Images/logo.ico"
-  type="image/x-ico"
-/>
+  <link rel="shortcut icon" href="../../Images/logo.ico" type="image/x-ico" />
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <!-- Bootstrap Icon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <!-- Stylesheet -->
@@ -29,124 +24,113 @@
 
 <body class="bg-darkGray main">
   <%- include("partials/adminSidebar"); -%>
-    <section>
-      <div class="flex flex-col items-center justify-center">
-        <div class="mt-20 text-center">
-          <h1 class="text-2xl text-brightBlue font-bold md:text-4xl">Withdrawal</h1>
-          <h4 class="text-sm mt-2 text-darkBlue md:text-base">
-            Total Of <span class="text-brightBlue">
-              <%= withdrawals.length %>
-            </span> Transactions.
-          </h4>
-          <h3 class="my-10 text-brightBlue font-bold text-base md:text-2xl">
-            All Orders
-          </h3>
-        </div>
+  <section>
+    <div class="flex flex-col justify-center items-center">
+      <div class="mt-20 text-center">
+        <h1 class="text-brightBlue font-bold text-2xl md:text-4xl">Withdrawal</h1>
+        <h4 class="mt-2 text-darkBlue text-sm md:text-base">
+          Total Of <span class="text-brightBlue">
+            <%= withdrawals.length %>
+          </span> Transactions.
+        </h4>
+        <h3 class="text-brightBlue my-10 font-bold text-base md:text-2xl">
+          All Orders
+        </h3>
       </div>
+    </div>
 
-      <% withdrawals.forEach( (withdrawal, index)=> { %>
-        <div class="flex flex-col items-center justify-center">
-          <button class="another collapsible">
-            <div class="flex flex-row items-center justify-evenly">
-              <h4 class="text-sm md:text-base capitalize">
-                <%= withdrawal.type%>
-              </h4>
-              <p class="text-xs md:text-sm">
-                <%if(withdrawal.status==="pending" ){%>
-                  <form action="/user/admin/withdraw?_method=patch" method="post">
-                    <input type="hidden" name="id" value="<%= withdrawal._id %>">
-                    <input
-                      class="text-green-600 text-xs mr-2 font-light capitalize hover:underline hover:cursor-pointer md:text-sm"
-                      type="submit" value="confirm" name="approve">
-                    <input
-                      class="text-red-600 text-xs mt-1 font-light capitalize hover:underline hover:cursor-pointer md:text-sm md:mt-0"
-                      type="submit" value="reject" name="approve">
-                  </form>
-                  <% } else {%>
-                    <h4 class="text-<%= withdrawal.status==="successful" ? "green" : "red" %>-600 mt-1.5
+    <% withdrawals.forEach( (withdrawal, index)=> { %>
+    <div class="flex flex-col justify-center items-center">
+      <button class="another collapsible">
+        <div class="flex flex-row justify-evenly items-center">
+          <h4 class="text-sm md:text-base capitalize">
+            <%= withdrawal.type%>
+          </h4>
+          <p class="text-xs md:text-sm">
+            <%if(withdrawal.status==="pending" ){%>
+          <form action="/user/admin/withdraw?_method=patch" method="post">
+            <input type="hidden" name="id" value="<%= withdrawal._id %>">
+            <input class="mr-2 font-light text-green-600 text-xs md:text-sm hover:underline capitalize hover:cursor-pointer" type="submit" value="confirm" name="approve">
+            <input class="mt-1 md:mt-0 font-light text-red-600 text-xs md:text-sm hover:underline capitalize hover:cursor-pointer" type="submit" value="reject" name="approve">
+          </form>
+          <% } else {%>
+          <h4 class="text-<%= withdrawal.status==="successful" ? "green" : "red" %>-600 mt-1.5
                       text-xs
                       md:text-sm">
-                      <%= withdrawal.status==="successful" ? "Completed" : "Rejected" %>
-                    </h4>
-                    <% }%>
-              </p>
-              <p class="text-xs md:text-sm">
-                <%= withdrawal.createdAt.toLocaleString('en-US') %>
-              </p>
-            </div>
-          </button>
-          <div class="record">
-            <h4 class="text-gold text-sm mt-6 md:text-base">
-              <span class="text-brightBlue">Username:</span>  <% if (withdrawal.user && withdrawal.user.name) { %>
-                <%= withdrawal.user.name %>
-              <% } else { %>
-                Deleted Account
-              <% } %>
-            </h4>
-            <h4 class="text-gold text-sm mt-2 md:text-base capitalize">
-              <span class="text-brightBlue">Transaction:</span> <%= withdrawal.type %>
-            </h4>
-            <h4 class="text-gold text-sm mt-2 md:text-base">
-              <span class="text-brightBlue">Amount:</span> $<%= withdrawal.amount %>
-            </h4>
-           <% if ( withdrawal.account.method == "bank" ) { %> 
-            <h4 class="text-gold text-sm mt-2 md:text-base">
-              <span class="text-brightBlue">Account Name:</span> <%= withdrawal.account.accountName %>
-            </h4>
-            <h4 class="text-gold text-sm mt-2 md:text-base">
-              <span class="text-brightBlue">Account Number:</span> <%= withdrawal.account.accountNumber %>
-            </h4>
-            <h4 class="text-gold text-sm mt-2 md:text-base">
-              <span class="text-brightBlue">Sort Code:</span> <%= withdrawal.account.SortCode %>
-            </h4>
-            <h4 class="text-gold text-sm mt-2 md:text-base">
-              <span class="text-brightBlue">Bank Name:</span> <%= withdrawal.account.bankName %>
-            </h4>
-           <% } else if ( withdrawal.account.method == "crypto" ) { %>
-              <h4 class="text-gold text-sm mt-2 md:text-base">
-                <span class="text-brightBlue">Wallet:</span> <%= withdrawal.account.wallet %>
-              </h4>
-              <h4 class="text-gold text-sm mt-2 md:text-base">
-                <span class="text-brightBlue">Wallet Address:</span> <%= withdrawal.account.address %>
-              </h4>
-           <% } %>
-            <h4 class="text-gold text-sm mt-2 md:text-base">
-              <span class="text-brightBlue">Date and Time:</span> <%= withdrawal.createdAt.toLocaleString('en-US') %>
-            </h4>
-            <h4 class="text-gold text-sm mt-2 md:text-base">
-              <span class="text-brightBlue">Withdrawal ID:</span> <%= withdrawal._id %>
-            </h4>
-            <h4 class="text-gold text-sm mt-2 md:text-base">
-              <span class="text-brightBlue">Completed Time:</span> <%= withdrawal.createdAt.toLocaleString('en-US') %>
-            </h4>
-            <h4 class="text-gold text-sm mt-2 md:text-base">
-              <%if(withdrawal.status==="pending" ){%>
-                <form action="/user/admin/withdraw?_method=patch" method="post">
-                  <input type="hidden" name="id" value="<%= withdrawal._id %>">
-                  <input
-                    class="text-green-600 text-xs mr-2 font-light capitalize hover:underline hover:cursor-pointer md:text-sm"
-                    type="submit" value="confirm" name="approve">
-                  <input
-                    class="text-red-600 text-xs mt-1 font-light capitalize hover:underline hover:cursor-pointer md:text-sm md:mt-0"
-                    type="submit" value="reject" name="approve">
-                </form>
-                <% } else {%>
-                  <h4 class="mb-6 text-<%= withdrawal.status=== " successful".trim() ? "green" : "red" %>-600 mt-1.5
+            <%= withdrawal.status==="successful" ? "Completed" : "Rejected" %>
+          </h4>
+          <% }%>
+          </p>
+          <p class="text-xs md:text-sm">
+            <%= withdrawal.createdAt.toLocaleString('en-US') %>
+          </p>
+        </div>
+      </button>
+      <div class="record">
+        <h4 class="mt-6 text-gold text-sm md:text-base">
+          <span class="text-brightBlue">Username:</span> <% if (withdrawal.user && withdrawal.user.name) { %>
+          <%= withdrawal.user.name %>
+          <% } else { %>
+          Deleted Account
+          <% } %>
+        </h4>
+        <h4 class="mt-2 text-gold text-sm md:text-base capitalize">
+          <span class="text-brightBlue">Transaction:</span> <%= withdrawal.type %>
+        </h4>
+        <h4 class="mt-2 text-gold text-sm md:text-base">
+          <span class="text-brightBlue">Amount:</span> $<%= withdrawal.amount %>
+        </h4>
+        <% if ( withdrawal.account.method == "bank" ) { %>
+        <h4 class="mt-2 text-gold text-sm md:text-base">
+          <span class="text-brightBlue">Account Name:</span> <%= withdrawal.account.accountName %>
+        </h4>
+        <h4 class="mt-2 text-gold text-sm md:text-base">
+          <span class="text-brightBlue">Account Number:</span> <%= withdrawal.account.accountNumber %>
+        </h4>
+        <h4 class="mt-2 text-gold text-sm md:text-base">
+          <span class="text-brightBlue">Sort Code:</span> <%= withdrawal.account.SortCode %>
+        </h4>
+        <h4 class="mt-2 text-gold text-sm md:text-base">
+          <span class="text-brightBlue">Bank Name:</span> <%= withdrawal.account.bankName %>
+        </h4>
+        <% } else if ( withdrawal.account.method == "crypto" ) { %>
+        <h4 class="mt-2 text-gold text-sm md:text-base">
+          <span class="text-brightBlue">Wallet:</span> <%= withdrawal.account.wallet %>
+        </h4>
+        <h4 class="mt-2 text-gold text-sm md:text-base">
+          <span class="text-brightBlue">Wallet Address:</span> <%= withdrawal.account.address %>
+        </h4>
+        <% } %>
+        <h4 class="mt-2 text-gold text-sm md:text-base">
+          <span class="text-brightBlue">Date and Time:</span> <%= withdrawal.createdAt.toLocaleString('en-US') %>
+        </h4>
+        <h4 class="mt-2 text-gold text-sm md:text-base">
+          <span class="text-brightBlue">Withdrawal ID:</span> <%= withdrawal._id %>
+        </h4>
+        <h4 class="mt-2 text-gold text-sm md:text-base">
+          <span class="text-brightBlue">Completed Time:</span> <%= withdrawal.createdAt.toLocaleString('en-US') %>
+        </h4>
+        <h4 class="mt-2 text-gold text-sm md:text-base">
+          <%if(withdrawal.status==="pending" ){%>
+          <form action="/user/admin/withdraw?_method=patch" method="post">
+            <input type="hidden" name="id" value="<%= withdrawal._id %>">
+            <input class="mr-2 font-light text-green-600 text-xs md:text-sm hover:underline capitalize hover:cursor-pointer" type="submit" value="confirm" name="approve">
+            <input class="mt-1 md:mt-0 font-light text-red-600 text-xs md:text-sm hover:underline capitalize hover:cursor-pointer" type="submit" value="reject" name="approve">
+          </form>
+          <% } else {%>
+          <h4 class="mb-6 text-<%= withdrawal.status=== " successful".trim() ? "green" : "red" %>-600 mt-1.5
                     text-xs
                     md:text-sm">
-                    <%= withdrawal.status==="successful" ? "Completed" : "Rejected" %>
-                  </h4>
-                  <% }%>
-            </h4>
-          </div>
-        </div>
-
-
-
-        <%})%>
-    </section>
-    <%- include ("partials/script"); -%>
-      <script src="../../JS/collapsible.js"></script>
+            <%= withdrawal.status==="successful" ? "Completed" : "Rejected" %>
+          </h4>
+          <% }%>
+        </h4>
+      </div>
+    </div>
+    <%})%>
+  </section>
+  <%- include ("partials/script"); -%>
+  <script src="../../JS/collapsible.js"></script>
 </body>
 
 </html>

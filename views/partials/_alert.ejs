@@ -1,0 +1,62 @@
+<!-- Flash Messages Partial -->
+<% if (message.error) { %>
+<div class="flex justify-center items-center w-full">
+  <div id="failureOverlay" class="z-20 fixed inset-0 bg-black bg-opacity-70 overlay"></div>
+  <div id="failurePopup" class="top-[30%] z-30 fixed bg-white shadow-lg px-2 md:px-4 xl:px-6 py-8 rounded-xl w-[19rem] md:w-[24rem] xl:[30rem]">
+    <span class="top-2 right-4 absolute text-2xl text-red-500 cursor-pointer close-popup">
+      <ion-icon class="text-xl md:text-2xl xl:text-3xl" name="close"></ion-icon>
+    </span>
+    <div class="flex gap-x-5">
+      <div class="flex justify-center items-center bg-red-600 rounded-xl w-20">
+        <ion-icon class="text-2xl text-white md:text-3xl xl:text-4xl" name="alert"></ion-icon>
+      </div>
+      <div>
+        <h2 class="font-bold text-lg md:text-xl xl:text-2xl">Error</h2>
+        <p class="text-[10px] text-gray-800 xl:text-sm md:text-xs"><%= message.error %></p>
+      </div>
+    </div>
+  </div>
+</div>
+<% } else if (message.success) { %>
+<div class="flex justify-center items-center w-full">
+  <div id="successOverlay" class="z-20 fixed inset-0 bg-black bg-opacity-70 overlay"></div>
+  <div id="successPopup" class="top-[30%] z-30 fixed bg-white shadow-lg px-2 md:px-4 xl:px-6 py-8 rounded-xl w-[19rem] md:w-[24rem] xl:[30rem]">
+    <span class="top-2 right-4 absolute text-2xl text-red-500 cursor-pointer close-popup">
+      <ion-icon class="text-xl md:text-2xl xl:text-3xl" name="close"></ion-icon>
+    </span>
+    <div class="flex gap-x-5">
+      <div class="flex justify-center items-center bg-green-600 rounded-xl w-20">
+        <ion-icon class="text-2xl text-white md:text-3xl xl:text-4xl" name="checkmark-done"></ion-icon>
+      </div>
+      <div>
+        <h2 class="font-bold text-lg md:text-xl xl:text-2xl">Success</h2>
+        <p class="text-[10px] text-gray-800 xl:text-sm md:text-xs"><%= message.success %></p>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<script>
+  const failurePopup = document.getElementById("failurePopup");
+  const successPopup = document.getElementById("successPopup");
+  const failureOverlay = document.getElementById("failureOverlay");
+  const successOverlay = document.getElementById("successOverlay");
+
+  const closePopup = () => {
+    if (failurePopup) failurePopup.remove();
+    if (failureOverlay) failureOverlay.remove();
+    if (successPopup) successPopup.remove();
+    if (successOverlay) successOverlay.remove();
+  };
+
+  // Auto-close after 2 minutes
+  setTimeout(() => {
+    closePopup();
+  }, 120000);
+
+  // Manual close on click
+  document.querySelectorAll('.close-popup').forEach(button => {
+    button.addEventListener('click', closePopup);
+  });
+</script>

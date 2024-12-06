@@ -1,63 +1,53 @@
-const express = require('express');
-const ejs = require('ejs');
-const session = require('express-session');
-const mongoose = require('mongoose');
-const flash = require('connect-flash');
-const cookieParser = require('cookie-parser');
-const methodOverride = require('method-override');
-// const helmet = require('helmet')
+require("dotenv").config();
+const express = require("express");
+const session = require("express-session");
+const flash = require("connect-flash");
+const cookieParser = require("cookie-parser");
+const methodOverride = require("method-override");
 
+// Import routes
+const rootRoute = require("./routes/rootRoute.route");
+const notFoundRoute = require("./routes/notfound.route");
 
-
-const rootRoute = require('./routes/rootRoute.route');
-const notFoundRoute = require('./routes/notfound.route')
-const { PORT } = require('./config')
-
+// Initialize app
 const app = express();
 
-
-
-// configurations
+// Set the View Engine
 app.set("view engine", "ejs");
-// app.use(helmet({
-//     contentSecurityPolicy: false,
-//     frameguard: false
-// }))
+
+// Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride('_method'))
-app.use(cookieParser('secret'));
-app.use(session({
-    secret: 'secret',
-    cookie: { maxAge: 60000 },
-    resave: false,
-    saveUninitialized: false
-}))
-app.use(flash())
+
+// Allows us to use HTTP verbs like PUT, DELETE
+app.use(methodOverride("_method"));
+
+// Helps with cookies, making them available as req.cookie
+app.use(cookieParser());
+
+// Setting the static file as public
 app.use(express.static("public"));
-app.use('/', rootRoute);
-app.use('*', notFoundRoute)
 
-// so that mongoose no go disturb my ear with deprecation warning
-mongoose.set('strictQuery', true)
+// For the flash, a session is needed
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: process.env.NODE_ENV === "production" },
+  }),
+);
+app.use(flash());
 
+// Express Flash Middleware
+app.use("/", function (req, res, next) {
+  const message = req.flash();
+  res.locals.message = message;
+  next();
+});
 
-// connecting to mongoose
+// Routes
+app.use("/", rootRoute);
+app.use("*", notFoundRoute);
 
-mongoose.connect(process.env.URI, {
-    useNewUrlParser: true, 
-    useUnifiedTopology: true
-})
-    .then(() => console.log("Database connected successfully"))
-    .catch((error) => console.error("Something went wrong while connecting to database: " + error))
-
-
-
-
-
-app.listen(PORT, function () {
-    console.log(`Server listening on http://127.0.0.1:${PORT}`);
-})
-
-
-// var session = require('express-session');
-
+// Export the app
+module.exports = app;

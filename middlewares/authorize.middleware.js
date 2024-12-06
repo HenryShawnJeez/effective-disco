@@ -1,7 +1,7 @@
 function authorize(role) {
     return function (req, res, next) {
         if (req.user.role !== role)
-            return res.send("Unathorized");
+            return res.send("Unauthorized");
 
         next();
     };

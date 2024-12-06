@@ -1,58 +1,52 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Careers</title>
-    <%- include("partials/SEO"); -%>
-  </head>
-  <body class="bg-[url('../Images/bg.svg')]">
-    <%- include("partials/nav"); -%>
-    <section
-      class="lg:w[60%] mx-auto flex h-screen w-[90%] flex-col items-center justify-center text-lightGray1 sm:w-[80%] md:w-[70%]"
-    >
-      <h1
-        class="gradient-border text-2xl font-black sm:text-3xl md:text-4xl lg:text-5xl"
-      >
-        Sorry, No Open Position Now.
-      </h1>
-      <p class="mt-10 text-xs sm:text-sm md:text-base">
-        We appreciate your interest in joining our team. Currently, there are no
-        open positions available.
-      </p>
-      <p class="mt-4 text-xs sm:text-sm md:text-base">
-        However, we value your enthusiasm, and we encourage you to submit your
-        email address below. We will notify you promptly when a suitable
-        opportunity becomes available. Thank you for considering a future with
-        us.
-      </p>
-      <div class="mt-10">
-        <form class="flex flex-row gap-5">
-          <input
-            class="py-3 px-10 w-[80%] text-darkBlue focus:outline-darkBlue rounded-lg placeholder:text-sm caret-darkBlue"
-            placeholder="Enter Your Email Address"
-            type="email"
-            id="jobEmail"
-          />
-          <button id="subBtn" class="px-10 py-2 bg-[#6564DB] hover:bg-inherit border-2 border-[#6564DB] duration-500 rounded-lg">Subscribe</button>
-        </form>
-      </div>
-    </section>
 
-    <%- include("partials/options"); -%>
-    <!-- Footer -->
-    <%- include("partials/footer"); -%>
-    <script src="../JS/aboutUS.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const subBtn = document.getElementById("subBtn");
-        const email = document.getElementById("jobEmail");
-    
-        subBtn.addEventListener("click", function() {
-          email.value = ""
-        });
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers</title>
+  <%- include("partials/SEO"); -%>
+</head>
+
+<body class="bg-[url('../Images/bg.svg')] bg-cover">
+  <%- include("partials/nav"); -%>
+  <section class="lg:w[60%] mx-auto flex h-screen w-[90%] flex-col items-center justify-center text-lightGray1 sm:w-[80%] md:w-[70%] text-xs md:text-sm xl:text-base text-center">
+    <h1 class="gradient-border text-2xl font-black sm:text-3xl md:text-4xl lg:text-5xl">
+      Sorry, No Open Position Now.
+    </h1>
+    <p class="mt-10">
+      We appreciate your interest in joining our team. Currently, there are no
+      open positions available.
+    </p>
+    <p class="mt-4">
+      However, we value your enthusiasm, and we encourage you to submit your
+      email address below. We will notify you promptly when a suitable
+      opportunity becomes available. Thank you for considering a future with
+      us.
+    </p>
+    <div class="mt-10">
+      <form class="flex flex-row gap-5">
+        <input class="py-3 px-10 w-[80%] text-darkBlue focus:outline-darkBlue rounded-lg placeholder:text-sm caret-darkBlue" placeholder="Enter Your Email Address" type="email" id="jobEmail" />
+        <button id="subBtn" class="px-10 py-2 bg-[#6564DB] hover:bg-inherit border-2 border-[#6564DB] duration-500 rounded-lg">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <%- include("partials/options"); -%>
+  <!-- Footer -->
+  <%- include("partials/footer"); -%>
+  <script src="../JS/general.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const subBtn = document.getElementById("subBtn");
+      const email = document.getElementById("jobEmail");
+
+      subBtn.addEventListener("click", function() {
+        email.value = ""
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>

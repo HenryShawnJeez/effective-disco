@@ -18,22 +18,22 @@ html {
   margin-left: 80px;
 }
 /* Utility Classes */
-.backgroundGradient{
-  background-image: linear-gradient(232deg, #6564DB 0%, #D4AF37 100%);
+.backgroundGradient {
+  background-image: linear-gradient(232deg, #6564db 0%, #d4af37 100%);
 }
-.gradient-border { 
+.gradient-border {
   background-clip: text;
-  -webkit-background-clip: text; 
-  background-image: linear-gradient(232deg, #6564DB 0%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  background-image: linear-gradient(232deg, #6564db 0%, #d4af37 100%);
   -webkit-text-fill-color: transparent;
 }
-.gradient{
-  background-image: linear-gradient(180deg, #6564DB 0%, #55DDE0 100%);
-background-clip: text;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+.gradient {
+  background-image: linear-gradient(180deg, #6564db 0%, #55dde0 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.animation{
+.animation {
   animation: spin 25s linear infinite;
 }
 @keyframes spin {
@@ -44,96 +44,63 @@ background-clip: text;
     transform: rotate(360deg);
   }
 }
-.referGradient{
-  background: linear-gradient(180deg, #6564DB 0%, #55DDE0 100%);
-}
-/* The Nav Bar For Small Screen */
-.hamburger {
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
-  transition: all 0.25s;
-  position: relative;
-}
-.hamburger-top,
-.hamburger-middle,
-.hamburger-down {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 24px;
-  height: 2px;
-  background-color: #dcdcdc;
-  transform: rotate(0);
-  transition: all 0.5s;
-}
-.aboutUs .hamburger-down,
-.aboutUs .hamburger-middle,
-.aboutUs .hamburger-top {
-  background-color: black;
-}
-.hamburger-middle {
-  transform: translateY(7px);
-}
-.hamburger-down {
-  transform: translateY(14px);
-}
-.open {
-  transform: rotate(90deg);
-  transform: translateY(0px);
-}
-.open .hamburger-top {
-  transform: rotate(45deg) translateY(6px) translate(6px);
-}
-.open .hamburger-middle {
-  display: none;
-}
-.open .hamburger-down {
-  transform: rotate(-45deg) translateY(6px) translate(-6px);
+.referGradient {
+  background: linear-gradient(180deg, #6564db 0%, #55dde0 100%);
 }
 /* Hero Section */
 .bounceAnimation {
-  animation: floatUpDown 5s ease-in-out infinite; 
-  
+  animation: floatUpDown 5s ease-in-out infinite;
 }
 @keyframes floatUpDown {
-  0%,25%, 100% {
-    transform: translateY(0); 
+  0%,
+  25%,
+  100% {
+    transform: translateY(0);
   }
-  50%, 75% {
+  50%,
+  75% {
     transform: translateY(-20px);
   }
 }
 .bounceAnimation1 {
-  animation: floatDownUp 5s ease-in-out infinite; 
+  animation: floatDownUp 5s ease-in-out infinite;
 }
 @keyframes floatDownUp {
-  0%,25%, 100% {
-    transform: translateY(0); 
+  0%,
+  25%,
+  100% {
+    transform: translateY(0);
   }
-  50%, 75% {
+  50%,
+  75% {
     transform: translateY(20px);
   }
 }
 .moveAnimation {
-  animation: moveR 5s ease-in-out infinite;  
+  animation: moveR 5s ease-in-out infinite;
 }
 @keyframes moveR {
-  0%,25%, 100% {
-    transform: translateX(0); 
+  0%,
+  25%,
+  100% {
+    transform: translateX(0);
   }
-  50%, 75% {
+  50%,
+  75% {
     transform: translateX(-20px);
   }
 }
 .moveAnimation1 {
-  animation: moveL 5s ease-in-out infinite; 
+  animation: moveL 5s ease-in-out infinite;
 }
 @keyframes moveL {
-  0%,25%, 100% {
-    transform: translateX(0); 
+  0%,
+  25%,
+  100% {
+    transform: translateX(0);
   }
-  50%, 75% {
+  50%,
+  75% {
     transform: translateX(20px);
   }
 }
@@ -142,57 +109,55 @@ background-clip: text;
 .istGlass {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(50px);
--webkit-backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
 }
 /* CSS */
 
 /* Define the animation for moving right */
 @keyframes moveRight {
-    0% {
-      transform: translateX(0);
-    }
-    25% {
-      transform: translateX(100%);
-    }
-    50% {
-      transform: translateX(200%);
-    }
-    75% {
-      transform: translateX(300%);
-    }
-    100% {
-      transform: translateX(400%);
-    }
+  0% {
+    transform: translateX(0);
   }
+  25% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(200%);
+  }
+  75% {
+    transform: translateX(300%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
 
 /* Define the animation for moving left */
 @keyframes moveLeft {
-    0% {
-      transform: translateX(0);
-    }
-    25% {
-      transform: translateX(-100%);
-    }
-    50% {
-      transform: translateX(-200%);
-    }
-    75% {
-      transform: translateX(-300%);
-    }
-    100% {
-      transform: translateX(-400%);
-    }
+  0% {
+    transform: translateX(0);
   }
+  25% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-200%);
+  }
+  75% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(-400%);
+  }
+}
 
-
-.animated-div { 
-  animation-name: moveRight; 
+.animated-div {
+  animation-name: moveRight;
   animation-duration: 120s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-delay: 3s;
 }
-
 
 .animated-div.reverse {
   animation-name: moveLeft;
@@ -263,47 +228,41 @@ body::-webkit-scrollbar-thumb:hover {
 }
 /* Frequently Asked Questions */
 .collapsible {
-  background-color: #dcdcdc;
   color: #0f2331;
   cursor: pointer;
   padding: 18px;
   width: 90%;
-  border: none;
-  border-radius: 1rem;
+  border-bottom: 2px solid grey;
   text-align: left;
   outline: none;
-  font-size: 15px;
 }
 
-.active,
-.collapsible:hover {
-  background-color: rgba(212, 175, 55, 0.4);
-  transition-duration: 500ms;
-  color: #FDFDFD;
+.collapsible.active {
+  color: #D4AF37;
 }
 
 .collapsible:after {
   content: "\002B";
   color: black;
-  font-weight: bold;
+  font-weight: bolder;
   float: right;
   margin-left: 5px;
 }
 
 .active:after {
   content: "\2212";
+  color: #D4AF37;
 }
 
 .content {
-  border: 1px solid #d4af37;
   padding: 0 18px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  background-color: #0f2331;
-  border-radius: 1rem;
   width: 90%;
+  color:#515253;
 }
+
 .faq-cta {
   background-image: url(../Images/faq.jpg);
   background-repeat: no-repeat;
@@ -617,7 +576,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 /* For the history collapsible page */
 .another.collapsible {
-  border: 1px solid #9EA0A3;
+  border: 1px solid #9ea0a3;
   border-radius: 0;
   background-color: #fdfdfd;
   border-radius: 5px;

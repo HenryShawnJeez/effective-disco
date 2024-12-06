@@ -12,6 +12,7 @@ const adminProfileRoute = require('./adminPersonalProfile.route')
 const adminBonusRoute = require('./addBonus.route')
 const adminSuspendRoute = require('./adminSuspend.route')
 const adminUnsuspendRoute = require('./adminUnsuspend.route')
+const adminMailRoute = require('./adminMail.route.js')
 
 
 router.use('/deposit', adminDepositRoute)
@@ -22,6 +23,7 @@ router.use('/profile', adminProfileRoute)
 router.use('/bonus', adminBonusRoute)
 router.use('/suspend', adminSuspendRoute)
 router.use('/unsuspend', adminUnsuspendRoute)
+router.use('/mail', adminMailRoute)
 
 
 router.get('/', renderAdminDashboard)

@@ -1,4 +1,9 @@
 const nodemailer = require('nodemailer');
+const Email = process.env.EMAIL;
+const EmailPassword = process.env.EMAIL_PASSWORD;
+const From = process.env.FROM;
+const AdminEmail = process.env.ADMIN_EMAIL;
+
 
 class SubController {
     async help(req, res) {
@@ -9,14 +14,14 @@ class SubController {
                 port: 465,
                 secure: true, // true for 465, false for other ports
                 auth: {
-                    user: "info@rehoniel.org",
-                    pass: "Rehoniel123$",
+                    user: Email,
+                    pass: EmailPassword,
                 }
             });
 
             const mailOptions = {
-                from: 'Rehoniel <info@rehoniel.org>',
-                to: 'Rehoniel@proton.me',
+                from: From,
+                to: AdminEmail,
                 subject: subject,
                 text: `The Client With Email: ${email}\n\n is demanding for help from the users support page. His Message is: ${message}`,
             };
@@ -46,14 +51,14 @@ class SubController {
                 port: 465,
                 secure: true, // true for 465, false for other ports
                 auth: {
-                    user: "info@rehoniel.org",
-                    pass: "Rehoniel123$",
+                    user: Email,
+                    pass: EmailPassword,
                 }
             });
 
             const mailOptions = {
-                from: 'Rehoniel <info@rehoniel.org>',
-                to: 'Rehoniel@proton.me',
+                from: From,
+                to: AdminEmail,
                 subject: subject,
                 text: `The Client With Email: ${email}\n\n is demanding for help from the contact page. His Message is: ${message}`,
             };
@@ -72,8 +77,6 @@ class SubController {
             req.flash('status', 'fail')
             res.redirect('/contact')
         }
-
-
     }
 }
 

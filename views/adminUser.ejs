@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>User</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../Images/logo.ico" type="image/x-ico" />
     <!-- Google Font -->
@@ -23,30 +23,26 @@
     <link rel="stylesheet" href="../../CSS/main.css" />
     <link rel="stylesheet" href="../../CSS/toast.css" />
 
-    <script
-      async
-      src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"
-    ></script>
     <!-- Custom JavaScript -->
     <script defer src="../../JS/dashboard.js"></script>
   </head>
 
-  <body class="main bg-darkGray">
+  <body class="bg-darkGray main">
     <%- include("partials/adminSidebar"); -%> 
     <% if(status ==='success' ){ %>
-    <div class="flex w-full items-center justify-center">
+    <div class="flex justify-center items-center w-full">
       <div
         id="overlay"
-        class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+        class="z-20 fixed inset-0 bg-black bg-opacity-70 overlay"
       ></div>
       <div
         id="successPopup"
-        class="fixed top-[30%] left-[3%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg sm:left-[15%] md:left-[40%] lg:left-[50%]"
+        class="top-[30%] left-[3%] sm:left-[15%] md:left-[40%] lg:left-[50%] z-30 fixed bg-white shadow-lg p-6 rounded w-[20rem]"
       >
         <span
           id="closePopupBtn"
           onclick="closePopupBtnClick()"
-          class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+          class="top-2 right-2 absolute text-2xl text-gray-500 cursor-pointer"
           >&times;</span
         >
         <img
@@ -54,28 +50,28 @@
           src="../../Images/correct.svg"
           alt="Correct Icon"
         />
-        <h2 class="mt-2 text-center text-2xl font-semibold text-green-500">
+        <h2 class="mt-2 font-semibold text-2xl text-center text-green-500">
           Success!
         </h2>
-        <p class="mt-8 text-center text-sm capitalize text-gray-800">
+        <p class="mt-8 text-center text-gray-800 text-sm capitalize">
           The user was deleted successfully.
         </p>
       </div>
     </div>
     <% } else if (status ==='fail' ){%>
-    <div class="flex w-full items-center justify-center">
+    <div class="flex justify-center items-center w-full">
       <div
         id="failureOverlay"
-        class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+        class="z-20 fixed inset-0 bg-black bg-opacity-70 overlay"
       ></div>
 
       <div
         id="failurePopup"
-        class="fixed top-[30%] left-[3%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg sm:left-[15%] md:left-[40%] lg:left-[50%]"
+        class="top-[30%] left-[3%] sm:left-[15%] md:left-[40%] lg:left-[50%] z-30 fixed bg-white shadow-lg p-6 rounded w-[20rem]"
       >
         <span
           onclick="failureClosePopupBtnClick()"
-          class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+          class="top-2 right-2 absolute text-2xl text-gray-500 cursor-pointer"
           >&times;</span
         >
         <img
@@ -83,42 +79,42 @@
           src="../../Images/wrong.png"
           alt="Wrong Icon"
         />
-        <h2 class="mt-2 text-center text-2xl font-semibold text-red-500">
+        <h2 class="mt-2 font-semibold text-2xl text-center text-red-500">
           Failure!
         </h2>
-        <p class="mt-8 text-center text-sm capitalize text-gray-800">
+        <p class="mt-8 text-center text-gray-800 text-sm capitalize">
           Unable to delete user now, try again later.
         </p>
       </div>
     </div>
     <% }%>
     <section>
-      <div class="flex flex-col items-center justify-center">
+      <div class="flex flex-col justify-center items-center">
         <div class="mt-20 text-center">
-          <h1 class="text-2xl font-bold text-brightBlue md:text-4xl">Users</h1>
-          <h4 class="mt-2 text-sm text-darkBlue md:text-base">
+          <h1 class="text-brightBlue font-bold text-2xl md:text-4xl">Users</h1>
+          <h4 class="mt-2 text-darkBlue text-sm md:text-base">
             Total Of
-            <span class="text-gold font-bold text-lg"><%= users.length %></span> Accounts.
+            <span class="font-bold text-gold text-lg"><%= users.length %></span> Accounts.
           </h4>
         </div>
 
         <table
-          class="mx-auto mt-12 mb-1 w-[90%] border-collapse rounded-md bg-lightGray1 text-xs md:text-sm"
+          class="border-collapse bg-lightGray1 mx-auto mt-12 mb-1 rounded-md w-[90%] text-xs md:text-sm"
         >
           <thead class="">
-            <tr class="h-16 border-b-2 border-cyan-500 text-center">
+            <tr class="border-cyan-500 border-b-2 h-16 text-center">
               <th
-                class="w-1/4 border border-slate-300 text-center text-sm font-semibold dark:border-slate-600 sm:text-base"
+                class="border-slate-300 dark:border-slate-600 border w-1/4 font-semibold text-center text-sm sm:text-base"
               >
                 Investors Name
               </th>
               <th
-                class="w-1/4 border border-slate-300 text-center text-sm font-semibold dark:border-slate-600 sm:text-base"
+                class="border-slate-300 dark:border-slate-600 border w-1/4 font-semibold text-center text-sm sm:text-base"
               >
                 Delete Users
               </th>
               <th
-                class="w-1/4 border border-slate-300 text-center text-sm font-semibold dark:border-slate-600 sm:text-base"
+                class="border-slate-300 dark:border-slate-600 border w-1/4 font-semibold text-center text-sm sm:text-base"
               >
                 Registration Date
               </th>
@@ -128,19 +124,19 @@
             <% users.forEach(user=> {%>
             <tr class="border-b-1 h-10">
               <td
-                class="border text-center text-sm capitalize hover:text-gold hover:underline sm:text-base"
+                class="border text-center text-sm sm:text-base hover:text-gold hover:underline capitalize"
               >
                 <a href="/user/admin/profile/<%= user._id %>">
                   <%= user.name || user.username %>
                 </a>
               </td>
               <td
-                class="border text-center text-sm capitalize text-red-600 hover:underline sm:text-base"
+                class="border text-center text-red-600 text-sm sm:text-base hover:underline capitalize"
               >
                 <form action="/user/admin/user?_method=delete" method="post">
                   <input type="hidden" name="user" value="<%= user._id %>" />
                   <input
-                    class="capitalize hover:cursor-pointer hover:underline"
+                    class="hover:underline capitalize hover:cursor-pointer"
                     type="submit"
                     name="action"
                     value="delete"

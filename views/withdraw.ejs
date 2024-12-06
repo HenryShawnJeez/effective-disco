@@ -1,328 +1,164 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Withdraw</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../Images/logo.ico" type="image/x-ico" />
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap Icon -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
-    />
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="../CSS/main.css" />
-    <!-- Custom JavaScript -->
-    <script defer src="../JS/dashboard.js"></script>
-    <script defer src="../JS/load.js"></script>
-    <script defer src="../JS/withdrawal.js"></script>
-    <!-- Jivo Chat -->
-    <script src="//code.jivosite.com/widget/DzC9jELjbC" async></script>
-  </head>
 
-  <body class="main bg-darkGray">
-    <%- include ("partials/sidebar"); -%>
-    <section class="p-4 px-8">
-      <% if(status==='success' ){ %>
-      <div class="flex w-full items-center justify-center">
-        <div
-          id="overlay"
-          class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
-        ></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Withdraw</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../Images/logo.ico" type="image/x-ico" />
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Bootstrap Icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../CSS/main.css" />
+  <!-- Custom JavaScript -->
+  <script defer src="../JS/dashboard.js"></script>
+  <script defer src="../JS/withdrawal.js"></script>
+</head>
 
-        <div
-          id="successPopup"
-          class="fixed top-[30%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg"
-        >
-          <span
-            id="closePopupBtn"
-            onclick="closePopupBtnClick()"
-            class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
-            >&times;</span
-          >
-          <img class="mx-auto" src="../Images/correct.svg" alt="Correct Icon" />
-          <h2 class="mt-2 text-center text-2xl font-semibold text-green-500">
-            Success!
-          </h2>
-          <p class="mt-8 text-center text-sm capitalize text-gray-800">
-            Your Withdrawal was successfully processed and is currently under
-            review.
+<body class="bg-darkGray main">
+  <%- include ("partials/sidebar"); -%>
+  <%- include("partials/_alert"); -%>
+  <section class="px-8 p-4">
+    <div class="mt-20">
+      <h1 class="font-bold text-[#CC9E06] text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+        Make A Withdrawal
+      </h1>
+      <h4 class="text-darkNavy text-sm md:text-base">
+        Withdrawable Amount
+        <span class="ml-1 font-bold text-base text-gold md:text-xl">
+          $<%= user.balance.toLocaleString() %>
+        </span>
+      </h4>
+    </div>
+    <div class="flex md:flex-row flex-col-reverse justify-between mt-10">
+      <div class="border-[#9EA0A3] bg-white mt-4 md:mt-0 p-2 border rounded-lg w-full md:w-[49%]">
+        <div class="flex flex-col px-2 w-full max-h-[30rem] overflow-y-auto linkContainer">
+          <p class="mt-8 mb-2 font-bold text-sm sm:text-base">
+            Pending Withdrawals
           </p>
-        </div>
-      </div>
-      <% } else if (status==='fail' ){%>
-      <div class="flex w-full items-center justify-center">
-        <div
-          id="failureOverlay"
-          class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
-        ></div>
-
-        <div
-          id="failurePopup"
-          class="fixed top-[30%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg"
-        >
-          <span
-            onclick="failureClosePopupBtnClick()"
-            class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
-            >&times;</span
-          >
-          <img
-            class="mx-auto w-20"
-            src="../Images/wrong.png"
-            alt="Wrong Icon"
-          />
-          <h2 class="mt-2 text-center text-2xl font-semibold text-red-500">
-            Failure!
-          </h2>
-          <p class="mt-8 text-center text-sm capitalize text-gray-800">
-            Your withdrawal failed please try again later.
-          </p>
-        </div>
-      </div>
-      <% }%> <% if (status==='spam'){%>
-      <div class="flex w-full items-center justify-center">
-        <div
-          id="failureOverlay"
-          class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
-        ></div>
-
-        <div
-          id="failurePopup"
-          class="fixed top-[30%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg"
-        >
-          <span
-            onclick="failureClosePopupBtnClick()"
-            class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
-            >&times;</span
-          >
-          <img
-            class="mx-auto w-20"
-            src="../Images/wrong.png"
-            alt="Wrong Icon"
-          />
-          <h2 class="mt-2 text-center text-2xl font-semibold text-red-500">
-            Failure!
-          </h2>
-          <p class="mt-8 text-center text-sm capitalize text-gray-800">
-            The entered amount exceeds your Withdrawable amount.
-          </p>
-        </div>
-      </div>
-      <% }%>
-      <div class="mt-20">
-        <h1
-          class="text-xl font-bold text-[#CC9E06] sm:text-2xl md:text-3xl lg:text-4xl"
-        >
-          Make A Withdrawal
-        </h1>
-        <h4 class="text-sm text-darkNavy md:text-base">
-          Withdrawable Amount
-          <span class="ml-1 text-base font-bold text-gold md:text-xl">
-            $<%= user.balance.toLocaleString() %>
-          </span>
-        </h4>
-      </div>
-      <div class="mt-10 flex flex-col-reverse justify-between md:flex-row">
-        <div
-          class="mt-4 w-full rounded-lg border border-[#9EA0A3] bg-white p-2 md:mt-0 md:w-[49%]"
-        >
-          <div
-            class="linkContainer flex max-h-[30rem] w-full flex-col overflow-y-auto px-2"
-          >
-            <p class="mb-2 mt-8 text-sm font-bold sm:text-base">
-              Pending Withdrawals
-            </p>
-            <% pendingWithdrawals.forEach(withdrawal => { %>
-            <div
-              id="withdrawal"
-              class="mt-2 flex flex-row items-center justify-between rounded-xl border border-green-600 p-2"
-            >
-              <div class="flex flex-row items-center">
-                <div
-                  class="flex items-center justify-center rounded-[50%] bg-green-600 bg-opacity-20 p-2 sm:p-4"
-                >
-                  <img
-                    class=""
-                    src="../Images/withdraw.svg"
-                    alt="Withdrawal Icon"
-                  />
-                </div>
-                <div>
-                  <% if(withdrawal.account.method === "crypto") { %>
-                  <p class="ml-2 text-xs capitalize sm:text-base">
-                    Withdraw Via <%=withdrawal.account.wallet %>
-                  </p>
-                  <% } %>
-                  <div class="ml-2 flex flex-row items-center space-x-2">
-                    <p class="text-xs text-gray-400 sm:text-base">
-                      <%= new
-                      Date(withdrawal.createdAt).toLocaleDateString('en-US', {
-                      year: 'numeric', month: 'short', day: 'numeric' }) %>
-                    </p>
-                    <p class="text-xs capitalize text-purple-600 sm:text-sm">
-                      <%= withdrawal.status %>
-                    </p>
-                  </div>
-                </div>
+          <% pendingWithdrawals.forEach(withdrawal => { %>
+          <div id="withdrawal" class="flex flex-row justify-between items-center border-green-600 mt-2 p-2 border rounded-xl">
+            <div class="flex flex-row items-center">
+              <div class="flex justify-center items-center bg-green-600 bg-opacity-20 p-2 sm:p-4 rounded-[50%]">
+                <img class="" src="../Images/withdraw.svg" alt="Withdrawal Icon" />
               </div>
               <div>
-                <h1 class="text-sm font-bold text-red-600 sm:text-xl">
-                  -$<%= withdrawal.amount.toLocaleString() %>
-                </h1>
+                <% if(withdrawal.account.method === "crypto") { %>
+                <p class="ml-2 text-xs sm:text-base capitalize">
+                  Withdraw Via <%=withdrawal.account.wallet %>
+                </p>
+                <% } %>
+                <div class="flex flex-row items-center space-x-2 ml-2">
+                  <p class="text-gray-400 text-xs sm:text-base">
+                    <%= new
+                      Date(withdrawal.createdAt).toLocaleDateString('en-US', {
+                      year: 'numeric', month: 'short', day: 'numeric' }) %>
+                  </p>
+                  <p class="text-purple-600 text-xs sm:text-sm capitalize">
+                    <%= withdrawal.status %>
+                  </p>
+                </div>
               </div>
             </div>
-            <% }) %>
-            <p class="mb-2 mt-8 text-sm font-bold sm:text-base">
-              Processed Withdrawals
-            </p>
-            <% if(withdrawals.length && pendingWithdrawals === 0) { %>
-            <div class="m-auto flex items-center justify-center">
-              <h1
-                class="gradient-border text-sm font-bold sm:text-base md:text-lg lg:text-xl"
-              >
-                No Withdrawal Yet
+            <div>
+              <h1 class="font-bold text-red-600 text-sm sm:text-xl">
+                -$<%= withdrawal.amount.toLocaleString() %>
               </h1>
             </div>
-            <% } %> <% withdrawals.forEach(withdrawal => { %>
-            <div
-              id="withdrawal"
-              class="mt-2 flex flex-row items-center justify-between rounded-xl border border-green-600 p-2"
-            >
-              <div class="flex flex-row items-center">
-                <div
-                  class="flex items-center justify-center rounded-[50%] bg-green-600 bg-opacity-20 p-2 sm:p-4"
-                >
-                  <img
-                    class=""
-                    src="../Images/withdraw.svg"
-                    alt="Withdrawal Icon"
-                  />
-                </div>
-                <div>
-                  <% if(withdrawal.account.method === "crypto") { %>
-                  <p class="ml-2 text-xs capitalize sm:text-base">
-                    Withdraw Via <%=withdrawal.account.wallet %>
-                  </p>
-                  <% } %>
-                  <div class="ml-2 flex flex-row items-center space-x-2">
-                    <p class="text-xs text-gray-400 sm:text-base">
-                      <%= new
-                      Date(withdrawal.createdAt).toLocaleDateString('en-US', {
-                      year: 'numeric', month: 'short', day: 'numeric' }) %>
-                    </p>
-                    <% if (withdrawal.status === "failed") { %>
-                    <p class="text-xs capitalize text-red-600 sm:text-sm">
-                      <%= withdrawal.status %>
-                    </p>
-                    <% } else { %>
-                    <p class="text-xs capitalize text-green-600 sm:text-sm">
-                      <%= withdrawal.status %>
-                    </p>
-                    <% } %>
-                  </div>
-                </div>
+          </div>
+          <% }) %>
+          <p class="mt-8 mb-2 font-bold text-sm sm:text-base">
+            Processed Withdrawals
+          </p>
+          <% if(withdrawals.length && pendingWithdrawals === 0) { %>
+          <div class="flex justify-center items-center m-auto">
+            <h1 class="gradient-border font-bold text-sm sm:text-base md:text-lg lg:text-xl">
+              No Withdrawal Yet
+            </h1>
+          </div>
+          <% } %> <% withdrawals.forEach(withdrawal => { %>
+          <div id="withdrawal" class="flex flex-row justify-between items-center border-green-600 mt-2 p-2 border rounded-xl">
+            <div class="flex flex-row items-center">
+              <div class="flex justify-center items-center bg-green-600 bg-opacity-20 p-2 sm:p-4 rounded-[50%]">
+                <img class="" src="../Images/withdraw.svg" alt="Withdrawal Icon" />
               </div>
               <div>
-                <h1 class="text-sm font-bold text-red-600 sm:text-xl">
-                  -$<%= withdrawal.amount.toLocaleString() %>
-                </h1>
+                <% if(withdrawal.account.method === "crypto") { %>
+                <p class="ml-2 text-xs sm:text-base capitalize">
+                  Withdraw Via <%=withdrawal.account.wallet %>
+                </p>
+                <% } %>
+                <div class="flex flex-row items-center space-x-2 ml-2">
+                  <p class="text-gray-400 text-xs sm:text-base">
+                    <%= new
+                      Date(withdrawal.createdAt).toLocaleDateString('en-US', {
+                      year: 'numeric', month: 'short', day: 'numeric' }) %>
+                  </p>
+                  <% if (withdrawal.status === "failed") { %>
+                  <p class="text-red-600 text-xs sm:text-sm capitalize">
+                    <%= withdrawal.status %>
+                  </p>
+                  <% } else { %>
+                  <p class="text-green-600 text-xs sm:text-sm capitalize">
+                    <%= withdrawal.status %>
+                  </p>
+                  <% } %>
+                </div>
               </div>
             </div>
-            <% }) %>
+            <div>
+              <h1 class="font-bold text-red-600 text-sm sm:text-xl">
+                -$<%= withdrawal.amount.toLocaleString() %>
+              </h1>
+            </div>
           </div>
-          <div class="my-4 flex justify-end">
-            <a
-              href="/user/transactions"
-              class="flex items-center duration-500 hover:translate-x-2"
-              ><span class="text-[0.65rem] text-[#6564DB] sm:text-xs md:text-sm"
-                >View All Transactions</span
-              ><img src="../../Images/arrow-right.svg" alt="arrow"
-            /></a>
-          </div>
+          <% }) %>
         </div>
-        <div
-          class="w-full rounded-lg border border-[#9EA0A3] bg-white p-2 md:w-[49%]"
-        >
-          <form action="/user/withdraw" method="post">
-            <div id="cryptoForm">
-              <h4 class="mt-8 text-sm text-darkBlue md:text-base">Wallet</h4>
-              <div
-                class="custom-select relative mt-2 w-full rounded-lg border border-[#9EA0A3] text-xs sm:text-sm"
-              >
-                <select class="" name="wallet">
-                  <option>Choose Your Wallet</option>
-                  <option value="Bitcoin">Bitcoin</option>
-                  <option value="Ethereum">Ethereum</option>
-                  <option value="Usdt">USDT</option>
-                </select>
-              </div>
-              <div class="mt-4">
-                <input type="hidden" value="crypto" name="medium" />
-
-                <h4 class="mt-8 text-sm text-darkBlue md:text-base">
-                  Wallet Address
-                </h4>
-                <input
-                  class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 caret-darkBlue placeholder:text-sm focus:outline focus:outline-gold"
-                  type="text"
-                  name="address"
-                  id="address"
-                  placeholder="Input Your Wallet Address"
-                  required
-                />
-                <h4 class="mt-8 text-sm text-darkBlue md:text-base">
-                  Amount To Withdraw
-                </h4>
-                <input
-                  class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 caret-darkBlue placeholder:text-sm focus:outline focus:outline-gold"
-                  type="number"
-                  name="amount"
-                  id="amount"
-                  placeholder="Minimum Of $100"
-                  min="100"
-                  required
-                />
-              </div>
-              <div class="mt-10 mb-32 flex justify-end">
-                <button
-                  type="submit"
-                  class="rounded-lg bg-brightBlue px-5 py-3 text-sm text-lightGray1 duration-500 hover:bg-lightGray1 hover:text-darkBlue disabled:cursor-not-allowed disabled:opacity-50 sm:px-7 sm:text-base md:px-9"
-                >
-                  Withdraw
-                </button>
-              </div>
-            </div>
-          </form>
+        <div class="flex justify-end my-4">
+          <a href="/user/transactions" class="flex items-center hover:translate-x-2 duration-500"><span class="text-[#6564DB] text-[0.65rem] sm:text-xs md:text-sm">View All Transactions</span><img src="../../Images/arrow-right.svg" alt="arrow" /></a>
         </div>
       </div>
-    </section>
-    <%- include ("partials/script"); -%>
-    <!-- For the popups -->
-    <script>
-      const successPopup = document.getElementById("successPopup");
-      const overlay = document.getElementById("overlay");
+      <div class="border-[#9EA0A3] bg-white p-2 border rounded-lg w-full md:w-[49%]">
+        <form action="/user/withdraw" method="post">
+          <div id="cryptoForm">
+            <h4 class="mt-8 text-darkBlue text-sm md:text-base">Wallet</h4>
+            <div class="relative border-[#9EA0A3] custom-select mt-2 border rounded-lg w-full text-xs sm:text-sm">
+              <select class="" name="wallet">
+                <option>Choose Your Wallet</option>
+                <option value="Bitcoin">Bitcoin</option>
+                <option value="Ethereum">Ethereum</option>
+                <option value="Usdt">USDT</option>
+              </select>
+            </div>
+            <div class="mt-4">
+              <input type="hidden" value="crypto" name="medium" />
 
-      const closePopupBtnClick = () => {
-        successPopup.classList.add("hidden");
-        overlay.classList.add("hidden");
-      };
+              <h4 class="mt-8 text-darkBlue text-sm md:text-base">
+                Wallet Address
+              </h4>
+              <input class="border-[#9EA0A3] mt-2 px-8 py-2 border rounded-lg w-full placeholder:text-sm caret-darkBlue focus:outline focus:outline-gold" type="text" name="address" id="address" placeholder="Input Your Wallet Address" required />
+              <h4 class="mt-8 text-darkBlue text-sm md:text-base">
+                Amount To Withdraw
+              </h4>
+              <input class="border-[#9EA0A3] mt-2 px-8 py-2 border rounded-lg w-full placeholder:text-sm caret-darkBlue focus:outline focus:outline-gold" type="number" name="amount" id="amount" placeholder="Minimum Of $1" min="1" required />
+            </div>
+            <div class="flex justify-end mt-10 mb-32">
+              <button type="submit" class="bg-brightBlue hover:bg-lightGray1 disabled:opacity-50 px-5 sm:px-7 md:px-9 py-3 rounded-lg text-lightGray1 text-sm sm:text-base hover:text-darkBlue duration-500 disabled:cursor-not-allowed">
+                Withdraw
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <%- include ("partials/script"); -%>
+</body>
 
-      const failurePopup = document.getElementById("failurePopup");
-      const failureOverlay = document.getElementById("failureOverlay");
-
-      const failureClosePopupBtnClick = () => {
-        failurePopup.classList.add("hidden");
-        failureOverlay.classList.add("hidden");
-      };
-    </script>
-  </body>
 </html>

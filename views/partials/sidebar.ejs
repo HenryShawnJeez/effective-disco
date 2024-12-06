@@ -1,26 +1,26 @@
 <section class="relative z-50">
   <span
-    class="absolute top-5 left-4 cursor-pointer text-3xl text-gold lg:hidden"
+    class="top-5 left-4 absolute lg:hidden text-3xl text-gold cursor-pointer"
     onclick="Openbar()"
   >
     <i
-      class="bi bi-filter-left cursor-pointer rounded-md bg-brightBlue px-2"
+      class="bg-brightBlue bi-filter-left px-2 rounded-md cursor-pointer bi"
     ></i>
   </span>
   <div
-    class="sidebar fixed top-0 bottom-0 left-[-300px] h-screen w-[300px] overflow-y-auto bg-brightBlue p-2 text-center shadow duration-1000 lg:left-0"
+    class="top-0 bg-brightBlue bottom-0 left-[-300px] lg:left-0 fixed shadow p-2 w-[300px] h-screen text-center duration-1000 overflow-y-auto sidebar"
   >
-    <div class="text-xl text-gray-100">
-      <div class="mt-1 flex items-center rounded-md bg-lightGray1 p-1 justify-between md:justify-start">
+    <div class="text-gray-100 text-xl">
+      <div class="flex justify-between items-center bg-lightGray1 mt-1 px-4 py-2 rounded-md">
         <a href="/user/dashboard"><img
-          class="w-40 cursor-pointer"
-          src="../Images/logo.png"
-          alt="Rehoniel Logo"
+          class="w-6 md:w-8 xl:w-10 cursor-pointer"
+          src="../Images/logo1.png"
+          alt="Logo"
         /></a
         >
         
         <i
-          class="bi bi-x ml-20 cursor-pointer text-3xl text-gold lg:hidden"
+          class="lg:hidden text-3xl text-gold cursor-pointer bi bi-x"
           onclick="Openbar()"
         ></i>
       </div>
@@ -29,45 +29,45 @@
       <div class="mt-10">
         <a href="/user/dashboard"
           ><div
-            class="mt-2 flex cursor-pointer items-center rounded-md p-2.5 px-4 duration-300 hover:border-r-8 hover:border-r-gold hover:bg-gray-700"
+            class="flex items-center hover:bg-gray-700 mt-2 px-4 p-2.5 hover:border-r-8 hover:border-r-gold rounded-md duration-300 cursor-pointer"
           >
-            <i class="bi bi-house-door-fill text-gold"></i>
+            <i class="text-gold bi bi-house-door-fill"></i>
             <span class="ml-4 text-[15px] text-gray-200">Dashboard</span>
           </div></a
         >
         <div
-          class="mt-2 flex cursor-pointer items-center rounded-md p-2.5 px-4 duration-300 hover:border-r-8 hover:border-r-gold hover:bg-gray-700"
+          class="flex items-center hover:bg-gray-700 mt-2 px-4 p-2.5 hover:border-r-8 hover:border-r-gold rounded-md duration-300 cursor-pointer"
         >
-          <i class="bi bi-cash-coin text-gold"></i>
+          <i class="bi-cash-coin text-gold bi"></i>
           <div
-            class="flex w-full items-center justify-between"
+            class="flex justify-between items-center w-full"
             onclick="dropDown()"
           >
             <span class="ml-4 text-[15px] text-gray-200">Transactions</span>
-            <i id="arrow" class="bi bi-caret-down-fill text-gold"></i>
+            <i id="arrow" class="text-gold bi bi-caret-down-fill"></i>
           </div>
         </div>
         <div
-          class="mx-auto mt-2 w-4/5 text-left text-sm font-thin leading-7"
+          class="mx-auto mt-2 w-4/5 font-thin text-left text-sm leading-7"
           id="submenu"
         >
           <a href="/user/deposit">
             <h1
-              class="mt-1 cursor-pointer rounded-md p-2 hover:border-r-8 hover:border-r-gold hover:bg-gray-700"
+              class="hover:bg-gray-700 mt-1 p-2 hover:border-r-8 hover:border-r-gold rounded-md cursor-pointer"
             >
               Deposit
             </h1></a
           >
           <a href="/user/invest">
             <h1
-              class="mt-1 cursor-pointer rounded-md p-2 hover:border-r-8 hover:border-r-gold hover:bg-gray-700"
+              class="hover:bg-gray-700 mt-1 p-2 hover:border-r-8 hover:border-r-gold rounded-md cursor-pointer"
             >
               Invest
             </h1></a
           >
           <a href="/user/withdraw">
             <h1
-              class="mt-1 cursor-pointer rounded-md p-2 hover:border-r-8 hover:border-r-gold hover:bg-gray-700"
+              class="hover:bg-gray-700 mt-1 p-2 hover:border-r-8 hover:border-r-gold rounded-md cursor-pointer"
             >
               Withdrawal
             </h1></a
@@ -75,51 +75,51 @@
         </div>
         <a href="/user/plans"
           ><div
-            class="mt-2 flex cursor-pointer items-center rounded-md p-2.5 px-4 duration-300 hover:border-r-8 hover:border-r-gold hover:bg-gray-700"
+            class="flex items-center hover:bg-gray-700 mt-2 px-4 p-2.5 hover:border-r-8 hover:border-r-gold rounded-md duration-300 cursor-pointer"
           >
-            <i class="bi bi-briefcase-fill text-gold"></i>
+            <i class="text-gold bi bi-briefcase-fill"></i>
             <span class="ml-4 text-[15px] text-gray-200">Plans</span>
           </div></a
         >
         <a href="/user/transactions"
           ><div
-            class="mt-2 flex cursor-pointer items-center rounded-md p-2.5 px-4 duration-300 hover:border-r-8 hover:border-r-gold hover:bg-gray-700"
+            class="flex items-center hover:bg-gray-700 mt-2 px-4 p-2.5 hover:border-r-8 hover:border-r-gold rounded-md duration-300 cursor-pointer"
           >
-            <i class="bi bi-receipt text-gold"></i>
+            <i class="text-gold bi bi-receipt"></i>
             <span class="ml-4 text-[15px] text-gray-200">History</span>
           </div></a
         >
         <hr class="my-4 mb-10 text-gray-600" />
         <a href="/user/profile"
           ><div
-            class="mt-2 flex cursor-pointer items-center rounded-md p-2.5 px-4 duration-300 hover:border-r-8 hover:border-r-gold hover:bg-gray-700"
+            class="flex items-center hover:bg-gray-700 mt-2 px-4 p-2.5 hover:border-r-8 hover:border-r-gold rounded-md duration-300 cursor-pointer"
           >
-            <i class="bi bi-person-check text-gold"></i>
+            <i class="text-gold bi bi-person-check"></i>
             <span class="ml-4 text-[15px] text-gray-200">My Profile</span>
           </div></a
         >
         <a href="/support"
           ><div
-            class="mt-2 flex cursor-pointer items-center rounded-md p-2.5 px-4 duration-300 hover:border-r-8 hover:border-r-gold hover:bg-gray-700"
+            class="flex items-center hover:bg-gray-700 mt-2 px-4 p-2.5 hover:border-r-8 hover:border-r-gold rounded-md duration-300 cursor-pointer"
           >
-            <i class="bi bi-envelope-check-fill text-gold"></i>
+            <i class="text-gold bi bi-envelope-check-fill"></i>
             <span class="ml-4 text-[15px] text-gray-200">Get Support</span>
           </div></a
         >
         <a href="/user/referral"
           ><div
-            class="mt-2 flex cursor-pointer items-center rounded-md p-2.5 px-4 duration-300 hover:border-r-8 hover:border-r-gold hover:bg-gray-700"
+            class="flex items-center hover:bg-gray-700 mt-2 px-4 p-2.5 hover:border-r-8 hover:border-r-gold rounded-md duration-300 cursor-pointer"
           >
-            <i class="bi bi-people-fill text-gold"></i>
+            <i class="text-gold bi bi-people-fill"></i>
             <span class="ml-4 text-[15px] text-gray-200">My Referral</span>
           </div></a
         >
         <form action="/user/logout" method="post">
           <div
-            class="mt-3 flex cursor-pointer items-center rounded-md p-2.5 px-4 duration-300 hover:border-r-8 hover:border-r-gold hover:bg-gray-700"
+            class="flex items-center hover:bg-gray-700 mt-3 px-4 p-2.5 hover:border-r-8 hover:border-r-gold rounded-md duration-300 cursor-pointer"
           >
             <button type="submit">
-              <i class="bi bi-box-arrow-in-right text-gold"></i>
+              <i class="bi-box-arrow-in-right text-gold bi"></i>
               <span class="ml-4 text-[15px] text-gray-200">Logout</span>
             </button>
           </div>

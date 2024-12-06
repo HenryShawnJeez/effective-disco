@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
+  <title>Refer</title>
   <!-- Favicon -->
-  <link rel="shortcut icon" href="../../Images/logo.png" type="image/x-png" />
+  <link rel="shortcut icon" href="../../Images/logo.ico" type="image/x-ico" />
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,8 +18,6 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../../CSS/main.css" />
   <link rel="stylesheet" href="../../CSS/toast.css" />
-
-  <script async src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- Custom JavaScript -->
   <script defer src="../../JS/dashboard.js"></script>
 
@@ -27,31 +25,31 @@
     <body class="bg-darkGray main">
       <%- include("partials/adminSidebar"); -%>
         <section>
-          <div class="flex flex-col items-center justify-center">
+          <div class="flex flex-col justify-center items-center">
             <div class="mt-20 text-center">
-              <h1 class="text-2xl text-brightBlue font-bold md:text-4xl">Referrals</h1>
-              <h4 class="text-sm mt-2 text-darkBlue md:text-base">
+              <h1 class="text-brightBlue font-bold text-2xl md:text-4xl">Referrals</h1>
+              <h4 class="mt-2 text-darkBlue text-sm md:text-base">
                 A Summary On Your Referrals And Their Details.
               </h4>
             </div>
 
-            <table class="mx-auto mt-12 mb-1 border-collapse w-[90%] md:w-3/4 text-sm bg-lightGray1 rounded-md">
+            <table class="border-collapse bg-lightGray1 mx-auto mt-12 mb-1 rounded-md w-[90%] md:w-3/4 text-sm">
               <thead class="">
-                <tr class=" text-xs h-16 border-b-2 border-cyan-500 md:text-sm">
-                  <th class="w-1/4 border border-slate-300 dark:border-slate-600 font-semibold text-center">
+                <tr class="border-cyan-500 border-b-2 h-16 text-xs md:text-sm">
+                  <th class="border-slate-300 dark:border-slate-600 border w-1/4 font-semibold text-center">
                     Username</th>
-                  <th class="w-1/4 border border-slate-300 dark:border-slate-600 font-semibold text-center">
+                  <th class="border-slate-300 dark:border-slate-600 border w-1/4 font-semibold text-center">
                     Account Balance</th>
-                  <th class="w-1/4 border border-slate-300 dark:border-slate-600 font-semibold text-center">
+                  <th class="border-slate-300 dark:border-slate-600 border w-1/4 font-semibold text-center">
                     Registration Date</th>
-                  <th class="w-1/4 border border-slate-300 dark:border-slate-600 font-semibold text-center">
+                  <th class="border-slate-300 dark:border-slate-600 border w-1/4 font-semibold text-center">
                     Referred By</th>
                 </tr>
               </thead>
               <tbody>
                 <% referredUsers.forEach(user=> {%>
-                  <tr class="border-b-1 h-10 border capitalize text-xs sm:text-sm md:text-base text-center">
-                    <td class="hover:underline duration-500 hover:text-red-600">
+                  <tr class="border border-b-1 h-10 text-center text-xs sm:text-sm md:text-base capitalize">
+                    <td class="hover:text-red-600 hover:underline duration-500">
                       <a href="/user/admin/profile/<%= user._id %>">
                         <%= user.username || user.name%>
                       </a>
@@ -62,7 +60,7 @@
                     <td class="text-green-600">
                       <%= user.createdAt.toLocaleDateString() %>
                     </td>
-                    <td class=" hover:underline duration-500 hover:text-red-600">
+                    <td class="hover:text-red-600 hover:underline duration-500">
                       <a href="/user/admin/profile/<%= user.referredBy._id %>">
                         <%= user.referredBy.username || user.referredBy.name %>
                       </a>

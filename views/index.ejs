@@ -1,762 +1,491 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rehoniel</title>
-    <!-- Swiper.js -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
-    />
-    <!-- Charts -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <%- include("partials/SEO"); -%>
-  </head>
 
-  <body class="index-body bg-[url('../Images/bg.svg')]">
-    <%- include("partials/nav"); -%>
-    <!-- Top Section -->
-    <section id="top">
-      <div
-        class="container mx-auto mt-20 flex flex-col items-center px-6 md:flex-row"
-      >
-        <div class="mb-20 flex flex-col space-y-4 md:mb-32 md:mt-4 md:w-[60%]">
-          <h1
-            class="gradient-border text-left text-2xl font-black sm:text-3xl md:text-4xl lg:text-5xl"
-          >
-            <span class="auto-type"></span> <br />
-            Your Cryptocurrency Investments.
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Realmforte</title>
+  <!-- Swiper.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  <!-- Charts -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <%- include("partials/SEO"); -%>
+</head>
+
+<body class="bg-[url('../Images/bg.svg')] index-body">
+  <%- include("partials/nav"); -%>
+  <!-- Top Section -->
+  <section id="top">
+    <div class="flex md:flex-row flex-col items-center mx-auto mt-20 px-6 container">
+      <div class="flex flex-col space-y-4 md:mt-4 mb-20 md:mb-32 md:w-[60%]">
+        <h1 class="gradient-border font-black text-2xl text-left sm:text-3xl md:text-4xl lg:text-5xl">
+          <span class="auto-type"></span> <br />
+          Your Cryptocurrency Investments.
+        </h1>
+        <div class="py-4 md:w-4/5">
+          <div class="flex items-center mt-4">
+            <span class="bg-gold mr-2 rounded-[50%] w-3 h-3"></span>
+            <p class="mt-1 text-lightGray1 text-xs sm:text-[0.9rem] lg:text-base">
+              Flexible Saving, Trading Plans And Packages.
+            </p>
+          </div>
+        </div>
+        <div class="flex justify-start">
+          <a href="/user/create" class="border-2 border-gold bg-gold hover:bg-darkNavy py-3 rounded-lg w-40 lg:w-52 font-semibold text-black text-center hover:text-lightGray duration-500">Get Started</a>
+        </div>
+      </div>
+      <!-- Top Image -->
+      <div class="relative flex justify-end md:w-[40%] h-[40rem]">
+        <img src="../Images/heroImg.svg" alt="Realmforte Image" />
+        <img class="top-2 left-0 absolute bounceAnimation" src="../Images/istCoin.svg" alt="Realmforte Image" />
+        <img class="top-6 left-[10rem] absolute bounceAnimation1" src="../Images/2ndCoin.svg" alt="Realmforte Image" />
+        <img class="sm:block top-0 left-[16rem] absolute hidden bounceAnimation" src="../Images/3rdCoin.svg" alt="Realmforte Image" />
+        <img class="sm:block lg:block top-4 left-[24rem] absolute hidden md:hidden bounceAnimation1" src="../Images/4thCoin.svg" alt="Realmforte Image" />
+        <img class="top-0 left-[10rem] absolute moveAnimation" src="../Images/cloud.svg" alt="Realmforte Image" />
+        <img class="sm:block lg:block top-[12rem] left-[24rem] absolute hidden md:hidden moveAnimation1" src="../Images/cloud1.svg" alt="Realmforte Image" />
+        <img class="top-[14rem] left-[10rem] sm:left-[16rem] absolute w-20 bounceAnimation1" src="../Images/ethereum.svg" alt="Realmforte Image" />
+      </div>
+    </div>
+  </section>
+  <section id="second">
+    <div class="bg-white bg-opacity-10 mx-auto mb-10 py-4 rounded-md w-[90%] sm:w-4/5 lg:w-[70%] h-32 text-center text-lightGray1 istGlass">
+      <h1 class="font-bold text-base sm:text-xl md:text-2xl lg:text-3xl">
+        One Platform For All Your Cryptocurrency Investment Needs
+      </h1>
+      <p class="mt-4 text-xs sm:text-sm md:text-base">
+        Unlocking the advantages of trading with Realmforte.
+      </p>
+    </div>
+    <div class="px-6 sm:px-10 md:px-20">
+      <div class="flex lg:flex-row flex-col lg:justify-between items-center mt-16 md:mt-32 lg:ml-20 pb-20">
+        <div class="w-full lg:w-1/2 h-[24rem]">
+          <div class="flex justify-end space-x-4 h-[50%] overflow-hidden second">
+            <div class="border-[#6564DB] bg-white bg-opacity-10 border rounded-md min-w-[80%] h-[90%] animated-div istGlass">
+              <div class="p-3">
+                <i class="text-xl sm:text-2xl md:text-3xl lg:text-4xl fa-layer-group fas gradient"></i>
+                <p class="font-bold text-base text-gold sm:text-lg md:text-xl lg:text-2xl">
+                  Wide Investment Range
+                </p>
+                <p class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm">
+                  Emphasizing the wide range of investment options available
+                  on the platform, investors can explore and diversify their
+                  portfolio across various cryptocurrencies.
+                </p>
+              </div>
+            </div>
+            <div class="border-[#6564DB] bg-white bg-opacity-10 border rounded-md min-w-[80%] h-[90%] animated-div istGlass">
+              <div class="p-3">
+                <i class="text-xl sm:text-2xl md:text-3xl lg:text-4xl fa-eye fas gradient"></i>
+                <p class="font-bold text-base text-gold sm:text-lg md:text-xl lg:text-2xl">
+                  Transparent Investment
+                </p>
+                <p class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm">
+                  Transparency is a core principle of our platform. With clear
+                  and open reporting on investment performance and real-time
+                  data.
+                </p>
+              </div>
+            </div>
+            <div class="border-[#6564DB] bg-white bg-opacity-10 border rounded-md min-w-[80%] h-[90%] animated-div istGlass">
+              <div class="p-3">
+                <i class="text-xl sm:text-2xl md:text-3xl lg:text-4xl fa-cogs fas gradient"></i>
+                <p class="font-bold text-base text-gold sm:text-lg md:text-xl lg:text-2xl">
+                  Innovative Tools
+                </p>
+                <p class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm">
+                  Through advanced analytics, predictive models, and
+                  cutting-edge trading algorithms, investors can stay ahead of
+                  the curve and make smarter investment choices.
+                </p>
+              </div>
+            </div>
+            <div class="border-[#6564DB] bg-white bg-opacity-10 border rounded-md min-w-[80%] h-[90%] animated-div istGlass">
+              <div class="p-3">
+                <i class="text-xl sm:text-2xl md:text-3xl lg:text-4xl fa-hands-helping fas gradient"></i>
+                <p class="font-bold text-base text-gold sm:text-lg md:text-xl lg:text-2xl">
+                  Dedicated Support
+                </p>
+                <p class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm">
+                  We offer personalized assistance to guide investors
+                  throughout their investment journey, ensuring they receive
+                  the necessary help and support at every step.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex space-x-4 h-[50%] overflow-hidden">
+            <div class="border-[#6564DB] bg-white bg-opacity-10 border rounded-md min-w-[80%] h-[90%] animated-div istGlass reverse">
+              <div class="p-3">
+                <i class="text-xl sm:text-2xl md:text-3xl lg:text-4xl fa-exchange-alt fas gradient"></i>
+                <p class="font-bold text-base text-gold sm:text-lg md:text-xl lg:text-2xl">
+                  High Liquidity
+                </p>
+                <p class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm">
+                  High liquidity is a hallmark of our platform. Investors can
+                  enjoy quick and efficient transactions, enabling them to
+                  enter and exit positions with ease and flexibility.
+                </p>
+              </div>
+            </div>
+            <div class="border-[#6564DB] bg-white bg-opacity-10 border rounded-md min-w-[80%] h-[90%] animated-div istGlass reverse">
+              <div class="p-3">
+                <i class="text-xl sm:text-2xl md:text-3xl lg:text-4xl fa-dollar-sign fas gradient"></i>
+                <p class="font-bold text-base text-gold sm:text-lg md:text-xl lg:text-2xl">
+                  Competitive Fees
+                </p>
+                <p class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm">
+                  With transparent fee structures and low/no transaction
+                  costs, investors can optimize their returns and keep more of
+                  their earnings.
+                </p>
+              </div>
+            </div>
+            <div class="border-[#6564DB] bg-white bg-opacity-10 border rounded-md min-w-[80%] h-[90%] animated-div istGlass reverse">
+              <div class="p-3">
+                <i class="fa-desktop text-xl sm:text-2xl md:text-3xl lg:text-4xl fas gradient"></i>
+                <p class="font-bold text-base text-gold sm:text-lg md:text-xl lg:text-2xl">
+                  User-friendly Interface
+                </p>
+                <p class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm">
+                  Navigating the platform and executing trades is a seamless
+                  experience. Our user-friendly interface is designed to make
+                  the investment process easy and straightforward.
+                </p>
+              </div>
+            </div>
+            <div class="border-[#6564DB] bg-white bg-opacity-10 border rounded-md min-w-[80%] h-[90%] animated-div istGlass reverse">
+              <div class="p-3">
+                <i class="text-xl sm:text-2xl md:text-3xl lg:text-4xl fa-shield-alt fas gradient"></i>
+                <p class="font-bold text-base text-gold sm:text-lg md:text-xl lg:text-2xl">
+                  Security Measure
+                </p>
+                <p class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm">
+                  With robust and multi-layered security measures, we ensure
+                  that our users' assets are protected from potential threats
+                  and unauthorized access, allowing them to invest with peace
+                  of mind.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10 lg:mt-0 lg:w-[40%] text-lightGray1">
+          <h1 class="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl">
+            Explore the Advantages of Investing With
+            <span class="text-gold">Realmforte.</span>
           </h1>
-          <div class="py-4 md:w-4/5">
-            <div class="flex items-center">
-              <span class="mr-2 h-3 w-3 rounded-[50%] bg-gold"></span>
-              <p
-                class="mt-1 text-xs text-lightGray1 sm:text-[0.9rem] lg:text-base"
-              >
-                Upto 20% ROI In Our Investment Plan.
+          <p class="mt-10 text-xs sm:text-sm lg:text-base">
+            The platform offers diverse investments with transparency,
+            innovative tools, and a supportive team for liquidity and
+            competitive fees. A secure, user-friendly interface ensures
+            confident investing.
+          </p>
+          <button class="border-2 border-gold bg-gold hover:bg-inherit mt-10 py-3 rounded-lg w-40 text-black hover:text-gold duration-500">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="whoAreWe" class="bg-lightGray1">
+    <div class="flex md:flex-row flex-col md:justify-between items-center md:mx-auto px-6 py-[8rem] container">
+      <div class="md:w-[49%] hide">
+        <h3 class="border-gold py-2 gradient-border border-b-2 w-[10rem] font-bold text-base sm:text-lg md:text-xl lg:text-2xl">
+          WHO WE ARE
+        </h3>
+        <h1 class="my-8 font-bold text-darkBlue text-lg sm:text-xl md:text-2xl lg:text-3xl">
+          What is
+          <span class="text-gold">Realmforte?</span>
+        </h1>
+        <p class="md:mb-20 text-darkBlue text-xs sm:text-sm md:text-base">
+          Realmforte stands as an innovative cryptocurrency investment company,
+          catering to our investors' diverse needs by offering a comprehensive
+          selection of investment choices. Acknowledging the dynamic
+          cryptocurrency landscape, we persistently research and explore new
+          opportunities to stay ahead and ensure our investors receive the
+          best prospects.
+        </p>
+        <div class="my-10">
+          <a href="/aboutUs" class="border-2 border-gold bg-inherit hover:bg-gold px-8 py-3 rounded-lg text-gold hover:text-black duration-500">Read More</a>
+        </div>
+      </div>
+      <div class="mt-10 md:mt-0 p-2 rounded-lg md:w-[49%] backgroundGradient hide">
+        <img class="w-full" src="../Images/DC.jpg" alt="Why choose us?" />
+      </div>
+    </div>
+  </section>
+  <section id="map" class="bg-lightGray1">
+    <div class="mx-auto container">
+      <div class="flex md:flex-row flex-col-reverse md:justify-between items-center md:space-y-0 md:px-0 p-6 hide">
+        <div class="mt-10 md:mt-0 md:w-[49%]">
+          <img src="../Images/Map.png" alt="Deluxecapital customer distribution chart" />
+        </div>
+        <div class="md:w-[49%]">
+          <h1 class="font-bold text-darkBlue text-lg sm:text-xl md:text-2xl lg:text-3xl">
+            <span class="text-gold">Realmforte</span> is trusted by 3million+ users
+            in 140+ countries.
+          </h1>
+          <p class="mt-4 text-darkBlue text-sm md:text-base">
+            Our Company has a significant global presence, with over three million
+            investors in various regions of the world.
+          </p>
+          <div class="my-10 hide">
+            <a href="/user/create" class="border-2 border-gold bg-gold hover:bg-inherit px-8 py-3 rounded-lg text-black hover:text-gold duration-500">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <section id="howToGetStarted" class="mx-auto container">
+    <div class="p-4 pt-10 hide">
+      <h1 class="mt-10 font-bold text-lg text-lightGray1 sm:text-xl md:text-2xl lg:text-3xl">
+        Key strategies for <br />
+        achieving profitability
+      </h1>
+      <h1 class="mt-3 text-lightGray1 text-xs sm:text-sm lg:text-base">
+        Discover the four-step process that enables our investors to <br />
+        maintain profitability with our organization.
+      </h1>
+    </div>
+    <div class="flex md:flex-row flex-col flex-wrap md:justify-between items-center space-y-8 mt-10 mb-20 p-4">
+      <div id="card1" class="relative border-[#6564DB] bg-white bg-opacity-10 md:mt-8 md:ml-0 p-4 border rounded-lg w-60 h-60 duration-500 overflow-visible card ease-out hide istGlass">
+        <div class="">
+          <i class="fa-2x fa-user-check fas gradient me"></i>
+          <p class="mt-5 text-body text-gold text-lg">Create An Account</p>
+          <p class="mt-5 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm">
+            Creating an account grants you investor status and privileges.
+          </p>
+        </div>
+        <a href="/user/create"><button class="bottom-0 left-1/2 absolute border-0 bg-paleGreen opacity-0 p-0.5 rounded-lg w-3/5 font-semibold -translate-x-2/4 translate-y-[125%] duration-500 card-button ease-out">
+            Create
+          </button></a>
+      </div>
+      <div id="card2" class="relative border-[#6564DB] bg-white bg-opacity-10 md:ml-8 p-4 border rounded-lg w-60 h-60 duration-500 overflow-visible card ease-out hide istGlass">
+        <div class="">
+          <i class="fa-2x fa-hand-holding-usd fas gradient me"></i>
+          <p class="mt-5 text-body text-gold text-lg">Invest</p>
+          <p class="mt-5 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm">
+            Investing results in a financial gain, which is withdrawable at
+            any given time.
+          </p>
+        </div>
+        <a href="/user/create"><button class="bottom-0 left-1/2 absolute border-0 bg-paleGreen opacity-0 p-0.5 rounded-lg w-3/5 font-semibold -translate-x-2/4 translate-y-[125%] duration-500 card-button ease-out">
+            Invest
+          </button></a>
+      </div>
+      <div id="card3" class="relative border-[#6564DB] bg-white bg-opacity-10 md:ml-8 p-4 border rounded-lg w-60 h-60 duration-500 overflow-visible card ease-out hide istGlass">
+        <div class="">
+          <i class="fa-2x fa-wallet fas gradient me"></i>
+          <p class="mt-5 text-body text-gold text-lg">Withdraw</p>
+          <p class="mt-5 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm">
+            Transfer funds from your account to your preferred method of
+            disbursement at any time.
+          </p>
+        </div>
+        <a href="/user/create"><button class="bottom-0 left-1/2 absolute border-0 bg-paleGreen opacity-0 p-0.5 rounded-lg w-3/5 font-semibold -translate-x-2/4 translate-y-[125%] duration-500 card-button ease-out">
+            Withdraw
+          </button></a>
+      </div>
+      <div id="card4" class="relative border-[#6564DB] bg-white bg-opacity-10 p-4 border rounded-lg w-60 h-60 duration-500 overflow-visible card ease-out hide istGlass">
+        <div class="">
+          <i class="fa-2x fa-donate fas gradient me"></i>
+          <p class="mt-5 text-body text-gold text-lg">Re-Invest</p>
+          <p class="mt-5 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm">
+            Keep reinvesting to sustain growth and generate additional
+            revenue.
+          </p>
+        </div>
+        <a href="/user/create"><button class="bottom-0 left-1/2 absolute border-0 bg-paleGreen opacity-0 p-0.5 rounded-lg w-3/5 font-semibold -translate-x-2/4 translate-y-[125%] duration-500 card-button ease-out">
+            Reinvest
+          </button></a>
+      </div>
+    </div>
+  </section>
+  <section id="currency">
+    <div class="mx-auto px-6 py-6 container">
+      <h1 class="mt-10 font-bold text-lg text-lightGray1 sm:text-xl md:text-2xl lg:text-3xl hide">
+        Accepted Deposit Methods.
+      </h1>
+      <p class="mt-2 text-lightGray1 text-xs sm:text-sm md:text-base capitalize hide">
+        Explore Secure and Convenient Options for Deposits.
+      </p>
+      <div class="flex md:flex-row flex-col justify-center md:justify-between items-center">
+        <div class="md:w-1/2 hide">
+          <p class="mt-8 md:mt-0 text-lightGray1 text-xs sm:text-sm md:text-base">
+            Realmforte proudly accepts both Bitcoin (BTC), Ethereum (ETH), as
+            acceptable forms of deposit methods. <br />
+            <br />
+            <span class="font-bold text-gold text-lg">"</span>Our commitment
+            to providing a seamless investment experience extends to embracing
+            cutting-edge payment methods, ensuring convenience and security
+            for our valued clients. Explore a world of financial opportunities
+            with Realmforte, where your preferred currency is at the heart of
+            our investment offerings.<span class="font-bold text-gold text-lg">"</span>
+          </p>
+          <div class="border-[#6564DB] bg-white bg-opacity-10 mt-16 p-4 border rounded-tl-md rounded-bl-xl rounded-br-xl w-[20rem] sm:w-[24rem] md:w-[20rem] lg:w-[24rem] h-24 istGlass">
+            <div>
+              <p class="font-bold text-gold">Alexander Williams</p>
+              <p class="text-lightGray1 text-xs lg:text-sm">
+                Head of Payment Services Department
+              </p>
+              <p class="text-right text-[0.6rem] text-gold">7th July 2020</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col items-end py-6 md:w-1/2 hide">
+          <div class="">
+            <img class="w-[17rem] animation" src="../Images/btc.png" alt="Ethereum Coin" />
+          </div>
+          <div class="">
+            <img class="w-[17rem] animation" src="../Images/ethereumImg2.png" alt="Ethereum Coin" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="testimonial">
+    <div class="relative flex flex-col justify-center items-center mt-10 p-6 h-full overflow-hidden hide">
+      <div class="mt-10 text-lightGray1 container">
+        <h3 class="border-gold my-4 py-2 gradient-border border-b-2 w-[10rem] font-bold text-base sm:text-lg md:text-xl lg:text-2xl">Testimonials</h3>
+        <h1 class="my-4 font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl">
+          Some Of Our Investors' <br> Reviews.
+        </h1>
+        <p class="w-96 text-xs sm:text-sm lg:text-base">
+          Our clients valuable feedback.
+        </p>
+      </div>
+      <div class="mySwiper swiper">
+        <div class="swiper-wrapper">
+          <div class="bg-white hover:shadow-2xl rounded-lg duration-500 ease-in-out swiper-slide">
+            <div class="flex flex-col items-center p-6">
+              <img class="-mt-14 w-24" src="../Images/testimonial1.png" alt="Image" />
+              <h5 class="font-bold text-gold text-lg">Noah Miller</h5>
+              <p class="font-light text-darkNavy text-sm">
+                Tech Entrepreneur
+              </p>
+              <p class="mt-0 p-4 text-[10px] text-center xl:text-sm md:text-xs">
+                The ability to access the cryptocurrency market with confidence, while also growing my traditional investments, has been incredibly valuable. This is the future of personalized finance.
               </p>
             </div>
-            <div class="mt-4 flex items-center">
-              <span class="mr-2 h-3 w-3 rounded-[50%] bg-gold"></span>
-              <p
-                class="mt-1 text-xs text-lightGray1 sm:text-[0.9rem] lg:text-base"
-              >
-                Flexible Saving, Trading Plans And Packages.
+          </div>
+          <div class="bg-white hover:shadow-2xl rounded-lg duration-500 ease-in-out swiper-slide">
+            <div class="flex flex-col items-center p-6">
+              <img class="-mt-14 w-24" src="../Images/testimonial2.png" alt="Image" />
+              <h5 class="font-bold text-gold text-lg">Emma Johnson</h5>
+              <p class="font-light text-darkNavy text-sm">
+                Human Resources Manager
+              </p>
+              <p class="mt-0 p-4 text-[10px] text-center xl:text-sm md:text-xs">
+                The best user-friendly platform and cutting-edge technology, making cryptocurrency investing accessible to everyone.
               </p>
             </div>
           </div>
-          <div class="flex justify-start">
-            <a
-              href="/user/create"
-              class="w-40 rounded-lg border-2 border-gold bg-gold py-3 text-center font-semibold text-black duration-500 hover:bg-darkNavy hover:text-lightGray lg:w-52"
-              >Get Started</a
-            >
+          <div class="bg-white hover:shadow-2xl rounded-lg duration-500 ease-in-out swiper-slide">
+            <div class="flex flex-col items-center p-6">
+              <img class="-mt-14 w-24" src="../Images/testimonial3.png" alt="Image" />
+              <h5 class="font-bold text-gold text-lg">Liam Brown</h5>
+              <p class="font-light text-darkNavy text-sm">
+                Business Development Manager
+              </p>
+              <p class="mt-0 p-4 text-[10px] text-center xl:text-sm md:text-xs">
+                It's important to choose a trustworthy and transparent company when investing in cryptocurrency. This is crucial for achieving financial freedom.
+            </div>
+          </div>
+          <div class="bg-white hover:shadow-2xl rounded-lg duration-500 ease-in-out swiper-slide">
+            <div class="flex flex-col items-center p-6">
+              <img class="-mt-14 w-24" src="../Images/testimonial4.png" alt="Image" />
+              <h5 class="font-bold text-gold text-lg">Ethan Davis</h5>
+              <p class="font-light text-darkNavy text-sm">
+                Operations Manager
+              </p>
+              <p class="mt-0 p-4 text-[10px] text-center xl:text-sm md:text-xs">
+                This platform has made investing easy and fun. I'm impressed by how quickly and efficiently the customer support team responds to my questions.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white hover:shadow-2xl rounded-lg duration-500 ease-in-out swiper-slide">
+            <div class="flex flex-col items-center p-6">
+              <img class="-mt-14 w-24" src="../Images/testimonial5.png" alt="Image" />
+              <h5 class="font-bold text-gold text-lg">Olivia Smith</h5>
+              <p class="font-light text-darkNavy text-sm">
+                Virtual Personal Assistant
+              </p>
+              <p class="mt-0 p-4 text-[10px] text-center xl:text-sm md:text-xs">
+                I appreciate the intuitive design, effective strategies, and prompt payments of this investment platform.
+              </p>
+            </div>
           </div>
         </div>
-        <!-- Top Image -->
-        <div class="relative flex h-[40rem] justify-end md:w-[40%]">
-          <img src="../Images/heroImg.svg" alt="Rehoniel Image" />
-          <img
-            class="bounceAnimation absolute left-0 top-2"
-            src="../Images/istCoin.svg"
-            alt="Rehoniel Image"
-          />
-          <img
-            class="bounceAnimation1 absolute left-[10rem] top-6"
-            src="../Images/2ndCoin.svg"
-            alt="Rehoniel Image"
-          />
-          <img
-            class="bounceAnimation absolute left-[16rem] top-0 hidden sm:block"
-            src="../Images/3rdCoin.svg"
-            alt="Rehoniel Image"
-          />
-          <img
-            class="bounceAnimation1 absolute left-[24rem] top-4 hidden sm:block md:hidden lg:block"
-            src="../Images/4thCoin.svg"
-            alt="Rehoniel Image"
-          />
-          <img
-            class="moveAnimation absolute left-[10rem] top-0"
-            src="../Images/cloud.svg"
-            alt="Rehoniel Image"
-          />
-          <img
-            class="moveAnimation1 absolute left-[24rem] top-[12rem] hidden sm:block md:hidden lg:block"
-            src="../Images/cloud1.svg"
-            alt="Rehoniel Image"
-          />
-          <img
-            class="bounceAnimation1 absolute left-[10rem] top-[14rem] w-20 sm:left-[16rem]"
-            src="../Images/ethereum.svg"
-            alt="Rehoniel Image"
-          />
-        </div>
+        <div class="swiper-pagination"></div>
       </div>
-    </section>
-    <section id="second">
-      <div
-        class="istGlass mx-auto mb-10 h-32 w-[90%] rounded-md bg-white bg-opacity-10 py-4 text-center text-lightGray1 sm:w-4/5 lg:w-[70%]"
-      >
-        <h1 class="text-base font-bold sm:text-xl md:text-2xl lg:text-3xl">
-          One Platform For All Your Cryptocurrency Investment Needs
+    </div>
+  </section>
+  <section id="price-section">
+    <div class="bg-[url('../Images/bg1.png')] mt-10 p-6 hide">
+      <div class="cryptohopper-web-widget" data-id="1" data-chart_color="#0f2331" data-table_title="Crypto Market " data-numcoins="100" data-realtime="on" data-currency="GBP" data-table_length="10"></div>
+    </div>
+  </section>
+  <section id="where to buy cryptocurrency">
+    <div class="relative flex md:flex-row flex-col flex-wrap justify-evenly items-center md:space-x-0 space-y-10 mt-10 py-10 text-center hide">
+      <img class="top-0 right-0 absolute opacity-10 w-80" src="../Images/scribble-deluxe.png" alt="Realmforte Scribble" />
+      <div>
+        <img class="w-[30rem]" src="../Images/phone.png" alt="Realmforte Staff Image" />
+      </div>
+      <div>
+        <h1 class="mt-10 font-bold text-3xl text-gold md:text-5xl">
+          Where to Buy Cryptocurrency?
         </h1>
-        <p class="mt-4 text-xs sm:text-sm md:text-base">
-          Unlocking the advantages of trading with Rehoniel.
+        <p class="mt-4 mb-20 text-lightGray text-sm md:text-base">
+          Discover Trusted Platforms for Safe and Secure Transactions.
         </p>
-      </div>
-      <div class="px-6 sm:px-10 md:px-20">
-        <div
-          class="mt-16 flex flex-col items-center pb-20 md:mt-32 lg:ml-20 lg:flex-row lg:justify-between"
-        >
-          <div class="h-[24rem] w-full lg:w-1/2">
-            <div
-              class="second flex h-[50%] justify-end space-x-4 overflow-hidden"
-            >
-              <div
-                class="animated-div istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
-              >
-                <div class="p-3">
-                  <i
-                    class="gradient fas fa-layer-group text-xl sm:text-2xl md:text-3xl lg:text-4xl"
-                  ></i>
-                  <p
-                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
-                  >
-                    Wide Investment Range
-                  </p>
-                  <p
-                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
-                  >
-                    Emphasizing the wide range of investment options available
-                    on the platform, investors can explore and diversify their
-                    portfolio across various cryptocurrencies.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="animated-div istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
-              >
-                <div class="p-3">
-                  <i
-                    class="gradient fas fa-eye text-xl sm:text-2xl md:text-3xl lg:text-4xl"
-                  ></i>
-                  <p
-                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
-                  >
-                    Transparent Investment
-                  </p>
-                  <p
-                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
-                  >
-                    Transparency is a core principle of our platform. With clear
-                    and open reporting on investment performance and real-time
-                    data.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="animated-div istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
-              >
-                <div class="p-3">
-                  <i
-                    class="gradient fas fa-cogs text-xl sm:text-2xl md:text-3xl lg:text-4xl"
-                  ></i>
-                  <p
-                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
-                  >
-                    Innovative Tools
-                  </p>
-                  <p
-                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
-                  >
-                    Through advanced analytics, predictive models, and
-                    cutting-edge trading algorithms, investors can stay ahead of
-                    the curve and make smarter investment choices.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="animated-div istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
-              >
-                <div class="p-3">
-                  <i
-                    class="gradient fas fa-hands-helping text-xl sm:text-2xl md:text-3xl lg:text-4xl"
-                  ></i>
-                  <p
-                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
-                  >
-                    Dedicated Support
-                  </p>
-                  <p
-                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
-                  >
-                    We offer personalized assistance to guide investors
-                    throughout their investment journey, ensuring they receive
-                    the necessary help and support at every step.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="flex h-[50%] space-x-4 overflow-hidden">
-              <div
-                class="animated-div reverse istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
-              >
-                <div class="p-3">
-                  <i
-                    class="gradient fas fa-exchange-alt text-xl sm:text-2xl md:text-3xl lg:text-4xl"
-                  ></i>
-                  <p
-                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
-                  >
-                    High Liquidity
-                  </p>
-                  <p
-                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
-                  >
-                    High liquidity is a hallmark of our platform. Investors can
-                    enjoy quick and efficient transactions, enabling them to
-                    enter and exit positions with ease and flexibility.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="animated-div reverse istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
-              >
-                <div class="p-3">
-                  <i
-                    class="gradient fas fa-dollar-sign text-xl sm:text-2xl md:text-3xl lg:text-4xl"
-                  ></i>
-                  <p
-                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
-                  >
-                    Competitive Fees
-                  </p>
-                  <p
-                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
-                  >
-                    With transparent fee structures and low/no transaction
-                    costs, investors can optimize their returns and keep more of
-                    their earnings.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="animated-div reverse istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
-              >
-                <div class="p-3">
-                  <i
-                    class="gradient fas fa-desktop text-xl sm:text-2xl md:text-3xl lg:text-4xl"
-                  ></i>
-                  <p
-                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
-                  >
-                    User-friendly Interface
-                  </p>
-                  <p
-                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
-                  >
-                    Navigating the platform and executing trades is a seamless
-                    experience. Our user-friendly interface is designed to make
-                    the investment process easy and straightforward.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="animated-div reverse istGlass h-[90%] min-w-[80%] rounded-md border border-[#6564DB] bg-white bg-opacity-10"
-              >
-                <div class="p-3">
-                  <i
-                    class="gradient fas fa-shield-alt text-xl sm:text-2xl md:text-3xl lg:text-4xl"
-                  ></i>
-                  <p
-                    class="text-base font-bold text-gold sm:text-lg md:text-xl lg:text-2xl"
-                  >
-                    Security Measure
-                  </p>
-                  <p
-                    class="mt-2 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
-                  >
-                    With robust and multi-layered security measures, we ensure
-                    that our users' assets are protected from potential threats
-                    and unauthorized access, allowing them to invest with peace
-                    of mind.
-                  </p>
-                </div>
-              </div>
-            </div>
+        <div class="flex md:flex-row flex-col justify-evenly space-y-6 md:space-y-0">
+          <div class="text-center">
+            <h2 class="font-bold text-lightGray">Buy From Binance</h2>
+            <a href="https://www.binance.com" target="_blank">
+              <button class="border-2 border-gold mt-4 text-gold buy-button">Binance.com</button></a>
           </div>
-          <div class="mt-10 text-lightGray1 lg:mt-0 lg:w-[40%]">
-            <h1 class="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl">
-              Explore the Advantages of Investing With
-              <span class="text-gold">Rehoniel.</span>
-            </h1>
-            <p class="mt-10 text-xs sm:text-sm lg:text-base">
-              The platform offers diverse investments with transparency,
-              innovative tools, and a supportive team for liquidity and
-              competitive fees. A secure, user-friendly interface ensures
-              confident investing.
-            </p>
-            <button
-              class="mt-10 w-40 rounded-lg border-2 border-gold bg-gold py-3 text-black duration-500 hover:bg-inherit hover:text-gold"
-            >
-              Get Started
-            </button>
+          <div class="text-center">
+            <h2 class="font-bold text-lightGray">Buy From Coinbase</h2>
+            <a href="https://www.coinbase.com" target="_blank"><button class="border-2 border-gold mt-4 text-gold buy-button">Coinbase.com</button>
+            </a>
+          </div>
+          <div class="text-center">
+            <h2 class="font-bold text-lightGray">Buy From Crypto</h2>
+            <a href="https://www.crypto.com" target="_blank">
+              <button class="border-2 border-gold mt-4 text-gold buy-button">Crypto.com</button></a>
+          </div>
+          <div class="text-center">
+            <h2 class="font-bold text-lightGray">Buy From Trust Wallet</h2>
+            <a href="https://www.trustwallet.com" target="_blank">
+              <button class="border-2 border-gold mt-4 text-gold buy-button">Trustwallet.com</button></a>
           </div>
         </div>
       </div>
-    </section>
-    <section id="whoAreWe" class="bg-lightGray1">
-      <div
-        class="container flex flex-col items-center py-[8rem] px-6 md:mx-auto md:flex-row md:justify-between"
-      >
-        <div class="hide md:w-[49%]">
-          <h3
-            class="gradient-border w-[10rem] border-b-2 border-gold py-2 text-base font-bold sm:text-lg md:text-xl lg:text-2xl"
-          >
-            WHO WE ARE
-          </h3>
-          <h1
-            class="my-8 text-lg font-bold text-darkBlue sm:text-xl md:text-2xl lg:text-3xl"
-          >
-            What is
-            <span class="text-gold">Rehoniel?</span>
-          </h1>
-          <p
-            class="text-xs text-darkBlue sm:text-sm md:mb-20 md:text-base"
-          >
-            Rehoniel stands as an innovative cryptocurrency investment company,
-            catering to our investors' diverse needs by offering a comprehensive
-            selection of investment choices. Acknowledging the dynamic
-            cryptocurrency landscape, we persistently research and explore new
-            opportunities to stay ahead and ensure our investors receive the
-            best prospects.
-          </p>
-          <div class="my-10">
-            <a
-              href="/aboutUS"
-              class="rounded-lg border-2 border-gold bg-inherit py-3 px-8 text-gold duration-500 hover:bg-gold hover:text-black"
-              >Read More</a
-            >
-          </div>
-        </div>
-        <div class="hide backgroundGradient mt-10 rounded-lg p-2 md:mt-0 md:w-[49%]">
-          <img class="w-full" src="../Images/DC.jpg" alt="Why choose us?" />
-        </div>
+    </div>
+  </section>
+  <section id="cta" class="bg-[#6564DB] bg-opacity-10">
+    <div class="flex md:flex-row flex-col justify-around items-center space-y-12 md:space-y-0 mx-auto mt-10 px-6 py-24 md:py-12 hide">
+      <!-- Heading -->
+      <h2 class="gradient-border md:max-w-xl font-bold text-center text-lg sm:text-xl md:text-left md:text-2xl lg:text-3xl leading-tight">
+        Exclusively Tailored for Seasoned Investors.
+      </h2>
+      <div>
+        <a href="/user/create" class="bg-gold hover:bg-darkNavy px-6 p-3 pt-3 rounded-lg text-darkNavy hover:text-lightGray duration-500">Get Started</a>
       </div>
-    </section>
-    <section id="map" class="bg-lightGray1">
-      <div class="container mx-auto">
-        <div class="hide flex flex-col-reverse md:space-y-0 md:flex-row md:justify-between items-center p-6 md:px-0">
-          <div class="md:w-[49%] mt-10 md:mt-0">
-            <img
-              src="../Images/Map.png"
-              alt="Deluxecapital customer distribution chart"
-            />
-          </div>
-          <div class="md:w-[49%]">
-            <h1 class="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl text-darkBlue">
-          <span class="text-gold">Rehoniel</span> is trusted by 3million+ users
-          in 140+ countries.
-        </h1>
-        <p class="mt-4 text-darkBlue text-sm md:text-base">
-          Our Company has a significant global presence, with over three million
-          investors in various regions of the world.
-        </p>
-        <div class="hide my-10">
-          <a
-            href="/user/create"
-            class="rounded-lg border-gold border-2 px-8 py-3 text-black duration-500 bg-gold hover:text-gold hover:bg-inherit"
-            >Get Started</a
-          >
-        </div>
-          </div>
-      </div>
-      </div>
-      
-    </section>
-    <section id="howToGetStarted" class="container mx-auto">
-      <div class="hide p-4 pt-10">
-        <h1
-          class="mt-10 text-lg font-bold text-lightGray1 sm:text-xl md:text-2xl lg:text-3xl"
-        >
-          Key strategies for <br />
-          achieving profitability
-        </h1>
-        <h1 class="mt-3 text-xs text-lightGray1 sm:text-sm lg:text-base">
-          Discover the four-step process that enables our investors to <br />
-          maintain profitability with our organization.
-        </h1>
-      </div>
-      <div
-        class="mt-10 mb-20 flex flex-col flex-wrap items-center space-y-8 p-4 md:flex-row md:justify-between"
-      >
-        <div
-          id="card1"
-          class="card istGlass hide relative h-60 w-60 overflow-visible rounded-lg border border-[#6564DB] bg-white bg-opacity-10 p-4 duration-500 ease-out md:ml-0 md:mt-8"
-        >
-          <div class="">
-            <i class="me fas fa-user-check fa-2x gradient"></i>
-            <p class="text-body mt-5 text-lg text-gold">Create An Account</p>
-            <p
-              class="mt-5 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
-            >
-              Creating an account grants you investor status and privileges.
-            </p>
-          </div>
-          <a href="/user/create"
-            ><button
-              class="card-button absolute left-1/2 bottom-0 w-3/5 -translate-x-2/4 translate-y-[125%] rounded-lg border-0 bg-paleGreen p-0.5 font-semibold opacity-0 duration-500 ease-out"
-            >
-              Create
-            </button></a
-          >
-        </div>
-        <div
-          id="card2"
-          class="card istGlass hide relative h-60 w-60 overflow-visible rounded-lg border border-[#6564DB] bg-white bg-opacity-10 p-4 duration-500 ease-out md:ml-8"
-        >
-          <div class="">
-            <i class="me fas fa-hand-holding-usd fa-2x gradient"></i>
-            <p class="text-body mt-5 text-lg text-gold">Invest</p>
-            <p
-              class="mt-5 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
-            >
-              Investing results in a financial gain, which is withdrawable at
-              any given time.
-            </p>
-          </div>
-          <a href="/user/create"
-            ><button
-              class="card-button absolute left-1/2 bottom-0 w-3/5 -translate-x-2/4 translate-y-[125%] rounded-lg border-0 bg-paleGreen p-0.5 font-semibold opacity-0 duration-500 ease-out"
-            >
-              Invest
-            </button></a
-          >
-        </div>
-        <div
-          id="card3"
-          class="card istGlass hide relative h-60 w-60 overflow-visible rounded-lg border border-[#6564DB] bg-white bg-opacity-10 p-4 duration-500 ease-out md:ml-8"
-        >
-          <div class="">
-            <i class="me fas fa-wallet fa-2x gradient"></i>
-            <p class="text-body mt-5 text-lg text-gold">Withdraw</p>
-            <p
-              class="mt-5 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
-            >
-              Transfer funds from your account to your preferred method of
-              disbursement at any time.
-            </p>
-          </div>
-          <a href="/user/create"
-            ><button
-              class="card-button absolute left-1/2 bottom-0 w-3/5 -translate-x-2/4 translate-y-[125%] rounded-lg border-0 bg-paleGreen p-0.5 font-semibold opacity-0 duration-500 ease-out"
-            >
-              Withdraw
-            </button></a
-          >
-        </div>
-        <div
-          id="card4"
-          class="card istGlass hide relative h-60 w-60 overflow-visible rounded-lg border border-[#6564DB] bg-white bg-opacity-10 p-4 duration-500 ease-out"
-        >
-          <div class="">
-            <i class="me fas fa-donate fa-2x gradient"></i>
-            <p class="text-body mt-5 text-lg text-gold">Re-Invest</p>
-            <p
-              class="mt-5 text-[0.65rem] text-lightGray1 sm:text-xs md:text-sm"
-            >
-              Keep reinvesting to sustain growth and generate additional
-              revenue.
-            </p>
-          </div>
-          <a href="/user/create"
-            ><button
-              class="card-button absolute left-1/2 bottom-0 w-3/5 -translate-x-2/4 translate-y-[125%] rounded-lg border-0 bg-paleGreen p-0.5 font-semibold opacity-0 duration-500 ease-out"
-            >
-              Reinvest
-            </button></a
-          >
-        </div>
-      </div>
-    </section>
-    <section id="currency">
-      <div class="container mx-auto py-6 px-6">
-        <h1 class="hide mt-10 text-lg sm:text-xl md:text-2xl font-bold text-lightGray1 lg:text-3xl">
-          Accepted Deposit Methods.
-        </h1>
-        <p class="hide text-xs sm:text-sm md:text-base mt-2 capitalize text-lightGray1">
-          Explore Secure and Convenient Options for Deposits.
-        </p>
-        <div
-          class="flex flex-col items-center justify-center md:flex-row md:justify-between"
-        >
-          <div class="hide md:w-1/2">
-            <p
-              class="text-xs text-lightGray1 mt-8 md:mt-0 sm:text-sm md:text-base"
-            >
-              Rehoniel proudly accepts both Bitcoin (BTC), Ethereum (ETH), as
-              acceptable forms of deposit methods. <br />
-              <br />
-              <span class="text-lg font-bold text-gold">"</span>Our commitment
-              to providing a seamless investment experience extends to embracing
-              cutting-edge payment methods, ensuring convenience and security
-              for our valued clients. Explore a world of financial opportunities
-              with Rehoniel, where your preferred currency is at the heart of
-              our investment offerings.<span class="text-lg font-bold text-gold"
-                >"</span
-              >
-            </p>
-            <div
-              class="istGlass mt-16 h-24 w-[20rem] rounded-br-xl rounded-bl-xl rounded-tl-md border border-[#6564DB] bg-white bg-opacity-10 p-4 sm:w-[24rem] md:w-[20rem] lg:w-[24rem]"
-            >
-              <div>
-                <p class="font-bold text-gold">Alexander Williams</p>
-                <p class="text-xs text-lightGray1 lg:text-sm">
-                  Head of Payment Services Department
-                </p>
-                <p class="text-right text-[0.6rem] text-gold">7th July 2020</p>
-              </div>
-            </div>
-          </div>
-          <div class="hide flex flex-col items-end py-6 md:w-1/2">
-            <div class="">
-              <img
-                class="animation w-[17rem]"
-                src="../Images/btc.png"
-                alt="Ethereum Coin"
-              />
-            </div>
-            <div class="">
-              <img
-                class="animation w-[17rem]"
-                src="../Images/ethereumImg2.png"
-                alt="Ethereum Coin"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="testimonial">
-      <div
-        class="hide relative mt-10 flex h-full flex-col items-center justify-center overflow-hidden p-6"
-      >
-        <div class="mt-10 container text-lightGray1">
-          <h3 class="my-4 gradient-border w-[10rem] border-b-2 border-gold py-2 text-base font-bold sm:text-lg md:text-xl lg:text-2xl">Testimonials</h3>
-          <h1 class="my-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">
-            Some Of Our Investors' <br> Reviews.
-          </h1>
-          <p class="text-xs sm:text-sm lg:text-base w-96">
-            Some of our investors have provided valuable feedback on their
-            experiences with our company. Please take the time to review their
-            testimonials.
-          </p>
-        </div>
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            <div
-              class="swiper-slide rounded-lg bg-white duration-500 ease-in-out hover:shadow-2xl"
-            >
-              <div class="flex flex-col items-center p-6">
-                <img
-                  class="-mt-14 w-24"
-                  src="../Images/testimonial 1.png"
-                  alt="This is the image of the first Testimony"
-                />
-                <h5 class="text-lg font-bold text-gold">Kingston Rowland</h5>
-                <p class="text-sm font-light text-darkNavy">
-                  Financial Analyst
-                </p>
-                <p class="mt-0 p-6 text-sm font-semibold">
-                  The fact that I have the option of making my fortune and also
-                  access the cryptocurrency market professionals makes Rehoniel stand out. Anyone who wants to build their wealth
-                  should be here.
-                </p>
-              </div>
-            </div>
-            <div
-              class="swiper-slide rounded-lg bg-white duration-500 ease-in-out hover:shadow-2xl"
-            >
-              <div class="flex flex-col items-center p-6">
-                <img
-                  class="-mt-14 w-24"
-                  src="../Images/testimonial 2.png"
-                  alt="This is the image of the first Testimony"
-                />
-                <h5 class="text-lg font-bold text-gold">Pauleen Tammie</h5>
-                <p class="text-sm font-light text-darkNavy">
-                  Human Resources Manager
-                </p>
-                <p class="mt-0 p-6 text-sm font-semibold">
-                  Rehoniel overall appears to be a well-run cryptocurrency
-                  company and offers the latest technologies, making investing
-                  very easy.
-                </p>
-              </div>
-            </div>
-            <div
-              class="swiper-slide rounded-lg bg-white duration-500 ease-in-out hover:shadow-2xl"
-            >
-              <div class="flex flex-col items-center p-6">
-                <img
-                  class="-mt-14 w-24"
-                  src="../Images/testimonial 3.png"
-                  alt="This is the image of the first Testimony"
-                />
-                <h5 class="text-lg font-bold text-gold">Puneet Prasad</h5>
-                <p class="text-sm font-light text-darkNavy">
-                  Business Development Manager
-                </p>
-                <p class="mt-0 p-6 text-sm font-semibold">
-                  The professionalism and transparency of Rehoniel company are
-                  worth acknowledging. It is companies like this we should
-                  always trust on our road to financial freedom.
-                </p>
-              </div>
-            </div>
-            <div
-              class="swiper-slide rounded-lg bg-white duration-500 ease-in-out hover:shadow-2xl"
-            >
-              <div class="flex flex-col items-center p-6">
-                <img
-                  class="-mt-14 w-24"
-                  src="../Images/deposit.png"
-                  alt="This is the image of the first Testimony"
-                />
-                <h5 class="text-lg font-bold text-gold">Phil Humphery</h5>
-                <p class="text-sm font-light text-darkNavy">
-                  Operations Manager
-                </p>
-                <p class="mt-0 p-6 text-sm font-semibold">
-                  This is my first ever experience with Rehoniel, and I didn't
-                  know that investing could be this interesting and exciting.
-                  Their customer care is fast and aiding.
-                </p>
-              </div>
-            </div>
-            <div
-              class="swiper-slide rounded-lg bg-white duration-500 ease-in-out hover:shadow-2xl"
-            >
-              <div class="flex flex-col items-center p-6">
-                <img
-                  class="-mt-14 w-24"
-                  src="../Images/testimonial 5.png"
-                  alt="This is the image of the first Testimony"
-                />
-                <h5 class="text-lg font-bold text-gold">Laura Alphonsine</h5>
-                <p class="text-sm font-light text-darkNavy">
-                  Marketing Manager
-                </p>
-                <p class="mt-0 p-6 text-sm font-semibold">
-                  Rehoniel is a great investment platform. It's easy to use, and
-                  I enjoy their technology, strategies and quick payments.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-      </div>
-    </section>
-    <section id="price-section">
-      <div class="hide mt-10 bg-[url('../Images/bg1.png')] p-6">
-        <div
-          class="cryptohopper-web-widget"
-          data-id="1"
-          data-chart_color="#0f2331"
-          data-table_title="Crypto Market "
-          data-numcoins="100"
-          data-realtime="on"
-          data-currency="GBP"
-          data-table_length="10"
-        ></div>
-      </div>
-    </section>
-    <section id="where to buy cryptocurrency">
-      <div
-        class="hide relative mt-10 flex flex-col flex-wrap items-center justify-evenly space-y-10 py-10 text-center md:flex-row md:space-x-0"
-      >
-        <img
-          class="absolute top-0 right-0 w-80 opacity-10"
-          src="../Images/scribble-deluxe.png"
-          alt="Rehoniel Scribble"
-        />
-        <div>
-          <img
-            class="w-[30rem]"
-            src="../Images/phone.png"
-            alt="Rehoniel Staff Image"
-          />
-        </div>
-        <div>
-          <h1 class="mt-10 text-3xl font-bold text-gold md:text-5xl">
-            Where to Buy Cryptocurrency?
-          </h1>
-          <p class="mt-4 mb-20 text-sm text-lightGray md:text-base">
-            Discover Trusted Platforms for Safe and Secure Transactions.
-          </p>
-          <div
-            class="flex flex-col justify-evenly space-y-6 md:flex-row md:space-y-0"
-          >
-            <div class="text-center">
-              <h2 class="font-bold text-lightGray">Buy From Binance</h2>
-              <a href="https://www.binance.com" target="_blank">
-                <button class="buy-button mt-4 text-gold border-2 border-gold">Binance.com</button></a
-              >
-            </div>
-            <div class="text-center">
-              <h2 class="font-bold text-lightGray">Buy From Coinbase</h2>
-              <a href="https://www.coinbase.com" target="_blank"
-                ><button class="buy-button mt-4 text-gold border-2 border-gold">Coinbase.com</button>
-              </a>
-            </div>
-            <div class="text-center">
-              <h2 class="font-bold text-lightGray">Buy From Crypto</h2>
-              <a href="https://www.crypto.com" target="_blank">
-                <button class="buy-button mt-4 text-gold border-2 border-gold">Crypto.com</button></a
-              >
-            </div>
-            <div class="text-center">
-              <h2 class="font-bold text-lightGray">Buy From Trust Wallet</h2>
-              <a href="https://www.trustwallet.com" target="_blank">
-                <button class="buy-button mt-4 text-gold border-2 border-gold">Trustwallet.com</button></a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="cta" class="bg-[#6564DB] bg-opacity-10">
-      <div
-        class="hide mx-auto mt-10  flex flex-col items-center justify-around space-y-12 px-6 py-24 md:flex-row md:space-y-0 md:py-12"
-      >
-        <!-- Heading -->
-        <h2
-          class="text-center gradient-border font-bold leading-tight md:max-w-xl md:text-left text-lg sm:text-xl md:text-2xl lg:text-3xl"
-        >
-        Exclusively Tailored for  Seasoned Investors.
-        </h2>
-        <div>
-          <a
-            href="/user/create"
-            class="rounded-lg bg-gold p-3 px-6 pt-3 text-darkNavy duration-500 hover:bg-darkNavy hover:text-lightGray"
-            >Get Started</a
-          >
-        </div>
-      </div>
-    </section>
-    <%- include("partials/options"); -%> <%- include("partials/footer"); -%>
+    </div>
+  </section>
+  <%- include("partials/options"); -%> <%- include("partials/footer"); -%>
 
-    <!-- Typed JS Link -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <!-- Swiper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <!-- Price JS Link -->
-    <script src="https://www.cryptohopper.com/widgets/js/script"></script>
-    <!-- Custom JS -->
-    <script src="../JS/index.js"></script>
-  </body>
+  <!-- Typed JS Link -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <!-- Swiper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <!-- Price JS Link -->
+  <script src="https://www.cryptohopper.com/widgets/js/script"></script>
+  <!-- Custom JS -->
+  <script src="../JS/index.js"></script>
+</body>
+
 </html>

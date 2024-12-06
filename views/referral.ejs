@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Referral</title>
   <!-- Favicon -->
-  <link
-  rel="shortcut icon"
-  href="../Images/logo.ico"
-  type="image/x-ico"
-/>
+  <link rel="shortcut icon" href="../Images/logo.ico" type="image/x-ico" />
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-       <!-- Bootstrap Icon -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Bootstrap Icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../CSS/main.css" />
   <!-- Custom JavaScript -->
@@ -26,59 +22,59 @@
 
 <body class="bg-darkGray main">
   <%- include ("partials/sidebar"); -%> <%- include ("partials/script"); -%>
-      <section>
-        <div class="px-8 py-4">
-          <div class="mt-20">
-            <h1 class="text-xl font-bold text-[#CC9E06] sm:text-2xl md:text-3xl lg:text-4xl">
-              My Referral
-            </h1>
-            <div class="flex flex-col-reverse gap-5 md:flex-row md:justify-between md:items-center mt-10">
-              <div class="md:w-[49%] h-40 rounded-lg border border-[#9EA0A3] bg-white p-2 md:p-4">
-                <p class="font-bold">Your Referral Link</p>
-                <div class="flex flex-col md:flex-row gap-5 mt-2 sm:mt-4 md:mt-6">
-                  <div class="border border-[#9EA0A3] p-2 rounded-md">
-                   <p id="referral-link" class="mx-auto text-xs sm:text-sm md:text-xs lg:text-sm">https://www.rehoniel.org/user/create?ref=<%= user.username %></p> 
-                  </div>
-                  <button class="flex items-center mx-auto gap-2 p-2 text-xs lg:text-sm rounded-md border border-[#6564DB]" onclick="copy()"><img src="../Images/copy.svg" alt="copy icon">Copy</button>
-                </div>
+  <section>
+    <div class="px-8 py-4">
+      <div class="mt-20">
+        <h1 class="font-bold text-[#CC9E06] text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+          My Referral
+        </h1>
+        <div class="flex md:flex-row flex-col-reverse md:justify-between md:items-center gap-5 mt-10">
+          <div class="border-[#9EA0A3] bg-white p-2 md:p-4 border rounded-lg md:w-[49%] h-40">
+            <p class="font-bold">Your Referral Link</p>
+            <div class="flex md:flex-row flex-col gap-5 mt-2 sm:mt-4 md:mt-6">
+              <div class="border-[#9EA0A3] p-2 border rounded-md">
+                <p id="referral-link" class="mx-auto text-xs sm:text-sm lg:text-sm md:text-xs">https://www.Realmforte.org/user/create?ref=<%= user.username %></p>
               </div>
-              <div class="flex gap-5 items-center md:w-[49%] h-40 rounded-lg border border-[#9EA0A3] referGradient p-2 md:p-4">
-                <div>
-                  <img src="../Images/referral.svg" alt="Referral Icon">
-                </div>
-                <div class="flex flex-col justify-between h-full">
-                  <p class="text-xs sm:text-sm md:text-base text-lightGray1">Earn upto <span class="text-[#EFBC16] font-bold">10% </span>on Referral Deposits</p>
-                  <div class="flex justify-between">
-                    <p class="text-sm sm:text-base md:text-lg lg:text-xl text-lightGray1">Number of Referrals</p> 
-                    <p class="text-lg fon-black sm:text-xl md:text-2xl lg:text-3xl text-[#EFBC16]"><%= user.referrals.length %></p>
-                  </div>
-                </div>
-              </div>
+              <button class="flex items-center gap-2 border-[#6564DB] mx-auto p-2 border rounded-md text-xs lg:text-sm" onclick="copy()"><img src="../Images/copy.svg" alt="copy icon">Copy</button>
             </div>
-            <div class="mt-10 rounded-lg border border-[#9EA0A3] bg-white p-2 sm:p-4">
-              <p class="text-xs sm:text-sm md:text-base font-bold">Your Referral List</p>
-              <% user.referrals.forEach(referral=> {%>
-              <div class="flex justify-between items-center mt-4">
-                <div class="flex gap-2">
-                  <img src="../Images/referral.png" class="w-8 border border-[#9EA0A3] rounded-[50%]" alt="Referral Icon">
-                  <div>
-                  
-                    <p class="text-[0.65rem] sm:text-xs md:text-sm"><%= referral.username || "user" %></p>
-                    
-                    <p class="text-[0.65rem] sm:text-xs md:text-sm"><%= referral.email%></p>
-                  </div>
-                </div>
-                <p class="text-[0.65rem] sm:text-xs md:text-sm"><%= new Date(referral.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>.</p>
-                <div class="hidden sm:block p-2 bg-gray-200 text-red-600 rounded-lg text-[0.65rem] sm:text-xs md:text-sm">
-                  Active
-                </div>
+          </div>
+          <div class="flex items-center gap-5 border-[#9EA0A3] p-2 md:p-4 border rounded-lg md:w-[49%] h-40 referGradient">
+            <div>
+              <img src="../Images/referral.svg" alt="Referral Icon">
+            </div>
+            <div class="flex flex-col justify-between h-full">
+              <p class="text-lightGray1 text-xs sm:text-sm md:text-base">Earn upto <span class="font-bold text-[#EFBC16]">10% </span>on Referral Deposits</p>
+              <div class="flex justify-between">
+                <p class="text-lightGray1 text-sm sm:text-base md:text-lg lg:text-xl">Number of Referrals</p>
+                <p class="text-[#EFBC16] text-lg sm:text-xl md:text-2xl lg:text-3xl fon-black"><%= user.referrals.length %></p>
               </div>
-              <% }) %>
             </div>
           </div>
         </div>
-      </section>
-      <script src="../JS/referral.js"></script>
+        <div class="border-[#9EA0A3] bg-white mt-10 p-2 sm:p-4 border rounded-lg">
+          <p class="font-bold text-xs sm:text-sm md:text-base">Your Referral List</p>
+          <% user.referrals.forEach(referral=> {%>
+          <div class="flex justify-between items-center mt-4">
+            <div class="flex gap-2">
+              <img src="../Images/referral.png" class="border-[#9EA0A3] border rounded-[50%] w-8" alt="Referral Icon">
+              <div>
+
+                <p class="text-[0.65rem] sm:text-xs md:text-sm"><%= referral.username || "user" %></p>
+
+                <p class="text-[0.65rem] sm:text-xs md:text-sm"><%= referral.email%></p>
+              </div>
+            </div>
+            <p class="text-[0.65rem] sm:text-xs md:text-sm"><%= new Date(referral.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>.</p>
+            <div class="sm:block hidden bg-gray-200 p-2 rounded-lg text-[0.65rem] text-red-600 sm:text-xs md:text-sm">
+              Active
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../JS/referral.js"></script>
 </body>
 
 </html>

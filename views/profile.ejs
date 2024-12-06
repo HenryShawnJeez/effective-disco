@@ -1,265 +1,164 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../Images/logo.ico" type="image/x-ico" />
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap Icon -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
-    />
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="../CSS/main.css" />
-    <!-- Custom JavaScript -->
-    <script defer src="../JS/dashboard.js"></script>
-  </head>
 
-  <body class="main bg-darkGray">
-    <%- include ("partials/sidebar"); -%> <%- include ("partials/script"); -%>
-    <section class="px-8 py-4">
-      <div class="mt-20">
-        <p
-          class="text-xl font-bold text-[#CC9E06] sm:text-2xl md:text-3xl lg:text-4xl"
-        >
-          Profile
-        </p>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../Images/logo.ico" type="image/x-ico" />
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Bootstrap Icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../CSS/main.css" />
+  <!-- Custom JavaScript -->
+  <script defer src="../JS/dashboard.js"></script>
+</head>
+
+<body class="bg-darkGray main">
+  <%- include ("partials/sidebar"); -%>
+  <%- include ("partials/script"); -%>
+  <section class="px-8 py-4">
+    <div class="mt-20">
+      <p class="font-bold text-[#CC9E06] text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+        Profile
+      </p>
+    </div>
+
+    <div class="border-[#9EA0A3] bg-white mt-10 p-4 border rounded-lg">
+      <div class="flex justify-between items-center mt-2 mb-4">
+        <p class="font-bold text-darkNavy text-sm">Basic Information</p>
+        <img id="basicInfoEditBtn" class="w-6 duration-500 cursor-pointer hover:rotate-12" src="../Images/edit.png" alt="Edit Icon" />
       </div>
-
-      <div class="mt-10 rounded-lg border border-[#9EA0A3] bg-white p-4">
-        <div class="mt-2 mb-4 flex items-center justify-between">
-          <p class="text-sm font-bold text-darkNavy">Basic Information</p>
-          <img
-            id="basicInfoEditBtn"
-            class="w-6 cursor-pointer duration-500 hover:rotate-12"
-            src="../Images/edit.png"
-            alt="Edit Icon"
-          />
-        </div>
-        <div
-          class="border-t border-b border-darkNavy border-opacity-50 bg-darkGray p-2"
-        >
-          <div class="flex justify-between text-sm sm:text-base">
-            <p>Full Name:</p>
-            <p class="gradient-border font-bold"><%= user.name %></p>
-          </div>
-        </div>
-        <div class="border-b border-darkNavy border-opacity-50 bg-white p-2">
-          <div
-            class="flex justify-between text-sm sm:text-base"
-          >
-            <p>Email Address:</p>
-            <p class="font-bold gradient-border"><%= user.email %></p>
-          </div>
-        </div>
-        <div class="border-b border-darkNavy border-opacity-50 bg-darkGray p-2">
-          <div
-            class="flex justify-between text-sm sm:text-base"
-          >
-            <p>Username:</p>
-            <p class="font-bold gradient-border"><%= user.username%></p>
-          </div>
+      <div class="border-darkNavy bg-darkGray p-2 border-t border-b border-opacity-50">
+        <div class="flex justify-between text-sm sm:text-base">
+          <p>Full Name:</p>
+          <p class="gradient-border font-bold"><%= user.name %></p>
         </div>
       </div>
-      <form
-        id="basicInfoForm"
-        class="hidden flex-col items-end"
-        action="/user/profile?_method=patch"
-        method="post"
-      >
-        <p class="w-full">
-          <input
-            class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 caret-darkBlue placeholder:text-sm focus:outline focus:outline-gold"
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Update Your Name"
-          />
-        </p>
-
-        <p class="w-full">
-          <input
-            class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 caret-darkBlue placeholder:text-sm focus:outline focus:outline-gold"
-            type="text"
-            name="email"
-            id="email"
-            placeholder="Update Your Email"
-          />
-        </p>
-
-        <p class="w-full">
-          <input
-            class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 caret-darkBlue placeholder:text-sm focus:outline focus:outline-gold"
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Update Your Username"
-          />
-        </p>
-
-        <p class="w-full">
-          <input
-            class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 caret-darkBlue placeholder:text-sm focus:outline focus:outline-gold"
-            type="text"
-            name="password"
-            id="password"
-            placeholder="Update Your Password"
-          />
-        </p>
-        <div class="w-full">
-          <button
-            type="submit"
-            class="mt-4 w-full rounded-xl border-2 border-brightBlue bg-brightBlue py-2 text-lightGray duration-500 hover:bg-lightGray1 hover:text-darkBlue"
-          >
-            Update
-          </button>
-        </div>
-      </form>
-      <div class="mt-10 rounded-lg border border-[#9EA0A3] bg-white p-4">
-        <div class="mt-2 mb-4 flex items-center justify-between">
-          <p class="text-sm font-bold text-darkNavy">Other Information</p>
-          <img
-            id="otherInfoEditBtn"
-            class="w-6 cursor-pointer duration-500 hover:rotate-12"
-            src="../Images/edit.png"
-            alt="Edit Icon"
-          />
-        </div>
-        <div
-          class="border-t border-b border-darkNavy border-opacity-50 bg-white p-2"
-        >
-          <div
-            class="flex justify-between text-sm sm:text-base"
-          >
-            <p>Country:</p>
-            <% if (user.country.length === 0) { %>
-            <p class="font-bold gradient-border">Not Provided</p>
-            <% } else {%>
-            <p class="font-bold gradient-border"><%= user.country %></p>
-            <% } %>
-          </div>
-        </div>
-        <div class="border-b border-darkNavy border-opacity-50 bg-darkGray p-2">
-          <div
-            class="flex justify-between text-sm sm:text-base"
-          >
-            <p>City:</p>
-            <% if (user.city.length === 0) { %>
-            <p class="font-bold gradient-border">Not Provided</p>
-            <% } else {%>
-            <p class="font-bold gradient-border"><%= user.city %></p>
-            <% } %>
-          </div>
-        </div>
-        <div class="border-b border-darkNavy border-opacity-50 bg-white p-2">
-          <div
-            class="flex justify-between text-sm sm:text-base"
-          >
-            <p>Postal Code:</p>
-            <% if (user.postalcode) { %>
-            <p class="font-bold gradient-border"><%= user.postalcode %></p>
-            <% } else {%>
-            <p class="font-bold gradient-border">Not Provided</p>
-            <% } %>
-          </div>
-        </div>
-        <div class="border-b border-darkNavy border-opacity-50 bg-darkGray p-2">
-          <div
-            class="flex justify-between text-sm sm:text-base"
-          >
-            <p>Gender:</p>
-            <% if (user.gender.length === 0) { %>
-            <p class="font-bold gradient-border">Not Provided</p>
-            <% } else {%>
-            <p class="font-bold gradient-border"><%= user.gender %></p>
-            <% } %>
-          </div>
+      <div class="border-darkNavy bg-white p-2 border-b border-opacity-50">
+        <div class="flex justify-between text-sm sm:text-base">
+          <p>Email Address:</p>
+          <p class="gradient-border font-bold"><%= user.email %></p>
         </div>
       </div>
-      <form
-        id="otherInfoForm"
-        class="mx-auto mb-4 hidden w-full"
-        action="/user/profile?_method=patch"
-        method="post"
-      >
-        <p class="">
-          <input
-            class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 caret-darkBlue placeholder:text-sm focus:outline focus:outline-gold"
-            type="text"
-            name="country"
-            id="country"
-            placeholder="Update Your Country"
-          />
-        </p>
-
-        <p>
-          <input
-            class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 caret-darkBlue placeholder:text-sm focus:outline focus:outline-gold"
-            type="text"
-            name="city"
-            id="city"
-            placeholder="Update Your City"
-          />
-        </p>
-
-        <p>
-          <input
-            class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 caret-darkBlue placeholder:text-sm focus:outline focus:outline-gold"
-            type="number"
-            name="postalcode"
-            id="postalcode"
-            placeholder="Update Your Postal Code"
-          />
-        </p>
-        <p>
-          <input
-            class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 caret-darkBlue placeholder:text-sm focus:outline focus:outline-gold"
-            type="text"
-            name="gender"
-            id="gender"
-            placeholder="Update Your Gender"
-          />
-        </p>
-        <p>
-          <input
-            class="mt-2 w-full rounded-lg border border-[#9EA0A3] px-8 py-2 caret-darkBlue placeholder:text-sm focus:outline focus:outline-gold"
-            type="text"
-            name="password"
-            id="password"
-            placeholder="Update Your Password"
-          />
-        </p>
-        <div>
-          <button
-            type="submit"
-            class="mt-4 w-full rounded-xl border-2 border-brightBlue bg-brightBlue px-10 py-3 text-lightGray duration-700 hover:bg-lightGray1 hover:text-darkBlue"
-          >
-            Update
-          </button>
+      <div class="border-darkNavy bg-darkGray p-2 border-b border-opacity-50">
+        <div class="flex justify-between text-sm sm:text-base">
+          <p>Username:</p>
+          <p class="gradient-border font-bold"><%= user.username%></p>
         </div>
-      </form>
-    </section>
-    <script>
-      const basicInfoEditBtn = document.getElementById("basicInfoEditBtn");
-      const basicInfoForm = document.getElementById("basicInfoForm");
-      basicInfoEditBtn.addEventListener("click", function (e) {
-        basicInfoForm.classList.toggle("hidden");
-      });
-      const otherInfoEditBtn = document.getElementById("otherInfoEditBtn");
-      const otherInfoForm = document.getElementById("otherInfoForm");
-      otherInfoEditBtn.addEventListener("click", function (e) {
-        otherInfoForm.classList.toggle("hidden");
-      });
-    </script>
-  </body>
+      </div>
+    </div>
+    <form id="basicInfoForm" class="flex-col items-end hidden" action="/user/profile?_method=patch" method="post">
+      <p class="w-full">
+        <input class="border-[#9EA0A3] mt-2 px-8 py-2 border rounded-lg w-full placeholder:text-sm caret-darkBlue focus:outline focus:outline-gold" type="text" name="name" id="name" placeholder="Update Your Name" />
+      </p>
+
+      <p class="w-full">
+        <input class="border-[#9EA0A3] mt-2 px-8 py-2 border rounded-lg w-full placeholder:text-sm caret-darkBlue focus:outline focus:outline-gold" type="text" name="email" id="email" placeholder="Update Your Email" />
+      </p>
+
+      <p class="w-full">
+        <input class="border-[#9EA0A3] mt-2 px-8 py-2 border rounded-lg w-full placeholder:text-sm caret-darkBlue focus:outline focus:outline-gold" type="text" name="username" id="username" placeholder="Update Your Username" />
+      </p>
+
+      <p class="w-full">
+        <input class="border-[#9EA0A3] mt-2 px-8 py-2 border rounded-lg w-full placeholder:text-sm caret-darkBlue focus:outline focus:outline-gold" type="text" name="password" id="password" placeholder="Update Your Password" />
+      </p>
+      <div class="w-full">
+        <button type="submit" class="bg-brightBlue border-2 hover:bg-lightGray1 mt-4 py-2 border-brightBlue rounded-xl w-full text-lightGray hover:text-darkBlue duration-500">
+          Update
+        </button>
+      </div>
+    </form>
+    <div class="border-[#9EA0A3] bg-white mt-10 p-4 border rounded-lg">
+      <div class="flex justify-between items-center mt-2 mb-4">
+        <p class="font-bold text-darkNavy text-sm">Other Information</p>
+        <img id="otherInfoEditBtn" class="w-6 duration-500 cursor-pointer hover:rotate-12" src="../Images/edit.png" alt="Edit Icon" />
+      </div>
+      <div class="border-darkNavy bg-white p-2 border-t border-b border-opacity-50">
+        <div class="flex justify-between text-sm sm:text-base">
+          <p>Country:</p>
+          <% if (user.country.length === 0) { %>
+          <p class="gradient-border font-bold">Not Provided</p>
+          <% } else {%>
+          <p class="gradient-border font-bold"><%= user.country %></p>
+          <% } %>
+        </div>
+      </div>
+      <div class="border-darkNavy bg-darkGray p-2 border-b border-opacity-50">
+        <div class="flex justify-between text-sm sm:text-base">
+          <p>City:</p>
+          <% if (user.city.length === 0) { %>
+          <p class="gradient-border font-bold">Not Provided</p>
+          <% } else {%>
+          <p class="gradient-border font-bold"><%= user.city %></p>
+          <% } %>
+        </div>
+      </div>
+      <div class="border-darkNavy bg-white p-2 border-b border-opacity-50">
+        <div class="flex justify-between text-sm sm:text-base">
+          <p>Postal Code:</p>
+          <% if (user.postalcode) { %>
+          <p class="gradient-border font-bold"><%= user.postalcode %></p>
+          <% } else {%>
+          <p class="gradient-border font-bold">Not Provided</p>
+          <% } %>
+        </div>
+      </div>
+      <div class="border-darkNavy bg-darkGray p-2 border-b border-opacity-50">
+        <div class="flex justify-between text-sm sm:text-base">
+          <p>Gender:</p>
+          <% if (user.gender.length === 0) { %>
+          <p class="gradient-border font-bold">Not Provided</p>
+          <% } else {%>
+          <p class="gradient-border font-bold"><%= user.gender %></p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <form id="otherInfoForm" class="hidden mx-auto mb-4 w-full" action="/user/profile?_method=patch" method="post">
+      <p class="">
+        <input class="border-[#9EA0A3] mt-2 px-8 py-2 border rounded-lg w-full placeholder:text-sm caret-darkBlue focus:outline focus:outline-gold" type="text" name="country" id="country" placeholder="Update Your Country" />
+      </p>
+
+      <p>
+        <input class="border-[#9EA0A3] mt-2 px-8 py-2 border rounded-lg w-full placeholder:text-sm caret-darkBlue focus:outline focus:outline-gold" type="text" name="city" id="city" placeholder="Update Your City" />
+      </p>
+
+      <p>
+        <input class="border-[#9EA0A3] mt-2 px-8 py-2 border rounded-lg w-full placeholder:text-sm caret-darkBlue focus:outline focus:outline-gold" type="number" name="postalcode" id="postalcode" placeholder="Update Your Postal Code" />
+      </p>
+      <p>
+        <input class="border-[#9EA0A3] mt-2 px-8 py-2 border rounded-lg w-full placeholder:text-sm caret-darkBlue focus:outline focus:outline-gold" type="text" name="gender" id="gender" placeholder="Update Your Gender" />
+      </p>
+      <p>
+        <input class="border-[#9EA0A3] mt-2 px-8 py-2 border rounded-lg w-full placeholder:text-sm caret-darkBlue focus:outline focus:outline-gold" type="text" name="password" id="password" placeholder="Update Your Password" />
+      </p>
+      <div>
+        <button type="submit" class="bg-brightBlue border-2 hover:bg-lightGray1 mt-4 px-10 py-3 border-brightBlue rounded-xl w-full text-lightGray hover:text-darkBlue duration-700">
+          Update
+        </button>
+      </div>
+    </form>
+  </section>
+  <script>
+    const basicInfoEditBtn = document.getElementById("basicInfoEditBtn");
+    const basicInfoForm = document.getElementById("basicInfoForm");
+    basicInfoEditBtn.addEventListener("click", function(e) {
+      basicInfoForm.classList.toggle("hidden");
+    });
+    const otherInfoEditBtn = document.getElementById("otherInfoEditBtn");
+    const otherInfoForm = document.getElementById("otherInfoForm");
+    otherInfoEditBtn.addEventListener("click", function(e) {
+      otherInfoForm.classList.toggle("hidden");
+    });
+  </script>
+</body>
+
 </html>

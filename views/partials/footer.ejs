@@ -1,106 +1,45 @@
 <!-- Footer -->
-<footer class="">
+<footer class="text-xs md:text-sm xl:text-base">
   <!-- Flex Container -->
-  <div
-    class="container flex flex-col-reverse justify-between px-6 py-10 mx-auto space-y-8 md:flex-row md-space-y-0"
-  >
-    <!-- Logo and Social link Container -->
-    <div
-      class="flex flex-col-reverse items-center justify-between space-y-12 md:flex-col md:space-y-0 md:items-start"
-    >
-      <div class="mx-auto my-6 text-center text-gold text-sm md:hidden">
-        Copy &copy; 2023, All Rights Fully Reserved.
-      </div>
+  <div class="flex md:flex-row flex-col justify-between md-space-y-0 space-y-8 mx-auto px-6 py-10 container">
+    <div class="flex flex-col md:flex-col justify-between items-center md:items-start space-y-12 md:space-y-0">
       <div>
-        <a href="/"
-          ><img
-            class="h-10 hover:cursor-pointer hover:grayscale duration-500"
-            src="../Images/logo.png"
-            alt="Rehoniel logo"
-        /></a>
+        <a href="/"><img class="w-6 md:w-8 xl:w-10 hover:cursor-pointer hover:grayscale duration-500" src="../Images/logo1.png" alt="Realmforte logo" /></a>
 
-        <p class="mt-4 text-sm md:w-48 text-gold">
-          15 Punchbowl Centre, Elia Zammit Street, St. Julian’s, STJ3154, Malta.
+        <p class="mt-4 max-w-[40ch] text-gold">
+          Pärnu mnt 109, Kesklinna linnaosa, 11312 Tallinn, Harju maakond, Estonia.
         </p>
       </div>
     </div>
     <!-- List Container -->
     <div class="flex justify-around space-x-4 md:space-x-20">
-      <div class="flex flex-col space-y-3 text-white text-sm lg:text-base">
-        <a
-          href="/
-          "
-          class="hover:text-lightGray text-gold"
-          >Home</a
-        >
-        <a
-          href="/aboutUS
-        "
-          class="hover:text-lightGray text-gold"
-          >About Us</a
-        >
-        <a
-          href="/services
-      "
-          class="hover:text-lightGray text-gold"
-          >Service</a
-        >
-        <a
-          href="/faq
-    "
-          class="hover:text-lightGray text-gold"
-          >FAQ</a
-        >
+      <div class="flex flex-col space-y-3 text-white">
+        <a href="/" class="text-gold hover:text-lightGray">Home</a>
+        <a href="/aboutUs" class="text-gold hover:text-lightGray">About Us</a>
+        <a href="/services" class="text-gold hover:text-lightGray">Service</a>
+        <a href="/faq" class="text-gold hover:text-lightGray">FAQ</a>
       </div>
-      <div class="flex flex-col space-y-3 text-white text-sm lg:text-base">
-        <a
-          href="/user/login
-          "
-          class="hover:text-lightGray text-gold"
-          >Login</a
-        >
-        <a
-          href="/user/create
-        "
-          class="hover:text-lightGray text-gold"
-          >Sign-up</a
-        >
-        <a
-          href="/policies
-      "
-          class="hover:text-lightGray text-gold"
-          >Privacy Policy</a
-        >
-        <a href="/careers" target="_blank" rel="noopener noreferrer" class="hover:text-lightGray text-gold">Open Positions</a>
+      <div class="flex flex-col space-y-3 text-white">
+        <a href="/user/login" class="text-gold hover:text-lightGray">Login</a>
+        <a href="/user/create" class="text-gold hover:text-lightGray">Sign-up</a>
+        <a href="/policies" class="text-gold hover:text-lightGray">Privacy Policy</a>
+        <a href="/careers" target="_blank" rel="noopener noreferrer" class="text-gold hover:text-lightGray">Open Positions</a>
       </div>
     </div>
     <!-- Input Container-->
-    <div class="flex flex-col justify-between">
-      <h4 class="text-xl lg:text-2xl font-semibold text-gold text-center md:text-left">
-        Subscribe To Our Newsletter.
-      </h4>
-      <form>
-        <div class="flex flex-col items-center mt-2">
-          <input
-            type="email"
-            id="well"
-            class="w-[16rem] sm:w-[22rem] lg:w-[16rem] py-3 px-4 rounded-md caret-gold text-gold bg-inherit border border-white focus:outline-darkNavy placeholder:text-sm"
-            placeholder="Enter Your Email Address"
-          />
-          <a
-            id="subBtn"
-            class="duration-500 cursor-pointer mt-4 w-[16rem] sm:w-[22rem] lg:w-[16rem] py-2 text-center bg-gold rounded-md hover:bg-darkNavy text-white border-2 border-gold"
-            >Subscribe</a
-          >
-        </div>
-      </form>
-      <div class="hidden mt-4 text-gold text-sm lg:text-base md:block">
-        Copy &copy; 2023, All Rights Fully Reserved.
+    <form>
+      <div class="flex flex-col items-center mt-2">
+        <input type="email" id="well" class="border-white bg-inherit px-4 py-3 border rounded-md w-[16rem] sm:w-[22rem] lg:w-[16rem] text-gold caret-gold focus:outline-darkNavy placeholder:text-sm" placeholder="Enter Your Email Address" />
+        <a id="subBtn" class="border-2 border-gold bg-gold hover:bg-darkNavy mt-4 py-3 rounded-md w-[16rem] sm:w-[22rem] lg:w-[16rem] text-center text-white duration-500 cursor-pointer">Subscribe</a>
       </div>
-    </div>
+    </form>
+  </div>
+  <div class="border-gold mt-10 py-6 border-t text-center text-white/70">
+    Copyright © 2024 Realmforte Services. All rights reserved.
   </div>
 </footer>
 
+<!-- Script for the input -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const subBtn = document.getElementById("subBtn");
@@ -112,3 +51,6 @@
   });
 </script>
 
+<!-- Iconic Icon Scripts -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

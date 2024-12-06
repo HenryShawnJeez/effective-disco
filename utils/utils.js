@@ -1,16 +1,22 @@
-const referralCodes = require('referral-codes')
-
 class Util {
+  // Generate a unique user ID
+  generateUserId(firstName, nickname) {
+    // Use the first letter of the first name
+    const firstNameInitial = firstName.charAt(0).toUpperCase();
 
-    generateUserId() {
-        const result = referralCodes.generate({
-            length: 6,
-            count: 1
-        })
+    // Ensure nickname is safe and lowercase
+    const safeNickname = nickname.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
 
-        return result[0]
-    }
+    // Generate a random alphanumeric string
+    const randomString = Math.random()
+      .toString(36)
+      .substring(2, 8)
+      .toUpperCase();
 
+    // Combine parts to create a unique user ID
+    const userId = `${safeNickname}-${firstNameInitial}-${randomString}`;
+    return userId;
+  }
 }
 
-module.exports = new Util()
+module.exports = new Util();

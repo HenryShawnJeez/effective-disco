@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frequently Asked Questions</title>
-    <%- include("partials/SEO"); -%>
-  </head>
-  <body class="bg-[url('../Images/bg.svg')]">
-    <!-- Nav Bar -->
-    <%- include("partials/nav"); -%>
-    <section>
-      <div class="mt-10 p-6 flex flex-col space-y-8">
-        <div class="mt-10 ml-4 text-left md:text-center">
-          <h1 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gold">
-            Frequently Asked Questions on Rehoniel
-          </h1>
-          <p class="mt-2 text-lightGray">
-            An In-Depth Guide to Navigating Rehoniel in the World
-            of Cryptocurrency
-          </p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frequently Asked Questions</title>
+  <%- include("partials/SEO"); -%>
+</head>
+
+<body class="bg-darkNavy text-xs md:text-sm xl:text-base">
+  <!-- Nav Bar -->
+  <%- include("partials/nav"); -%>
+  <%- include ("partials/_secondHero.ejs", { imageUrl: '/Images/faqPage.jpg', heading: 'FAQs', subtext: 'Home'}); -%>
+  <section class="bg-lightGray1">
+    <div class="flex flex-col gap-y-10 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-20">
+      <div class="flex md:flex-row flex-col md:justify-between gap-y-5">
+        <div class="w-full md:w-[40%] xl:w-[30%]">
+          <div class="flex flex-col gap-y-3">
+            <p class="font-bold text-darkNavy text-lg sm:text-xl md:text-2xl xl:text-3xl">General FAQs</p>
+            <p class="text-black/70">General Frequently Asked Questions: Insights and Clarifications</p>
+          </div>
         </div>
-        <div class="flex flex-col items-center justify-center">
-          <button class="collapsible text-darkNavy">
-            What Is Rehoniel?
+        <div class="flex flex-col w-full md:w-[55%] xl:w-[68%]">
+          <button class="collapsible">
+            Realmforte is?
           </button>
           <div class="content">
-            <p class="leading-loose text-lightGray text-[0.65rem] sm:text-xs md:text-sm my-4">
-              Rehoniel is a cutting-edge cryptocurrency investment
+            <p class="my-4">
+              Realmforte is a cutting-edge cryptocurrency investment
               company that specializes in providing our investors with the
               highest returns on their investments. We employ a team of
               experienced traders and financial experts who use advanced
@@ -35,54 +36,54 @@
               minimizing risk. Our platform is user-friendly, secure and
               accessible from anywhere in the world. We also offer 24/7 customer
               support to ensure that our investors have all the information they
-              need to make informed investment decisions. With Rehoniel, you can trust that your investments are in good hands
+              need to make informed investment decisions. With Realmforte, you can trust that your investments are in good hands
               and that you will see a significant return on your investment.
-              Invest in Rehoniel today and start seeing your money
+              Invest in Realmforte today and start seeing your money
               grow!
             </p>
           </div>
-          <button class="collapsible text-darkNavy mt-4">
-            What Type Of Cryptocurrencies Does Rehoniel Support?
+          <button class="collapsible">
+            What crypto. does Realmforte support?
           </button>
           <div class="content">
-            <p class="leading-loose text-lightGray text-[0.65rem] sm:text-xs md:text-sm my-4">
-              Rehoniel is proud to offer a versatile payment
+            <p class="my-4">
+              Realmforte is proud to offer a versatile payment
               platform that accepts both traditional currency and cutting-edge
               cryptocurrencies, including both Bitcoin and Ethereum. This allows
               our investors to easily and seamlessly fund their investment
               portfolios with the currency of their choice.
             </p>
           </div>
-          <button class="collapsible text-darkNavy mt-4">
-            Is It Safe To In Cryptocurrencies Through Rehoniel?
+          <button class="collapsible">
+            Is investing in cryptocurrencies safe?
           </button>
           <div class="content">
-            <p class="leading-loose text-lightGray text-[0.65rem] sm:text-xs md:text-sm my-4">
-              At Rehoniel, the safety and security of our
+            <p class="my-4">
+              At Realmforte, the safety and security of our
               investors' investments is of utmost importance. We utilize the
               latest encryption technologies and security protocols to ensure
               that your cryptocurrency investments are protected at all times.
               Whether you are a seasoned investor or just starting out, you can
               have peace of mind knowing that your assets are secure with
-              Rehoniel.
+              Realmforte.
             </p>
           </div>
-          <button class="collapsible text-darkNavy mt-4">
-            How Do I Create An Account And Start Investing?
+          <button class="collapsible">
+            How to Start Investing?
           </button>
           <div class="content">
-            <p class="leading-loose text-lightGray text-[0.65rem] sm:text-xs md:text-sm my-4">
+            <p class="my-4">
               Maintain profitability with our organization by Clicking on the
               Sign-up button. Fill the form, and you are good to go. We can't
               wait to have you as one of our investors.
             </p>
           </div>
-          <button class="collapsible text-darkNavy mt-4">
-            What Are The Fees Involved In Investing With Rehoniel?
+          <button class="collapsible">
+            Are their Fees involved in Investment?
           </button>
           <div class="content">
-            <p class="leading-loose text-lightGray text-[0.65rem] sm:text-xs md:text-sm my-4">
-              At Rehoniel, we are committed to providing our
+            <p class="my-4">
+              At Realmforte, we are committed to providing our
               investors with a cost-effective and transparent investment
               experience. As part of this commitment, we do not charge any fees
               for investment transactions or withdrawals, allowing our investors
@@ -90,11 +91,21 @@
               additional costs.<b class="text-orangeRed">NB:</b> Additional Charges might be incurred under some conditions, contact support for more information.
             </p>
           </div>
-          <button class="collapsible text-darkNavy mt-4">
-            How do I Withdraw My Investments From Rehoniel?
+        </div>
+      </div>
+      <div class="flex md:flex-row flex-col md:justify-between gap-y-5">
+        <div class="w-full md:w-[40%] xl:w-[30%]">
+          <div class="flex flex-col gap-y-3">
+            <p class="font-bold text-darkNavy text-lg sm:text-xl md:text-2xl xl:text-3xl">Investment FAQs</p>
+            <p class="text-black/70">Investment Frequently Asked Questions: Insights and Clarifications</p>
+          </div>
+        </div>
+        <div class="flex flex-col w-full md:w-[55%] xl:w-[68%]">
+          <button class="collapsible">
+            How do I withdraw my earnings from Realmforte?
           </button>
           <div class="content">
-            <p class="leading-loose text-lightGray text-[0.65rem] sm:text-xs md:text-sm my-4">
+            <p class="my-4">
               Our user-friendly dashboard makes this very easy. Simply click on
               the withdraw button, enter how much you want to withdraw, and then
               select the wallet you want to use, and submit. Before 24hrs the
@@ -104,24 +115,24 @@
               <b class="text-orangeRed">IMMEDIATELY.</b>
             </p>
           </div>
-          <button class="collapsible text-darkNavy mt-4">
-            What Is The Minimum Amount Required To Invest With Rehoniel?
+          <button class="collapsible">
+            The minimum amount to invest with in Realmforte?
           </button>
           <div class="content">
-            <p class="leading-loose text-lightGray text-[0.65rem] sm:text-xs md:text-sm my-4">
-              At Rehoniel, we believe in providing access to
+            <p class="my-4">
+              At Realmforte, we believe in providing access to
               high-quality investment opportunities for individuals at all
               levels. To this end, we have established a low minimum investment
               threshold of 100 pounds, allowing investors to begin building
               their portfolios with ease and without a large upfront investment.
             </p>
           </div>
-          <button class="collapsible text-darkNavy mt-4">
-            Can I invest In Multiple Packages At The Same Time With Rehoniel?
+          <button class="collapsible">
+            Can I invest in multiple packages with Realmforte?
           </button>
           <div class="content">
-            <p class="leading-loose text-lightGray text-[0.65rem] sm:text-xs md:text-sm my-4">
-              At Rehoniel, we recognize that different investors
+            <p class="my-4">
+              At Realmforte, we recognize that different investors
               have different investment goals and strategies. That's why we
               offer a range of investment packages, allowing our investors to
               diversify their portfolios and invest in multiple options
@@ -131,13 +142,12 @@
               needs.
             </p>
           </div>
-          <button class="collapsible text-darkNavy mt-4">
-            How Does Rehoniel Protect My Personal Information And
-            Investment Data?
+          <button class="collapsible">
+            How does Realmforte protect my personal data?
           </button>
           <div class="content">
-            <p class="leading-loose text-lightGray text-[0.65rem] sm:text-xs md:text-sm my-4">
-              At Rehoniel, the protection of our investors' data
+            <p class="my-4">
+              At Realmforte, the protection of our investors' data
               and personal information is of utmost importance. We employ robust
               security measures, including encrypted data storage and
               multi-factor authentication, to ensure that your information is
@@ -146,13 +156,12 @@
               of mind that your information is always safe in our hands
             </p>
           </div>
-          <button class="collapsible text-darkNavy mt-4">
-            How Does Rehoniel Keep Up With The Constantly Changing
-            Cryptocurrency Market Trends?
+          <button class="collapsible">
+            How does Realmforte track cryptocurrency trends?
           </button>
           <div class="content">
-            <p class="leading-loose text-lightGray text-[0.65rem] sm:text-xs md:text-sm my-4">
-              At Rehoniel, we understand that the cryptocurrency
+            <p class="my-4">
+              At Realmforte, we understand that the cryptocurrency
               market is highly dynamic and constantly evolving. To stay ahead of
               the curve, we have a dedicated team of market experts who closely
               monitor the latest trends and developments in the industry. This
@@ -165,28 +174,30 @@
           </div>
         </div>
       </div>
-    </section>
-    <section>
-      <div class="mt-10 flex flex-col justify-center items-center h-80 p-6 faq-cta">
-      <div class="bg-white bg-opacity-10 istGlass rounded-md p-4 sm:p-6 md:p-8 lg:p-10">
-        <h1 class="text-lightGray mt-10 font-bold text-4xl">
-          Still Not Satisfied?
+    </div>
+  </section>
+  <section>
+    <div class="flex flex-col justify-center items-center mt-10 p-6 h-80 faq-cta">
+      <div class="bg-white bg-opacity-20 py-8 p-4 sm:p-6 md:p-8 xl:p-10 rounded-xl istGlass">
+        <h1 class="font-semibold text-lg text-lightGray md:text-xl xl:text-2xl">
+          Still have questions?
         </h1>
-        <p class="text-lightGray text-xs font-bold mt-4 md:text-sm md:leading-loose">
-          At Rehoniel, our top priority is providing our clients
+        <p class="mt-4 font-thin text-[10px] text-white/80 xl:text-sm md:text-xs">
+          At Realmforte, our top priority is providing our clients
           with exceptional service and support. If for any reason you are not
           completely satisfied with your experience, please do not hesitate to
-          reach out to our dedicated customer care team. Our knowledgeable and
+          reach out to our dedicated customer care team. <br> Our knowledgeable and
           friendly staff are available 24/7 to answer any questions and resolve
           any issues you may have.
         </p>
       </div>
-        
-      </div>
-    </section>
-    <%- include("partials/options"); -%>
-    <!-- Footer -->
-    <%- include("partials/footer"); -%>
-    <script src="../JS/faq.js"></script>
-  </body>
+    </div>
+  </section>
+  <%- include("partials/options"); -%>
+  <!-- Footer -->
+  <%- include("partials/footer"); -%>
+  <script src="../JS/faq.js"></script>
+  <script src="../JS/general.js"></script>
+</body>
+
 </html>

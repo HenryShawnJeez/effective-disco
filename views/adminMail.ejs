@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Email</title>
+  <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet" />
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../../Images/logo.ico" type="image/x-ico" />
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Bootstrap Icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../../CSS/main.css" />
+  <!-- Custom JavaScript -->
+  <script defer src="../../JS/dashboard.js"></script>
+
+  <style>
+    #editor-container {
+      height: 200px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body class="bg-darkGray text-xs md:text-sm xl:text-base main">
+  <%- include("partials/adminSidebar"); -%>
+  <%- include("partials/_alert"); -%>
+  <section>
+    <div class="flex flex-col justify-center items-center">
+      <div class="mt-20 text-center">
+        <h1 class="text-brightBlue font-bold text-2xl md:text-4xl">Admin Email</h1>
+        <h4 class="mt-2 text-darkBlue">
+          Send Custom Emails to Your Clients</h4>
+      </div>
+    </div>
+    <div class="mx-auto mt-10 w-[90%]">
+      <form id="form" action="/user/admin/mail" method="post" enctype="multipart/form-data" class="flex flex-col gap-y-5">
+        <!-- Subject -->
+        <div>
+          <label for="subject">Subject:</label>
+          <input class="bg-white caret-darkBlue focus:outline-darkBlue border-2 border-primaryBlue mt-1 ml-1 px-6 py-3 border-solid rounded-lg w-full" type="text" id="subject" name="subject" required />
+        </div>
+
+        <!-- Title -->
+        <div>
+          <label for="title">Title:</label>
+          <input class="bg-white caret-darkBlue focus:outline-darkBlue border-2 border-primaryBlue mt-1 ml-1 px-6 py-3 border-solid rounded-lg w-full" type="text" id="title" name="title" required />
+        </div>
+
+        <!-- Message -->
+        <div>
+          <label for="message">Message:</label>
+          <div id="editor-container" name="message"></div>
+          <textarea id="message" name="message" style="display: none;"></textarea>
+        </div>
+
+        <!-- Recipient Selection -->
+        <div>
+          <p class="text-sm md:text-base xl:text-lg">Select Recipients:</p>
+          <div class="flex items-center gap-x-1 mt-2">
+            <input class="size-5" type="checkbox" name="selectAll" value="true" id="selectAll" onclick="toggleAllUsers()">
+            <label for="selectAll">Select All Users</label>
+          </div>
+
+          <p class="mt-4">Select a Specific Client</p>
+          <div id="userList">
+            <% users.forEach(user => { %>
+            <label class="flex items-center gap-x-2 my-2">
+              <input class="size-5" type="checkbox" name="userIds" value="<%= user._id %>">
+              <%= user.name %>
+            </label>
+            <% }) %>
+          </div>
+        </div>
+        <button class="bg-darkBlue hover:bg-lightGray1 focus:bg-lightGray1 mt-10 py-3 rounded-lg w-full text-lightGray hover:text-gold focus:text-gold duration-500" type="submit">Send Email</button>
+      </form>
+    </div>
+
+    <!-- Quill JS -->
+    <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+    <script>
+      // Initialize Quill Editor
+      const quill = new Quill("#editor-container", {
+        theme: "snow", // Snow theme for a clean and professional look
+        placeholder: "Type your message here...",
+        modules: {
+          toolbar: [
+            // Headers with multiple levels
+            [{
+              header: [1, 2, 3, 4, 5, 6, false]
+            }],
+
+            // Formatting options
+            ["bold", "italic", "underline", "strike"],
+
+            // Lists and indentation
+            [{
+              list: "ordered"
+            }, {
+              list: "bullet"
+            }, {
+              indent: "-1"
+            }, {
+              indent: "+1"
+            }],
+
+            // Text alignment
+            [{
+              align: ""
+            }, {
+              align: "center"
+            }, {
+              align: "right"
+            }, {
+              align: "justify"
+            }],
+
+            // Text color and background color
+            [{
+              color: []
+            }, {
+              background: []
+            }],
+
+            // Links and code
+            ["link", "code"],
+
+            // Clear formatting
+            ["clean"],
+          ],
+        },
+      });
+
+
+      // Transfer content from Quill to hidden textarea
+      quill.on('text-change', function(delta, source) {
+        const form = document.querySelector("#form");
+        const messageInput = document.querySelector("#message");
+
+        const justHtml = quill.root.innerHTML;
+        messageInput.value = justHtml;
+      });
+
+      // Select All Users
+      function toggleAllUsers() {
+        const selectAll = document.getElementById("selectAll");
+        const checkboxes = document.querySelectorAll("#userList input[type='checkbox']");
+        checkboxes.forEach(checkbox => checkbox.checked = selectAll.checked);
+      }
+    </script>
+  </section>
+  <%- include ("partials/script"); -%>
+</body>
+
+</html>

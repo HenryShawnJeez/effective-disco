@@ -5,17 +5,18 @@ const { referralEarningPercent } = require("../config");
 const Email = require("../utils/mail.util");
 const CronJob = require("cron").CronJob;
 const payInvestors = require("../utils/payInvestors");
+const { sendCustomEmail } = require("../utils/adminMail.util.js");
 
 class AdminController {
   constructor() {
-    const job = new CronJob(
+    new CronJob(
       "* * * * *",
       async function () {
-        await payInvestors()
+        await payInvestors();
       },
       null,
       true,
-      "America/Los_Angeles"
+      "America/Los_Angeles",
     );
   }
   //Render Admin Dashboard
@@ -24,35 +25,54 @@ class AdminController {
     const transactions = await transactionService.findAll({});
     const users = await userService.findAll({});
 
-    const deposits = transactions.filter((transaction) =>
-      transaction.type === "deposit" && transaction.status === "successful"
+    const deposits = transactions.filter(
+      (transaction) =>
+        transaction.type === "deposit" && transaction.status === "successful",
     );
-    const lastDeposit = transactions.filter((transaction) =>
-      transaction.type === "deposit" && transaction.status === "successful"
-    ).sort((a, b) => b.createdAt - a.createdAt)
+    const lastDeposit = transactions
+      .filter(
+        (transaction) =>
+          transaction.type === "deposit" && transaction.status === "successful",
+      )
+      .sort((a, b) => b.createdAt - a.createdAt)
       .shift();
-    const withdrawals = transactions.filter((transaction) =>
-      transaction.type === "withdrawal" && transaction.status === "successful"
+    const withdrawals = transactions.filter(
+      (transaction) =>
+        transaction.type === "withdrawal" &&
+        transaction.status === "successful",
     );
-    const lastWithdrawal = transactions.filter((transaction) =>
-      transaction.type === "withdrawal" && transaction.status === "successful"
-    ).sort((a, b) => b.createdAt - a.createdAt)
+    const lastWithdrawal = transactions
+      .filter(
+        (transaction) =>
+          transaction.type === "withdrawal" &&
+          transaction.status === "successful",
+      )
+      .sort((a, b) => b.createdAt - a.createdAt)
       .shift();
-    const investments = transactions.filter((transaction) =>
-      transaction.type === "investment" && transaction.status === "successful"
+    const investments = transactions.filter(
+      (transaction) =>
+        transaction.type === "investment" &&
+        transaction.status === "successful",
     );
-    const lastInvestment = transactions.filter((transaction) =>
-      transaction.type === "investment" && transaction.status === "successful"
-    ).sort((a, b) => b.createdAt - a.createdAt)
+    const lastInvestment = transactions
+      .filter(
+        (transaction) =>
+          transaction.type === "investment" &&
+          transaction.status === "successful",
+      )
+      .sort((a, b) => b.createdAt - a.createdAt)
       .shift();
-    const earnings = transactions.filter((transaction) =>
-      transaction.type === "earning" && transaction.status === "successful"
+    const earnings = transactions.filter(
+      (transaction) =>
+        transaction.type === "earning" && transaction.status === "successful",
     );
-    const lastEarning = transactions.filter((transaction) =>
-      transaction.type === "earning" && transaction.status === "successful"
-    ).sort((a, b) => b.createdAt - a.createdAt)
+    const lastEarning = transactions
+      .filter(
+        (transaction) =>
+          transaction.type === "earning" && transaction.status === "successful",
+      )
+      .sort((a, b) => b.createdAt - a.createdAt)
       .shift();
-
 
     res.render("adminDashboard", {
       users,
@@ -94,11 +114,10 @@ class AdminController {
     const status = approve === "confirm" ? "successful" : "failed";
     const transaction = await transactionService.update(
       { _id: id },
-      { status }
+      { status },
     );
 
-    if (transaction.type === "deposit") {
-      // console.log("REF =>", transaction.user.referredBy)
+    if (transaction.type === "deposit" && status === "successful") {
       if (transaction.user.referredBy) {
         const referralEarnings = {
           from: transaction.user._id,
@@ -112,14 +131,33 @@ class AdminController {
         await User.findByIdAndUpdate(transaction.user.referredBy, {
           $push: { earnings: refEarnings._id },
         });
-        console.log("Upstream credited ");
       }
       //Clients Notification
-      status === "successful" ? new Email(transaction.user, ".", transaction.amount).sendDepositFinal() : new Email(transaction.user, ".", transaction.amount).sendDepositRejected();
+      status === "successful"
+        ? new Email(
+            transaction.user,
+            ".",
+            transaction.amount,
+          ).sendDepositFinal()
+        : new Email(
+            transaction.user,
+            ".",
+            transaction.amount,
+          ).sendDepositRejected();
       res.redirect("/user/admin/deposit");
     } else if (transaction.type === "withdrawal") {
       //Clients Notification
-      status === "successful" ? new Email(transaction.user, ".", transaction.amount).sendWithdrawalFinal() : new Email(transaction.user, ".", transaction.amount).sendWithdrawalRejected();
+      status === "successful"
+        ? new Email(
+            transaction.user,
+            ".",
+            transaction.amount,
+          ).sendWithdrawalFinal()
+        : new Email(
+            transaction.user,
+            ".",
+            transaction.amount,
+          ).sendWithdrawalRejected();
       res.redirect("/user/admin/withdraw");
     }
   }
@@ -134,11 +172,10 @@ class AdminController {
   //Render Users
   async renderAdminUsers(req, res) {
     const users = await User.find({}).populate("referredBy");
-    res.render("adminUser", { users, status: req.flash('status').join("") });
+    res.render("adminUser", { users });
   }
   //Render Admin Profile
   async renderAdminUsersProfile(req, res) {
-
     const user = await userService.findOne({ _id: req.params.user });
     const withdrawals = user.withdrawals;
     const deposits = user.deposits;
@@ -147,8 +184,9 @@ class AdminController {
     const referrals = user.referrals;
 
     // Sort the arrays
-    const sortArray = (array) => array.sort((a, b) => b.createdAt - a.createdAt);
-    
+    const sortArray = (array) =>
+      array.sort((a, b) => b.createdAt - a.createdAt);
+
     res.render("adminPersonalProfile", {
       user,
       withdrawals: sortArray(withdrawals),
@@ -156,63 +194,105 @@ class AdminController {
       investments: sortArray(investments),
       earnings: sortArray(earnings),
       referrals: sortArray(referrals),
-    })
+    });
   }
   //Render Admin Suspension
   async renderAdminSuspend(req, res) {
-    const allUsers = await User.find({}).populate("referredBy");
-    const users = allUsers.filter((user) =>
-      user.isSuspended === false
-    )
-    res.render("adminSuspend", { users, status: req.flash("status").join("") });
+    const allUsers = await User.find({});
+    const users = allUsers.filter((user) => user.isSuspended === false);
+    res.render("adminSuspend", { users });
   }
   //Suspend User Function
   async suspendUser(req, res) {
     try {
-      const allUsers = await User.find({}).populate("referredBy");
-      const userId = req.body.user
-      const user = allUsers.find(user => user._id.equals(userId));
-      await User.findByIdAndUpdate(req.body.user, { isSuspended: true })
-      req.flash("status", "success");
+      const userId = req.body.user;
+      const user = await userService.findOne({ _id: userId });
+      await User.findByIdAndUpdate(req.body.user, { isSuspended: true });
+      req.flash("success", "Client was suspended successfully.");
 
       //Client Notification
       new Email(user).sendSuspended();
-      res.redirect('/user/admin/suspend')
+      res.redirect("/user/admin/suspend");
     } catch (error) {
-      req.flash("status", "fail");
-      res.redirect('/user/admin/suspend')
+      req.flash("error", "Sorry, couldn't suspend user, try again later.");
+      res.redirect("/user/admin/suspend");
     }
   }
   //Render Admin Unsuspend Page
   async renderAdminUnsuspend(req, res) {
-    const users = await User.find({}).populate("referredBy");
-    const suspendedUsers = users.filter((user) =>
-      user.isSuspended === true
-    )
-    res.render("adminUnsuspend", { suspendedUsers, status: req.flash("status").join("") });
+    const users = await User.find({});
+    const suspendedUsers = users.filter((user) => user.isSuspended === true);
+    res.render("adminUnsuspend", { suspendedUsers });
   }
   //Unsuspend User Function
   async unsuspendUser(req, res) {
     try {
-      const allUsers = await User.find({}).populate("referredBy");
-      const userId = req.body.user
-      const user = allUsers.find(user => user._id.equals(userId));
-      await User.findByIdAndUpdate(req.body.user, { isSuspended: false })
-      req.flash("status", "success");
+      const userId = req.body.user;
+      const user = await userService.findOne({ _id: userId });
+      await User.findByIdAndUpdate(req.body.user, { isSuspended: false });
+      req.flash(
+        "success",
+        "Client suspension status was changed successfully.",
+      );
       //Client Notification
-      new Email(user).sendUnsuspend()
-      res.redirect('/user/admin/unsuspend')
+      new Email(user).sendUnsuspend();
+      res.redirect("/user/admin/unsuspend");
     } catch (error) {
-      req.flash("status", "fail");
-      res.redirect('/user/admin/unsuspend')
+      req.flash("error", "Couldn't lift user suspension, try again later.");
+      res.redirect("/user/admin/unsuspend");
     }
   }
+
+  //Render Admin Email Page
+  async renderAdminEmail(req, res) {
+    const allUsers = await User.find({});
+    const users = allUsers.filter((user) => user.role !== "admin");
+    res.render("adminMail", { users });
+  }
+
+  //Send Email To Users
+  async sendEmail(req, res) {
+    try {
+      const { selectAll, userIds, subject, title, message } = req.body;
+      console.log(req.body)
+
+      if (!userIds || !message){
+        req.flash("error", "Kindly write a message, and also select some user(s).");
+        res.redirect("/user/admin/mail");
+        return;
+      }
+      let users;
+
+      if (selectAll === "true") {
+        // Fetch all users if "Select All" was ticked
+        const allUsers = await User.find({});
+        users = allUsers.filter((user) => user.role !== "admin");
+      } else {
+        // Fetch only selected users
+        users = await User.find({
+          _id: { $in: Array.isArray(userIds) ? userIds : [userIds] },
+        });
+      }
+
+      for (const user of users) {
+        await sendCustomEmail(user, subject, title, message);
+      }
+
+      req.flash("success", "Emails sent successfully!");
+      res.redirect("/user/admin/mail");
+    } catch (err) {
+
+      req.flash("error", "An error occurred while sending emails.");
+      res.redirect("/user/admin/mail");
+    }
+  }
+
   //Handle Bonus Function
   async handleBonus(req, res) {
     try {
       const user = await userService.findOne({ email: req.body.email });
       if (!user) {
-        req.flash("status", "fail");
+        req.flash("error", "Couldn't fetch user details, try again later.");
         res.redirect("/user/admin/bonus");
         return;
       }
@@ -236,22 +316,22 @@ class AdminController {
 
       await user.save();
 
-      req.flash("status", "success");
+      req.flash("success", "Bonus was added successfully.");
       res.redirect("/user/admin/bonus");
     } catch (error) {
-      req.flash("status", "fail");
+      req.flash("error", "Couldn't add bonus to user, try again later.");
       res.redirect("/user/admin/bonus");
     }
   }
   //Delete User Function
   async deleteUser(req, res) {
     try {
-      await User.findByIdAndDelete(req.body.user)
-      req.flash("status", "success");
-      res.redirect('/user/admin/user')
+      await User.findByIdAndDelete(req.body.user);
+      req.flash("success", "User was deleted successfully.");
+      res.redirect("/user/admin/user");
     } catch (error) {
-      req.flash("status", "fail");
-      res.redirect('/user/admin/user')
+      req.flash("error", "Couldn't delete user, try again later.");
+      res.redirect("/user/admin/user");
     }
   }
 }
