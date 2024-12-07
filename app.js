@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const session = require("express-session");
-const flash = require("connect-flash");
+const flash = require('express-flash')
 const cookieParser = require("cookie-parser");
 const methodOverride = require("method-override");
 
