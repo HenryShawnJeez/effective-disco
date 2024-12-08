@@ -1,175 +1,77 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../../Images/logo.ico" type="image/x-ico" />
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap Icon -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
-    />
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="../../CSS/main.css" />
-    <link rel="stylesheet" href="../../CSS/toast.css" />
 
-    <!-- Custom JavaScript -->
-    <script defer src="../../JS/dashboard.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../../Images/logo.ico" type="image/x-ico" />
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Bootstrap Icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../../CSS/main.css" />
+  <link rel="stylesheet" href="../../CSS/toast.css" />
 
-  <body class="bg-darkGray main">
-    <%- include("partials/adminSidebar"); -%> 
-    <% if(status ==='success' ){ %>
-    <div class="flex justify-center items-center w-full">
-      <div
-        id="overlay"
-        class="z-20 fixed inset-0 bg-black bg-opacity-70 overlay"
-      ></div>
-      <div
-        id="successPopup"
-        class="top-[30%] left-[3%] sm:left-[15%] md:left-[40%] lg:left-[50%] z-30 fixed bg-white shadow-lg p-6 rounded w-[20rem]"
-      >
-        <span
-          id="closePopupBtn"
-          onclick="closePopupBtnClick()"
-          class="top-2 right-2 absolute text-2xl text-gray-500 cursor-pointer"
-          >&times;</span
-        >
-        <img
-          class="mx-auto"
-          src="../../Images/correct.svg"
-          alt="Correct Icon"
-        />
-        <h2 class="mt-2 font-semibold text-2xl text-center text-green-500">
-          Success!
-        </h2>
-        <p class="mt-8 text-center text-gray-800 text-sm capitalize">
-          The user was deleted successfully.
-        </p>
+  <!-- Custom JavaScript -->
+  <script defer src="../../JS/dashboard.js"></script>
+</head>
+
+<body class="bg-darkGray main">
+  <%- include("partials/adminSidebar"); -%>
+  <%- include("partials/_alert"); -%>
+  <section>
+    <div class="flex flex-col justify-center items-center">
+      <div class="mt-20 text-center">
+        <h1 class="text-brightBlue font-bold text-2xl md:text-4xl">Users</h1>
+        <h4 class="mt-2 text-darkBlue text-sm md:text-base">
+          Total Of
+          <span class="font-bold text-gold text-lg"><%= users.length %></span> Accounts.
+        </h4>
       </div>
+
+      <table class="border-collapse bg-lightGray1 mx-auto mt-12 mb-1 rounded-md w-[90%] text-xs md:text-sm">
+        <thead class="">
+          <tr class="border-cyan-500 border-b-2 h-16 text-center">
+            <th class="border-slate-300 dark:border-slate-600 border w-1/4 font-semibold text-center text-sm sm:text-base">
+              Investors Name
+            </th>
+            <th class="border-slate-300 dark:border-slate-600 border w-1/4 font-semibold text-center text-sm sm:text-base">
+              Delete Users
+            </th>
+            <th class="border-slate-300 dark:border-slate-600 border w-1/4 font-semibold text-center text-sm sm:text-base">
+              Registration Date
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(user=> {%>
+          <tr class="border-b-1 h-10">
+            <td class="border text-center text-sm sm:text-base hover:text-gold hover:underline capitalize">
+              <a href="/user/admin/profile/<%= user._id %>">
+                <%= user.name || user.username %>
+              </a>
+            </td>
+            <td class="border text-center text-red-600 text-sm sm:text-base hover:underline capitalize">
+              <form action="/user/admin/user?_method=delete" method="post">
+                <input type="hidden" name="user" value="<%= user._id %>" />
+                <input class="hover:underline capitalize hover:cursor-pointer" type="submit" name="action" value="delete" />
+              </form>
+            </td>
+            <td class="border text-center capitalize">
+              <%= user.createdAt.toLocaleDateString() %>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
     </div>
-    <% } else if (status ==='fail' ){%>
-    <div class="flex justify-center items-center w-full">
-      <div
-        id="failureOverlay"
-        class="z-20 fixed inset-0 bg-black bg-opacity-70 overlay"
-      ></div>
-
-      <div
-        id="failurePopup"
-        class="top-[30%] left-[3%] sm:left-[15%] md:left-[40%] lg:left-[50%] z-30 fixed bg-white shadow-lg p-6 rounded w-[20rem]"
-      >
-        <span
-          onclick="failureClosePopupBtnClick()"
-          class="top-2 right-2 absolute text-2xl text-gray-500 cursor-pointer"
-          >&times;</span
-        >
-        <img
-          class="mx-auto w-20"
-          src="../../Images/wrong.png"
-          alt="Wrong Icon"
-        />
-        <h2 class="mt-2 font-semibold text-2xl text-center text-red-500">
-          Failure!
-        </h2>
-        <p class="mt-8 text-center text-gray-800 text-sm capitalize">
-          Unable to delete user now, try again later.
-        </p>
-      </div>
-    </div>
-    <% }%>
-    <section>
-      <div class="flex flex-col justify-center items-center">
-        <div class="mt-20 text-center">
-          <h1 class="text-brightBlue font-bold text-2xl md:text-4xl">Users</h1>
-          <h4 class="mt-2 text-darkBlue text-sm md:text-base">
-            Total Of
-            <span class="font-bold text-gold text-lg"><%= users.length %></span> Accounts.
-          </h4>
-        </div>
-
-        <table
-          class="border-collapse bg-lightGray1 mx-auto mt-12 mb-1 rounded-md w-[90%] text-xs md:text-sm"
-        >
-          <thead class="">
-            <tr class="border-cyan-500 border-b-2 h-16 text-center">
-              <th
-                class="border-slate-300 dark:border-slate-600 border w-1/4 font-semibold text-center text-sm sm:text-base"
-              >
-                Investors Name
-              </th>
-              <th
-                class="border-slate-300 dark:border-slate-600 border w-1/4 font-semibold text-center text-sm sm:text-base"
-              >
-                Delete Users
-              </th>
-              <th
-                class="border-slate-300 dark:border-slate-600 border w-1/4 font-semibold text-center text-sm sm:text-base"
-              >
-                Registration Date
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <% users.forEach(user=> {%>
-            <tr class="border-b-1 h-10">
-              <td
-                class="border text-center text-sm sm:text-base hover:text-gold hover:underline capitalize"
-              >
-                <a href="/user/admin/profile/<%= user._id %>">
-                  <%= user.name || user.username %>
-                </a>
-              </td>
-              <td
-                class="border text-center text-red-600 text-sm sm:text-base hover:underline capitalize"
-              >
-                <form action="/user/admin/user?_method=delete" method="post">
-                  <input type="hidden" name="user" value="<%= user._id %>" />
-                  <input
-                    class="hover:underline capitalize hover:cursor-pointer"
-                    type="submit"
-                    name="action"
-                    value="delete"
-                  />
-                </form>
-              </td>
-              <td class="border text-center capitalize">
-                <%= user.createdAt.toLocaleDateString() %>
-              </td>
-            </tr>
-            <% }) %>
-          </tbody>
-        </table>
-      </div>
-    </section>
-    <%- include ("partials/script"); -%>
-    <!-- For the popups -->
-    <script>
-      const successPopup = document.getElementById("successPopup");
-      const overlay = document.getElementById("overlay");
-
-      const closePopupBtnClick = () => {
-        successPopup.classList.add("hidden");
-        overlay.classList.add("hidden");
-      };
-
-      const failurePopup = document.getElementById("failurePopup");
-      const failureOverlay = document.getElementById("failureOverlay");
-
-      const failureClosePopupBtnClick = () => {
-        failurePopup.classList.add("hidden");
-        failureOverlay.classList.add("hidden");
-      };
-    </script>
-  </body>
+  </section>
+  <%- include ("partials/script"); -%>
+</body>
 </html>
