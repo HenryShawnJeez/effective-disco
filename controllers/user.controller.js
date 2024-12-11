@@ -113,6 +113,7 @@ class UserController {
     const foundUser = await userService.findOne({
       email: userCredentials.email.toLowerCase(),
     });
+
     if (!foundUser) {
       // throw an error with incorrect email or password
       req.flash("error", "Invalid Username or Password");

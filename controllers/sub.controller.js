@@ -34,11 +34,11 @@ class SubController {
                     console.log('Email sent: ' + info.response);
                 }
             });
-            req.flash('status', 'success');
-            res.redirect('/help');
+            req.flash('success', "Your petition was registered successfully. Support is on it's way.");
+            res.redirect('/support');
         } catch (error) {
-            req.flash('status', 'fail')
-            res.redirect('/help')
+            req.flash('error', "Sorry, we couldn't request for support now, kindly try again later");
+            res.redirect('/support');
         }
 
 
@@ -71,11 +71,11 @@ class SubController {
                     console.log('Email sent: ' + info.response);
                 }
             });
-            req.flash('status', 'success');
+            req.flash('success', "Your contact request was sent successfully. Kindly wait, an agent will get back to you soon.");
             res.redirect('/contact');
         } catch (error) {
-            req.flash('status', 'fail')
-            res.redirect('/contact')
+            req.flash('error', "Sorry, we couldn't process your contact request now, kindly try again later.")
+            res.redirect('/contact');
         }
     }
 }
