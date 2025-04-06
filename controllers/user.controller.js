@@ -15,11 +15,12 @@ const {
   ultimatePercent,
 } = require("../config");
 const userService = require("../services/user.service");
-const util = require('../utils/utils'); 
+const util = require("../utils/utils");
 const transactionService = require("../services/transaction.service");
 const { User } = require("../models/user.model");
 const Email = require("../utils/mail.util");
 const { sendEmail } = require("../utils/adminMail.util");
+const disposableEmailDomains = require("../utils/emailList.utils");
 
 class UserController {
   // registering a user
@@ -39,6 +40,31 @@ class UserController {
 
     if (userData.agreement !== "on") {
       req.flash("error", "You must agree to the terms and policies.");
+      return res.redirect("/user/create");
+    }
+
+    // Validate reCAPTCHA
+    const recaptchaResponse = req.body["g-recaptcha-response"];
+    const recaptchaSecret = process.env.GOOGLE_SECRET_KEY;
+
+    if (!recaptchaResponse) {
+      req.flash("error", "reCAPTCHA verification failed");
+      return res.redirect("/user/create");
+    }
+
+    const recaptchaVerifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${recaptchaResponse}`;
+    const recaptchaVerification = await axios.post(recaptchaVerifyUrl);
+
+    if (!recaptchaVerification.data.success) {
+      console.error("reCAPTCHA failed:", recaptchaVerification.data);
+      req.flash("error", "reCAPTCHA verification failed");
+      return res.redirect("/user/create");
+    }
+
+    // Check for unaccepted email
+    const emailDomain = userData.email.split("@").pop();
+    if (!disposableEmailDomains.includes(emailDomain)) {
+      req.flash("error", "Email address not allowed");
       return res.redirect("/user/create");
     }
 
@@ -153,7 +179,7 @@ class UserController {
       .cookie("token", token, { httpOnly: true, maxAge: 1000 * 60 * 60 })
       .header("Authorization", token)
       .redirect("/user/dashboard");
-  } 
+  }
   //Log Out
   async logoutUser(req, res) {
     res.clearCookie("token").redirect("/user/login");

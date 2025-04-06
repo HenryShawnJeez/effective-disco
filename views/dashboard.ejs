@@ -1,509 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../Images/logo.ico" type="image/x-ico" />
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="../CSS/main.css" />
-    <link rel="stylesheet" href="../CSS/toast.css" />
-    <!-- Bootstrap Icon -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
-    />
-    <!-- Custom JS Script -->
-    <script defer src="../JS/dashboard.js"></script>
-    <script defer src="../JS/dashboard1.js"></script>
-    <script defer src="../JS/referral.js"></script>
-  </head>
 
-  <body class="relative bg-darkGray main">
-    <%- include("partials/sidebar"); -%>
-    <section class="bg-white" id="Top Section">
-      <div class="relative flex flex-row justify-end items-start space-x-2 p-4">
-        <img class="h-8" src="../Images/user.png" alt="User-Icon" />
-        <div>
-          <h4 class="font-bold text-darkNavy"><%= user.name %></h4>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../Images/logo.ico" type="image/x-ico" />
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../CSS/main.css" />
+  <link rel="stylesheet" href="../CSS/toast.css" />
+  <!-- Bootstrap Icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
+  <!-- Custom JS Script -->
+  <script defer src="../JS/dashboard.js"></script>
+  <script defer src="../JS/dashboard1.js"></script>
+  <script defer src="../JS/referral.js"></script>
+</head>
+
+<body class="relative bg-darkGray main">
+  <%- include("partials/sidebar"); -%>
+  <section class="bg-white" id="Top Section">
+    <div class="relative flex flex-row justify-end items-start space-x-2 p-4">
+      <img class="h-8" src="../Images/user.png" alt="User-Icon" />
+      <div>
+        <h4 class="font-bold text-darkNavy"><%= user.name %></h4>
         <p class="gradient-border font-semibold text-xs lg:text-sm"><%= user.email %></p>
+      </div>
+
+      <img id="toggleDropDownBtn" class="mt-1 hover:translate-y-2 duration-500 cursor-pointer" src="../Images/downArrow.png" alt="Down Arrow" />
+      <div id="optionBox" class="hidden top-10 z-40 absolute bg-white shadow-xl p-4 border border-darkNavy border-opacity-10 rounded-lg w-32 h-40 duration-500 ease-in-out">
+        <a href="/user/invest">
+          <p class="hover:text-gold text-sm duration-500">Invest</p>
+        </a>
+        <a href="/user/profile">
+          <p class="mt-2 hover:text-gold text-sm duration-500">
+            Edit Profile
+          </p>
+        </a>
+        <hr class="bg-darkNavy mt-1">
+        <a href="/support">
+          <p class="mt-2 hover:text-gold text-sm duration-500">Help</p>
+        </a>
+        <form action="/user/logout" method="post">
+          <p class="mt-2 hover:text-gold text-sm duration-500">Log out</p>
+        </form>
+      </div>
+    </div>
+  </section>
+  <section id="Account Statement">
+    <div class="flex md:flex-row flex-col md:justify-between sm:items-center md:space-x-10 my-10 px-5 sm:px-10 w-full">
+      <div class="flex flex-row items-center space-x-4 md:space-x-10 space-y-4 md:space-y-0 pb-4 overflow-x-auto overflow-y-hidden linkContainer">
+        <div class="relative bg-white shadow-md mt-4 md:mt-0 p-4 border border-darkNavy border-opacity-10 rounded-xl min-w-[15rem] h-48">
+          <img class="absolute opacity-10" src="../Images/scribble-deluxe.png" alt="Deluxe Capital Scribble" />
+          <div class="z-10 relative flex flex-row justify-between">
+            <div class="flex justify-center items-center bg-darkNavy bg-opacity-30 p-4 rounded-xl istGlass">
+              <img class="w-6" src="../Images/wallet.png" alt="wallet icon" />
+            </div>
+            <img id="menuIconBalance" class="w-6 h-6 cursor-pointer" src="../Images/menuDots.png" alt="menu-dots icon" />
+            <div id="balanceMenu" class="hidden top-6 left-24 absolute bg-darkGray shadow-md p-2 rounded-lg w-28 h-10">
+              <a class="ml-2 text-darkNavy hover:text-gold text-sm text-center duration-500" href="/user/deposit">Add Balance</a>
+            </div>
+          </div>
+          <div class="z-10 relative flex flex-row justify-between">
+            <p class="mt-6 text-darkNavy">Balance</p>
+            <img class="mt-6 w-5 h-5 cursor-pointer eyeIcon" src="../Images/eye.png" alt="eye icon" />
+          </div>
+          <h1 class="mt-1 font-bold text-gold text-2xl sm:text-3xl noasterisks number">
+            $ <%=user.balance.toLocaleString() %>
+          </h1>
+          <h1 class="hidden number1">
+            $ <%=user.balance.toLocaleString() %>
+          </h1>
         </div>
-        
-        <img
-          id="toggleDropDownBtn"
-          class="mt-1 hover:translate-y-2 duration-500 cursor-pointer"
-          src="../Images/downArrow.png"
-          alt="Down Arrow"
-        />
-        <div
-          id="optionBox"
-          class="top-10 z-40 absolute border-darkNavy hidden bg-white shadow-xl p-4 border border-opacity-10 rounded-lg w-32 h-40 duration-500 ease-in-out"
-        >
-          <a href="/user/invest"
-            ><p class="text-sm hover:text-gold duration-500">Invest</p></a
-          >
-          <a href="/user/profile" 
-            ><p class="mt-2 text-sm hover:text-gold duration-500">
-              Edit Profile
-            </p></a
-          >
-          <hr class="bg-darkNavy mt-1">
-          <a href="/support"
-            ><p class="mt-2 text-sm hover:text-gold duration-500">Help</p></a
-          >
-          <form action="/user/logout" method="post">
-            <p class="mt-2 text-sm hover:text-gold duration-500">Log out</p>
-          </form>
+        <div class="bg-white shadow-md p-4 border border-darkNavy border-opacity-10 rounded-xl min-w-[15rem] h-48">
+          <div class="relative flex flex-row justify-between">
+            <div class="flex justify-center items-center bg-darkNavy bg-opacity-30 p-4 rounded-xl istGlass">
+              <img class="w-6" src="../Images/pound.png" alt="earnings icon" />
+            </div>
+            <img id="poundsIconEarnings" class="w-6 h-6 cursor-pointer" src="../Images/menuDots.png" alt="menu-dots icon" />
+            <div id="poundsMenu" class="hidden top-6 left-24 absolute bg-darkGray shadow-md p-2 rounded-lg w-28 h-10">
+              <a class="ml-2 text-darkNavy hover:text-gold text-sm text-center duration-500" href="/user/invest">Invest Now</a>
+            </div>
+          </div>
+          <div class="flex flex-row justify-between">
+            <p class="mt-6 text-darkNavy">Total Earnings</p>
+            <img class="mt-6 w-5 h-5 cursor-pointer eyeIcon" src="../Images/eye.png" alt="eye icon" />
+          </div>
+          <h1 class="mt-1 font-bold text-gold text-2xl sm:text-3xl noasterisks number">
+            $ <%= (earnings.reduce((total, current) => total + current.amount, 0) - investments.reduce((total, current) => total + current.amount, 0)).toLocaleString() %>
+          </h1>
+          <h1 class="hidden number1">
+            $ <%= (earnings.reduce((total, current) => total + current.amount, 0) - investments.reduce((total, current) => total + current.amount, 0)).toLocaleString() %>
+          </h1>
         </div>
       </div>
-    </section>
-    <section id="Account Statement">
-      <div
-        class="flex md:flex-row flex-col md:justify-between sm:items-center md:space-x-10 my-10 px-5 sm:px-10 w-full"
-      >
-        <div
-          class="flex flex-row items-center space-x-4 md:space-x-10 space-y-4 md:space-y-0 pb-4 overflow-x-auto overflow-y-hidden linkContainer"
-        >
-          <div
-            class="relative border-darkNavy bg-white shadow-md mt-4 md:mt-0 p-4 border border-opacity-10 rounded-xl min-w-[15rem] h-48"
-          >
-            <img
-              class="absolute opacity-10"
-              src="../Images/scribble-deluxe.png"
-              alt="Deluxe Capital Scribble"
-            />
-            <div class="relative z-10 flex flex-row justify-between">
-              <div
-                class="flex justify-center items-center bg-darkNavy bg-opacity-30 p-4 rounded-xl istGlass"
-              >
-                <img class="w-6" src="../Images/wallet.png" alt="wallet icon" />
-              </div>
-              <img
-                id="menuIconBalance"
-                class="w-6 h-6 cursor-pointer"
-                src="../Images/menuDots.png"
-                alt="menu-dots icon"
-              />
-              <div
-                id="balanceMenu"
-                class="top-6 left-24 absolute hidden bg-darkGray shadow-md p-2 rounded-lg w-28 h-10"
-              >
-                <a
-                  class="ml-2 text-center text-darkNavy text-sm hover:text-gold duration-500"
-                  href="/user/deposit"
-                  >Add Balance</a
-                >
-              </div>
+      <div class="flex flex-row items-center space-x-4 md:space-x-10 space-y-4 md:space-y-0 pb-4 overflow-x-auto overflow-y-hidden linkContainer">
+        <div class="relative bg-white shadow-md mt-4 md:mt-0 p-4 border border-darkNavy border-opacity-10 rounded-xl min-w-[15rem] h-48">
+          <img class="absolute opacity-10" src="../Images/scribble-deluxe.png" alt="Deluxe Capital Scribble" />
+          <div class="z-10 relative flex flex-row justify-between">
+            <div class="flex justify-center items-center bg-darkNavy bg-opacity-30 p-4 rounded-xl istGlass">
+              <img class="w-6" src="../Images/bank.png" alt="deposit icon" />
             </div>
-            <div class="relative z-10 flex flex-row justify-between">
-              <p class="mt-6 text-darkNavy">Balance</p>
-              <img
-                class="mt-6 w-5 h-5 cursor-pointer eyeIcon"
-                src="../Images/eye.png"
-                alt="eye icon"
-              />
+            <img id="bankIconDeposit" class="w-6 h-6 cursor-pointer" src="../Images/menuDots.png" alt="menu-dots icon" />
+            <div id="depositMenu" class="hidden top-6 left-24 absolute bg-darkGray shadow-md p-2 rounded-lg w-28 h-10">
+              <a class="ml-2 text-darkNavy hover:text-gold text-sm text-center duration-500" href="/user/deposit">Deposit Now</a>
             </div>
-            <h1
-              class="mt-1 font-bold text-2xl text-gold sm:text-3xl noasterisks number"
-            >
-              $ <%=user.balance.toLocaleString() %>
-            </h1>
-            <h1 class="hidden number1">
-              $ <%=user.balance.toLocaleString() %>
-            </h1>
           </div>
-          <div
-            class="border-darkNavy bg-white shadow-md p-4 border border-opacity-10 rounded-xl min-w-[15rem] h-48"
-          >
-            <div class="relative flex flex-row justify-between">
-              <div
-                class="flex justify-center items-center bg-darkNavy bg-opacity-30 p-4 rounded-xl istGlass"
-              >
-                <img
-                  class="w-6"
-                  src="../Images/pound.png"
-                  alt="earnings icon"
-                />
-              </div>
-              <img
-                id="poundsIconEarnings"
-                class="w-6 h-6 cursor-pointer"
-                src="../Images/menuDots.png"
-                alt="menu-dots icon"
-              />
-              <div
-                id="poundsMenu"
-                class="top-6 left-24 absolute hidden bg-darkGray shadow-md p-2 rounded-lg w-28 h-10"
-              >
-                <a
-                  class="ml-2 text-center text-darkNavy text-sm hover:text-gold duration-500"
-                  href="/user/invest"
-                  >Invest Now</a
-                >
-              </div>
-            </div>
-            <div class="flex flex-row justify-between">
-              <p class="mt-6 text-darkNavy">Total Earnings</p>
-              <img
-                class="mt-6 w-5 h-5 cursor-pointer eyeIcon"
-                src="../Images/eye.png"
-                alt="eye icon"
-              />
-            </div>
-            <h1
-              class="mt-1 font-bold text-2xl text-gold sm:text-3xl noasterisks number"
-            >
-              $ <%= (earnings.reduce((total, current) => total + current.amount, 0) - investments.reduce((total, current) => total + current.amount, 0)).toLocaleString() %>
-            </h1>
-            <h1 class="hidden number1">
-              $ <%= (earnings.reduce((total, current) => total + current.amount, 0) - investments.reduce((total, current) => total + current.amount, 0)).toLocaleString() %>
-            </h1>
+          <div class="z-10 relative flex flex-row justify-between">
+            <p class="mt-6 text-darkNavy">Total Deposit</p>
+            <img class="mt-6 w-5 h-5 cursor-pointer eyeIcon" src="../Images/eye.png" alt="eye icon" />
           </div>
+          <h1 class="mt-1 font-bold text-gold text-2xl sm:text-3xl noasterisks number">
+            $ <%= deposits.reduce( (total, current)=> total + current.amount,
+              0).toLocaleString()%>
+          </h1>
+          <h1 class="hidden number1">
+            $ <%= deposits.reduce( (total, current)=> total + current.amount,
+              0).toLocaleString()%>
+          </h1>
         </div>
-        <div
-          class="flex flex-row items-center space-x-4 md:space-x-10 space-y-4 md:space-y-0 pb-4 overflow-x-auto overflow-y-hidden linkContainer"
-        >
-          <div
-            class="relative border-darkNavy bg-white shadow-md mt-4 md:mt-0 p-4 border border-opacity-10 rounded-xl min-w-[15rem] h-48"
-          >
-            <img
-              class="absolute opacity-10"
-              src="../Images/scribble-deluxe.png"
-              alt="Deluxe Capital Scribble"
-            />
-            <div class="relative z-10 flex flex-row justify-between">
-              <div
-                class="flex justify-center items-center bg-darkNavy bg-opacity-30 p-4 rounded-xl istGlass"
-              >
-                <img class="w-6" src="../Images/bank.png" alt="deposit icon" />
-              </div>
-              <img
-                id="bankIconDeposit"
-                class="w-6 h-6 cursor-pointer"
-                src="../Images/menuDots.png"
-                alt="menu-dots icon"
-              />
-              <div
-                id="depositMenu"
-                class="top-6 left-24 absolute hidden bg-darkGray shadow-md p-2 rounded-lg w-28 h-10"
-              >
-                <a
-                  class="ml-2 text-center text-darkNavy text-sm hover:text-gold duration-500"
-                  href="/user/deposit"
-                  >Deposit Now</a
-                >
-              </div>
+        <div class="bg-white shadow-md p-4 border border-darkNavy border-opacity-10 rounded-xl min-w-[15rem] h-48">
+          <div class="relative flex flex-row justify-between">
+            <div class="flex justify-center items-center bg-darkNavy bg-opacity-30 p-4 rounded-xl istGlass">
+              <img class="w-6" src="../Images/moneyBills.png" alt="withdrawal icon" />
             </div>
-            <div class="relative z-10 flex flex-row justify-between">
-              <p class="mt-6 text-darkNavy">Total Deposit</p>
-              <img
-                class="mt-6 w-5 h-5 cursor-pointer eyeIcon"
-                src="../Images/eye.png"
-                alt="eye icon"
-              />
+            <img id="moneyIconWithdraw" class="w-6 h-6 cursor-pointer" src="../Images/menuDots.png" alt="menu-dots icon" />
+            <div id="withdrawMenu" class="hidden top-6 left-24 absolute bg-darkGray shadow-md p-2 rounded-lg w-28 h-10">
+              <a class="ml-4 text-darkNavy hover:text-gold text-sm text-center duration-500" href="/user/withdraw">Withdraw</a>
             </div>
-            <h1
-              class="mt-1 font-bold text-2xl text-gold sm:text-3xl noasterisks number"
-            >
-              $ <%= deposits.reduce( (total, current)=> total + current.amount,
-              0).toLocaleString()%>
-            </h1>
-            <h1 class="hidden number1">
-              $ <%= deposits.reduce( (total, current)=> total + current.amount,
-              0).toLocaleString()%>
-            </h1>
           </div>
-          <div
-            class="border-darkNavy bg-white shadow-md p-4 border border-opacity-10 rounded-xl min-w-[15rem] h-48"
-          >
-            <div class="relative flex flex-row justify-between">
-              <div
-                class="flex justify-center items-center bg-darkNavy bg-opacity-30 p-4 rounded-xl istGlass"
-              >
-                <img
-                  class="w-6"
-                  src="../Images/moneyBills.png"
-                  alt="withdrawal icon"
-                />
-              </div>
-              <img
-                id="moneyIconWithdraw"
-                class="w-6 h-6 cursor-pointer"
-                src="../Images/menuDots.png"
-                alt="menu-dots icon"
-              />
-              <div
-                id="withdrawMenu"
-                class="top-6 left-24 absolute hidden bg-darkGray shadow-md p-2 rounded-lg w-28 h-10"
-              >
-                <a
-                  class="ml-4 text-center text-darkNavy text-sm hover:text-gold duration-500"
-                  href="/user/withdraw"
-                  >Withdraw</a
-                >
-              </div>
-            </div>
-            <div class="flex flex-row justify-between">
-              <p class="mt-6 text-darkNavy">Total Withdraw</p>
-              <img
-                class="mt-6 w-5 h-5 cursor-pointer eyeIcon"
-                src="../Images/eye.png"
-                alt="eye icon"
-              />
-            </div>
-            <h1
-              class="mt-1 font-bold text-2xl text-gold sm:text-3xl noasterisks number"
-            >
-              $ <%= withdrawals.reduce( (total, current)=> total +
-              current.amount, 0).toLocaleString()%>
-            </h1>
-            <h1 class="hidden number1">
-              $ <%= withdrawals.reduce( (total, current)=> total +
-              current.amount, 0).toLocaleString()%>
-            </h1>
+          <div class="flex flex-row justify-between">
+            <p class="mt-6 text-darkNavy">Total Withdraw</p>
+            <img class="mt-6 w-5 h-5 cursor-pointer eyeIcon" src="../Images/eye.png" alt="eye icon" />
           </div>
+          <h1 class="mt-1 font-bold text-gold text-2xl sm:text-3xl noasterisks number">
+            $ <%= withdrawals.reduce( (total, current)=> total +
+              current.amount, 0).toLocaleString()%>
+          </h1>
+          <h1 class="hidden number1">
+            $ <%= withdrawals.reduce( (total, current)=> total +
+              current.amount, 0).toLocaleString()%>
+          </h1>
         </div>
       </div>
-    </section>
-    <section id="Graph">
-      <div
-        class="flex md:flex-row flex-col md:justify-between md:space-x-10 my-10 px-5 sm:px-10"
-      >
-        <div class="flex flex-col space-y-4 mb-4 md:mb-0 w-full md:w-[60%]">
-          <div
-            class="border-darkNavy bg-white shadow-md p-4 border border-opacity-10 rounded-xl"
-          >
-            <canvas
-              id="myChart"
-              style="
+    </div>
+  </section>
+  <section id="Graph">
+    <div class="flex md:flex-row flex-col md:justify-between md:space-x-10 my-10 px-5 sm:px-10">
+      <div class="flex flex-col space-y-4 mb-4 md:mb-0 w-full md:w-[60%]">
+        <div class="bg-white shadow-md p-4 border border-darkNavy border-opacity-10 rounded-xl">
+          <canvas id="myChart" style="
                 width: 100%;
                 max-width: 600px;
                 height: 31rem;
                 font-size: 0.8rem;
-              "
-            ></canvas>
+              "></canvas>
+        </div>
+        <div class="bg-white shadow-md p-4 border border-darkNavy border-opacity-10 rounded-xl">
+          <div class="flex flex-row justify-between items-center">
+            <p class="font-bold text-xs sm:text-sm">Transaction History (Your Most Recent Withdrawal, Deposit, and Investment)</p>
+            <a href="/user/transactions">
+              <p class="flex flex-row items-center font-bold text-darkNavy hover:text-gold text-xs duration-500">
+                See All
+                <img class="ml-1 w-3 h-3" src="../Images/angleRight.png" alt="Right Angle" />
+              </p>
+            </a>
           </div>
-          <div
-            class="border-darkNavy bg-white shadow-md p-4 border border-opacity-10 rounded-xl"
-          >
-            <div class="flex flex-row justify-between items-center">
-              <p class="font-bold text-xs sm:text-sm">Transaction History (Your Most Recent Withdrawal, Deposit, and Investment)</p>
-              <a href="/user/transactions"
-                ><p
-                  class="flex flex-row items-center font-bold text-darkNavy text-xs hover:text-gold duration-500"
-                >
-                  See All
-                  <img
-                    class="ml-1 w-3 h-3"
-                    src="../Images/angleRight.png"
-                    alt="Right Angle"
-                  /></p
-              ></a>
-            </div>
-            <div
-              class="space-y-2 border-darkNavy mt-2 p-4 border border-opacity-30 rounded-xl"
-            >
+          <div class="space-y-2 mt-2 p-4 border border-darkNavy border-opacity-30 rounded-xl">
             <% if (lastDeposit) { %>
-              <div id="deposit" class="flex flex-row justify-between items-center p-2 border border-red-600 rounded-xl">
-                <div class="flex flex-row items-center">
-                  <div
-                    class="flex justify-center items-center bg-red-600 bg-opacity-20 p-2 sm:p-4 rounded-[50%]"
-                  >
-                    <img
-                      class="w-5 sm:w-6 h-5 sm:h-6"
-                      src="../Images/deposit.svg"
-                      alt="Deposit Icon"
-                    />
-                  </div>
-                  <div>
-                    <p class="ml-2 font-bold text-xs sm:text-base">Deposit Via <%= lastDeposit.medium %></p>
-                    <div class="flex flex-row items-center space-x-2 ml-2">
-                      <p class="font-bold text-xs sm:text-base">
-                        <%= lastDeposit.createdAt.toLocaleDateString() %>
-                      </p>
-                      <p class="font-bold text-green-600 text-xs capitalize"><%= lastDeposit.status %></p>
-                    </div>
-                  </div>
+            <div id="deposit" class="flex flex-row justify-between items-center p-2 border border-red-600 rounded-xl">
+              <div class="flex flex-row items-center">
+                <div class="flex justify-center items-center bg-red-600 bg-opacity-20 p-2 sm:p-4 rounded-[50%]">
+                  <img class="w-5 sm:w-6 h-5 sm:h-6" src="../Images/deposit.svg" alt="Deposit Icon" />
                 </div>
                 <div>
-                  <h1 class="font-bold text-red-600 text-sm sm:text-xl">+$<%= lastDeposit.amount %></h1>
+                  <p class="ml-2 font-bold text-xs sm:text-base">Deposit Via <%= lastDeposit.medium %></p>
+                  <div class="flex flex-row items-center space-x-2 ml-2">
+                    <p class="font-bold text-xs sm:text-base">
+                      <%= lastDeposit.createdAt.toLocaleDateString() %>
+                    </p>
+                    <p class="font-bold text-green-600 text-xs capitalize"><%= lastDeposit.status %></p>
+                  </div>
                 </div>
               </div>
-              <% } %>
-              <% if (lastWithdrawal) { %>
-                <div id="withdrawal" class="flex flex-row justify-between items-center border-green-600 p-2 border rounded-xl">
-                  <div class="flex flex-row items-center">
-                    <div
-                      class="flex justify-center items-center bg-green-600 bg-opacity-20 p-2 sm:p-4 rounded-[50%]"
-                    >
-                      <img
-                        class=""
-                        src="../Images/withdraw.svg"
-                        alt="WIthdraw Icon"
-                      />
-                    </div>
-                    <div>
-                      <p class="ml-2 font-bold text-xs sm:text-base capitalize">Withdraw Via <%= lastWithdrawal.account.method %></p>
-                      <div class="flex flex-row items-center space-x-2 ml-2">
-                        <p class="font-bold text-xs sm:text-base">
-                          <%= lastWithdrawal.createdAt.toLocaleDateString() %>
-                        </p>
-                        <p class="font-bold text-green-600 text-xs capitalize"><%= lastWithdrawal.status %></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <h1 class="font-bold text-green-600 text-sm sm:text-xl">-$<%= lastWithdrawal.account.amount %></h1>
+              <div>
+                <h1 class="font-bold text-red-600 text-sm sm:text-xl">+$<%= lastDeposit.amount %></h1>
+              </div>
+            </div>
+            <% } %>
+            <% if (lastWithdrawal) { %>
+            <div id="withdrawal" class="flex flex-row justify-between items-center p-2 border border-green-600 rounded-xl">
+              <div class="flex flex-row items-center">
+                <div class="flex justify-center items-center bg-green-600 bg-opacity-20 p-2 sm:p-4 rounded-[50%]">
+                  <img class="" src="../Images/withdraw.svg" alt="WIthdraw Icon" />
+                </div>
+                <div>
+                  <p class="ml-2 font-bold text-xs sm:text-base capitalize">Withdraw Via <%= lastWithdrawal.account.method %></p>
+                  <div class="flex flex-row items-center space-x-2 ml-2">
+                    <p class="font-bold text-xs sm:text-base">
+                      <%= lastWithdrawal.createdAt.toLocaleDateString() %>
+                    </p>
+                    <p class="font-bold text-green-600 text-xs capitalize"><%= lastWithdrawal.status %></p>
                   </div>
                 </div>
-                <% } %>
-                <% if (lastInvestment) { %>
-                  <div class="flex flex-row justify-between items-center p-2 border border-blue-600 rounded-xl">
-                    <div class="flex flex-row items-center">
-                      <div
-                        class="flex justify-center items-center bg-blue-700 bg-opacity-20 p-2 sm:p-4 rounded-[50%]"
-                      >
-                        <img
-                          class="w-5 sm:w-6 h-5 sm:h-6"
-                          src="../Images/invest.svg"
-                          alt="Invest Icon"
-                        />
-                      </div>
-                      <div>
-                        <p class="ml-2 font-bold text-xs sm:text-base capitalize">Invested Plan <%= lastInvestment.plan %></p>
-                        <div class="flex flex-row items-center space-x-2 ml-2">
-                          <p class="font-bold text-xs sm:text-base">
-                            <%= lastInvestment.createdAt.toLocaleDateString() %>
-                          </p>
-                          <% if (lastInvestment.isFulfilled === false) {%>
-                            <p class="font-bold text-green-600 text-xs"> Active</p>
-                            <% } else {%>
-                              <p class="font-bold text-green-600 text-xs"> Completed</p>
-                              <% } %>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <h1 class="font-bold text-blue-600 text-sm sm:text-xl">$<%= lastInvestment.amount %></h1>
-                    </div>
-                  </div>
-                  <% } %>
+              </div>
+              <div>
+                <h1 class="font-bold text-green-600 text-sm sm:text-xl">-$<%= lastWithdrawal.account.amount %></h1>
+              </div>
             </div>
+            <% } %>
+            <% if (lastInvestment) { %>
+            <div class="flex flex-row justify-between items-center p-2 border border-blue-600 rounded-xl">
+              <div class="flex flex-row items-center">
+                <div class="flex justify-center items-center bg-blue-700 bg-opacity-20 p-2 sm:p-4 rounded-[50%]">
+                  <img class="w-5 sm:w-6 h-5 sm:h-6" src="../Images/invest.svg" alt="Invest Icon" />
+                </div>
+                <div>
+                  <p class="ml-2 font-bold text-xs sm:text-base capitalize">Invested Plan <%= lastInvestment.plan %></p>
+                  <div class="flex flex-row items-center space-x-2 ml-2">
+                    <p class="font-bold text-xs sm:text-base">
+                      <%= lastInvestment.createdAt.toLocaleDateString() %>
+                    </p>
+                    <% if (lastInvestment.isFulfilled === false) {%>
+                    <p class="font-bold text-green-600 text-xs"> Active</p>
+                    <% } else {%>
+                    <p class="font-bold text-green-600 text-xs"> Completed</p>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h1 class="font-bold text-blue-600 text-sm sm:text-xl">$<%= lastInvestment.amount %></h1>
+              </div>
+            </div>
+            <% } %>
           </div>
         </div>
+      </div>
 
-        <div class="border-darkNavy bg-white shadow-md p-4 border border-opacity-10 rounded-xl w-full md:w-[40%]">
-         <div class="relative bg-darkNavy p-4 rounded-2xl">
-          <img
-              class="absolute opacity-10"
-              src="../Images/scribble-deluxe.png"
-              alt="Deluxe Capital Scribble"
-            />
+      <div class="bg-white shadow-md p-4 border border-darkNavy border-opacity-10 rounded-xl w-full md:w-[40%]">
+        <div class="relative bg-darkNavy p-4 rounded-2xl">
+          <img class="absolute opacity-10" src="../Images/scribble-deluxe.png" alt="Deluxe Capital Scribble" />
           <div class="flex flex-row justify-between items-center">
             <img class="w-9 sm:w-12" src="../Images/user.png" alt="User Icon">
             <div class="flex flex-row items-center bg-lightGray1 p-1 rounded-md">
               <img class="w-6 md:w-8 xl:w-10" src="../Images/logo1.png" alt="Deluxe capital logo">
             </div>
           </div>
-            <div class="flex flex-row justify-between items-center mt-40">
-              <div>
-                <p class="text-[0.6rem] text-darkGray">Full Name</p>
-                <p class="font-bold text-base text-gold sm:text-lg"><%= user.name %></p>
-              </div>
-              <div>
-                <p class="text-[0.6rem] text-darkGray">Reg. Date</p>
-                <p class="font-bold text-base text-gold sm:text-lg"><%= user.createdAt.toLocaleDateString() %></p>
-              </div>
+          <div class="flex flex-row justify-between items-center mt-40">
+            <div>
+              <p class="text-[0.6rem] text-darkGray">Full Name</p>
+              <p class="font-bold text-gold text-base sm:text-lg"><%= user.name %></p>
             </div>
-            <div class="flex flex-row justify-between items-center mt-4"> 
-                <div>
-                  <p class="text-[0.6rem] text-darkGray">Current Balance</p>
-                  <p class="font-bold text-base text-center text-gold sm:text-lg">$<%=user.balance.toLocaleString() %></p>
-                </div>
-                <div>
-                  <p class="text-[0.6rem] text-darkGray">Investment Count</p>
-                  <p class="font-bold text-base text-center text-gold sm:text-lg"><%= investments.length %></p>
-                </div>
-                <div>
-                  <p class="text-[0.6rem] text-darkGray">Total Earnings</p>
-                  <p class="font-bold text-base text-center text-gold sm:text-lg">$ <%= (earnings.reduce((total, current) => total + current.amount, 0) - investments.reduce((total, current) => total + current.amount, 0)).toLocaleString() %></p>
-                </div>
-                <div>
-                  <p class="text-[0.6rem] text-darkGray">Total Withdraw</p>
-                  <p class="font-bold text-base text-center text-gold sm:text-lg">$<%= withdrawals.reduce( (total, current)=> total + current.amount,
+            <div>
+              <p class="text-[0.6rem] text-darkGray">Reg. Date</p>
+              <p class="font-bold text-gold text-base sm:text-lg"><%= user.createdAt.toLocaleDateString() %></p>
+            </div>
+          </div>
+          <div class="flex flex-row justify-between items-center mt-4">
+            <div>
+              <p class="text-[0.6rem] text-darkGray">Current Balance</p>
+              <p class="font-bold text-gold text-base sm:text-lg text-center">$<%=user.balance.toLocaleString() %></p>
+            </div>
+            <div>
+              <p class="text-[0.6rem] text-darkGray">Investment Count</p>
+              <p class="font-bold text-gold text-base sm:text-lg text-center"><%= investments.length %></p>
+            </div>
+            <div>
+              <p class="text-[0.6rem] text-darkGray">Total Earnings</p>
+              <p class="font-bold text-gold text-base sm:text-lg text-center">$ <%= (earnings.reduce((total, current) => total + current.amount, 0) - investments.reduce((total, current) => total + current.amount, 0)).toLocaleString() %></p>
+            </div>
+            <div>
+              <p class="text-[0.6rem] text-darkGray">Total Withdraw</p>
+              <p class="font-bold text-gold text-base sm:text-lg text-center">$<%= withdrawals.reduce( (total, current)=> total + current.amount,
                     0).toLocaleString() %></p>
-                </div>
             </div>
-         </div>
+          </div>
+        </div>
         <div class="flex flex-row justify-between items-center bg-darkerBlue mt-4 p-4 rounded-xl">
           <img class="w-1/2" src="../Images/Refer.png" alt="Referral Image">
-          <p class="w-1/2 font-bold text-base text-lightGray md:text-lg">Earn Up to 10% on Referral Deposits</p>
+          <p class="w-1/2 font-bold text-lightGray text-base md:text-lg">Earn Up to 10% on Referral Deposits</p>
         </div>
-        <div class="border-2 border-gold mt-2 p-1 rounded-xl">
+        <div class="mt-2 p-1 border-2 border-gold rounded-xl">
           <a onclick="copy()">
-            <p
-              id="referral-link"
-              class="text-center text-darkNavy text-xs cursor-pointer"
-            >
+            <p id="referral-link" class="text-darkNavy text-xs text-center cursor-pointer">
               https://www.realmforte.com/user/create?ref=<%=user.username %>
             </p>
           </a>
         </div>
-          <p
-            class="mt-2 font-thin text-center text-gray-500 text-xs"
-          >
-            <span
-              ><ion-icon name="information-circle-outline"></ion-icon
-            ></span>
-            Tap the link to copy it to your CLIPBOARD
-          </p> 
-        </div>
+        <p class="mt-2 font-thin text-gray-500 text-xs text-center">
+          <span>
+            <ion-icon name="information-circle-outline"></ion-icon>
+          </span>
+          Tap the link to copy it to your CLIPBOARD
+        </p>
       </div>
-    </section>
-    <%- include("partials/script"); -%>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script>
-      //For the Chart
-      const xValues = [
-        "Deps",
-        "Wits",
-        "Invs",
-        "Ears",
-        "Refs",
-      ];
-      const yValues = [<%= deposits.length %>,
-          <%= withdrawals.length  %>
-          , <%= investments.length %>,<%= earnings.length %>,<%= user.referrals.length %>]
-      const barColors = ["red", "green", "blue", "orange", "indigo"];
+    </div>
+  </section>
+  <%- include("partials/script"); -%>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script>
+    //For the Chart
+    const xValues = [
+      "Deps",
+      "Wits",
+      "Invs",
+      "Ears",
+      "Refs",
+    ];
+    const yValues = [<%= deposits.length %>,
+      <%= withdrawals.length  %>, <%= investments.length %>, <%= earnings.length %>, <%= user.referrals.length %>
+    ]
+    const barColors = ["red", "green", "blue", "orange", "indigo"];
 
-      new Chart("myChart", {
-        type: "bar",
-        data: {
-          labels: xValues,
-          datasets: [
-            {
-              backgroundColor: barColors,
-              data: yValues,
-            },
-          ],
+    new Chart("myChart", {
+      type: "bar",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues,
+        }, ],
+      },
+      options: {
+        legend: {
+          display: false
         },
-        options: {
-          legend: { display: false },
-          title: {
-            display: true,
-            text: "Your Activity Chart",
-          },
+        title: {
+          display: true,
+          text: "Your Activity Chart",
         },
-      });
-    </script>
-  </body>
+      },
+    });
+  </script>
+</body>
+
 </html>

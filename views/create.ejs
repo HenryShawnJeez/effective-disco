@@ -9,54 +9,60 @@
   <%- include("partials/SEO"); -%>
   <!-- Password Strength -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js" defer></script>
+  <!-- Google Recaptcha -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body class="bg-brightBlue text-xs md:text-sm xl:text-base">
   <%- include("partials/_alert"); -%>
-  <div id="notification" class="justify-between items-center space-x-4 hidden bg-red-600 mx-auto mt-10 p-5 rounded-md w-[20rem] sm:w-[28rem] h-[4rem] text-white capitalize">
+  <div id="notification" class="hidden justify-between items-center space-x-4 bg-red-600 mx-auto mt-10 p-5 rounded-md w-[20rem] sm:w-[28rem] h-[4rem] text-white capitalize">
     <p class="text-xs sm:text-sm">The Entered Passwords do not match</p>
-    <button onclick="correctPassword()" class="border-2 border-white px-2 py-1 rounded-md text-white text-xs">Rewrite</button>
+    <button onclick="correctPassword()" class="px-2 py-1 border-2 border-white rounded-md text-white text-xs">Rewrite</button>
     <i onclick="hide()" class="cursor-pointer fa-lg fa-times fas" style="color: #ffffff;"></i>
   </div>
   <section id="main-section" class="flex justify-center items-center h-dvh">
-    <div class="border-[#6564DB] mx-auto p-4 md:p-6 xl:p-8 border rounded-lg sm:w-[70%] md:w-[60%] lg:w-[50%] xl:w-[40%] 2xl:w-[30%] min-w-[20rem] text-center istGlass">
+    <div class="mx-auto p-4 md:p-6 xl:p-8 border border-[#6564DB] rounded-lg sm:w-[70%] md:w-[60%] lg:w-[50%] 2xl:w-[30%] xl:w-[40%] min-w-[20rem] text-center istGlass">
       <a href="/"><img class="mx-auto w-12 md:w-16 xl:w-20" src="../Images/logo1.png" alt="Logo" /></a>
       <h1 class="mt-4 font-extrabold text-lightGray1 text-xl sm:text-2xl md:text-2xl xl:text-4xl">Sign Up</h1>
       <p class="mt-2 text-gold">Sign Up To Become An Investor</p>
       <form action="/user/create" method="post" class="flex flex-col gap-y-3 mt-10">
         <div>
-          <input class="border-2 border-primaryBlue bg-white px-6 py-3 border-solid rounded-lg w-full caret-darkBlue focus:outline-darkBlue" type="text" id="name" name="name" placeholder="Full Name" required />
+          <input class="bg-white px-6 py-3 border-2 border-primaryBlue border-solid rounded-lg focus:outline-darkBlue w-full caret-darkBlue" type="text" id="name" name="name" placeholder="Full Name" required />
         </div>
         <div>
-          <input class="border-2 border-primaryBlue bg-white px-6 py-3 border-solid rounded-lg w-full caret-darkBlue focus:outline-darkBlue" type="email" id="email" name="email" placeholder="Email Address" required />
+          <input class="bg-white px-6 py-3 border-2 border-primaryBlue border-solid rounded-lg focus:outline-darkBlue w-full caret-darkBlue" type="email" id="email" name="email" placeholder="Email Address" required />
         </div>
         <div>
-          <input class="border-2 border-primaryBlue bg-white px-6 py-3 border-solid rounded-lg w-full caret-darkBlue focus:outline-darkBlue" type="text" id="username" name="username" placeholder="Username" required />
+          <input class="bg-white px-6 py-3 border-2 border-primaryBlue border-solid rounded-lg focus:outline-darkBlue w-full caret-darkBlue" type="text" id="username" name="username" placeholder="Username" required />
         </div>
         <div class="relative">
-          <input class="border-2 border-primaryBlue bg-white px-6 py-3 border-solid rounded-lg w-full caret-darkBlue focus:outline-darkBlue" type="password" id="myPassword" name="password" placeholder="Password" required />
+          <input class="bg-white px-6 py-3 border-2 border-primaryBlue border-solid rounded-lg focus:outline-darkBlue w-full caret-darkBlue" type="password" id="myPassword" name="password" placeholder="Password" required />
           <i class="top-[25%] right-2 absolute text-lg fa-eye fas" id="eye" onclick="myFunction()"></i>
         </div>
         <div>
           <div class="mt-2 rounded-lg w-full" id="password-strength"><span></span></div>
-          <p class="mt-1 text-center text-gold text-xs">Your Password Strength</p>
+          <p class="mt-1 text-gold text-xs text-center">Your Password Strength</p>
         </div>
         <div class="relative">
-          <input class="border-2 border-primaryBlue bg-white px-6 py-3 border-solid rounded-lg w-full caret-darkBlue focus:outline-darkBlue" type="password" id="myPassword1" name="confirmPassword" placeholder="Confirm Password" required />
+          <input class="bg-white px-6 py-3 border-2 border-primaryBlue border-solid rounded-lg focus:outline-darkBlue w-full caret-darkBlue" type="password" id="myPassword1" name="confirmPassword" placeholder="Confirm Password" required />
           <i class="top-[25%] right-2 absolute text-lg fa-eye fas" id="eye1" onclick="myFunction1()"></i>
         </div>
         <div>
-          <input class="border-2 border-primaryBlue bg-white px-6 py-3 border-solid rounded-lg w-full caret-darkBlue focus:outline-darkBlue" type="text" name="referredBy" placeholder="Referral Code (Optional)" value="<%= referral %>" />
+          <input class="bg-white px-6 py-3 border-2 border-primaryBlue border-solid rounded-lg focus:outline-darkBlue w-full caret-darkBlue" type="text" name="referredBy" placeholder="Referral Code (Optional)" value="<%= referral %>" />
         </div>
         <input type="hidden" name="role" value="<%= role %>">
         <div class="flex gap-x-2">
-          <input type="checkbox" id="agreement" name="agreement" class="cursor-pointer size-5" required />
-          <p class="text-[10px] text-center text-lightGray1 xl:text-sm md:text-xs">
+          <input type="checkbox" id="agreement" name="agreement" class="size-5 cursor-pointer" required />
+          <p class="text-[10px] text-lightGray1 md:text-xs xl:text-sm text-center">
             <label for="agreement" class="cursor-pointer">You Agree To Our</label>
             <a class="text-gold hover:text-lightGray1" href="/policies">Terms Of Service, Privacy, and Anti-Spam</a> Policies.
           </p>
         </div>
-        <input type="submit" id="submit" class="border-2 border-gold hover:bg-inherit mt-4 py-4 hover:border-lightGray1 rounded-lg text-gold text-sm md:text-base xl:text-lg hover:text-lightGray duration-500 cursor-pointer" value="Sign Up" />
+        <!-- Google Recaptcha -->
+        <div class="mt-4">
+          <div class="g-recaptcha" data-sitekey="<%= process.env.GOOGLE_SITE_KEY %>"></div>
+        </div>
+        <input type="submit" id="submit" class="hover:bg-inherit mt-4 py-4 border-2 border-gold hover:border-lightGray1 rounded-lg text-gold hover:text-lightGray text-sm md:text-base xl:text-lg duration-500 cursor-pointer" value="Sign Up" />
       </form>
       <p class="mt-4 text-lightGray1">Already Have An Account?<a class="font-bold text-gold hover:text-lightGray1 duration-500" href="/user/login"> Login</a></p>
     </div>

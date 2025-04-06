@@ -31,7 +31,7 @@
         <h1 class="font-bold text-gold text-xl md:text-2xl">Administration Page</h1>
       </div>
       <div class="mt-20 text-center">
-        <h1 class="text-brightBlue font-bold text-2xl md:text-4xl">Overview</h1>
+        <h1 class="font-bold text-brightBlue text-2xl md:text-4xl">Overview</h1>
         <h4 class="mt-2 text-darkBlue text-sm md:text-base">
           Here is an insight of what is going on.
         </h4>
@@ -43,8 +43,8 @@
             $ <%= deposits.reduce((total, current)=> total + current.amount, 0).toLocaleString() %>
           </h1>
           <div class="flex flex-row mt-3">
-            <ion-icon class="mr-1 text-3xl text-blue-500" name="arrow-down-circle-outline"></ion-icon>
-            <span class="mt-1 font-bold text-base text-darkNavy">Deposit</span>
+            <ion-icon class="mr-1 text-blue-500 text-3xl" name="arrow-down-circle-outline"></ion-icon>
+            <span class="mt-1 font-bold text-darkNavy text-base">Deposit</span>
           </div>
         </div>
         <div class="bg-lightGray1 shadow-xl p-4 border border-brightBlue rounded-xl w-72 h-32 text-center">
@@ -53,8 +53,8 @@
             $ <%= withdrawals.reduce((total, current)=> total + current.amount, 0).toLocaleString() %>
           </h1>
           <div class="flex flex-row mt-3">
-            <ion-icon class="mr-1 text-3xl text-green-700" name="arrow-up-circle-outline"></ion-icon>
-            <span class="mt-1 font-bold text-base text-darkBlue">Withdraw</span>
+            <ion-icon class="mr-1 text-green-700 text-3xl" name="arrow-up-circle-outline"></ion-icon>
+            <span class="mt-1 font-bold text-darkBlue text-base">Withdraw</span>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@
             A summary of the transactions (Deposit, Withdrawal, Investment, Earnings).
           </h4>
         </div>
-        <div class="space-y-2 border-darkNavy mt-10 p-4 border border-opacity-30 rounded-xl w-full md:w-4/5">
+        <div class="space-y-2 mt-10 p-4 border border-darkNavy border-opacity-30 rounded-xl w-full md:w-4/5">
           <% if (lastDeposit) { %>
           <div id="deposit" class="flex flex-row justify-between items-center p-2 border border-red-600 rounded-xl">
             <div class="flex flex-row items-center">
@@ -73,7 +73,11 @@
                 <img class="" src="../../Images/deposit.svg" alt="Deposit Icon" />
               </div>
               <div>
-                <p class="ml-2 font-bold text-xs sm:text-sm md:text-base"><%= lastDeposit.user.name %> Deposited Via <%= lastDeposit.medium %></p>
+                <p class="ml-2 font-bold text-xs sm:text-sm md:text-base">
+                  <%= (lastDeposit && lastDeposit.user && lastDeposit.user.name) ? lastDeposit.user.name : "No name" %>
+                  Deposited Via
+                  <%= lastDeposit && lastDeposit.medium ? lastDeposit.medium : "Coin" %>
+                </p>
                 <div class="flex flex-row items-center space-x-2 ml-2">
                   <p class="font-bold text-xs sm:text-base">
                     <%= lastDeposit.createdAt.toLocaleDateString() %>
@@ -88,7 +92,7 @@
           </div>
           <% } %>
           <% if (lastWithdrawal) { %>
-          <div id="withdrawal" class="flex flex-row justify-between items-center border-green-600 p-2 border rounded-xl">
+          <div id="withdrawal" class="flex flex-row justify-between items-center p-2 border border-green-600 rounded-xl">
             <div class="flex flex-row items-center">
               <div class="flex justify-center items-center bg-green-600 bg-opacity-40 p-2 sm:p-4 rounded-[50%]">
                 <img class="" src="../../Images/withdraw.svg" alt="WIthdraw Icon" />
@@ -134,7 +138,7 @@
           </div>
           <% } %>
           <% if (lastEarning) { %>
-          <div class="flex flex-row justify-between items-center border-purple-600 p-2 border rounded-xl">
+          <div class="flex flex-row justify-between items-center p-2 border border-purple-600 rounded-xl">
             <div class="flex flex-row items-center">
               <div class="flex justify-center items-center bg-purple-700 bg-opacity-40 p-2 sm:p-4 rounded-[50%]">
                 <img class="" src="../../Images/earning.svg" alt="Invest Icon" />
@@ -170,8 +174,8 @@
               <%= users.length %>
             </h1>
             <div class="flex flex-row mt-3">
-              <ion-icon class="mr-1 text-3xl text-red-600" name="people-circle-outline"></ion-icon>
-              <span class="mt-1 font-bold text-base text-darkNavy">Users</span>
+              <ion-icon class="mr-1 text-red-600 text-3xl" name="people-circle-outline"></ion-icon>
+              <span class="mt-1 font-bold text-darkNavy text-base">Users</span>
             </div>
           </div>
           <div class="bg-lightGray1 shadow-xl mt-10 p-4 border border-brightBlue rounded-xl w-72 h-32 text-center">
@@ -180,8 +184,8 @@
               $ <%= investments.reduce((total, current)=> total + current.amount, 0).toLocaleString() %>
             </h1>
             <div class="flex flex-row mt-3">
-              <ion-icon class="mr-1 text-3xl text-purple-900" name="add-circle-outline"></ion-icon>
-              <span class="mt-1 font-bold text-base text-darkNavy">Investments</span>
+              <ion-icon class="mr-1 text-purple-900 text-3xl" name="add-circle-outline"></ion-icon>
+              <span class="mt-1 font-bold text-darkNavy text-base">Investments</span>
             </div>
           </div>
         </div>
