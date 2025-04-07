@@ -4,16 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const scheduler = require("node-schedule");
 const saltRounds = 10;
-const {
-  essentialDuration,
-  capitalDuration,
-  advancedDuration,
-  ultimateDuration,
-  essentialPercent,
-  capitalPercent,
-  advancedPercent,
-  ultimatePercent,
-} = require("../config");
+const { essentialDuration, capitalDuration, advancedDuration, ultimateDuration, essentialPercent, capitalPercent, advancedPercent, ultimatePercent } = require("../config");
 const userService = require("../services/user.service");
 const util = require("../utils/utils");
 const transactionService = require("../services/transaction.service");
@@ -21,6 +12,7 @@ const { User } = require("../models/user.model");
 const Email = require("../utils/mail.util");
 const { sendEmail } = require("../utils/adminMail.util");
 const disposableEmailDomains = require("../utils/emailList.utils");
+const axios = require("axios");
 
 class UserController {
   // registering a user
