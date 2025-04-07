@@ -48,7 +48,7 @@ class UserController {
     const recaptchaSecret = process.env.GOOGLE_SECRET_KEY;
 
     if (!recaptchaResponse) {
-      req.flash("error", "reCAPTCHA verification failed");
+      req.flash("error", "ReCAPTCHA verification failed");
       return res.redirect("/user/create");
     }
 
@@ -57,7 +57,7 @@ class UserController {
 
     if (!recaptchaVerification.data.success) {
       console.error("reCAPTCHA failed:", recaptchaVerification.data);
-      req.flash("error", "reCAPTCHA verification failed");
+      req.flash("error", "ReCAPTCHA verification failed");
       return res.redirect("/user/create");
     }
 
