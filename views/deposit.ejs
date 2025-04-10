@@ -23,20 +23,20 @@
 <body class="bg-darkGray main">
   <%- include ("partials/sidebar"); -%> 
   <%- include("partials/_alert"); -%>
-  <div class="px-8 p-4">
+  <div class="p-4 px-8">
     <div class="mt-20">
       <h1 class="font-bold text-[#CC9E06] text-xl sm:text-2xl md:text-3xl lg:text-4xl">
         Make A Deposit
       </h1>
       <h4 class="text-darkNavy text-sm md:text-base">
         Current Balance
-        <span class="ml-1 font-bold text-base text-gold md:text-xl">
+        <span class="ml-1 font-bold text-gold text-base md:text-xl">
           $<%= user.balance.toLocaleString() %>
         </span>
       </h4>
     </div>
     <div class="flex md:flex-row flex-col-reverse justify-between mt-10">
-      <div class="border-[#9EA0A3] bg-white mt-4 md:mt-0 p-2 border rounded-lg w-full md:w-[49%]">
+      <div class="bg-white mt-4 md:mt-0 p-2 border border-[#9EA0A3] rounded-lg w-full md:w-[49%]">
         <div class="flex flex-col px-2 w-full max-h-[30rem] overflow-y-auto linkContainer">
           <p class="mt-8 mb-2 font-bold text-sm sm:text-base">
             Deposit History
@@ -81,28 +81,28 @@
           <a href="/user/transactions" class="flex items-center hover:translate-x-2 duration-500"><span class="text-[#6564DB] text-[0.65rem] sm:text-xs md:text-sm">View All Transactions</span><img src="../../Images/arrow-right.svg" alt="arrow" /></a>
         </div>
       </div>
-      <div class="border-[#9EA0A3] bg-white mt-4 md:mt-0 p-2 border rounded-lg w-full md:w-[49%]">
+      <div class="bg-white mt-4 md:mt-0 p-2 border border-[#9EA0A3] rounded-lg w-full md:w-[49%]">
         <form action="/user/deposit" method="post">
           <h4 class="mt-8 text-darkBlue text-sm md:text-base">
             Choose The Coin or Token
           </h4>
-          <div class="relative border-[#9EA0A3] custom-select mt-2 border rounded-lg w-full text-xs sm:text-sm">
+          <div class="relative mt-2 border border-[#9EA0A3] rounded-lg w-full text-xs sm:text-sm custom-select">
             <select name="medium" class="rounded-xl" required>
               <option>Choose The Wallet</option>
               <option value="Bitcoin">Bitcoin</option>
               <option value="Ethereum">Ethereum</option>
               <option value="Usdt">USDT ERC20</option>
-              <option value="Tron">USDT TRC20</option>
+              <option value="UsdtB">USDT BEP20</option>
             </select>
           </div>
           <div class="mt-8">
             <h4 class="text-darkBlue text-sm md:text-base">
               Amount To Deposit
             </h4>
-            <input class="border-[#9EA0A3] mt-2 px-8 py-2 border rounded-lg w-full placeholder:text-sm caret-darkBlue focus:outline focus:outline-gold" type="number" name="amount" id="amount" placeholder="Minimum Of $100" min="100" required />
+            <input class="mt-2 px-8 py-2 border border-[#9EA0A3] rounded-lg focus:outline focus:outline-gold w-full placeholder:text-sm caret-darkBlue" type="number" name="amount" id="amount" placeholder="Minimum Of $100" min="100" required />
           </div>
           <div class="flex justify-end mt-20 mb-20">
-            <button type="submit" class="bg-brightBlue hover:bg-lightGray1 disabled:opacity-50 px-5 sm:px-7 md:px-9 py-3 rounded-lg text-lightGray1 text-sm sm:text-base hover:text-darkBlue duration-500 disabled:cursor-not-allowed">
+            <button type="submit" class="bg-brightBlue hover:bg-lightGray1 disabled:opacity-50 px-5 sm:px-7 md:px-9 py-3 rounded-lg text-lightGray1 hover:text-darkBlue text-sm sm:text-base duration-500 disabled:cursor-not-allowed">
               Deposit
             </button>
           </div>
