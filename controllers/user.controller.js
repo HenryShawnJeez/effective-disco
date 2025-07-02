@@ -4,7 +4,16 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const scheduler = require("node-schedule");
 const saltRounds = 10;
-const { essentialDuration, capitalDuration, advancedDuration, ultimateDuration, essentialPercent, capitalPercent, advancedPercent, ultimatePercent } = require("../config");
+const {
+  essentialDuration,
+  capitalDuration,
+  advancedDuration,
+  ultimateDuration,
+  essentialPercent,
+  capitalPercent,
+  advancedPercent,
+  ultimatePercent,
+} = require("../config");
 const userService = require("../services/user.service");
 const util = require("../utils/utils");
 const transactionService = require("../services/transaction.service");
@@ -17,6 +26,18 @@ const axios = require("axios");
 class UserController {
   // registering a user
   async registerUser(req, res) {
+    if (
+      !req.body.name ||
+      !req.body.email ||
+      !req.body.username ||
+      !req.body.password ||
+      !req.body.agreement
+    ) {
+      req.flash("error", "Kindly fill all the required details, before proceeding.");
+      return res.redirect("/user/create");
+    }
+
+    //Generate User Data
     const userData = {
       name: req.body.name,
       email: req.body.email.toLowerCase(),
@@ -127,11 +148,10 @@ class UserController {
   async loginUser(req, res) {
     const userCredentials = req.body;
 
-    if(!userCredentials.email || !userCredentials.password){
+    if (!userCredentials.email || !userCredentials.password) {
       // throw an error
       req.flash("error", "Kindly enter all required credentials");
-      res.redirect("/user/login");
-      return;
+      return res.redirect("/user/login");
     }
 
     // check if user exists
@@ -179,7 +199,7 @@ class UserController {
       .header("Authorization", token)
       .redirect("/user/dashboard");
   }
-  
+
   //Log Out
   async logoutUser(req, res) {
     res.clearCookie("token").redirect("/user/login");
