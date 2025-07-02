@@ -127,6 +127,13 @@ class UserController {
   async loginUser(req, res) {
     const userCredentials = req.body;
 
+    if(!userCredentials.email || !userCredentials.password){
+      // throw an error
+      req.flash("error", "Kindly enter all required credentials");
+      res.redirect("/user/login");
+      return;
+    }
+
     // check if user exists
     const foundUser = await userService.findOne({
       email: userCredentials.email.toLowerCase(),
@@ -172,10 +179,12 @@ class UserController {
       .header("Authorization", token)
       .redirect("/user/dashboard");
   }
+  
   //Log Out
   async logoutUser(req, res) {
     res.clearCookie("token").redirect("/user/login");
   }
+
   //Render Dashboard
   async renderDashboard(req, res) {
     const userInformation = req.user;
