@@ -366,7 +366,7 @@ class UserController {
 
       switch (req.body.medium) {
         case "Bitcoin":
-          wallet = "bc1q7w4cfq7vws00x30edzcwxuvn2pzdg7rvajsyku";
+          wallet = "bc1qu9ykdqjtl9yespnjts6s8383rkpf47r63q0kwm";
           break;
         case "Ethereum":
           wallet = "0xEc539Bfe99E0Cb4759bcC898A40C55B5F8a4e924";
@@ -378,7 +378,7 @@ class UserController {
           wallet = "0xafF579a32fB2f645271818Ae3EdA6d0633aEb760";
           break;
         default:
-          wallet = "bc1q7w4cfq7vws00x30edzcwxuvn2pzdg7rvajsyku";
+          wallet = "bc1qu9ykdqjtl9yespnjts6s8383rkpf47r63q0kwm";
           break;
       }
       res.render("checkout", {
