@@ -403,6 +403,9 @@ class UserController {
         case "Usdt":
           wallet = "0xEc539Bfe99E0Cb4759bcC898A40C55B5F8a4e924";
           break;
+        case "UsdtT":
+          wallet = "TWAFpnHymkfHvwxrdfL9RTHxH72Tn6pb2q";
+          break;
         case "UsdtB":
           wallet = "0xafF579a32fB2f645271818Ae3EdA6d0633aEb760";
           break;
